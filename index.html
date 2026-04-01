@@ -417,8 +417,8 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
     <li class="nav-item has-dropdown" id="ni-what">
       <a href="#" onclick="toggleMega(event,'mega-what','ni-what')">What we do</a>
     </li>
-    <li class="nav-item">
-      <a href="#think">What we think</a>
+    <li class="nav-item has-dropdown" id="ni-think">
+      <a href="#" onclick="toggleMega(event,'mega-think','ni-think')">What we think</a>
     </li>
     <li class="nav-item has-dropdown" id="ni-who">
       <a href="#" onclick="toggleMega(event,'mega-who','ni-who')">Who we are</a>
@@ -511,6 +511,21 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   </div>
 </div>
 
+<!-- WHAT WE THINK MEGA -->
+<div class="mega" id="mega-think">
+  <div class="mega-head">
+    <div class="mega-head-title">What we think</div>
+    <div class="mega-head-arrow">›</div>
+  </div>
+  <div class="mega-ops-grid" style="grid-template-columns:repeat(3,1fr)">
+    <a href="#think" class="mega-ops-item" onclick="closeAll()">Insights</a>
+    <a href="#think" class="mega-ops-item" onclick="closeAll()">AI Trends</a>
+    <a href="#think" class="mega-ops-item" onclick="closeAll()">Automation Strategies</a>
+    <a href="#think" class="mega-ops-item" onclick="closeAll()">Case Breakdowns</a>
+    <a href="#think" class="mega-ops-item" onclick="closeAll()">Guides</a>
+  </div>
+</div>
+
 <!-- WHY IT MATTERS MEGA -->
 <div class="mega" id="mega-why">
   <div class="mega-head">
@@ -535,7 +550,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
     </h1>
     <p class="hero-sub">We design and deploy AI systems that automate your daily operations — so you save time, reduce costs, and scale faster.</p>
     <a href="#cases" class="hero-readmore">
-      Read more
+      See How It Works
       <span class="hero-readmore-arrow">›</span>
     </a>
     <div class="hero-stats">
@@ -548,8 +563,8 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
         <div class="hero-stat-label">Avg. time to live</div>
       </div>
       <div>
-        <div class="hero-stat-num">10<span>+</span></div>
-        <div class="hero-stat-label">Hours saved monthly</div>
+        <div class="hero-stat-num">20<span>+</span></div>
+        <div class="hero-stat-label">Hrs saved weekly</div>
       </div>
     </div>
   </div>
