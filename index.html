@@ -423,8 +423,8 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
     <li class="nav-item has-dropdown" id="ni-who">
       <a href="#" onclick="toggleMega(event,'mega-who','ni-who')">Who we are</a>
     </li>
-    <li class="nav-item">
-      <a href="#why">Why it matters</a>
+    <li class="nav-item has-dropdown" id="ni-why">
+      <a href="#" onclick="toggleMega(event,'mega-why','ni-why')">Why it matters</a>
     </li>
   </ul>
 
@@ -508,6 +508,21 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
       <a href="#contact" class="mega-ops-item" onclick="closeAll()">Get a Free Audit</a>
       <a href="#contact" class="mega-ops-item" onclick="closeAll()">Book a Discovery Call</a>
     </div>
+  </div>
+</div>
+
+<!-- WHY IT MATTERS MEGA -->
+<div class="mega" id="mega-why">
+  <div class="mega-head">
+    <div class="mega-head-title">Why it matters</div>
+    <div class="mega-head-arrow">›</div>
+  </div>
+  <div class="mega-ops-grid" style="grid-template-columns:repeat(3,1fr)">
+    <a href="#why" class="mega-ops-item" onclick="closeAll()">Overview</a>
+    <a href="#why" class="mega-ops-item" onclick="closeAll()">Business Impact</a>
+    <a href="#why" class="mega-ops-item" onclick="closeAll()">Cost of Manual Work</a>
+    <a href="#why" class="mega-ops-item" onclick="closeAll()">AI vs Manual Operations</a>
+    <a href="#why" class="mega-ops-item" onclick="closeAll()">ROI of Automation</a>
   </div>
 </div>
 
