@@ -440,12 +440,12 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
     <div class="mega-head-arrow">›</div>
   </div>
   <div class="mega-tabs">
-    <div class="mega-tab active" onclick="switchTab('ops')">Operations</div>
-    <div class="mega-tab" onclick="switchTab('ai')">AI</div>
+    <div class="mega-tab active" onclick="switchTab('ai')">AI</div>
+    <div class="mega-tab" onclick="switchTab('ops')">Operations</div>
   </div>
 
   <!-- Operations panel -->
-  <div class="mega-panel active" id="panel-ops">
+  <div class="mega-panel" id="panel-ops">
     <div class="mega-ops-grid">
       <a href="#services" class="mega-ops-item" onclick="closeAll()">Process Audit & Mapping</a>
       <a href="#services" class="mega-ops-item" onclick="closeAll()">Workflow Automation</a>
@@ -460,7 +460,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   </div>
 
   <!-- AI panel -->
-  <div class="mega-panel" id="panel-ai">
+  <div class="mega-panel active" id="panel-ai">
     <div class="mega-ai-grid">
       <a href="#services" class="mega-ai-item" onclick="closeAll()">
         <div class="mega-ai-outcome">Automate Customer Support</div>
@@ -941,7 +941,7 @@ function closeAll() {
 
 function switchTab(tab) {
   document.querySelectorAll('.mega-tab').forEach((t,i) => {
-    t.classList.toggle('active', (tab==='ops'&&i===0)||(tab==='ai'&&i===1));
+    t.classList.toggle('active', (tab==='ai'&&i===0)||(tab==='ops'&&i===1));
   });
   document.getElementById('panel-ops').classList.toggle('active', tab==='ops');
   document.getElementById('panel-ai').classList.toggle('active', tab==='ai');
