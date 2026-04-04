@@ -122,6 +122,16 @@ nav{
 .mega-ai-item:hover{background:rgba(161,0,255,0.14);border-color:var(--purple)}
 .mega-ai-outcome{font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px}
 .mega-ai-desc{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.4}
+.mega-ai-header{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.mega-ai-toggle{color:var(--purple);font-size:13px;transition:transform .2s;flex-shrink:0}
+.mega-ai-item.active .mega-ai-toggle{transform:rotate(90deg)}
+.mega-ai-expansion{max-height:0;overflow:hidden;opacity:0;transition:max-height .3s ease,opacity .25s}
+.mega-ai-item.active .mega-ai-expansion{max-height:300px;opacity:1}
+.mega-ai-exp-label{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--purple);margin:14px 0 8px;padding-top:14px;border-top:1px solid rgba(161,0,255,0.2)}
+.mega-ai-exp-body{font-size:12px;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:10px}
+.mega-ai-exp-bullets{list-style:none;display:flex;flex-direction:column;gap:5px}
+.mega-ai-exp-bullets li{font-size:11px;color:rgba(255,255,255,.45);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.mega-ai-exp-bullets li::before{content:'';width:4px;height:4px;background:var(--purple);flex-shrink:0;margin-top:5px}
 
 /* ── HERO ── */
 .hero{
@@ -619,30 +629,108 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   </div>
   <div class="mega-panel active" id="panel-ai">
     <div class="mega-ai-grid">
-      <a href="#services" class="mega-ai-item" onclick="closeAll()">
-        <div class="mega-ai-outcome">Automate Customer Support</div>
+      <div class="mega-ai-item" onclick="toggleAiItem(this)">
+        <div class="mega-ai-header">
+          <div class="mega-ai-outcome">Automate Customer Support</div>
+          <span class="mega-ai-toggle">›</span>
+        </div>
         <div class="mega-ai-desc">AI handles tickets, FAQs, and routing — 24/7 without headcount</div>
-      </a>
-      <a href="#services" class="mega-ai-item" onclick="closeAll()">
-        <div class="mega-ai-outcome">Qualify & Convert Leads</div>
+        <div class="mega-ai-expansion">
+          <div class="mega-ai-exp-label">What this does for you</div>
+          <div class="mega-ai-exp-body">Your support inbox gets a permanent AI operator. It reads every incoming ticket, matches it against your knowledge base, and either resolves it on the spot or routes it to the right person with full context already attached.</div>
+          <ul class="mega-ai-exp-bullets">
+            <li>Handles repetitive questions without a human touching them</li>
+            <li>Ticket routing means your team only sees what actually needs them</li>
+            <li>Runs overnight, weekends, holidays — no shifts, no cover</li>
+            <li>Connects to your existing inbox — no new tools forced on your team</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mega-ai-item" onclick="toggleAiItem(this)">
+        <div class="mega-ai-header">
+          <div class="mega-ai-outcome">Qualify & Convert Leads</div>
+          <span class="mega-ai-toggle">›</span>
+        </div>
         <div class="mega-ai-desc">Chat widgets that score, route, and book leads automatically</div>
-      </a>
-      <a href="#services" class="mega-ai-item" onclick="closeAll()">
-        <div class="mega-ai-outcome">Build Internal Knowledge Systems</div>
+        <div class="mega-ai-expansion">
+          <div class="mega-ai-exp-label">What this does for you</div>
+          <div class="mega-ai-exp-body">Every inbound lead gets an immediate, intelligent response — qualified against your criteria, scored, and either booked into your calendar or routed to the right rep. No one falls through the cracks because someone was busy.</div>
+          <ul class="mega-ai-exp-bullets">
+            <li>Responds to new leads in under 90 seconds, any time of day</li>
+            <li>Qualifies against your actual criteria — budget, size, urgency</li>
+            <li>Books directly into Calendly or your calendar without back-and-forth</li>
+            <li>CRM updated automatically — no manual data entry</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mega-ai-item" onclick="toggleAiItem(this)">
+        <div class="mega-ai-header">
+          <div class="mega-ai-outcome">Build Internal Knowledge Systems</div>
+          <span class="mega-ai-toggle">›</span>
+        </div>
         <div class="mega-ai-desc">RAG pipelines on your Notion/Drive — answers in seconds</div>
-      </a>
-      <a href="#services" class="mega-ai-item" onclick="closeAll()">
-        <div class="mega-ai-outcome">Automate Sales Follow-up</div>
+        <div class="mega-ai-expansion">
+          <div class="mega-ai-exp-label">What this does for you</div>
+          <div class="mega-ai-exp-body">Your SOPs, docs, and internal knowledge are probably scattered across Notion pages no one reads. This turns all of it into a searchable, conversational system your team can actually query — in plain English, instantly.</div>
+          <ul class="mega-ai-exp-bullets">
+            <li>New hires self-serve answers from day one</li>
+            <li>No more "ask Sarah, she knows where that doc is"</li>
+            <li>SOPs stay useful instead of going stale and ignored</li>
+            <li>Works on top of whatever you already have — Notion, Drive, Confluence</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mega-ai-item" onclick="toggleAiItem(this)">
+        <div class="mega-ai-header">
+          <div class="mega-ai-outcome">Automate Sales Follow-up</div>
+          <span class="mega-ai-toggle">›</span>
+        </div>
         <div class="mega-ai-desc">Proposals, summaries, and pipeline updates — zero manual work</div>
-      </a>
-      <a href="#services" class="mega-ai-item" onclick="closeAll()">
-        <div class="mega-ai-outcome">Extract Data from Documents</div>
+        <div class="mega-ai-expansion">
+          <div class="mega-ai-exp-label">What this does for you</div>
+          <div class="mega-ai-exp-body">After every call, your pipeline should update itself. Proposals should draft themselves. Follow-ups should send on time without anyone chasing them. This system handles the entire post-call workflow so your reps stay focused on selling.</div>
+          <ul class="mega-ai-exp-bullets">
+            <li>Post-call summary and action items generated automatically</li>
+            <li>Proposals drafted from call notes — ready to review and send</li>
+            <li>Follow-up sequences triggered by deal stage, not by memory</li>
+            <li>CRM updated without your reps touching it</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mega-ai-item" onclick="toggleAiItem(this)">
+        <div class="mega-ai-header">
+          <div class="mega-ai-outcome">Extract Data from Documents</div>
+          <span class="mega-ai-toggle">›</span>
+        </div>
         <div class="mega-ai-desc">PDFs, contracts, invoices → structured data in your tools</div>
-      </a>
-      <a href="#services" class="mega-ai-item" onclick="closeAll()">
-        <div class="mega-ai-outcome">Analyze & Act on Calls</div>
+        <div class="mega-ai-expansion">
+          <div class="mega-ai-exp-label">What this does for you</div>
+          <div class="mega-ai-exp-body">If your team is manually reading PDFs and re-entering data somewhere else, that's hours of work that should take seconds. This system reads your documents — contracts, invoices, forms — and pushes the right fields directly into your spreadsheets or tools.</div>
+          <ul class="mega-ai-exp-bullets">
+            <li>Invoices processed and pushed to Sheets or your accounting tool</li>
+            <li>Contracts flagged for key clauses, dates, and risk terms</li>
+            <li>Forms and applications parsed without anyone typing twice</li>
+            <li>Handles high volume — dozens of docs processed while you sleep</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mega-ai-item" onclick="toggleAiItem(this)">
+        <div class="mega-ai-header">
+          <div class="mega-ai-outcome">Analyze & Act on Calls</div>
+          <span class="mega-ai-toggle">›</span>
+        </div>
         <div class="mega-ai-desc">Transcription → objections flagged → CRM updated automatically</div>
-      </a>
+        <div class="mega-ai-expansion">
+          <div class="mega-ai-exp-label">What this does for you</div>
+          <div class="mega-ai-exp-body">Every sales call contains intelligence your team forgets or never logs. This system transcribes, extracts the key moments — objections, next steps, sentiment — and pushes it all into your CRM before the rep has closed their laptop.</div>
+          <ul class="mega-ai-exp-bullets">
+            <li>Objections and buying signals flagged automatically</li>
+            <li>Next steps extracted and added as tasks in your CRM</li>
+            <li>Call summaries sent to the rep and manager within minutes</li>
+            <li>Patterns across calls surfaced — what's killing deals, what's closing them</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -1360,6 +1448,12 @@ function toggleMega(e, id, niId) {
   navItem.classList.add('open');
   activeDropdown = target;
   activeNavItem = navItem;
+}
+
+function toggleAiItem(el){
+  const isOpen=el.classList.contains('active');
+  document.querySelectorAll('.mega-ai-item').forEach(i=>i.classList.remove('active'));
+  if(!isOpen) el.classList.add('active');
 }
 
 function closeAll() {
