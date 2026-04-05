@@ -26,17 +26,17 @@ nav{
   position:fixed;top:0;left:0;right:0;z-index:200;
   background:var(--black);
   border-bottom:1px solid rgba(255,255,255,0.08);
-  height:72px;display:flex;align-items:center;padding:0 48px;
+  height:88px;display:flex;align-items:center;padding:0 56px;
   justify-content:space-between;
 }
 .nav-logo{display:flex;align-items:flex-start;flex-direction:column;text-decoration:none;gap:2px}
 .nav-logo-mark{display:flex;align-items:baseline;gap:0}
 .logo-v{
-  font-size:24px;font-weight:900;line-height:1;
+  font-size:28px;font-weight:900;line-height:1;
   background:linear-gradient(135deg,#A100FF 0%,#C44DFF 60%,#E080FF 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
-.logo-nklo{font-size:24px;font-weight:900;color:var(--white);letter-spacing:0.04em;line-height:1}
+.logo-nklo{font-size:28px;font-weight:900;color:var(--white);letter-spacing:0.04em;line-height:1}
 .nav-logo-full{
   font-size:9px;font-weight:400;letter-spacing:0.08em;
   color:rgba(255,255,255,0.3);white-space:nowrap;line-height:1;
@@ -45,15 +45,17 @@ nav{
 .nav-links{
   display:flex;align-items:center;list-style:none;
   position:absolute;left:50%;transform:translateX(-50%);
+  gap:4px;
 }
 .nav-item{position:relative}
 .nav-item>a{
-  display:block;padding:0 22px;height:72px;line-height:72px;
-  font-size:14px;font-weight:400;color:rgba(255,255,255,0.8);
+  display:block;padding:0 26px;height:88px;line-height:88px;
+  font-size:16px;font-weight:500;color:rgba(255,255,255,0.8);
   text-decoration:none;white-space:nowrap;transition:color .2s;
+  letter-spacing:0.01em;
 }
 .nav-item>a:hover{color:var(--white)}
-.nav-item.has-dropdown>a{display:flex;align-items:center;gap:6px}
+.nav-item.has-dropdown>a{display:flex;align-items:center;gap:8px}
 .nav-item.has-dropdown>a::after{
   content:'';width:7px;height:7px;
   border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
@@ -66,7 +68,7 @@ nav{
 .nav-right{display:flex;align-items:center}
 .nav-btn{
   background:var(--purple);color:var(--white);
-  padding:10px 22px;font-size:13px;font-weight:600;
+  padding:13px 26px;font-size:14px;font-weight:600;
   text-decoration:none;letter-spacing:0.04em;
   transition:background .2s;white-space:nowrap;
 }
@@ -74,68 +76,143 @@ nav{
 
 /* ── MEGA DROPDOWN ── */
 .mega{
-  display:none;position:fixed;top:72px;left:0;right:0;
+  display:none;position:fixed;top:88px;left:0;right:0;
   background:#0f0f0f;border-top:2px solid var(--purple);
   z-index:199;padding:52px 80px 60px;
   animation:megaIn .18s ease forwards;
 }
 .mega.open{display:block}
 @keyframes megaIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
-.mega-head{display:flex;align-items:center;gap:16px;margin-bottom:44px}
-.mega-head-title{font-size:30px;font-weight:800;letter-spacing:-0.02em}
+.mega-head{display:flex;align-items:center;gap:16px;margin-bottom:36px}
+.mega-head-title{font-size:34px;font-weight:800;letter-spacing:-0.02em}
 .mega-head-arrow{
-  width:34px;height:34px;background:var(--purple);
+  width:38px;height:38px;background:var(--purple);
   display:flex;align-items:center;justify-content:center;
-  font-size:18px;font-weight:900;flex-shrink:0;
+  font-size:20px;font-weight:900;flex-shrink:0;
 }
-.mega-tabs{display:flex;gap:0;margin-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.08)}
-.mega-tab{
-  padding:12px 28px;font-size:13px;font-weight:600;
-  letter-spacing:0.06em;text-transform:uppercase;
-  color:rgba(255,255,255,0.4);cursor:pointer;
-  border-bottom:2px solid transparent;margin-bottom:-1px;
-  transition:color .2s,border-color .2s;
+
+/* ── MEGA: WHAT WE DO — 4-service grid ── */
+.mega-intro{
+  font-size:15px;color:rgba(255,255,255,0.55);line-height:1.7;
+  max-width:760px;margin-bottom:14px;
 }
-.mega-tab.active{color:var(--white);border-bottom-color:var(--purple)}
-.mega-tab:hover:not(.active){color:rgba(255,255,255,0.7)}
-.mega-panel{display:none}
-.mega-panel.active{display:block}
-.mega-ops-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
-.mega-ops-item{
-  padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.06);
-  color:rgba(255,255,255,0.75);font-size:16px;font-weight:400;
-  text-decoration:none;display:flex;align-items:center;
-  gap:10px;cursor:pointer;transition:color .15s;margin-right:40px;
+.mega-intro strong{color:rgba(255,255,255,0.85);font-weight:600}
+.mega-systems-label{
+  font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--purple);margin-bottom:20px;margin-top:28px;
+  display:flex;align-items:center;gap:12px;
 }
-.mega-ops-item:hover{color:var(--white)}
-.mega-ops-item::before{
-  content:'';width:6px;height:6px;background:var(--purple);
-  flex-shrink:0;opacity:0;transition:opacity .15s;
+.mega-systems-label::after{content:'';flex:1;height:1px;background:rgba(161,0,255,0.25)}
+.mega-services-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
 }
-.mega-ops-item:hover::before{opacity:1}
-.mega-ai-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.mega-ai-item{
+.mega-service-card{
+  background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);
+  padding:24px 22px 20px;cursor:pointer;
+  transition:background .22s,border-color .22s;
+  position:relative;overflow:hidden;
+}
+.mega-service-card:hover{
+  background:rgba(161,0,255,0.08);border-color:rgba(161,0,255,0.3);
+}
+.mega-service-name{
+  font-size:17px;font-weight:700;color:var(--white);
+  margin-bottom:12px;letter-spacing:-0.01em;line-height:1.2;
+}
+/* Preview text — partial fade, expands on hover */
+.mega-service-preview{
+  font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;
+  position:relative;
+  max-height:3.2em; /* ~2 lines */
+  overflow:hidden;
+  transition:max-height .35s ease, opacity .3s;
+  -webkit-mask-image:linear-gradient(to bottom,black 40%,transparent 100%);
+  mask-image:linear-gradient(to bottom,black 40%,transparent 100%);
+}
+.mega-service-card:hover .mega-service-preview{
+  max-height:8em;
+  -webkit-mask-image:none;
+  mask-image:none;
+  color:rgba(255,255,255,0.7);
+}
+.mega-service-arrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--purple);margin-top:14px;
+  opacity:0;transform:translateY(4px);
+  transition:opacity .25s,transform .25s;
+}
+.mega-service-card:hover .mega-service-arrow{opacity:1;transform:translateY(0)}
+.mega-service-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--purple);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s ease;
+}
+.mega-service-card:hover::before{transform:scaleX(1)}
+
+/* ── MEGA: WHAT WE THINK ── */
+.mega-think-body{
+  max-width:680px;
+}
+.mega-think-intro{
+  font-size:15px;color:rgba(255,255,255,0.55);line-height:1.75;
+  margin-bottom:32px;
+}
+.mega-think-intro p{margin-bottom:10px}
+.mega-think-intro p:last-child{margin-bottom:0}
+.mega-think-cta{
+  display:inline-flex;align-items:center;gap:14px;
+  font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--white);text-decoration:none;
+  border-bottom:1px solid rgba(161,0,255,0.5);padding-bottom:2px;
+  transition:border-color .2s,color .2s;
+}
+.mega-think-cta:hover{color:var(--purple2);border-color:var(--purple2)}
+.mega-think-arrow{
+  width:30px;height:30px;background:var(--purple);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:900;transition:background .2s;flex-shrink:0;
+}
+.mega-think-cta:hover .mega-think-arrow{background:var(--purple2)}
+
+/* ── MEGA: WHO WE ARE ── */
+.mega-who-body{max-width:720px}
+.mega-who-text{
+  font-size:15px;color:rgba(255,255,255,0.55);line-height:1.75;
+}
+.mega-who-text p{margin-bottom:16px}
+.mega-who-text p:last-child{margin-bottom:0}
+.mega-who-text strong{color:rgba(255,255,255,0.82);font-weight:600}
+
+/* ── MEGA: WHY IT MATTERS ── */
+.mega-why-intro{
+  font-size:15px;color:rgba(255,255,255,0.55);line-height:1.7;
+  max-width:640px;margin-bottom:32px;
+}
+.mega-why-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+}
+.mega-why-item{
+  background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);
+  padding:20px 20px 18px;
+}
+.mega-why-title{
+  font-size:13px;font-weight:700;color:var(--white);
+  margin-bottom:8px;display:flex;align-items:center;gap:8px;
+}
+.mega-why-title::before{content:'';width:6px;height:6px;background:var(--purple);flex-shrink:0}
+.mega-why-desc{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6}
+.mega-why-closing{
+  margin-top:24px;padding:18px 22px;
   background:rgba(161,0,255,0.07);border:1px solid rgba(161,0,255,0.2);
-  padding:20px 24px;cursor:pointer;transition:background .2s,border-color .2s;
-  text-decoration:none;display:block;
+  font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;
+  max-width:600px;
 }
-.mega-ai-item:hover{background:rgba(161,0,255,0.14);border-color:var(--purple)}
-.mega-ai-outcome{font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px}
-.mega-ai-desc{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.4}
-.mega-ai-header{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.mega-ai-toggle{color:var(--purple);font-size:13px;transition:transform .2s;flex-shrink:0}
-.mega-ai-item.active .mega-ai-toggle{transform:rotate(90deg)}
-.mega-ai-expansion{max-height:0;overflow:hidden;opacity:0;transition:max-height .3s ease,opacity .25s}
-.mega-ai-item.active .mega-ai-expansion{max-height:300px;opacity:1}
-.mega-ai-exp-label{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--purple);margin:14px 0 8px;padding-top:14px;border-top:1px solid rgba(161,0,255,0.2)}
-.mega-ai-exp-body{font-size:12px;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:10px}
-.mega-ai-exp-bullets{list-style:none;display:flex;flex-direction:column;gap:5px}
-.mega-ai-exp-bullets li{font-size:11px;color:rgba(255,255,255,.45);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
-.mega-ai-exp-bullets li::before{content:'';width:4px;height:4px;background:var(--purple);flex-shrink:0;margin-top:5px}
+.mega-why-closing strong{color:rgba(255,255,255,0.85)}
 
 /* ── HERO ── */
 .hero{
-  padding-top:72px;min-height:100vh;background:var(--black);
+  padding-top:88px;min-height:100vh;background:var(--black);
   display:flex;flex-direction:column;justify-content:center;
   position:relative;overflow:hidden;
 }
@@ -359,7 +436,7 @@ nav{
 .process-step-desc{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.65}
 .audit-box{
   background:rgba(161,0,255,0.06);border:1px solid rgba(161,0,255,0.2);
-  padding:36px;position:sticky;top:100px;
+  padding:36px;position:sticky;top:108px;
 }
 .audit-box-label{
   font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
@@ -561,18 +638,24 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 .reveal.visible{opacity:1;transform:translateY(0)}
 
 @media(max-width:900px){
-  nav{padding:0 20px}
+  nav{padding:0 20px;height:72px}
   .nav-links{display:none}
+  .hero{padding-top:72px}
+  .mega{top:72px}
   .hero-inner,.services-inner,.process-inner,.cases-inner,.contact-inner,.footer-inner,.pain-inner,.icp-inner,.faq-inner,.final-cta-inner{padding:0 24px}
   .guarantee-inner{padding:48px 24px}
   .tools{padding:40px 24px}
   .cards-grid,.standalones-grid,.cases-grid{grid-template-columns:1fr}
   .pain-grid,.process-layout,.icp-grid,.faq-grid,.contact-layout{grid-template-columns:1fr;gap:40px}
   .mega{padding:32px 24px 40px}
-  .mega-ops-grid{grid-template-columns:1fr 1fr}
-  .mega-ai-grid{grid-template-columns:1fr}
+  .mega-services-grid{grid-template-columns:1fr 1fr}
+  .mega-why-grid{grid-template-columns:1fr 1fr}
   .final-cta{padding:80px 0}
   .hero-cta-row{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:600px){
+  .mega-services-grid{grid-template-columns:1fr}
+  .mega-why-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -610,149 +693,33 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
     <div class="mega-head-title">What we do</div>
     <div class="mega-head-arrow">›</div>
   </div>
-  <div class="mega-tabs">
-    <div class="mega-tab active" onclick="switchTab('ai')">AI</div>
-    <div class="mega-tab" onclick="switchTab('ops')">Operations</div>
-  </div>
-  <div class="mega-panel" id="panel-ops">
-    <div class="mega-ops-grid">
-      <a href="#services" class="mega-ops-item" onclick="closeAll()">Process Audit & Mapping</a>
-      <a href="#services" class="mega-ops-item" onclick="closeAll()">Workflow Automation</a>
-      <a href="#services" class="mega-ops-item" onclick="closeAll()">CRM Integration</a>
-      <a href="#services" class="mega-ops-item" onclick="closeAll()">System Implementation</a>
-      <a href="#services" class="mega-ops-item" onclick="closeAll()">Staff Training & Onboarding</a>
-      <a href="#services" class="mega-ops-item" onclick="closeAll()">Ongoing Maintenance</a>
-      <a href="#services" class="mega-ops-item" onclick="closeAll()">Analytics & Reporting</a>
-      <a href="#services" class="mega-ops-item" onclick="closeAll()">SOPs & Documentation</a>
-      <a href="#services" class="mega-ops-item" onclick="closeAll()">Tool Stack Consulting</a>
-    </div>
-  </div>
-  <div class="mega-panel active" id="panel-ai">
-    <div class="mega-ai-grid">
-      <div class="mega-ai-item" onclick="toggleAiItem(this)">
-        <div class="mega-ai-header">
-          <div class="mega-ai-outcome">Automate Customer Support</div>
-          <span class="mega-ai-toggle">›</span>
-        </div>
-        <div class="mega-ai-desc">AI handles tickets, FAQs, and routing — 24/7 without headcount</div>
-        <div class="mega-ai-expansion">
-          <div class="mega-ai-exp-label">What this does for you</div>
-          <div class="mega-ai-exp-body">Your support inbox gets a permanent AI operator. It reads every incoming ticket, matches it against your knowledge base, and either resolves it on the spot or routes it to the right person with full context already attached.</div>
-          <ul class="mega-ai-exp-bullets">
-            <li>Handles repetitive questions without a human touching them</li>
-            <li>Ticket routing means your team only sees what actually needs them</li>
-            <li>Runs overnight, weekends, holidays — no shifts, no cover</li>
-            <li>Connects to your existing inbox — no new tools forced on your team</li>
-          </ul>
-        </div>
-      </div>
-      <div class="mega-ai-item" onclick="toggleAiItem(this)">
-        <div class="mega-ai-header">
-          <div class="mega-ai-outcome">Qualify & Convert Leads</div>
-          <span class="mega-ai-toggle">›</span>
-        </div>
-        <div class="mega-ai-desc">Chat widgets that score, route, and book leads automatically</div>
-        <div class="mega-ai-expansion">
-          <div class="mega-ai-exp-label">What this does for you</div>
-          <div class="mega-ai-exp-body">Every inbound lead gets an immediate, intelligent response — qualified against your criteria, scored, and either booked into your calendar or routed to the right rep. No one falls through the cracks because someone was busy.</div>
-          <ul class="mega-ai-exp-bullets">
-            <li>Responds to new leads in under 90 seconds, any time of day</li>
-            <li>Qualifies against your actual criteria — budget, size, urgency</li>
-            <li>Books directly into Calendly or your calendar without back-and-forth</li>
-            <li>CRM updated automatically — no manual data entry</li>
-          </ul>
-        </div>
-      </div>
-      <div class="mega-ai-item" onclick="toggleAiItem(this)">
-        <div class="mega-ai-header">
-          <div class="mega-ai-outcome">Build Internal Knowledge Systems</div>
-          <span class="mega-ai-toggle">›</span>
-        </div>
-        <div class="mega-ai-desc">RAG pipelines on your Notion/Drive — answers in seconds</div>
-        <div class="mega-ai-expansion">
-          <div class="mega-ai-exp-label">What this does for you</div>
-          <div class="mega-ai-exp-body">Your SOPs, docs, and internal knowledge are probably scattered across Notion pages no one reads. This turns all of it into a searchable, conversational system your team can actually query — in plain English, instantly.</div>
-          <ul class="mega-ai-exp-bullets">
-            <li>New hires self-serve answers from day one</li>
-            <li>No more "ask Sarah, she knows where that doc is"</li>
-            <li>SOPs stay useful instead of going stale and ignored</li>
-            <li>Works on top of whatever you already have — Notion, Drive, Confluence</li>
-          </ul>
-        </div>
-      </div>
-      <div class="mega-ai-item" onclick="toggleAiItem(this)">
-        <div class="mega-ai-header">
-          <div class="mega-ai-outcome">Automate Sales Follow-up</div>
-          <span class="mega-ai-toggle">›</span>
-        </div>
-        <div class="mega-ai-desc">Proposals, summaries, and pipeline updates — zero manual work</div>
-        <div class="mega-ai-expansion">
-          <div class="mega-ai-exp-label">What this does for you</div>
-          <div class="mega-ai-exp-body">After every call, your pipeline should update itself. Proposals should draft themselves. Follow-ups should send on time without anyone chasing them. This system handles the entire post-call workflow so your reps stay focused on selling.</div>
-          <ul class="mega-ai-exp-bullets">
-            <li>Post-call summary and action items generated automatically</li>
-            <li>Proposals drafted from call notes — ready to review and send</li>
-            <li>Follow-up sequences triggered by deal stage, not by memory</li>
-            <li>CRM updated without your reps touching it</li>
-          </ul>
-        </div>
-      </div>
-      <div class="mega-ai-item" onclick="toggleAiItem(this)">
-        <div class="mega-ai-header">
-          <div class="mega-ai-outcome">Extract Data from Documents</div>
-          <span class="mega-ai-toggle">›</span>
-        </div>
-        <div class="mega-ai-desc">PDFs, contracts, invoices → structured data in your tools</div>
-        <div class="mega-ai-expansion">
-          <div class="mega-ai-exp-label">What this does for you</div>
-          <div class="mega-ai-exp-body">If your team is manually reading PDFs and re-entering data somewhere else, that's hours of work that should take seconds. This system reads your documents — contracts, invoices, forms — and pushes the right fields directly into your spreadsheets or tools.</div>
-          <ul class="mega-ai-exp-bullets">
-            <li>Invoices processed and pushed to Sheets or your accounting tool</li>
-            <li>Contracts flagged for key clauses, dates, and risk terms</li>
-            <li>Forms and applications parsed without anyone typing twice</li>
-            <li>Handles high volume — dozens of docs processed while you sleep</li>
-          </ul>
-        </div>
-      </div>
-      <div class="mega-ai-item" onclick="toggleAiItem(this)">
-        <div class="mega-ai-header">
-          <div class="mega-ai-outcome">Analyze & Act on Calls</div>
-          <span class="mega-ai-toggle">›</span>
-        </div>
-        <div class="mega-ai-desc">Transcription → objections flagged → CRM updated automatically</div>
-        <div class="mega-ai-expansion">
-          <div class="mega-ai-exp-label">What this does for you</div>
-          <div class="mega-ai-exp-body">Every sales call contains intelligence your team forgets or never logs. This system transcribes, extracts the key moments — objections, next steps, sentiment — and pushes it all into your CRM before the rep has closed their laptop.</div>
-          <ul class="mega-ai-exp-bullets">
-            <li>Objections and buying signals flagged automatically</li>
-            <li>Next steps extracted and added as tasks in your CRM</li>
-            <li>Call summaries sent to the rep and manager within minutes</li>
-            <li>Patterns across calls surfaced — what's killing deals, what's closing them</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- WHO WE ARE MEGA -->
-<div class="mega" id="mega-who">
-  <div class="mega-head">
-    <div class="mega-head-title">Who we are</div>
-    <div class="mega-head-arrow">›</div>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px">
-    <div>
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--grey3);margin-bottom:20px">Company</div>
-      <a href="#about" class="mega-ops-item" onclick="closeAll()">Our Mission</a>
-      <a href="#about" class="mega-ops-item" onclick="closeAll()">Our Approach</a>
-      <a href="#cases" class="mega-ops-item" onclick="closeAll()">Case Studies</a>
-    </div>
-    <div>
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--grey3);margin-bottom:20px">Work With Us</div>
-      <a href="#contact" class="mega-ops-item" onclick="closeAll()">Get a Free Audit</a>
-      <a href="#contact" class="mega-ops-item" onclick="closeAll()">Book a Discovery Call</a>
-    </div>
+  <p class="mega-intro">
+    Most businesses don't have an AI problem. They have a systems problem.<br/>
+    <strong>We fix the broken workflows first — then layer AI on top to make them run automatically.</strong><br/>
+    The result: less manual work, faster revenue, and operations that don't depend on any single person.
+  </p>
+  <div class="mega-systems-label">The systems we implement</div>
+  <div class="mega-services-grid">
+    <a href="#services" class="mega-service-card" onclick="closeAll()">
+      <div class="mega-service-name">Revenue Systems</div>
+      <div class="mega-service-preview">You're losing qualified leads to slow follow-up. We build AI systems that respond instantly, qualify automatically, and keep your pipeline moving — without adding headcount.</div>
+      <div class="mega-service-arrow">Learn more ›</div>
+    </a>
+    <a href="#services" class="mega-service-card" onclick="closeAll()">
+      <div class="mega-service-name">Customer Experience</div>
+      <div class="mega-service-preview">Your team is answering the same questions on repeat. We implement AI that handles inbound at scale — accurate, instant, 24/7 — so your people focus on what actually requires them.</div>
+      <div class="mega-service-arrow">Learn more ›</div>
+    </a>
+    <a href="#services" class="mega-service-card" onclick="closeAll()">
+      <div class="mega-service-name">Operations Intelligence</div>
+      <div class="mega-service-preview">Tasks fall through the cracks because your tools don't talk to each other. We redesign workflows so information flows automatically, work triggers without manual input, and nothing slips.</div>
+      <div class="mega-service-arrow">Learn more ›</div>
+    </a>
+    <a href="#services" class="mega-service-card" onclick="closeAll()">
+      <div class="mega-service-name">System Overhaul</div>
+      <div class="mega-service-preview">When the problem runs deeper than a single workflow. We redesign your entire operational infrastructure — revenue, support, and internal ops — built as one cohesive system.</div>
+      <div class="mega-service-arrow">Learn more ›</div>
+    </a>
   </div>
 </div>
 
@@ -762,12 +729,31 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
     <div class="mega-head-title">What we think</div>
     <div class="mega-head-arrow">›</div>
   </div>
-  <div class="mega-ops-grid" style="grid-template-columns:repeat(3,1fr)">
-    <a href="#think" class="mega-ops-item" onclick="closeAll()">Insights</a>
-    <a href="#think" class="mega-ops-item" onclick="closeAll()">Practical Wins</a>
-    <a href="#think" class="mega-ops-item" onclick="closeAll()">Automation Strategies</a>
-    <a href="#think" class="mega-ops-item" onclick="closeAll()">Case Breakdowns</a>
-    <a href="#think" class="mega-ops-item" onclick="closeAll()">Guides</a>
+  <div class="mega-think-body">
+    <div class="mega-think-intro">
+      <p>We study how businesses actually operate — not how they think they do.</p>
+      <p>Most inefficiencies are invisible until you map the system. That's where we focus.</p>
+    </div>
+    <a href="#think" class="mega-think-cta" onclick="closeAll()">
+      See our thinking
+      <span class="mega-think-arrow">›</span>
+    </a>
+  </div>
+</div>
+
+<!-- WHO WE ARE MEGA -->
+<div class="mega" id="mega-who">
+  <div class="mega-head">
+    <div class="mega-head-title">Who we are</div>
+    <div class="mega-head-arrow">›</div>
+  </div>
+  <div class="mega-who-body">
+    <div class="mega-who-text">
+      <p>Most businesses try to fix operational problems by adding more people or more tools. That usually makes things worse.</p>
+      <p><strong>We take a different approach — we remove the problem at the system level.</strong></p>
+      <p>We don't believe in patchwork fixes. If a workflow is broken, we don't automate it — we redesign it first. If tools don't connect, we don't add more — we simplify the system. Only then do we bring in AI.</p>
+      <p>Every engagement starts the same way: we map how your business actually runs, identify where things break, and design the system properly before anything is built.</p>
+    </div>
   </div>
 </div>
 
@@ -777,12 +763,35 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
     <div class="mega-head-title">Why it matters</div>
     <div class="mega-head-arrow">›</div>
   </div>
-  <div class="mega-ops-grid" style="grid-template-columns:repeat(3,1fr)">
-    <a href="#why" class="mega-ops-item" onclick="closeAll()">Overview</a>
-    <a href="#why" class="mega-ops-item" onclick="closeAll()">Business Impact</a>
-    <a href="#why" class="mega-ops-item" onclick="closeAll()">Cost of Manual Work</a>
-    <a href="#why" class="mega-ops-item" onclick="closeAll()">AI vs Manual Operations</a>
-    <a href="#why" class="mega-ops-item" onclick="closeAll()">ROI of Automation</a>
+  <p class="mega-why-intro">Most operational problems don't look urgent — until they compound. Slow follow-up, manual work, and disconnected systems quietly cost time, money, and growth every single day.</p>
+  <div class="mega-why-grid">
+    <div class="mega-why-item">
+      <div class="mega-why-title">Lost Revenue</div>
+      <div class="mega-why-desc">Leads go cold. Follow-ups happen too late. Opportunities are missed before they're even seen.</div>
+    </div>
+    <div class="mega-why-item">
+      <div class="mega-why-title">Wasted Time</div>
+      <div class="mega-why-desc">Your team spends hours on work that shouldn't exist. Manual tasks replace actual progress.</div>
+    </div>
+    <div class="mega-why-item">
+      <div class="mega-why-title">Operational Bottlenecks</div>
+      <div class="mega-why-desc">Growth slows because the system can't handle it. Everything depends on people instead of process.</div>
+    </div>
+    <div class="mega-why-item">
+      <div class="mega-why-title">Hiring Doesn't Fix It</div>
+      <div class="mega-why-desc">Adding more people to a broken workflow just makes inefficiency more expensive.</div>
+    </div>
+    <div class="mega-why-item">
+      <div class="mega-why-title">Complexity Kills Speed</div>
+      <div class="mega-why-desc">Too many tools, not enough structure. Work gets delayed, duplicated, or lost entirely.</div>
+    </div>
+    <div class="mega-why-item">
+      <div class="mega-why-title">The Cost of Doing Nothing</div>
+      <div class="mega-why-desc">What feels manageable today compounds into lost revenue, slower growth, and operational chaos.</div>
+    </div>
+  </div>
+  <div class="mega-why-closing">
+    <strong>What feels manageable today is compounding.</strong> Every week of manual work, slow follow-up, and disconnected tools is revenue and time you don't get back.
   </div>
 </div>
 
@@ -1450,25 +1459,11 @@ function toggleMega(e, id, niId) {
   activeNavItem = navItem;
 }
 
-function toggleAiItem(el){
-  const isOpen=el.classList.contains('active');
-  document.querySelectorAll('.mega-ai-item').forEach(i=>i.classList.remove('active'));
-  if(!isOpen) el.classList.add('active');
-}
-
 function closeAll() {
   document.querySelectorAll('.mega').forEach(m => m.classList.remove('open'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('open'));
   activeDropdown = null;
   activeNavItem = null;
-}
-
-function switchTab(tab) {
-  document.querySelectorAll('.mega-tab').forEach((t,i) => {
-    t.classList.toggle('active', (tab==='ai'&&i===0)||(tab==='ops'&&i===1));
-  });
-  document.getElementById('panel-ops').classList.toggle('active', tab==='ops');
-  document.getElementById('panel-ai').classList.toggle('active', tab==='ai');
 }
 
 document.addEventListener('click', function(e) {
