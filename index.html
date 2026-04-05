@@ -1519,34 +1519,34 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
         <div class="contact-left-meta reveal">
         </div>
       </div>
-      <div class="form-wrap reveal">
+      <form class="form-wrap reveal" action="https://formspree.io/f/xzdkyzgv" method="POST" id="audit-form">
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">First Name <span class="req">*</span></label>
-            <input type="text" class="form-input" placeholder="Alex" required/>
+            <input type="text" name="first_name" class="form-input" placeholder="Alex" required/>
           </div>
           <div class="form-group">
             <label class="form-label">Last Name <span class="req">*</span></label>
-            <input type="text" class="form-input" placeholder="Doe" required/>
+            <input type="text" name="last_name" class="form-input" placeholder="Doe" required/>
           </div>
         </div>
         <div class="form-group">
           <label class="form-label">Work Email <span class="req">*</span></label>
-          <input type="email" class="form-input" placeholder="alex@company.com" required/>
+          <input type="email" name="email" class="form-input" placeholder="alex@company.com" required/>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">Company <span class="req">*</span></label>
-            <input type="text" class="form-input" placeholder="Your company" required/>
+            <input type="text" name="company" class="form-input" placeholder="Your company" required/>
           </div>
           <div class="form-group">
             <label class="form-label">Phone (optional)</label>
-            <input type="tel" class="form-input" placeholder="+1 555 000 0000"/>
+            <input type="tel" name="phone" class="form-input" placeholder="+1 555 000 0000"/>
           </div>
         </div>
         <div class="form-group">
           <label class="form-label">Where would you like to implement AI? <span class="req">*</span></label>
-          <select class="form-input" required>
+          <select name="ai_area" class="form-input" required>
             <option value="">Select an area</option>
             <option>Lead conversion</option>
             <option>Customer support</option>
@@ -1555,9 +1555,9 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
             <option>Not sure yet</option>
           </select>
         </div>
-        <button class="form-submit" id="form-submit-btn" onclick="handleSubmit(this)">Book Your Audit →</button>
+        <button type="submit" class="form-submit">Book Your Audit →</button>
         <div class="form-disclaimer">By submitting, you agree to be contacted about your audit request. We don't spam — one response to schedule your call, that's it.</div>
-      </div>
+      </form>
     </div>
   </div>
 </section>
