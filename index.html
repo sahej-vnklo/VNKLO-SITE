@@ -708,6 +708,57 @@ textarea.form-input{min-height:90px;resize:vertical}
 .form-submit:hover{background:var(--purple2)}
 .form-disclaimer{font-size:11px;color:rgba(255,255,255,0.2);line-height:1.6;margin-top:4px}
 
+/* ── CONTACT POPUP ── */
+.contact-popup-overlay{
+  display:none;position:fixed;inset:0;z-index:500;
+  background:rgba(0,0,0,0.75);backdrop-filter:blur(4px);
+  align-items:center;justify-content:center;
+}
+.contact-popup-overlay.open{display:flex}
+.contact-popup{
+  background:#111;border:1px solid rgba(255,255,255,0.1);
+  border-top:2px solid var(--purple);
+  padding:44px 48px 40px;max-width:520px;width:90%;position:relative;
+}
+.contact-popup-close{
+  position:absolute;top:18px;right:20px;
+  font-size:22px;font-weight:300;color:rgba(255,255,255,0.3);
+  cursor:pointer;line-height:1;transition:color .2s;border:none;background:none;
+}
+.contact-popup-close:hover{color:var(--white)}
+.contact-popup-label{
+  font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--purple);margin-bottom:14px;
+}
+.contact-popup-title{
+  font-size:26px;font-weight:800;letter-spacing:-0.02em;margin-bottom:8px;
+}
+.contact-popup-sub{
+  font-size:14px;color:rgba(255,255,255,0.45);line-height:1.6;margin-bottom:36px;
+}
+.contact-email-list{display:flex;flex-direction:column;gap:2px;}
+.contact-email-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 20px;background:#1a1a1a;
+  border:1px solid rgba(255,255,255,0.05);
+  transition:background .2s,border-color .2s;
+  text-decoration:none;
+}
+.contact-email-item:hover{background:#222;border-color:rgba(161,0,255,0.3)}
+.contact-email-info{}
+.contact-email-type{
+  font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+  color:rgba(255,255,255,0.3);margin-bottom:5px;
+}
+.contact-email-addr{
+  font-size:15px;font-weight:600;color:var(--white);letter-spacing:0.01em;
+}
+.contact-email-arrow{
+  font-size:18px;color:var(--purple);opacity:0;transition:opacity .2s,transform .2s;
+  transform:translateX(-4px);
+}
+.contact-email-item:hover .contact-email-arrow{opacity:1;transform:translateX(0)}
+
 /* ── FOOTER ── */
 footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56px 0 28px}
 .footer-inner{max-width:1280px;margin:0 auto;padding:0 80px}
@@ -1299,6 +1350,46 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   </div>
 </section>
 
+<!-- CONTACT POPUP -->
+<div class="contact-popup-overlay" id="contact-popup">
+  <div class="contact-popup">
+    <button class="contact-popup-close" onclick="closeContactPopup()">×</button>
+    <div class="contact-popup-label">Get in touch</div>
+    <div class="contact-popup-title">We're one email away.</div>
+    <div class="contact-popup-sub">Pick the right inbox and we'll get back to you directly.</div>
+    <div class="contact-email-list">
+      <a href="mailto:hello@vnklo.com" class="contact-email-item">
+        <div class="contact-email-info">
+          <div class="contact-email-type">General enquiries</div>
+          <div class="contact-email-addr">hello@vnklo.com</div>
+        </div>
+        <div class="contact-email-arrow">›</div>
+      </a>
+      <a href="mailto:sales@vnklo.com" class="contact-email-item">
+        <div class="contact-email-info">
+          <div class="contact-email-type">Book an audit / pricing</div>
+          <div class="contact-email-addr">sales@vnklo.com</div>
+        </div>
+        <div class="contact-email-arrow">›</div>
+      </a>
+      <a href="mailto:service@vnklo.com" class="contact-email-item">
+        <div class="contact-email-info">
+          <div class="contact-email-type">Existing clients / support</div>
+          <div class="contact-email-addr">service@vnklo.com</div>
+        </div>
+        <div class="contact-email-arrow">›</div>
+      </a>
+      <a href="mailto:partnerships@vnklo.com" class="contact-email-item">
+        <div class="contact-email-info">
+          <div class="contact-email-type">Partnerships & collaborations</div>
+          <div class="contact-email-addr">partnerships@vnklo.com</div>
+        </div>
+        <div class="contact-email-arrow">›</div>
+      </a>
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -1324,7 +1415,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
             <li><a href="#cases">Case Studies</a></li>
             <li><a href="thinking.html">What we think</a></li>
             <li><a href="index.html#contact">Free Audit</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="#" onclick="openContactPopup();return false;">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -1405,6 +1496,19 @@ function handleSubmit(btn) {
   btn.style.cursor = 'default';
   btn.onclick = null;
 }
+
+// ── CONTACT POPUP ──
+function openContactPopup() {
+  document.getElementById('contact-popup').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeContactPopup() {
+  document.getElementById('contact-popup').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('contact-popup').addEventListener('click', function(e) {
+  if (e.target === this) closeContactPopup();
+});
 
 // ── SCROLL REVEAL ──
 const obs = new IntersectionObserver(entries => 
