@@ -393,6 +393,12 @@ nav{
   display:flex;flex-direction:column;justify-content:flex-end;
   padding:28px 26px 26px;
 }
+.card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:180px;
+  background:linear-gradient(to top,rgba(161,0,255,0.12) 0%,transparent 100%);
+  pointer-events:none;transition:opacity .3s;
+}
+.card:hover::after{opacity:1.5}
 .card-purple-line{
   position:absolute;top:0;left:0;right:0;height:2px;
   background:var(--purple);transform:scaleX(0);transform-origin:left;
