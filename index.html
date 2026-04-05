@@ -455,12 +455,12 @@ nav{
 .services-continuity strong{color:rgba(255,255,255,0.8);font-weight:600}
 
 .services-footer-note{
-  margin-top:32px;padding:20px 24px;
-  border:1px solid rgba(255,255,255,0.06);
-  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  margin-top:48px;padding:0;
+  border:none;
+  display:block;
 }
-.services-footer-note-text{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5}
-.services-footer-note-text strong{color:rgba(255,255,255,0.75);font-weight:600}
+.services-footer-note-text{font-size:22px;font-weight:700;color:rgba(255,255,255,0.75);line-height:1.5;letter-spacing:-0.01em}
+.services-footer-note-text strong{color:var(--white);font-weight:800}
 .services-footer-cta{
   font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
   color:var(--purple);text-decoration:none;white-space:nowrap;
@@ -479,6 +479,42 @@ nav{
   transition:border-color .2s,color .2s,background .2s;
 }
 .tool-tag:hover{border-color:var(--purple);color:var(--white);background:rgba(161,0,255,0.08)}
+
+/* ── WHAT YOU CAN DO (ACCORDION) ── */
+.wycd{background:var(--black);padding:100px 0}
+.wycd-inner{max-width:1280px;margin:0 auto;padding:0 80px}
+.wycd-layout{display:grid;grid-template-columns:1fr 1fr;gap:120px;align-items:start;margin-top:64px}
+.wycd-left{}
+.wycd-title{font-size:clamp(32px,4vw,56px);font-weight:800;letter-spacing:-0.025em;line-height:1.06;margin-bottom:16px}
+.wycd-sub{font-size:16px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.7}
+.wycd-accordion{display:flex;flex-direction:column;}
+.wycd-item{border-bottom:1px solid rgba(255,255,255,0.07);cursor:pointer;}
+.wycd-item:first-child{border-top:1px solid rgba(255,255,255,0.07)}
+.wycd-item-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px 0;gap:16px;
+}
+.wycd-item-title{
+  font-size:18px;font-weight:600;color:rgba(255,255,255,0.85);
+  letter-spacing:-0.01em;line-height:1.3;transition:color .2s;
+}
+.wycd-item.active .wycd-item-title{color:var(--white)}
+.wycd-item-icon{
+  width:26px;height:26px;border:1px solid rgba(255,255,255,0.15);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-size:16px;font-weight:300;color:rgba(255,255,255,0.4);
+  transition:border-color .2s,color .2s,background .2s;
+}
+.wycd-item.active .wycd-item-icon{
+  border-color:var(--purple);color:var(--purple);background:rgba(161,0,255,0.08);
+}
+.wycd-item-body{
+  font-size:14px;color:rgba(255,255,255,0.45);line-height:1.75;
+  max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .35s ease,opacity .25s,padding .25s;
+  padding-bottom:0;
+}
+.wycd-item.active .wycd-item-body{max-height:120px;opacity:1;padding-bottom:20px}
 
 /* ── PROCESS / AUDIT SECTION ── */
 .process{background:var(--black);padding:88px 0}
@@ -707,7 +743,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   .guarantee-inner{padding:48px 24px}
   .tools{padding:40px 24px}
   .cards-grid,.standalones-grid,.cases-grid,.pain-grid,.pain-diagnosis{grid-template-columns:1fr}
-  .pain-grid,.process-layout,.icp-grid,.faq-grid,.contact-layout{grid-template-columns:1fr;gap:40px}
+  .pain-grid,.process-layout,.icp-grid,.faq-grid,.contact-layout,.wycd-layout{grid-template-columns:1fr;gap:40px}
   .mega{padding:32px 24px 40px}
   .mega-services-grid{grid-template-columns:1fr 1fr}
   .mega-why-grid{grid-template-columns:1fr 1fr}
@@ -1038,64 +1074,58 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   </div>
 </section>
 
-<!-- PROCESS / HOW IT WORKS -->
-<section class="process" id="process">
-  <div class="process-inner">
-    <p class="section-eyebrow reveal">How it works</p>
-    <h2 class="section-title reveal">From audit to automation<br/>in under two weeks.</h2>
-    <div class="process-layout reveal">
-      <div class="process-steps-col">
-        <div class="process-step-row">
-          <div class="process-num">01</div>
-          <div>
-            <div class="process-step-title">Book Your Free Audit</div>
-            <div class="process-step-desc">45 minutes. We map your current operations, score 6 key areas for automation potential, and identify your top 3 opportunities. No pitch. No obligation. You keep the report regardless.</div>
-          </div>
-        </div>
-        <div class="process-step-row">
-          <div class="process-num">02</div>
-          <div>
-            <div class="process-step-title">Receive Your Audit Report</div>
-            <div class="process-step-desc">Same day. A one-page summary: your top 3 automation opportunities, ranked by ROI, with a clear recommendation on where to start. Plain language, no tech jargon.</div>
-          </div>
-        </div>
-        <div class="process-step-row">
-          <div class="process-num">03</div>
-          <div>
-            <div class="process-step-title">Review Your Proposal</div>
-            <div class="process-step-desc">Within 24 hours. A scoped build with exact deliverables, timeline, and pricing. Three tiers so you can start at the right level for your business today.</div>
-          </div>
-        </div>
-        <div class="process-step-row">
-          <div class="process-num">04</div>
-          <div>
-            <div class="process-step-title">We Build Into Your Stack</div>
-            <div class="process-step-desc">No disruption, no new tools forced on your team. We integrate into your existing systems — Notion, Gmail, your CRM, your calendar. Full staff training and live demos included.</div>
-          </div>
-        </div>
-        <div class="process-step-row">
-          <div class="process-num">05</div>
-          <div>
-            <div class="process-step-title">It Runs — We Track Results</div>
-            <div class="process-step-desc">Live dashboards. Performance tracking. 14 days of post-launch support. And if it doesn't deliver measurable time savings in 30 days, we fix it at no extra cost.</div>
-          </div>
-        </div>
+<!-- WHAT YOU CAN DO -->
+<section class="wycd" id="process">
+  <div class="wycd-inner">
+    <div class="wycd-layout">
+      <div class="wycd-left">
+        <p class="section-eyebrow">What you can do</p>
+        <h2 class="wycd-title">Start here.<br/>Build from there.</h2>
+        <p class="wycd-sub">Every business starts at a different point. You don't need everything at once — you need the right first move.</p>
       </div>
-      <div class="audit-box">
-        <div class="audit-box-label">The Free AI Audit</div>
-        <div class="audit-box-title">45 minutes. No pitch. Yours to keep.</div>
-        <ul class="audit-box-items">
-          <li>Full operational review across 6 business areas</li>
-          <li>Top 3 AI automation opportunities, ranked by ROI</li>
-          <li>Rough cost and timeline for each recommendation</li>
-          <li>One-page audit report delivered same day</li>
-          <li>Clear next step — no pressure, no obligation</li>
-        </ul>
-        <div class="audit-box-meta">
-          <strong>Who runs it:</strong> Sahej, founder of VNKLO — not a junior SDR. You get direct access to the person who will build your system.<br/><br/>
-          <strong>Who it's for:</strong> SMB founders and operations leads with 5–50 team members who are losing time or leads to manual processes.
+      <div class="wycd-accordion">
+        <div class="wycd-item active" onclick="toggleWycd(this)">
+          <div class="wycd-item-head">
+            <div class="wycd-item-title">See where you're losing time</div>
+            <div class="wycd-item-icon">+</div>
+          </div>
+          <div class="wycd-item-body">A 45-minute audit maps exactly where time, revenue, and decisions are being lost in your business. You leave with a clear picture — even if you don't proceed with us.</div>
         </div>
-        <a href="#contact" class="audit-box-cta">Book My Free Audit →</a>
+        <div class="wycd-item" onclick="toggleWycd(this)">
+          <div class="wycd-item-head">
+            <div class="wycd-item-title">Fix the first problem</div>
+            <div class="wycd-item-icon">+</div>
+          </div>
+          <div class="wycd-item-body">We identify your highest-impact automation opportunity and build it first. One focused system — the one that moves the needle fastest for your specific situation.</div>
+        </div>
+        <div class="wycd-item" onclick="toggleWycd(this)">
+          <div class="wycd-item-head">
+            <div class="wycd-item-title">Get it running fast</div>
+            <div class="wycd-item-icon">+</div>
+          </div>
+          <div class="wycd-item-body">Built into your existing tools in under two weeks. No disruption, no new platforms forced on your team. Full training and live demos included from day one.</div>
+        </div>
+        <div class="wycd-item" onclick="toggleWycd(this)">
+          <div class="wycd-item-head">
+            <div class="wycd-item-title">See what actually changes</div>
+            <div class="wycd-item-icon">+</div>
+          </div>
+          <div class="wycd-item-body">Live dashboards and performance tracking show exactly what the system is doing. Numbers, not promises. If the benchmark isn't hit in 30 days, we keep building at no extra cost.</div>
+        </div>
+        <div class="wycd-item" onclick="toggleWycd(this)">
+          <div class="wycd-item-head">
+            <div class="wycd-item-title">Fix the next bottleneck</div>
+            <div class="wycd-item-icon">+</div>
+          </div>
+          <div class="wycd-item-body">Once the first system delivers, we move to the next highest-impact area. Most businesses automate 2–3 systems within the first six months.</div>
+        </div>
+        <div class="wycd-item" onclick="toggleWycd(this)">
+          <div class="wycd-item-head">
+            <div class="wycd-item-title">Step out of the day-to-day</div>
+            <div class="wycd-item-icon">+</div>
+          </div>
+          <div class="wycd-item-body">The end state: a business where the critical work happens automatically — without depending on any single person, and without proportional headcount growth.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1439,6 +1469,21 @@ function closeAll() {
 document.addEventListener('click', function(e) {
   if (!e.target.closest('nav') && !e.target.closest('.mega')) closeAll();
 });
+
+// ── WHAT YOU CAN DO ACCORDION ──
+function toggleWycd(el) {
+  const isActive = el.classList.contains('active');
+  document.querySelectorAll('.wycd-item').forEach(i => {
+    i.classList.remove('active');
+    i.querySelector('.wycd-item-icon').textContent = '+';
+  });
+  if (!isActive) {
+    el.classList.add('active');
+    el.querySelector('.wycd-item-icon').textContent = '×';
+  }
+}
+// Set initial icon state
+document.querySelectorAll('.wycd-item.active .wycd-item-icon').forEach(i => i.textContent = '×');
 
 // ── FAQ ──
 function toggleFaq(el) {
