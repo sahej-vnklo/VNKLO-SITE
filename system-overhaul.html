@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>System Overhaul — VNKLO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--purple:#A100FF;--purple2:#C44DFF;--black:#000;--dark:#0a0a0a;--white:#fff;--font:'Inter',sans-serif;}
+body{font-family:var(--font);background:var(--black);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--black);border-bottom:1px solid rgba(255,255,255,0.08);height:88px;display:flex;align-items:center;padding:0 56px;justify-content:space-between;}
+.nav-logo{display:flex;align-items:baseline;text-decoration:none;}
+.logo-v{font-size:28px;font-weight:900;line-height:1;background:linear-gradient(135deg,#A100FF 0%,#C44DFF 60%,#E080FF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.logo-nklo{font-size:28px;font-weight:900;color:var(--white);letter-spacing:0.04em;line-height:1}
+.nav-btn{background:var(--purple);color:var(--white);padding:13px 26px;font-size:14px;font-weight:600;text-decoration:none;letter-spacing:0.04em;transition:background .2s;white-space:nowrap;}
+.nav-btn:hover{background:var(--purple2)}
+.page{padding-top:88px}
+.sol-hero{padding:100px 0 80px;border-bottom:1px solid rgba(255,255,255,0.06);position:relative;overflow:hidden;}
+.sol-hero::after{content:'';position:absolute;top:-100px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(161,0,255,0.1) 0%,transparent 65%);pointer-events:none;}
+.inner{max-width:1280px;margin:0 auto;padding:0 80px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--purple);margin-bottom:20px;}
+.sol-title{font-size:clamp(40px,5.5vw,76px);font-weight:800;letter-spacing:-0.025em;line-height:1.05;max-width:800px;margin-bottom:24px;}
+.sol-hook{font-size:20px;font-weight:300;color:rgba(255,255,255,0.55);max-width:620px;line-height:1.7;}
+.sol-body{padding-bottom:120px;}
+.sol-section{padding:80px 0 0;}
+.sol-col-layout{display:grid;grid-template-columns:240px 1fr;gap:80px;align-items:start;}
+.sol-label{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--purple);padding-top:4px;position:sticky;top:108px;}
+.sol-h2{font-size:clamp(22px,2.4vw,32px);font-weight:800;letter-spacing:-0.02em;line-height:1.15;margin-bottom:20px;}
+.sol-p{font-size:16px;font-weight:300;color:rgba(255,255,255,0.6);line-height:1.8;}
+.sol-p strong{color:rgba(255,255,255,0.88);font-weight:600}
+.sol-three{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:36px;}
+.sol-col-card{background:#141414;padding:28px 26px 24px;}
+.sol-col-card-label{font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--purple);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.sol-col-card-label::after{content:'';flex:1;height:1px;background:rgba(161,0,255,0.2)}
+.sol-col-items{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.sol-col-items li{font-size:14px;color:rgba(255,255,255,0.65);line-height:1.55;padding-left:14px;position:relative;}
+.sol-col-items li::before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;background:var(--purple);}
+.sol-closing{margin-top:64px;padding:32px 36px;border-left:3px solid var(--purple);background:rgba(161,0,255,0.05);}
+.sol-closing-text{font-size:18px;font-weight:700;color:rgba(255,255,255,0.9);line-height:1.5;letter-spacing:-0.01em;}
+.divider{max-width:1280px;margin:0 auto;padding:0 80px;}
+.divider-line{height:1px;background:rgba(255,255,255,0.05);}
+.sol-cta{background:rgba(161,0,255,0.06);border-top:2px solid var(--purple);padding:80px 0;}
+.sol-cta-inner{max-width:1280px;margin:0 auto;padding:0 80px;display:grid;grid-template-columns:1fr auto;gap:64px;align-items:center;}
+.sol-cta-tag{font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--purple);margin-bottom:14px;}
+.sol-cta-title{font-size:clamp(22px,2.8vw,36px);font-weight:800;letter-spacing:-0.02em;line-height:1.15;margin-bottom:14px;}
+.sol-cta-desc{font-size:15px;color:rgba(255,255,255,0.5);line-height:1.7;max-width:560px;}
+.sol-cta-btn{display:inline-block;background:var(--purple);color:var(--white);padding:16px 32px;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:background .2s;flex-shrink:0;}
+.sol-cta-btn:hover{background:var(--purple2)}
+.sol-nav-pages{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:32px 0;}
+.sol-nav-pages-inner{max-width:1280px;margin:0 auto;padding:0 80px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;}
+.sol-nav-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:6px;}
+.sol-nav-link{font-size:15px;font-weight:700;color:rgba(255,255,255,0.7);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;}
+.sol-nav-link:hover{color:var(--white)}
+.sol-nav-link span{color:var(--purple)}
+@media(max-width:900px){
+  nav{padding:0 20px;height:72px}
+  .inner,.divider,.sol-cta-inner,.sol-nav-pages-inner{padding-left:24px;padding-right:24px}
+  .sol-col-layout{grid-template-columns:1fr;gap:20px}
+  .sol-label{position:static}
+  .sol-three{grid-template-columns:1fr}
+  .sol-cta-inner{grid-template-columns:1fr;gap:32px}
+  .sol-hero{padding:72px 0 52px}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><span class="logo-v">V</span><span class="logo-nklo">NKLO</span></a>
+  <a href="index.html#contact" class="nav-btn">Free Audit ›</a>
+</nav>
+
+<div class="page">
+
+  <div class="sol-hero">
+    <div class="inner">
+      <p class="eyebrow">System Overhaul</p>
+      <h1 class="sol-title">Some problems aren't isolated.<br/>They're structural.</h1>
+      <p class="sol-hook">When inefficiency runs across every part of the business — revenue, support, and internal ops — fixing one piece isn't enough. We rebuild the entire operational infrastructure as one cohesive system.</p>
+    </div>
+  </div>
+
+  <div class="sol-body">
+
+    <div class="sol-section inner">
+      <div class="sol-col-layout">
+        <div class="sol-label">The problem</div>
+        <div>
+          <h2 class="sol-h2">Patching individual workflows doesn't fix a broken foundation.</h2>
+          <p class="sol-p">You've tried fixing parts of it. A new CRM. A better process here. An automation there. But the problems keep coming back because <strong>the underlying system was never designed — it just grew.</strong> At a certain point, the only real fix is a full redesign: map everything, remove what's broken, and rebuild with clarity.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"><div class="divider-line"></div></div>
+
+    <div class="sol-section inner">
+      <div class="sol-col-layout">
+        <div class="sol-label">What we implement</div>
+        <div>
+          <h2 class="sol-h2">End-to-end operational redesign — revenue, support, and internal ops as one system.</h2>
+          <div class="sol-three">
+            <div class="sol-col-card">
+              <div class="sol-col-card-label">What we implement</div>
+              <ul class="sol-col-items">
+                <li>Full operational mapping end-to-end</li>
+                <li>Redesign of revenue, support, and internal flows</li>
+                <li>AI layered only where it creates real leverage</li>
+                <li>Unified toolstack — no redundancy</li>
+                <li>Ongoing performance tracking + optimization</li>
+              </ul>
+            </div>
+            <div class="sol-col-card">
+              <div class="sol-col-card-label">What you get</div>
+              <ul class="sol-col-items">
+                <li>A unified system instead of disconnected tools</li>
+                <li>Clear flow of information and decisions</li>
+                <li>Automation aligned with how your business runs</li>
+                <li>Infrastructure that scales without friction</li>
+              </ul>
+            </div>
+            <div class="sol-col-card">
+              <div class="sol-col-card-label">What changes</div>
+              <ul class="sol-col-items">
+                <li>Fewer bottlenecks across every area</li>
+                <li>Faster execution business-wide</li>
+                <li>A business that scales without adding headcount</li>
+                <li>Operations that outlast any single hire</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"><div class="divider-line"></div></div>
+
+    <div class="sol-section inner">
+      <div class="sol-col-layout">
+        <div class="sol-label">The result</div>
+        <div>
+          <h2 class="sol-h2">This isn't optimization. It's rebuilding how your business operates.</h2>
+          <p class="sol-p">Optimization improves what exists. An overhaul removes what shouldn't exist and rebuilds on a foundation that actually works. <strong>The result isn't a faster version of your current business — it's a fundamentally different one.</strong> One that runs without depending on any single person, and scales without proportional cost.</p>
+          <div class="sol-closing">
+            <div class="sol-closing-text">This isn't optimization. It's rebuilding how your business operates.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sol-cta">
+    <div class="sol-cta-inner">
+      <div>
+        <div class="sol-cta-tag">Get started</div>
+        <h2 class="sol-cta-title">See what a full System Overhaul looks like for your business.</h2>
+        <p class="sol-cta-desc">In 45 minutes we map your entire operation end to end, identify every structural break, and show you what a rebuilt system would look like. Free. No obligation.</p>
+      </div>
+      <a href="index.html#contact" class="sol-cta-btn">Book My Free Audit →</a>
+    </div>
+  </div>
+
+  <div class="sol-nav-pages">
+    <div class="sol-nav-pages-inner">
+      <div>
+        <div class="sol-nav-label">Previous solution</div>
+        <a href="operations-intelligence.html" class="sol-nav-link"><span>←</span> Operations Intelligence</a>
+      </div>
+      <div style="text-align:right">
+        <div class="sol-nav-label">Back to</div>
+        <a href="index.html#services" class="sol-nav-link">All solutions <span>→</span></a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
