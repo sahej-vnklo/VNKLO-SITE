@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>VNKLO — AI Automation Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --purple:#A100FF;
+  --purple2:#C44DFF;
+  --black:#000;
+  --dark:#0a0a0a;
+  --white:#fff;
+  --grey3:#888;
+  --font:'Inter',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--black);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:var(--black);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  height:88px;display:flex;align-items:center;padding:0 56px;
+  justify-content:space-between;
+}
+.nav-logo{display:flex;align-items:flex-start;flex-direction:column;text-decoration:none;gap:2px}
+.nav-logo-mark{display:flex;align-items:baseline;gap:0}
+.logo-v{
+  font-size:28px;font-weight:900;line-height:1;
+  background:linear-gradient(135deg,#A100FF 0%,#C44DFF 60%,#E080FF 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.logo-nklo{font-size:28px;font-weight:900;color:var(--white);letter-spacing:0.04em;line-height:1}
+.nav-logo-full{
+  font-size:9px;font-weight:400;letter-spacing:0.08em;
+  color:rgba(255,255,255,0.3);white-space:nowrap;line-height:1;
+  text-transform:uppercase;
+}
+.nav-links{
+  display:flex;align-items:center;list-style:none;
+  position:absolute;left:50%;transform:translateX(-50%);
+  gap:4px;
+}
+.nav-item{position:relative}
+.nav-item>a{
+  display:block;padding:0 26px;height:88px;line-height:88px;
+  font-size:16px;font-weight:500;color:rgba(255,255,255,0.8);
+  text-decoration:none;white-space:nowrap;transition:color .2s;
+  letter-spacing:0.01em;
+}
+.nav-item>a:hover{color:var(--white)}
+.nav-item.has-dropdown>a{display:flex;align-items:center;gap:8px}
+.nav-item.has-dropdown>a::after{
+  content:'';width:7px;height:7px;
+  border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg) translateY(-2px);
+  transition:transform .2s;
+}
+.nav-item.has-dropdown.open>a{color:var(--white)}
+.nav-item.has-dropdown.open>a::after{transform:rotate(-135deg) translateY(2px)}
+.nav-item.open>a{box-shadow:inset 0 -2px 0 var(--purple)}
+.nav-right{display:flex;align-items:center}
+.nav-btn{
+  background:var(--purple);color:var(--white);
+  padding:13px 26px;font-size:14px;font-weight:600;
+  text-decoration:none;letter-spacing:0.04em;
+  transition:background .2s;white-space:nowrap;
+}
+.nav-btn:hover{background:var(--purple2)}
+
+/* ── MEGA DROPDOWN ── */
+.mega{
+  display:none;position:fixed;top:88px;left:0;right:0;
+  background:#0f0f0f;border-top:2px solid var(--purple);
+  z-index:199;padding:52px 80px 60px;
+  animation:megaIn .18s ease forwards;
+}
+.mega.open{display:block}
+@keyframes megaIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.mega-head{display:flex;align-items:center;gap:16px;margin-bottom:36px}
+.mega-head-title{font-size:34px;font-weight:800;letter-spacing:-0.02em}
+.mega-head-arrow{
+  width:38px;height:38px;background:var(--purple);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;font-weight:900;flex-shrink:0;
+}
+
+/* ── MEGA: WHAT WE DO — 4-service grid ── */
+.mega-intro{
+  font-size:15px;color:rgba(255,255,255,0.55);line-height:1.7;
+  max-width:760px;margin-bottom:14px;
+}
+.mega-intro strong{color:rgba(255,255,255,0.85);font-weight:600}
+.mega-systems-label{
+  font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--purple);margin-bottom:20px;margin-top:28px;
+  display:flex;align-items:center;gap:12px;
+}
+.mega-systems-label::after{content:'';flex:1;height:1px;background:rgba(161,0,255,0.25)}
+.mega-services-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
+}
+.mega-service-card{
+  background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);
+  padding:24px 22px 20px;cursor:pointer;
+  transition:background .22s,border-color .22s;
+  position:relative;overflow:hidden;
+  text-decoration:none;
+}
+.mega-service-card:hover{
+  background:rgba(161,0,255,0.08);border-color:rgba(161,0,255,0.3);
+}
+.mega-service-name{
+  font-size:17px;font-weight:700;color:var(--white);
+  margin-bottom:12px;letter-spacing:-0.01em;line-height:1.2;
+}
+/* Preview text */
+.mega-service-preview{
+  font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;
+  position:relative;
+  overflow:hidden;
+  transition:color .3s;
+}
+.mega-service-card:hover .mega-service-preview{
+  color:rgba(255,255,255,0.7);
+}
+
+.mega-service-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--purple);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s ease;
+}
+.mega-service-card:hover::before{transform:scaleX(1)}
+
+/* ── MEGA: WHAT WE DO — continuity block ── */
+.mega-continuity{
+  margin-top:36px;
+  font-size:15px;color:rgba(255,255,255,0.55);line-height:1.7;
+}
+.mega-continuity strong{color:rgba(255,255,255,0.85);font-weight:600}
+
+/* ── MEGA: WHAT WE THINK ── */
+.mega-think-body{
+  max-width:680px;
+}
+.mega-think-intro{
+  font-size:15px;color:rgba(255,255,255,0.55);line-height:1.75;
+  margin-bottom:32px;
+}
+.mega-think-intro p{margin-bottom:10px}
+.mega-think-intro p:last-child{margin-bottom:0}
+.mega-think-cta{
+  display:inline-flex;align-items:center;gap:14px;
+  font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--white);text-decoration:none;
+  border-bottom:1px solid rgba(161,0,255,0.5);padding-bottom:2px;
+  transition:border-color .2s,color .2s;
+}
+.mega-think-cta:hover{color:var(--purple2);border-color:var(--purple2)}
+.mega-think-arrow{
+  width:30px;height:30px;background:var(--purple);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:900;transition:background .2s;flex-shrink:0;
+}
+.mega-think-cta:hover .mega-think-arrow{background:var(--purple2)}
+
+/* ── MEGA: WHO WE ARE ── */
+.mega-who-body{max-width:720px}
+.mega-who-text{
+  font-size:15px;color:rgba(255,255,255,0.55);line-height:1.75;
+}
+.mega-who-text p{margin-bottom:16px}
+.mega-who-text p:last-child{margin-bottom:0}
+.mega-who-text strong{color:rgba(255,255,255,0.82);font-weight:600}
+
+/* ── MEGA: WHY IT MATTERS ── */
+.mega-why-intro{
+  font-size:15px;color:rgba(255,255,255,0.55);line-height:1.7;
+  max-width:640px;margin-bottom:32px;
+}
+.mega-why-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+}
+.mega-why-item{
+  background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);
+  padding:20px 20px 18px;
+}
+.mega-why-title{
+  font-size:15px;font-weight:700;color:var(--white);
+  margin-bottom:8px;display:flex;align-items:center;gap:8px;
+}
+.mega-why-title::before{content:'';width:6px;height:6px;background:var(--purple);flex-shrink:0}
+.mega-why-desc{font-size:15px;color:rgba(255,255,255,0.5);line-height:1.6}
+.mega-why-closing{
+  margin-top:24px;padding:18px 22px;
+  background:rgba(161,0,255,0.07);border:1px solid rgba(161,0,255,0.2);
+  font-size:15px;color:rgba(255,255,255,0.6);line-height:1.6;
+  max-width:600px;
+}
+.mega-why-closing strong{color:rgba(255,255,255,0.85)}
+
+/* ── HERO ── */
+.hero{
+  padding-top:88px;min-height:100vh;background:var(--black);
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;top:-200px;right:-300px;
+  width:800px;height:800px;
+  background:radial-gradient(circle,rgba(161,0,255,0.15) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-inner{
+  max-width:1280px;margin:0 auto;padding:80px 80px;
+  position:relative;z-index:2;
+}
+.hero-headline{
+  font-size:clamp(42px,5.5vw,80px);font-weight:800;
+  line-height:1.08;letter-spacing:-0.025em;
+  max-width:860px;margin-bottom:28px;
+}
+.hero-headline .hl{
+  background:linear-gradient(135deg,#A100FF 0%,#C44DFF 50%,#E080FF 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;font-weight:900;
+}
+.hero-sub{
+  font-size:18px;font-weight:400;color:rgba(255,255,255,0.55);
+  max-width:560px;line-height:1.65;margin-bottom:44px;
+}
+.hero-cta-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:0}
+.hero-cta-primary{
+  background:var(--purple);color:var(--white);
+  padding:16px 32px;font-size:14px;font-weight:700;letter-spacing:0.06em;
+  text-transform:uppercase;text-decoration:none;
+  transition:background .2s;display:inline-block;white-space:nowrap;
+}
+.hero-cta-primary:hover{background:var(--purple2)}
+.hero-readmore{
+  display:inline-flex;align-items:center;gap:14px;
+  font-size:15px;font-weight:500;color:var(--white);text-decoration:none;
+}
+.hero-readmore-arrow{
+  width:34px;height:34px;background:var(--purple);
+  display:flex;align-items:center;justify-content:center;
+  font-size:17px;font-weight:900;transition:background .2s;flex-shrink:0;
+}
+.hero-readmore:hover .hero-readmore-arrow{background:var(--purple2)}
+.hero-stats{
+  display:flex;gap:64px;margin-top:80px;padding-top:40px;
+  border-top:1px solid rgba(255,255,255,0.07);flex-wrap:wrap;
+}
+.hero-stat-num{font-size:38px;font-weight:800;line-height:1;letter-spacing:-0.02em}
+.hero-stat-num span{color:var(--purple)}
+.hero-stat-label{font-size:11px;color:rgba(255,255,255,0.4);margin-top:5px;letter-spacing:0.08em;text-transform:uppercase}
+
+/* ── MARQUEE ── */
+.marquee-wrap{background:var(--purple);overflow:hidden;padding:14px 0}
+.marquee-track{display:flex;animation:marquee 24s linear infinite;white-space:nowrap}
+.marquee-item{
+  font-size:12px;font-weight:700;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--white);padding:0 36px;
+  display:flex;align-items:center;gap:36px;
+}
+.marquee-item::after{content:'›';font-size:14px;opacity:0.5}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── PAIN / PROBLEM SECTION ── */
+.pain{background:var(--dark);padding:100px 0}
+.pain-inner{max-width:1280px;margin:0 auto;padding:0 80px}
+
+.pain-headline-block{margin-bottom:72px}
+.pain-headline-block .section-eyebrow{margin-bottom:20px}
+.pain-main-title{
+  font-size:clamp(36px,4.8vw,68px);font-weight:800;
+  letter-spacing:-0.025em;line-height:1.05;
+  max-width:780px;margin-bottom:0;
+}
+.pain-main-title em{
+  font-style:normal;
+  background:linear-gradient(135deg,#A100FF 0%,#C44DFF 50%,#E080FF 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+.pain-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+}
+.pain-item{
+  background:#141414;
+  padding:32px 32px 28px;
+  display:flex;flex-direction:column;gap:0;
+  position:relative;overflow:hidden;
+  transition:background .25s;
+}
+.pain-item:hover{background:#1a1a1a}
+.pain-item-top-line{
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--purple);transform:scaleX(0);transform-origin:left;
+  transition:transform .35s ease;
+}
+.pain-item:hover .pain-item-top-line{transform:scaleX(1)}
+.pain-item-num{
+  font-size:10px;font-weight:700;letter-spacing:0.14em;
+  color:var(--purple);margin-bottom:20px;
+}
+.pain-item-title{
+  font-size:18px;font-weight:700;margin-bottom:12px;
+  line-height:1.25;letter-spacing:-0.01em;
+}
+.pain-item-desc{
+  font-size:13px;color:rgba(255,255,255,0.45);
+  line-height:1.7;
+}
+.pain-item-desc strong{color:rgba(255,255,255,0.75);font-weight:600}
+
+.pain-diagnosis{
+  margin-top:2px;
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+}
+.pain-diagnosis-left{
+  background:rgba(161,0,255,0.08);
+  border-top:2px solid var(--purple);
+  padding:36px 36px 32px;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.pain-diagnosis-label{
+  font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--purple);margin-bottom:16px;
+}
+.pain-diagnosis-statement{
+  font-size:clamp(18px,2vw,26px);font-weight:800;
+  letter-spacing:-0.02em;line-height:1.25;
+  margin-bottom:24px;
+}
+.pain-diagnosis-cta{
+  display:inline-flex;align-items:center;gap:14px;
+  font-size:12px;font-weight:700;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--white);text-decoration:none;
+  margin-top:auto;
+}
+.pain-diagnosis-arrow{
+  width:30px;height:30px;background:var(--purple);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:900;transition:background .2s;flex-shrink:0;
+}
+.pain-diagnosis-cta:hover .pain-diagnosis-arrow{background:var(--purple2)}
+
+.pain-diagnosis-right{
+  background:#141414;
+  padding:36px 36px 32px;
+  display:flex;flex-direction:column;gap:16px;justify-content:center;
+}
+.pain-diagnosis-right-label{
+  font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:rgba(255,255,255,0.25);margin-bottom:4px;
+}
+.pain-stat-row{
+  display:flex;align-items:baseline;gap:10px;
+  padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.pain-stat-row:last-child{border-bottom:none;padding-bottom:0}
+.pain-stat-num{
+  font-size:32px;font-weight:800;letter-spacing:-0.02em;
+  color:var(--white);line-height:1;
+}
+.pain-stat-num span{color:var(--purple)}
+.pain-stat-label{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5}
+
+
+/* ── SERVICES ── */
+.services{background:var(--dark);padding:0 0 100px}
+.services-inner{max-width:1280px;margin:0 auto;padding:0 80px}
+.section-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--purple);margin-bottom:12px}
+.section-title{font-size:clamp(30px,3.8vw,52px);font-weight:800;letter-spacing:-0.02em;margin-bottom:14px;line-height:1.05}
+.section-sub{font-size:15px;font-weight:300;color:rgba(255,255,255,0.45);max-width:500px;line-height:1.7;margin-bottom:52px}
+.tier-label{
+  font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(255,255,255,0.3);margin-bottom:16px;
+  display:flex;align-items:center;gap:12px;
+}
+.tier-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.08)}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:2px}
+.card{
+  background:#141414;position:relative;overflow:hidden;
+  cursor:pointer;min-height:270px;transition:background .25s;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:28px 26px 26px;
+}
+.card-purple-line{
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--purple);transform:scaleX(0);transform-origin:left;
+  transition:transform .35s ease;
+}
+.card:hover .card-purple-line{transform:scaleX(1)}
+.card:hover{background:#1c1c1c}
+.card-tag{
+  font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+  padding:3px 9px;background:var(--purple);color:var(--white);
+  align-self:flex-start;margin-bottom:14px;
+}
+.card-tag.single{background:transparent;color:var(--purple);border:1px solid rgba(161,0,255,0.4)}
+.card-title{font-size:24px;font-weight:700;margin-bottom:12px;letter-spacing:-0.01em;line-height:1.2;position:relative;z-index:1}
+.card-desc{
+  font-size:13px;font-weight:300;color:rgba(255,255,255,0.55);
+  line-height:1.65;position:relative;z-index:1;
+}
+.card-items{list-style:none;margin-top:6px;position:relative;z-index:1}
+.card-items li{
+  font-size:11px;color:rgba(255,255,255,0.35);padding:2px 0 2px 12px;
+  position:relative;transition:color .2s;
+}
+.card-items li::before{content:'—';position:absolute;left:0;color:rgba(161,0,255,0.4);font-size:9px}
+.card:hover .card-items li{color:rgba(255,255,255,0.6)}
+.card-arrow{
+  position:absolute;top:18px;right:18px;font-size:18px;
+  color:var(--purple);opacity:0;transform:translateX(-4px);
+  transition:opacity .2s,transform .2s;
+}
+.card:hover .card-arrow{opacity:1;transform:translateX(0)}
+.standalones-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:2px}
+.card-sm{
+  background:#141414;padding:22px 22px 18px;
+  cursor:pointer;position:relative;overflow:hidden;
+  transition:background .25s;min-height:130px;
+}
+.card-sm:hover{background:#1c1c1c}
+.card-sm-line{
+  position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--purple);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s ease;
+}
+.card-sm:hover .card-sm-line{transform:scaleX(1)}
+.card-sm-title{font-size:15px;font-weight:700;margin-bottom:6px;letter-spacing:-0.01em}
+.card-sm-desc{
+  font-size:11px;color:rgba(255,255,255,0.4);line-height:1.5;
+  max-height:0;overflow:hidden;opacity:0;transition:max-height .3s,opacity .25s;
+}
+.card-sm:hover .card-sm-desc{max-height:60px;opacity:1}
+.card-sm-arrow{position:absolute;top:14px;right:14px;color:var(--purple);font-size:14px;opacity:0;transition:opacity .2s}
+.card-sm:hover .card-sm-arrow{opacity:1}
+.services-continuity{
+  margin-top:2px;
+  background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);
+  border-left:3px solid var(--purple);
+  padding:22px 32px;
+  font-size:15px;color:rgba(255,255,255,0.5);line-height:1.7;
+}
+.services-continuity strong{color:rgba(255,255,255,0.8);font-weight:600}
+
+.services-footer-note{
+  margin-top:48px;padding:0;
+  border:none;
+  display:block;
+}
+.services-footer-note-text{font-size:22px;font-weight:700;color:rgba(255,255,255,0.75);line-height:1.5;letter-spacing:-0.01em}
+.services-footer-note-text strong{color:var(--white);font-weight:800}
+.services-footer-cta{
+  font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--purple);text-decoration:none;white-space:nowrap;
+  display:flex;align-items:center;gap:8px;
+}
+.services-footer-cta:hover{color:var(--purple2)}
+
+/* ── FREE TOOLS ── */
+.tools{background:#080808;padding:52px 80px}
+.tools-inner{max-width:1280px;margin:0 auto}
+.tools-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.tool-tag{
+  font-size:11px;font-weight:500;padding:7px 14px;
+  border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);
+  cursor:pointer;text-decoration:none;display:inline-block;
+  transition:border-color .2s,color .2s,background .2s;
+}
+.tool-tag:hover{border-color:var(--purple);color:var(--white);background:rgba(161,0,255,0.08)}
+
+/* ── WHAT YOU CAN DO (ACCORDION) ── */
+.wycd{background:var(--black);padding:100px 0}
+.wycd-inner{max-width:1280px;margin:0 auto;padding:0 80px}
+.wycd-layout{display:grid;grid-template-columns:1fr 1fr;gap:120px;align-items:start;margin-top:64px}
+.wycd-left{}
+.wycd-title{font-size:clamp(32px,4vw,56px);font-weight:800;letter-spacing:-0.025em;line-height:1.06;margin-bottom:16px}
+.wycd-sub{font-size:16px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.7}
+.wycd-accordion{display:flex;flex-direction:column;}
+.wycd-item{border-bottom:1px solid rgba(255,255,255,0.07);cursor:pointer;}
+.wycd-item:first-child{border-top:1px solid rgba(255,255,255,0.07)}
+.wycd-item-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px 0;gap:16px;
+}
+.wycd-item-title{
+  font-size:18px;font-weight:600;color:rgba(255,255,255,0.85);
+  letter-spacing:-0.01em;line-height:1.3;transition:color .2s;
+}
+.wycd-item.active .wycd-item-title{color:var(--white)}
+.wycd-item-icon{display:none}
+.wycd-item-body{
+  font-size:14px;color:rgba(255,255,255,0.45);line-height:1.75;
+  max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .35s ease,opacity .25s,padding .25s;
+  padding-bottom:0;
+}
+.wycd-item.active .wycd-item-body{max-height:120px;opacity:1;padding-bottom:20px}
+
+/* ── PROCESS / AUDIT SECTION ── */
+.process{background:var(--black);padding:88px 0}
+.process-inner{max-width:1280px;margin:0 auto;padding:0 80px}
+.process-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:52px}
+.process-steps-col{display:flex;flex-direction:column;gap:0}
+.process-step-row{
+  display:flex;gap:24px;padding:24px 0;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.process-step-row:first-child{border-top:1px solid rgba(255,255,255,0.06)}
+.process-num{
+  font-size:11px;font-weight:700;color:var(--purple);letter-spacing:0.06em;
+  flex-shrink:0;margin-top:3px;min-width:24px;
+}
+.process-step-title{font-size:15px;font-weight:700;margin-bottom:6px;letter-spacing:-0.01em}
+.process-step-desc{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.65}
+.audit-box{
+  background:rgba(161,0,255,0.06);border:1px solid rgba(161,0,255,0.2);
+  padding:36px;position:sticky;top:108px;
+}
+.audit-box-label{
+  font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--purple);margin-bottom:20px;
+}
+.audit-box-title{font-size:22px;font-weight:800;letter-spacing:-0.02em;margin-bottom:16px;line-height:1.2}
+.audit-box-items{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.audit-box-items li{
+  font-size:13px;color:rgba(255,255,255,0.7);line-height:1.5;
+  display:flex;align-items:flex-start;gap:10px;
+}
+.audit-box-items li::before{
+  content:'✓';color:var(--purple);font-size:11px;font-weight:700;
+  flex-shrink:0;margin-top:2px;
+}
+.audit-box-meta{
+  font-size:11px;color:rgba(255,255,255,0.3);line-height:1.6;
+  border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;margin-bottom:24px;
+}
+.audit-box-meta strong{color:rgba(255,255,255,0.55)}
+.audit-box-cta{
+  display:block;background:var(--purple);color:var(--white);
+  padding:14px 24px;text-align:center;
+  font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  text-decoration:none;transition:background .2s;
+}
+.audit-box-cta:hover{background:var(--purple2)}
+
+/* ── GUARANTEE ── */
+.guarantee{background:var(--purple);padding:0}
+.guarantee-inner{
+  max-width:1280px;margin:0 auto;padding:64px 80px;
+  display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap;
+}
+.guarantee-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;opacity:0.6;margin-bottom:10px}
+.guarantee-title{font-size:clamp(22px,2.8vw,38px);font-weight:800;letter-spacing:-0.02em;line-height:1.1;margin-bottom:10px}
+.guarantee-desc{font-size:13px;opacity:0.8;max-width:460px;line-height:1.65}
+.btn-white{
+  background:var(--white);color:var(--purple);padding:15px 30px;
+  font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  text-decoration:none;white-space:nowrap;transition:background .2s;display:inline-block;
+}
+.btn-white:hover{background:#ececec}
+
+/* ── CASE STUDIES ── */
+.cases{background:var(--dark);padding:88px 0}
+.cases-inner{max-width:1280px;margin:0 auto;padding:0 80px}
+.cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
+.case-card{
+  background:#141414;padding:32px 26px 28px;cursor:pointer;
+  position:relative;overflow:hidden;transition:background .25s;min-height:200px;
+}
+.case-card:hover{background:#1c1c1c}
+.case-line{
+  position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:var(--purple);transform:scaleX(0);transform-origin:left;
+  transition:transform .35s ease;
+}
+.case-card:hover .case-line{transform:scaleX(1)}
+.case-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--purple);margin-bottom:12px}
+.case-title{font-size:17px;font-weight:700;line-height:1.3;margin-bottom:10px}
+.case-result{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5}
+.case-arrow{position:absolute;bottom:20px;right:20px;color:var(--purple);font-size:16px;opacity:0;transition:opacity .2s}
+.case-card:hover .case-arrow{opacity:1}
+
+/* ── WHO IT'S FOR ── */
+.icp{background:var(--black);padding:88px 0}
+.icp-inner{max-width:1280px;margin:0 auto;padding:0 80px}
+.icp-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:52px}
+.icp-col{background:#141414;padding:36px 32px}
+.icp-col-title{
+  font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;
+  margin-bottom:24px;display:flex;align-items:center;gap:10px;
+}
+.icp-col-title.yes{color:var(--purple)}
+.icp-col-title.no{color:rgba(255,255,255,0.3)}
+.icp-items{list-style:none;display:flex;flex-direction:column;gap:14px}
+.icp-item{
+  font-size:14px;font-weight:400;line-height:1.5;
+  display:flex;align-items:flex-start;gap:12px;color:rgba(255,255,255,0.75);
+}
+.icp-check{
+  font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;
+  width:18px;height:18px;display:flex;align-items:center;justify-content:center;
+}
+.icp-check.yes{color:var(--purple)}
+.icp-check.no{color:rgba(255,255,255,0.2)}
+.icp-footer{
+  margin-top:2px;background:#141414;padding:24px 32px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+}
+.icp-footer-text{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5}
+.icp-footer-text strong{color:rgba(255,255,255,0.7);font-weight:600}
+.icp-footer-link{
+  font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--purple);text-decoration:none;white-space:nowrap;
+}
+.icp-footer-link:hover{color:var(--purple2)}
+
+/* ── FAQ ── */
+.faq{background:var(--dark);padding:88px 0}
+.faq-inner{max-width:1280px;margin:0 auto;padding:0 80px}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:52px}
+.faq-item{
+  background:#141414;padding:28px 28px;cursor:pointer;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  transition:background .2s;
+}
+.faq-item:hover{background:#1a1a1a}
+.faq-item.open{background:#1a1a1a}
+.faq-q{
+  font-size:15px;font-weight:600;line-height:1.4;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:16px;
+  color:rgba(255,255,255,0.9);
+}
+.faq-toggle{
+  font-size:18px;color:var(--purple);flex-shrink:0;
+  transition:transform .2s;font-weight:300;line-height:1;margin-top:2px;
+}
+.faq-item.open .faq-toggle{transform:rotate(45deg)}
+.faq-a{
+  font-size:13px;color:rgba(255,255,255,0.45);line-height:1.75;
+  max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .35s ease,opacity .3s,margin-top .2s;
+}
+.faq-item.open .faq-a{max-height:200px;opacity:1;margin-top:16px}
+
+/* ── FINAL CTA ── */
+.final-cta{background:var(--black);padding:120px 0}
+.final-cta-inner{max-width:1280px;margin:0 auto;padding:0 80px;text-align:center}
+.final-cta-title{
+  font-size:clamp(32px,4.5vw,64px);font-weight:800;
+  letter-spacing:-0.025em;line-height:1.08;margin-bottom:20px;
+}
+.final-cta-title .hl{
+  background:linear-gradient(135deg,#A100FF 0%,#C44DFF 50%,#E080FF 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.final-cta-sub{
+  font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;
+  max-width:520px;margin:0 auto 44px;
+}
+.final-cta-btn{
+  display:inline-block;background:var(--purple);color:var(--white);
+  padding:18px 44px;font-size:14px;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;text-decoration:none;transition:background .2s;
+}
+.final-cta-btn:hover{background:var(--purple2)}
+.final-cta-note{font-size:12px;color:rgba(255,255,255,0.25);margin-top:16px}
+
+/* ── CONTACT ── */
+.contact{background:var(--dark);padding:88px 0}
+.contact-inner{max-width:1280px;margin:0 auto;padding:0 80px}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact-left-meta{margin-top:40px;display:flex;flex-direction:column;gap:20px}
+.contact-meta-item{display:flex;flex-direction:column;gap:4px}
+.contact-meta-label{font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.25)}
+.contact-meta-value{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.5}
+.form-wrap{display:flex;flex-direction:column;gap:14px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35)}
+.form-label .req{color:var(--purple);margin-left:2px}
+.form-input{
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);
+  color:var(--white);padding:12px 14px;font-family:var(--font);font-size:14px;
+  outline:none;width:100%;transition:border-color .2s;
+}
+.form-input:focus{border-color:var(--purple)}
+.form-input::placeholder{color:rgba(255,255,255,0.2)}
+select.form-input option{background:#1a1a1a}
+textarea.form-input{min-height:90px;resize:vertical}
+.form-submit{
+  background:var(--purple);color:var(--white);padding:14px 28px;
+  font-family:var(--font);font-size:12px;font-weight:700;letter-spacing:0.1em;
+  text-transform:uppercase;border:none;cursor:pointer;
+  align-self:flex-start;transition:background .2s;
+}
+.form-submit:hover{background:var(--purple2)}
+.form-disclaimer{font-size:11px;color:rgba(255,255,255,0.2);line-height:1.6;margin-top:4px}
+
+/* ── CONTACT POPUP ── */
+.contact-popup-overlay{
+  display:none;position:fixed;inset:0;z-index:500;
+  background:rgba(0,0,0,0.75);backdrop-filter:blur(4px);
+  align-items:center;justify-content:center;
+}
+.contact-popup-overlay.open{display:flex}
+.contact-popup{
+  background:#111;border:1px solid rgba(255,255,255,0.1);
+  border-top:2px solid var(--purple);
+  padding:44px 48px 40px;max-width:520px;width:90%;position:relative;
+}
+.contact-popup-close{
+  position:absolute;top:18px;right:20px;
+  font-size:22px;font-weight:300;color:rgba(255,255,255,0.3);
+  cursor:pointer;line-height:1;transition:color .2s;border:none;background:none;
+}
+.contact-popup-close:hover{color:var(--white)}
+.contact-popup-label{
+  font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--purple);margin-bottom:14px;
+}
+.contact-popup-title{
+  font-size:26px;font-weight:800;letter-spacing:-0.02em;margin-bottom:8px;
+}
+.contact-popup-sub{
+  font-size:14px;color:rgba(255,255,255,0.45);line-height:1.6;margin-bottom:36px;
+}
+.contact-email-list{display:flex;flex-direction:column;gap:2px;}
+.contact-email-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 20px;background:#1a1a1a;
+  border:1px solid rgba(255,255,255,0.05);
+  transition:background .2s,border-color .2s;
+  text-decoration:none;
+}
+.contact-email-item:hover{background:#222;border-color:rgba(161,0,255,0.3)}
+.contact-email-info{}
+.contact-email-type{
+  font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+  color:rgba(255,255,255,0.3);margin-bottom:5px;
+}
+.contact-email-addr{
+  font-size:15px;font-weight:600;color:var(--white);letter-spacing:0.01em;
+}
+.contact-email-arrow{
+  font-size:18px;color:var(--purple);opacity:0;transition:opacity .2s,transform .2s;
+  transform:translateX(-4px);
+}
+.contact-email-item:hover .contact-email-arrow{opacity:1;transform:translateX(0)}
+
+/* ── FOOTER ── */
+footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56px 0 28px}
+.footer-inner{max-width:1280px;margin:0 auto;padding:0 80px}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:48px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,0.06);flex-wrap:wrap}
+.footer-logo-v{font-size:20px;font-weight:900;background:linear-gradient(135deg,#A100FF,#E080FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.footer-logo-nklo{font-size:20px;font-weight:900;color:var(--white)}
+.footer-fullform{font-size:10px;color:rgba(255,255,255,0.25);margin-top:6px;letter-spacing:0.06em;line-height:1.6;text-transform:uppercase}
+.footer-links{display:flex;gap:56px;flex-wrap:wrap}
+.footer-col-title{font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-col ul a{font-size:12px;color:rgba(255,255,255,0.45);text-decoration:none;transition:color .2s}
+.footer-col ul a:hover{color:var(--purple)}
+.footer-bottom{display:flex;justify-content:space-between;padding-top:22px;flex-wrap:wrap;gap:10px}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.2)}
+
+/* scroll reveal */
+.reveal{opacity:1;transform:translateY(0)}
+
+/* ── HAMBURGER BUTTON ── */
+.nav-hamburger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  width:40px;height:40px;cursor:pointer;background:none;border:none;padding:4px;
+  z-index:600;position:relative;
+}
+.nav-hamburger span{
+  display:block;width:24px;height:2px;background:var(--white);
+  transition:transform .25s,opacity .25s;transform-origin:center;
+}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ── MOBILE DRAWER ── */
+.mobile-drawer{
+  position:fixed;top:0;right:-100%;bottom:0;
+  width:min(320px,85vw);background:#0d0d0d;
+  border-left:1px solid rgba(255,255,255,0.08);
+  z-index:500;overflow-y:auto;
+  padding:88px 0 40px;
+  transition:right .3s ease;
+}
+.mobile-drawer.open{right:0}
+.drawer-overlay{
+  position:fixed;inset:0;z-index:499;
+  background:rgba(0,0,0,0.6);
+  display:none;
+}
+.drawer-overlay.open{display:block}
+.drawer-nav{display:flex;flex-direction:column;}
+.drawer-item{border-bottom:1px solid rgba(255,255,255,0.06);}
+.drawer-item:first-child{border-top:1px solid rgba(255,255,255,0.06)}
+.drawer-item-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 28px;cursor:pointer;user-select:none;
+}
+.drawer-item-title{
+  font-size:17px;font-weight:600;color:rgba(255,255,255,0.85);
+  letter-spacing:-0.01em;pointer-events:none;
+}
+.drawer-item-chevron{
+  font-size:18px;color:var(--purple);
+  transition:transform .25s;display:inline-block;pointer-events:none;
+}
+.drawer-item.open .drawer-item-chevron{transform:rotate(90deg)}
+.drawer-item.open .drawer-item-title{color:var(--white)}
+.drawer-item-body{
+  max-height:0;overflow:hidden;
+  transition:max-height .3s ease;
+  background:rgba(255,255,255,0.02);
+}
+.drawer-item.open .drawer-item-body{max-height:300px;}
+.drawer-item-body a{
+  display:block;font-size:14px;font-weight:400;
+  color:rgba(255,255,255,0.55);text-decoration:none;
+  padding:12px 28px 12px 36px;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  transition:color .2s;
+}
+.drawer-item-body a:last-child{border-bottom:none}
+.drawer-item-body a:active{color:var(--white)}
+.drawer-cta{
+  margin:28px 24px 0;display:block;
+  background:var(--purple);color:var(--white);
+  padding:15px 24px;text-align:center;
+  font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  text-decoration:none;
+}
+.drawer-contact{
+  margin:12px 24px 0;display:block;text-align:center;
+  font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+  color:rgba(255,255,255,0.35);padding:12px;
+  cursor:pointer;background:none;border:none;width:auto;
+}
+
+@media(max-width:900px){
+  /* NAV */
+  nav{padding:0 20px;height:68px}
+  .nav-links{display:none}
+  .mega{display:none !important}
+  .nav-hamburger{display:flex}
+  .hero{padding-top:68px}
+
+  /* SECTION PADDING */
+  .hero-inner,.services-inner,.cases-inner,.contact-inner,
+  .footer-inner,.pain-inner,.icp-inner,.final-cta-inner,
+  .wycd-inner,.process-inner{padding:0 20px}
+  .guarantee-inner{padding:44px 20px}
+
+  /* HERO */
+  .hero-inner{padding:52px 20px 60px}
+  .hero-headline{font-size:clamp(34px,8vw,52px)}
+  .hero-sub{font-size:16px}
+  .hero-stats{gap:32px;margin-top:52px}
+  .hero-stat-num{font-size:30px}
+  .hero-cta-row{flex-direction:column;align-items:flex-start}
+
+  /* PAIN */
+  .pain{padding:64px 0}
+  .pain-headline-block{margin-bottom:40px}
+  .pain-grid{grid-template-columns:1fr;gap:2px}
+  .pain-diagnosis{grid-template-columns:1fr}
+  .pain-main-title{font-size:clamp(28px,7vw,44px)}
+
+  /* SERVICES */
+  .cards-grid{grid-template-columns:1fr}
+  .card{min-height:200px}
+
+  /* WHAT YOU CAN DO */
+  .wycd{padding:64px 0}
+  .wycd-layout{grid-template-columns:1fr;gap:36px}
+  .wycd-title{font-size:clamp(28px,7vw,42px)}
+
+  /* CASES */
+  .cases-grid{grid-template-columns:1fr}
+
+  /* ICP */
+  .icp-grid{grid-template-columns:1fr}
+  .icp-footer{flex-direction:column;gap:16px}
+
+  /* CONTACT */
+  .contact-layout{grid-template-columns:1fr;gap:36px}
+  .form-row{grid-template-columns:1fr}
+
+  /* FINAL CTA */
+  .final-cta{padding:72px 0}
+  .final-cta-title{font-size:clamp(28px,7vw,44px)}
+
+  /* GUARANTEE */
+  .guarantee-inner{flex-direction:column;gap:28px}
+
+  /* FOOTER */
+  .footer-top{flex-direction:column;gap:32px}
+  .footer-links{gap:32px}
+
+  /* CONTACT POPUP */
+  .contact-popup{padding:32px 24px 28px}
+
+  /* SECTION TITLES */
+  .section-title{font-size:clamp(26px,6vw,40px)}
+}
+
+@media(max-width:480px){
+  nav{padding:0 16px}
+  .hero-inner,.services-inner,.cases-inner,.contact-inner,
+  .footer-inner,.pain-inner,.icp-inner,.final-cta-inner,
+  .wycd-inner{padding:0 16px}
+  .guarantee-inner{padding:36px 16px}
+  .hero-headline{font-size:clamp(28px,9vw,40px)}
+  .pain-main-title{font-size:clamp(24px,8vw,36px)}
+  .section-title{font-size:clamp(22px,7vw,34px)}
+  .wycd-title{font-size:clamp(24px,8vw,36px)}
+  .hero-stats{flex-direction:column;gap:20px}
+  .sol-three{grid-template-columns:1fr}
+  .pain-diagnosis-left,.pain-diagnosis-right{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#home" class="nav-logo">
+    <div class="nav-logo-mark">
+      <span class="logo-v">V</span><span class="logo-nklo">NKLO</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-item has-dropdown" id="ni-what">
+      <a href="#" onclick="toggleMega(event,'mega-what','ni-what')">What we do</a>
+    </li>
+    <li class="nav-item has-dropdown" id="ni-think">
+      <a href="#" onclick="toggleMega(event,'mega-think','ni-think')">What we think</a>
+    </li>
+    <li class="nav-item has-dropdown" id="ni-who">
+      <a href="#" onclick="toggleMega(event,'mega-who','ni-who')">Who we are</a>
+    </li>
+    <li class="nav-item has-dropdown" id="ni-why">
+      <a href="#" onclick="toggleMega(event,'mega-why','ni-why')">Why it matters</a>
+    </li>
+    <li class="nav-item has-dropdown" id="ni-careers">
+      <a href="#" onclick="toggleMega(event,'mega-careers','ni-careers')">Careers</a>
+    </li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-hamburger" id="nav-hamburger" onclick="toggleDrawer()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
+<div class="mobile-drawer" id="mobile-drawer">
+
+  <div class="drawer-nav">
+
+    <div class="drawer-item" onclick="toggleDrawerItem(this)">
+      <div class="drawer-item-head">
+        <span class="drawer-item-title">What we do</span>
+        <span class="drawer-item-chevron">›</span>
+      </div>
+      <div class="drawer-item-body">
+        <a href="revenue-systems.html" onclick="closeDrawer()">Revenue Systems</a>
+        <a href="customer-experience.html" onclick="closeDrawer()">Customer Experience</a>
+        <a href="operations-intelligence.html" onclick="closeDrawer()">Operations Intelligence</a>
+        <a href="system-overhaul.html" onclick="closeDrawer()">System Overhaul</a>
+      </div>
+    </div>
+
+    <div class="drawer-item" onclick="toggleDrawerItem(this)">
+      <div class="drawer-item-head">
+        <span class="drawer-item-title">What we think</span>
+        <span class="drawer-item-chevron">›</span>
+      </div>
+      <div class="drawer-item-body">
+        <a href="thinking.html" onclick="closeDrawer()">How businesses actually run</a>
+      </div>
+    </div>
+
+    <div class="drawer-item" onclick="toggleDrawerItem(this)">
+      <div class="drawer-item-head">
+        <span class="drawer-item-title">Who we are</span>
+        <span class="drawer-item-chevron">›</span>
+      </div>
+      <div class="drawer-item-body">
+        <a href="index.html#cases" onclick="closeDrawer()">Case Studies</a>
+        <a href="index.html#icp" onclick="closeDrawer()">Who it's for</a>
+      </div>
+    </div>
+
+    <div class="drawer-item" onclick="toggleDrawerItem(this)">
+      <div class="drawer-item-head">
+        <span class="drawer-item-title">Why it matters</span>
+        <span class="drawer-item-chevron">›</span>
+      </div>
+      <div class="drawer-item-body">
+        <a href="thinking.html" onclick="closeDrawer()">The cost of doing nothing</a>
+        <a href="index.html#pain" onclick="closeDrawer()">Where businesses break</a>
+      </div>
+    </div>
+
+    <div class="drawer-item" onclick="toggleDrawerItem(this)">
+      <div class="drawer-item-head">
+        <span class="drawer-item-title">Careers</span>
+        <span class="drawer-item-chevron">›</span>
+      </div>
+      <div class="drawer-item-body">
+        <a href="/cdn-cgi/l/email-protection#385b594a5d5d4a4b1e1b0e0c034e56535457165b5755">Think you belong here? Tell us why.</a>
+      </div>
+    </div>
+
+  </div>
+
+  <a href="index.html#contact" class="drawer-cta" onclick="closeDrawer()">Book My Free Audit →</a>
+  <button class="drawer-contact" onclick="closeDrawer();openContactPopup()">Contact</button>
+
+</div>
+
+<!-- WHAT WE DO MEGA -->
+<div class="mega" id="mega-what">
+  <div class="mega-head">
+    <div class="mega-head-title">What we do</div>
+    <div class="mega-head-arrow">›</div>
+  </div>
+  <p class="mega-intro">
+    Most businesses don't have an AI problem. They have a systems problem.<br/>
+    <strong>We fix the broken workflows first — then layer AI on top to make them run automatically.</strong><br/>
+    The result: less manual work, faster revenue, and operations that don't depend on any single person.
+  </p>
+  <div class="mega-systems-label">The systems we implement</div>
+  <div class="mega-services-grid">
+    <a href="#services" class="mega-service-card" onclick="closeAll()">
+      <div class="mega-service-name">Revenue Systems</div>
+      <div class="mega-service-preview">You're losing qualified leads to slow follow-up. We build AI systems that respond instantly, qualify automatically, and keep your pipeline moving — without adding headcount.</div>
+    </a>
+    <a href="#services" class="mega-service-card" onclick="closeAll()">
+      <div class="mega-service-name">Customer Experience</div>
+      <div class="mega-service-preview">Your team is answering the same questions on repeat. We implement AI that handles inbound at scale — accurate, instant, 24/7 — so your people focus on what actually requires them.</div>
+    </a>
+    <a href="#services" class="mega-service-card" onclick="closeAll()">
+      <div class="mega-service-name">Operations Intelligence</div>
+      <div class="mega-service-preview">Tasks fall through the cracks because your tools don't talk to each other. We redesign workflows so information flows automatically, work triggers without manual input, and nothing slips.</div>
+    </a>
+    <a href="#services" class="mega-service-card" onclick="closeAll()">
+      <div class="mega-service-name">System Overhaul</div>
+      <div class="mega-service-preview">When the problem runs deeper than a single workflow. We redesign your entire operational infrastructure — revenue, support, and internal ops — built as one cohesive system.</div>
+    </a>
+  </div>
+  <div class="mega-continuity">
+    <strong>If it's not measured, it breaks again.</strong> We track performance, document processes, and continuously optimize your systems.
+  </div>
+</div>
+
+<!-- WHAT WE THINK MEGA -->
+<div class="mega" id="mega-think">
+  <div class="mega-head">
+    <div class="mega-head-title">What we think</div>
+    <div class="mega-head-arrow">›</div>
+  </div>
+  <div class="mega-think-body">
+    <div class="mega-think-intro">
+      <p>We study how businesses actually operate — not how they think they do.</p>
+      <p>Most inefficiencies are invisible until you map the system. That's where we focus.</p>
+    </div>
+    <a href="thinking.html" class="mega-think-cta" onclick="window.location.href='thinking.html';return false;">
+      See our thinking
+      <span class="mega-think-arrow">›</span>
+    </a>
+  </div>
+</div>
+
+<!-- WHO WE ARE MEGA -->
+<div class="mega" id="mega-who">
+  <div class="mega-head">
+    <div class="mega-head-title">Who we are</div>
+    <div class="mega-head-arrow">›</div>
+  </div>
+  <div class="mega-who-body">
+    <div class="mega-who-text">
+      <p>Most businesses try to fix operational problems by adding more people or more tools. That usually makes things worse.</p>
+      <p><strong>We take a different approach — we remove the problem at the system level.</strong></p>
+      <p>We don't believe in patchwork fixes. If a workflow is broken, we don't automate it — we redesign it first. If tools don't connect, we don't add more — we simplify the system. Only then do we bring in AI.</p>
+      <p>Every engagement starts the same way: we map how your business actually runs, identify where things break, and design the system properly before anything is built.</p>
+    </div>
+  </div>
+</div>
+
+<!-- WHY IT MATTERS MEGA -->
+<div class="mega" id="mega-why">
+  <div class="mega-head">
+    <div class="mega-head-title">Why it matters</div>
+    <div class="mega-head-arrow">›</div>
+  </div>
+  <p class="mega-why-intro">Most operational problems don't look urgent — until they compound. Slow follow-up, manual work, and disconnected systems quietly cost time, money, and growth every single day.</p>
+  <div class="mega-why-grid">
+    <div class="mega-why-item">
+      <div class="mega-why-title">Lost Revenue</div>
+      <div class="mega-why-desc">Leads go cold. Follow-ups happen too late. Opportunities are missed before they're even seen.</div>
+    </div>
+    <div class="mega-why-item">
+      <div class="mega-why-title">Wasted Time</div>
+      <div class="mega-why-desc">Your team spends hours on work that shouldn't exist. Manual tasks replace actual progress.</div>
+    </div>
+    <div class="mega-why-item">
+      <div class="mega-why-title">Operational Bottlenecks</div>
+      <div class="mega-why-desc">Growth slows because the system can't handle it. Everything depends on people instead of process.</div>
+    </div>
+    <div class="mega-why-item">
+      <div class="mega-why-title">Hiring Doesn't Fix It</div>
+      <div class="mega-why-desc">Adding more people to a broken workflow just makes inefficiency more expensive.</div>
+    </div>
+    <div class="mega-why-item">
+      <div class="mega-why-title">Complexity Kills Speed</div>
+      <div class="mega-why-desc">Too many tools, not enough structure. Work gets delayed, duplicated, or lost entirely.</div>
+    </div>
+    <div class="mega-why-item">
+      <div class="mega-why-title">The Cost of Doing Nothing</div>
+      <div class="mega-why-desc">What feels manageable today compounds into lost revenue, slower growth, and operational chaos.</div>
+    </div>
+  </div>
+  <div class="mega-why-closing">
+    <strong>What feels manageable today is compounding.</strong> Every week of manual work, slow follow-up, and disconnected tools is revenue and time you don't get back.
+  </div>
+</div>
+
+<!-- CAREERS MEGA -->
+<div class="mega" id="mega-careers">
+  <div class="mega-head">
+    <div class="mega-head-title">Careers</div>
+    <div class="mega-head-arrow">›</div>
+  </div>
+  <div class="mega-who-body">
+    <div class="mega-who-text">
+      <p>We don't hire for roles. We hire for impact.</p>
+      <p><strong>Tell us how you can bring value — and if it interests us, we'll get back to you.</strong></p>
+      <p>We're not looking for people who want a job. We're looking for people who see a broken system and already know how to fix it. If that's you — send us something worth reading.</p>
+      <p style="margin-top:8px">
+        <a href="/cdn-cgi/l/email-protection#117270637474636251677f7a7d7e3f727e7c" style="color:var(--purple);font-size:14px;font-weight:600;letter-spacing:0.04em;text-decoration:none;">careers&#64;vnklo.com →</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <h1 class="hero-headline">
+      The businesses winning<br/>right now aren't bigger.<br/><span class="hl">They're built differently.</span>
+    </h1>
+    <p class="hero-sub">The bottlenecks slowing your growth aren't people problems. They're AI problems we haven't solved for you yet.</p>
+    <div class="hero-cta-row">
+      <a href="#contact" class="hero-cta-primary">Get My Free Audit →</a>
+
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">45<span>min</span></div>
+        <div class="hero-stat-label">Free audit — yours to keep</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">2<span>wk</span></div>
+        <div class="hero-stat-label">Avg. time to live</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">20<span>+</span></div>
+        <div class="hero-stat-label">Hrs saved weekly</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">30<span>d</span></div>
+        <div class="hero-stat-label">Or we fix it free</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item">Lead Conversion</div>
+    <div class="marquee-item">Customer Support</div>
+    <div class="marquee-item">Sales Follow-Up</div>
+    <div class="marquee-item">RAG Pipelines</div>
+    <div class="marquee-item">CRM Automation</div>
+    <div class="marquee-item">Document Extraction</div>
+    <div class="marquee-item">n8n · Claude · Zapier</div>
+    <div class="marquee-item">Lead Conversion</div>
+    <div class="marquee-item">Customer Support</div>
+    <div class="marquee-item">Sales Follow-Up</div>
+    <div class="marquee-item">RAG Pipelines</div>
+    <div class="marquee-item">CRM Automation</div>
+    <div class="marquee-item">Document Extraction</div>
+    <div class="marquee-item">n8n · Claude · Zapier</div>
+  </div>
+</div>
+
+<!-- PAIN / PROBLEM -->
+<section class="pain" id="pain">
+  <div class="pain-inner">
+
+    <div class="pain-headline-block reveal">
+      <p class="section-eyebrow">The real problem</p>
+      <h2 class="pain-main-title">These aren't operations problems.<br/><em>They're AI problems.</em></h2>
+    </div>
+
+    <div class="pain-grid reveal">
+      <div class="pain-item">
+        <div class="pain-item-top-line"></div>
+        <div class="pain-item-num">01</div>
+        <div class="pain-item-title">Leads come in and go cold</div>
+        <div class="pain-item-desc">Follow-up takes hours. By then, the lead is already talking to a competitor. <strong>Every slow response is revenue you don't recover.</strong></div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-item-top-line"></div>
+        <div class="pain-item-num">02</div>
+        <div class="pain-item-title">Your support inbox owns your team</div>
+        <div class="pain-item-desc">The same questions, every day, answered manually. <strong>Your best people are spending their time on work a system should handle.</strong></div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-item-top-line"></div>
+        <div class="pain-item-num">03</div>
+        <div class="pain-item-title">Proposals leave too slow, deals die</div>
+        <div class="pain-item-desc">After a great call, days pass before anything is sent. <strong>The urgency window closes. Half the deals that should close, don't.</strong></div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-item-top-line"></div>
+        <div class="pain-item-num">04</div>
+        <div class="pain-item-title">Your team is the only system you have</div>
+        <div class="pain-item-desc">Every process lives in someone's head. <strong>When they're out or they leave, the business slows down. There's no layer beneath the people.</strong></div>
+      </div>
+    </div>
+
+    <div class="pain-diagnosis reveal">
+      <div class="pain-diagnosis-left">
+        <div>
+          <div class="pain-diagnosis-label">The diagnosis</div>
+          <div class="pain-diagnosis-statement">Every one of these is a repeatable process AI can run faster, cheaper, and without headcount. The gap isn't effort — it's architecture.</div>
+        </div>
+        <a href="#contact" class="pain-diagnosis-cta">
+          Find my automation gaps
+          <span class="pain-diagnosis-arrow">›</span>
+        </a>
+      </div>
+      <div class="pain-diagnosis-right">
+        <div class="pain-diagnosis-right-label">What changes when you fix it</div>
+        <div class="pain-stat-row">
+          <div class="pain-stat-num">90<span>s</span></div>
+          <div class="pain-stat-label">Average lead response time after system goes live — down from hours</div>
+        </div>
+        <div class="pain-stat-row">
+          <div class="pain-stat-num">70<span>%</span></div>
+          <div class="pain-stat-label">Of support tickets handled automatically, without a human in the loop</div>
+        </div>
+        <div class="pain-stat-row">
+          <div class="pain-stat-num">20<span>+</span></div>
+          <div class="pain-stat-label">Hours saved per week, per team — redirected to work that actually moves the business</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <p class="section-eyebrow reveal">What we build</p>
+    <h2 class="section-title reveal">Solutions for where your business<br/>is losing time and revenue.</h2>
+    <p class="section-sub reveal">We don't sell tools. We build systems around your specific operational gaps — starting with what's costing you the most right now.</p>
+
+    <div class="cards-grid reveal" style="grid-template-columns:repeat(2,1fr)">
+      <div class="card" onclick="window.location.href='revenue-systems.html'">
+        <div class="card-purple-line"></div>
+        <span class="card-arrow">›</span>
+        <div class="card-title">Revenue Systems</div>
+        <div class="card-desc">You're losing qualified leads to slow follow-up. We build AI systems that respond instantly, qualify automatically, and keep your pipeline moving — without adding headcount.</div>
+      </div>
+      <div class="card" onclick="window.location.href='customer-experience.html'">
+        <div class="card-purple-line"></div>
+        <span class="card-arrow">›</span>
+        <div class="card-title">Customer Experience</div>
+        <div class="card-desc">Your team is answering the same questions on repeat. We implement AI that handles inbound at scale — accurate, instant, 24/7 — so your people focus on what actually requires them.</div>
+      </div>
+      <div class="card" onclick="window.location.href='operations-intelligence.html'">
+        <div class="card-purple-line"></div>
+        <span class="card-arrow">›</span>
+        <div class="card-title">Operations Intelligence</div>
+        <div class="card-desc">Tasks fall through the cracks because your tools don't talk to each other. We redesign workflows so information flows automatically, work triggers without manual input, and nothing slips.</div>
+      </div>
+      <div class="card" onclick="window.location.href='system-overhaul.html'">
+        <div class="card-purple-line"></div>
+        <span class="card-arrow">›</span>
+        <div class="card-title">System Overhaul</div>
+        <div class="card-desc">When the problem runs deeper than a single workflow. We redesign your entire operational infrastructure — revenue, support, and internal ops — built as one cohesive system.</div>
+      </div>
+    </div>
+
+    <div class="services-footer-note reveal">
+      <div class="services-footer-note-text">
+        <strong>Start Small. Scale Fast.</strong> Not every business needs a full system on day one. We identify the highest-impact automation and implement it first — then expand as you grow.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU CAN DO -->
+<section class="wycd" id="process">
+  <div class="wycd-inner">
+    <div class="wycd-layout">
+      <div class="wycd-left">
+        <p class="section-eyebrow">What you can do</p>
+        <h2 class="wycd-title">Start here.<br/>Build from there.</h2>
+        <p class="wycd-sub">Every business starts at a different point. You don't need everything at once — you need the right first move.</p>
+      </div>
+      <div class="wycd-accordion">
+        <div class="wycd-item active" onclick="toggleWycd(this)">
+          <div class="wycd-item-head">
+            <div class="wycd-item-title">See where you're losing time</div>
+            <div class="wycd-item-icon">+</div>
+          </div>
+          <div class="wycd-item-body">A 45-minute audit maps exactly where time, revenue, and decisions are being lost in your business. You leave with a clear picture — even if you don't proceed with us.</div>
+        </div>
+        <div class="wycd-item" onclick="toggleWycd(this)">
+          <div class="wycd-item-head">
+            <div class="wycd-item-title">Fix the first problem</div>
+            <div class="wycd-item-icon">+</div>
+          </div>
+          <div class="wycd-item-body">We identify your highest-impact automation opportunity and build it first. One focused system — the one that moves the needle fastest for your specific situation.</div>
+        </div>
+        <div class="wycd-item" onclick="toggleWycd(this)">
+          <div class="wycd-item-head">
+            <div class="wycd-item-title">Get it running fast</div>
+            <div class="wycd-item-icon">+</div>
+          </div>
+          <div class="wycd-item-body">Built into your existing tools in under two weeks. No disruption, no new platforms forced on your team. Full training and live demos included from day one.</div>
+        </div>
+        <div class="wycd-item" onclick="toggleWycd(this)">
+          <div class="wycd-item-head">
+            <div class="wycd-item-title">See what actually changes</div>
+            <div class="wycd-item-icon">+</div>
+          </div>
+          <div class="wycd-item-body">Live dashboards and performance tracking show exactly what the system is doing. Numbers, not promises. If the benchmark isn't hit in 30 days, we keep building at no extra cost.</div>
+        </div>
+        <div class="wycd-item" onclick="toggleWycd(this)">
+          <div class="wycd-item-head">
+            <div class="wycd-item-title">Fix the next bottleneck</div>
+            <div class="wycd-item-icon">+</div>
+          </div>
+          <div class="wycd-item-body">Once the first system delivers, we move to the next highest-impact area. Most businesses automate 2–3 systems within the first six months.</div>
+        </div>
+        <div class="wycd-item" onclick="toggleWycd(this)">
+          <div class="wycd-item-head">
+            <div class="wycd-item-title">Step out of the day-to-day</div>
+            <div class="wycd-item-icon">+</div>
+          </div>
+          <div class="wycd-item-body">The end state: a business where the critical work happens automatically — without depending on any single person, and without proportional headcount growth.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<div class="guarantee">
+  <div class="guarantee-inner">
+    <div>
+      <div class="guarantee-eyebrow">Our Commitment</div>
+      <div class="guarantee-title">Measurable outcomes.<br/>Or we keep building — free.</div>
+      <div class="guarantee-desc">Every engagement includes a specific, measurable guarantee. Not "we'll try our best" — actual numbers: 70% of support tickets handled without human intervention. Qualified leads booked within 48 hours of first inquiry. Follow-up sent within 1 hour. If the benchmark isn't hit within the agreed timeframe, we continue building at no extra cost until it is. We only take on projects where we know this is achievable.</div>
+    </div>
+    <a href="#contact" class="btn-white">Claim Your Free Audit</a>
+  </div>
+</div>
+
+<!-- CASE STUDIES -->
+<section class="cases" id="cases">
+  <div class="cases-inner">
+    <p class="section-eyebrow reveal">Client Outcomes</p>
+    <h2 class="section-title reveal">Real results.<br/>Real operations.</h2>
+    <div class="cases-grid reveal">
+      <div class="case-card">
+        <div class="case-line"></div>
+        <div class="case-label">E-Commerce · AI Employee Bundle</div>
+        <div class="case-title">Support volume cut by 60% in 3 weeks</div>
+        <div class="case-result">FAQ bot + ticket routing deployed. A team of 2 now handles what previously required 5. Response time dropped from 6 hours to under 10 minutes.</div>
+        <div class="case-arrow">›</div>
+      </div>
+      <div class="case-card">
+        <div class="case-line"></div>
+        <div class="case-label">Real Estate · Lead Machine Bundle</div>
+        <div class="case-title">Lead response time: 4 hours → 90 seconds</div>
+        <div class="case-result">AI qualifier + auto-booking eliminated manual follow-up entirely. Booking rate improved 34% in the first month.</div>
+        <div class="case-arrow">›</div>
+      </div>
+      <div class="case-card">
+        <div class="case-line"></div>
+        <div class="case-label">SaaS · Operations Brain</div>
+        <div class="case-title">Onboarding time reduced by 40%</div>
+        <div class="case-result">RAG system built on Notion. New hires self-serve answers from day one. Onboarding calls reduced from 3 sessions to 1.</div>
+        <div class="case-arrow">›</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="icp" id="icp">
+  <div class="icp-inner">
+    <p class="section-eyebrow reveal">Who this is for</p>
+    <h2 class="section-title reveal">We work with a specific<br/>type of business.</h2>
+    <p class="section-sub reveal">We limit new client intake to protect delivery quality. Not every business is the right fit — here's how to know if you are.</p>
+    <div class="icp-grid reveal">
+      <div class="icp-col">
+        <div class="icp-col-title yes">✓ &nbsp;This is for you if</div>
+        <ul class="icp-items">
+          <li>
+            <span class="icp-check yes">✓</span>
+            <span>You're an SMB founder or operations lead with a team of 5–50</span>
+          </li>
+          <li>
+            <span class="icp-check yes">✓</span>
+            <span>Your business generates $500K+ annually and is actively growing</span>
+          </li>
+          <li>
+            <span class="icp-check yes">✓</span>
+            <span>You're losing time, leads, or revenue to manual and repetitive processes</span>
+          </li>
+          <li>
+            <span class="icp-check yes">✓</span>
+            <span>You're ready to implement — not just explore or "think about it"</span>
+          </li>
+          <li>
+            <span class="icp-check yes">✓</span>
+            <span>You want a system that outlasts any single hire and keeps running</span>
+          </li>
+        </ul>
+      </div>
+      <div class="icp-col">
+        <div class="icp-col-title no">✗ &nbsp;This is NOT for you if</div>
+        <ul class="icp-items">
+          <li>
+            <span class="icp-check no">✗</span>
+            <span style="color:rgba(255,255,255,0.4)">You're a solopreneur or early-stage startup with no operational volume yet</span>
+          </li>
+          <li>
+            <span class="icp-check no">✗</span>
+            <span style="color:rgba(255,255,255,0.4)">You're looking for a basic chatbot or a one-day fix</span>
+          </li>
+          <li>
+            <span class="icp-check no">✗</span>
+            <span style="color:rgba(255,255,255,0.4)">You're in research mode with no timeline or budget clarity</span>
+          </li>
+          <li>
+            <span class="icp-check no">✗</span>
+            <span style="color:rgba(255,255,255,0.4)">You need a developer to build custom software from scratch</span>
+          </li>
+          <li>
+            <span class="icp-check no">✗</span>
+            <span style="color:rgba(255,255,255,0.4)">You want AI to replace your entire team rather than support it</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="icp-footer reveal">
+      <div class="icp-footer-text">
+        <strong>Not sure if you qualify?</strong> Book the free audit anyway. The 45-minute call will make it clear — for both of us — whether there's a fit. No pressure if there isn't.
+      </div>
+      <a href="#contact" class="icp-footer-link">Book the audit →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <h2 class="final-cta-title reveal">
+      45 minutes.<br/>No pitch. <span class="hl">Just answers.</span>
+    </h2>
+    <p class="final-cta-sub reveal">We map your operations, identify the biggest opportunity, and show you exactly what to fix first.</p>
+    <a href="#contact" class="final-cta-btn reveal">Book My Free Audit →</a>
+    <div class="final-cta-note reveal">Limited spots each month.</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-layout">
+      <div>
+        <p class="section-eyebrow reveal">Get started</p>
+        <h2 class="section-title reveal">Let's see what's possible<br/>for your business.</h2>
+        <p class="section-sub reveal">Fill out the form and we'll schedule your free 45-minute call within 24 hours.</p>
+        <div class="contact-left-meta reveal">
+        </div>
+      </div>
+      <div class="form-wrap reveal">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name <span class="req">*</span></label>
+            <input type="text" class="form-input" placeholder="Alex" required/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name <span class="req">*</span></label>
+            <input type="text" class="form-input" placeholder="Doe" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Work Email <span class="req">*</span></label>
+          <input type="email" class="form-input" placeholder="alex@company.com" required/>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Company <span class="req">*</span></label>
+            <input type="text" class="form-input" placeholder="Your company" required/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone (optional)</label>
+            <input type="tel" class="form-input" placeholder="+1 555 000 0000"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Where would you like to implement AI? <span class="req">*</span></label>
+          <select class="form-input" required>
+            <option value="">Select an area</option>
+            <option>Lead conversion</option>
+            <option>Customer support</option>
+            <option>Internal workflows</option>
+            <option>Knowledge & onboarding</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <button class="form-submit" id="form-submit-btn" onclick="handleSubmit(this)">Book Your Audit →</button>
+        <div class="form-disclaimer">By submitting, you agree to be contacted about your audit request. We don't spam — one response to schedule your call, that's it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT POPUP -->
+<div class="contact-popup-overlay" id="contact-popup">
+  <div class="contact-popup">
+    <button class="contact-popup-close" onclick="closeContactPopup()">×</button>
+    <div class="contact-popup-label">Get in touch</div>
+    <div class="contact-popup-title">We're one email away.</div>
+    <div class="contact-popup-sub">Pick the right inbox and we'll get back to you directly.</div>
+    <div class="contact-email-list">
+      <a href="/cdn-cgi/l/email-protection#ea828f868685aa9c84818685c4898587" class="contact-email-item">
+        <div class="contact-email-info">
+          <div class="contact-email-type">General enquiries</div>
+          <div class="contact-email-addr">hello&#64;vnklo.com</div>
+        </div>
+        <div class="contact-email-arrow">›</div>
+      </a>
+      <a href="/cdn-cgi/l/email-protection#5625373a33251620383d3a397835393b" class="contact-email-item">
+        <div class="contact-email-info">
+          <div class="contact-email-type">Book an audit / pricing</div>
+          <div class="contact-email-addr">sales&#64;vnklo.com</div>
+        </div>
+        <div class="contact-email-arrow">›</div>
+      </a>
+      <a href="/cdn-cgi/l/email-protection#295a4c5b5f404a4c695f47424546074a4644" class="contact-email-item">
+        <div class="contact-email-info">
+          <div class="contact-email-type">Existing clients / support</div>
+          <div class="contact-email-addr">service&#64;vnklo.com</div>
+        </div>
+        <div class="contact-email-arrow">›</div>
+      </a>
+      <a href="/cdn-cgi/l/email-protection#0979687b7d676c7b7a6160797a497f67626566276a6664" class="contact-email-item">
+        <div class="contact-email-info">
+          <div class="contact-email-type">Partnerships & collaborations</div>
+          <div class="contact-email-addr">partnerships&#64;vnklo.com</div>
+        </div>
+        <div class="contact-email-arrow">›</div>
+      </a>
+      <a href="/cdn-cgi/l/email-protection#9efdffecfbfbeceddee8f0f5f2f1b0fdf1f3" class="contact-email-item">
+        <div class="contact-email-info">
+          <div class="contact-email-type">Careers & opportunities</div>
+          <div class="contact-email-addr">careers&#64;vnklo.com</div>
+        </div>
+        <div class="contact-email-arrow">›</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div style="display:flex;align-items:baseline">
+          <span class="footer-logo-v">V</span><span class="footer-logo-nklo">NKLO</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <div class="footer-col-title">Services</div>
+          <ul>
+            <li><a href="revenue-systems.html">Revenue Systems</a></li>
+            <li><a href="customer-experience.html">Customer Experience</a></li>
+            <li><a href="operations-intelligence.html">Operations Intelligence</a></li>
+            <li><a href="system-overhaul.html">System Overhaul</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="#cases">Case Studies</a></li>
+            <li><a href="thinking.html">What we think</a></li>
+            <li><a href="index.html#contact">Free Audit</a></li>
+            <li><a href="#" onclick="openContactPopup();return false;">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 VNKLO. All rights reserved.</div>
+      <div class="footer-copy">vnklo.com</div>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── NAV MEGA (desktop only) ──
+var activeDropdown = null;
+var activeNavItem = null;
+
+function toggleMega(e, id, niId) {
+  e.preventDefault();
+  var target = document.getElementById(id);
+  var navItem = document.getElementById(niId);
+  if (activeDropdown === target) { closeAll(); return; }
+  closeAll();
+  target.classList.add('open');
+  navItem.classList.add('open');
+  activeDropdown = target;
+  activeNavItem = navItem;
+}
+
+function closeAll() {
+  document.querySelectorAll('.mega').forEach(function(m){ m.classList.remove('open'); });
+  document.querySelectorAll('.nav-item').forEach(function(n){ n.classList.remove('open'); });
+  activeDropdown = null;
+  activeNavItem = null;
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('nav') && !e.target.closest('.mega')) closeAll();
+});
+
+// ── MOBILE DRAWER ──
+function toggleDrawer() {
+  var drawer = document.getElementById('mobile-drawer');
+  var overlay = document.getElementById('drawer-overlay');
+  var btn = document.getElementById('nav-hamburger');
+  if (drawer.classList.contains('open')) {
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+    btn.classList.remove('open');
+    document.body.style.overflow = '';
+  } else {
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+    btn.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeDrawer() {
+  document.getElementById('mobile-drawer').classList.remove('open');
+  document.getElementById('drawer-overlay').classList.remove('open');
+  document.getElementById('nav-hamburger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function toggleDrawerItem(el) {
+  var isOpen = el.classList.contains('open');
+  document.querySelectorAll('.drawer-item').forEach(function(i){ i.classList.remove('open'); });
+  if (!isOpen) el.classList.add('open');
+}
+
+// ── WHAT YOU CAN DO ACCORDION ──
+function toggleWycd(el) {
+  var isActive = el.classList.contains('active');
+  document.querySelectorAll('.wycd-item').forEach(function(i){
+    i.classList.remove('active');
+  });
+  if (!isActive) el.classList.add('active');
+}
+
+// ── FORM SUBMIT ──
+function handleSubmit(btn) {
+  var form = btn.closest('.form-wrap');
+  var required = form.querySelectorAll('[required]');
+  var valid = true;
+  required.forEach(function(f) {
+    if (!f.value.trim()) {
+      f.style.borderColor = 'rgba(161,0,255,0.7)';
+      valid = false;
+    } else {
+      f.style.borderColor = '';
+    }
+  });
+  if (!valid) return;
+  btn.textContent = 'Sent!';
+  btn.style.background = '#333';
+  btn.style.cursor = 'default';
+  btn.onclick = null;
+}
+
+// ── CONTACT POPUP ──
+function openContactPopup() {
+  document.getElementById('contact-popup').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeContactPopup() {
+  document.getElementById('contact-popup').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('contact-popup').addEventListener('click', function(e) {
+  if (e.target === this) closeContactPopup();
+});
+</script>
+</body>
+</html>
