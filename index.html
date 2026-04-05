@@ -111,6 +111,7 @@ nav{
   padding:24px 22px 20px;cursor:pointer;
   transition:background .22s,border-color .22s;
   position:relative;overflow:hidden;
+  text-decoration:none;
 }
 .mega-service-card:hover{
   background:rgba(161,0,255,0.08);border-color:rgba(161,0,255,0.3);
@@ -119,36 +120,33 @@ nav{
   font-size:17px;font-weight:700;color:var(--white);
   margin-bottom:12px;letter-spacing:-0.01em;line-height:1.2;
 }
-/* Preview text — partial fade, expands on hover */
+/* Preview text */
 .mega-service-preview{
   font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;
   position:relative;
-  max-height:3.2em; /* ~2 lines */
   overflow:hidden;
-  transition:max-height .35s ease, opacity .3s;
-  -webkit-mask-image:linear-gradient(to bottom,black 40%,transparent 100%);
-  mask-image:linear-gradient(to bottom,black 40%,transparent 100%);
+  transition:color .3s;
 }
 .mega-service-card:hover .mega-service-preview{
-  max-height:8em;
-  -webkit-mask-image:none;
-  mask-image:none;
   color:rgba(255,255,255,0.7);
 }
-.mega-service-arrow{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--purple);margin-top:14px;
-  opacity:0;transform:translateY(4px);
-  transition:opacity .25s,transform .25s;
-}
-.mega-service-card:hover .mega-service-arrow{opacity:1;transform:translateY(0)}
+
 .mega-service-card::before{
   content:'';position:absolute;top:0;left:0;right:0;height:2px;
   background:var(--purple);transform:scaleX(0);transform-origin:left;
   transition:transform .3s ease;
 }
 .mega-service-card:hover::before{transform:scaleX(1)}
+
+/* ── MEGA: WHAT WE DO — continuity block ── */
+.mega-continuity{
+  margin-top:2px;
+  background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);
+  border-left:3px solid var(--purple);
+  padding:20px 28px;
+  font-size:15px;color:rgba(255,255,255,0.5);line-height:1.7;
+}
+.mega-continuity strong{color:rgba(255,255,255,0.8);font-weight:600}
 
 /* ── MEGA: WHAT WE THINK ── */
 .mega-think-body{
@@ -197,15 +195,15 @@ nav{
   padding:20px 20px 18px;
 }
 .mega-why-title{
-  font-size:13px;font-weight:700;color:var(--white);
+  font-size:15px;font-weight:700;color:var(--white);
   margin-bottom:8px;display:flex;align-items:center;gap:8px;
 }
 .mega-why-title::before{content:'';width:6px;height:6px;background:var(--purple);flex-shrink:0}
-.mega-why-desc{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6}
+.mega-why-desc{font-size:15px;color:rgba(255,255,255,0.5);line-height:1.6}
 .mega-why-closing{
   margin-top:24px;padding:18px 22px;
   background:rgba(161,0,255,0.07);border:1px solid rgba(161,0,255,0.2);
-  font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;
+  font-size:15px;color:rgba(255,255,255,0.6);line-height:1.6;
   max-width:600px;
 }
 .mega-why-closing strong{color:rgba(255,255,255,0.85)}
@@ -392,6 +390,15 @@ nav{
 .card-sm:hover .card-sm-desc{max-height:60px;opacity:1}
 .card-sm-arrow{position:absolute;top:14px;right:14px;color:var(--purple);font-size:14px;opacity:0;transition:opacity .2s}
 .card-sm:hover .card-sm-arrow{opacity:1}
+.services-continuity{
+  margin-top:2px;
+  background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);
+  border-left:3px solid var(--purple);
+  padding:22px 32px;
+  font-size:15px;color:rgba(255,255,255,0.5);line-height:1.7;
+}
+.services-continuity strong{color:rgba(255,255,255,0.8);font-weight:600}
+
 .services-footer-note{
   margin-top:32px;padding:20px 24px;
   border:1px solid rgba(255,255,255,0.06);
@@ -703,23 +710,22 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
     <a href="#services" class="mega-service-card" onclick="closeAll()">
       <div class="mega-service-name">Revenue Systems</div>
       <div class="mega-service-preview">You're losing qualified leads to slow follow-up. We build AI systems that respond instantly, qualify automatically, and keep your pipeline moving — without adding headcount.</div>
-      <div class="mega-service-arrow">Learn more ›</div>
     </a>
     <a href="#services" class="mega-service-card" onclick="closeAll()">
       <div class="mega-service-name">Customer Experience</div>
       <div class="mega-service-preview">Your team is answering the same questions on repeat. We implement AI that handles inbound at scale — accurate, instant, 24/7 — so your people focus on what actually requires them.</div>
-      <div class="mega-service-arrow">Learn more ›</div>
     </a>
     <a href="#services" class="mega-service-card" onclick="closeAll()">
       <div class="mega-service-name">Operations Intelligence</div>
       <div class="mega-service-preview">Tasks fall through the cracks because your tools don't talk to each other. We redesign workflows so information flows automatically, work triggers without manual input, and nothing slips.</div>
-      <div class="mega-service-arrow">Learn more ›</div>
     </a>
     <a href="#services" class="mega-service-card" onclick="closeAll()">
       <div class="mega-service-name">System Overhaul</div>
       <div class="mega-service-preview">When the problem runs deeper than a single workflow. We redesign your entire operational infrastructure — revenue, support, and internal ops — built as one cohesive system.</div>
-      <div class="mega-service-arrow">Learn more ›</div>
     </a>
+  </div>
+  <div class="mega-continuity">
+    <strong>If it's not measured, it breaks again.</strong> We track performance, document processes, and continuously optimize your systems.
   </div>
 </div>
 
@@ -909,137 +915,59 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
     <h2 class="section-title reveal">AI systems built<br/>for real operations.</h2>
     <p class="section-sub reveal">We don't sell tools. We build systems around your specific operational gaps — starting with what's costing you the most right now.</p>
 
-    <div class="tier-label reveal">Bundles — Complete Outcome Systems</div>
-    <div class="cards-grid reveal">
+    <div class="cards-grid reveal" style="grid-template-columns:repeat(2,1fr)">
       <div class="card" onclick="location.href='#contact'">
         <div class="card-purple-line"></div>
         <span class="card-arrow">›</span>
-        <span class="card-tag">Bundle</span>
-        <div class="card-title">AI Employee</div>
-        <div class="card-desc">Your always-on inbox and support operator. Handles emails, routes tickets, and manages FAQs without headcount.</div>
+        <div class="card-title">Revenue Systems</div>
+        <div class="card-desc">You're losing qualified leads to slow follow-up. We build AI systems that respond instantly, qualify automatically, and keep your pipeline moving — without adding headcount.</div>
         <ul class="card-items">
-          <li>Email responder + inbox manager</li>
-          <li>Customer support bot</li>
-          <li>FAQ generator + RAG knowledge base</li>
-          <li>Ticket routing & tagging</li>
-          <li>n8n task automation</li>
-        </ul>
-      </div>
-      <div class="card" onclick="location.href='#contact'">
-        <div class="card-purple-line"></div>
-        <span class="card-arrow">›</span>
-        <span class="card-tag">Bundle</span>
-        <div class="card-title">Lead Machine</div>
-        <div class="card-desc">Qualify, book, and follow up with leads automatically. Your pipeline runs while you sleep.</div>
-        <ul class="card-items">
-          <li>AI lead qualifier (chat widget)</li>
-          <li>Appointment booking (Calendly)</li>
-          <li>Missed call text-back</li>
-          <li>Auto email/SMS follow-up</li>
+          <li>AI lead qualifier + auto-booking</li>
+          <li>Missed call text-back & follow-up sequences</li>
           <li>CRM sync + lead scoring</li>
+          <li>Proposal generation + pipeline automation</li>
         </ul>
       </div>
       <div class="card" onclick="location.href='#contact'">
         <div class="card-purple-line"></div>
         <span class="card-arrow">›</span>
-        <span class="card-tag">Bundle</span>
-        <div class="card-title">Operations Brain</div>
-        <div class="card-desc">Turn your Notion or Drive into a searchable, answerable knowledge base. SOPs retrieved in seconds.</div>
-        <ul class="card-items">
-          <li>RAG (Notion/Drive → Claude)</li>
-          <li>Internal Q&A assistant</li>
-          <li>SOP retrieval</li>
-          <li>Onboarding assistant</li>
-          <li>Document search & summarization</li>
-        </ul>
-      </div>
-      <div class="card" onclick="location.href='#contact'">
-        <div class="card-purple-line"></div>
-        <span class="card-arrow">›</span>
-        <span class="card-tag">Bundle</span>
-        <div class="card-title">AI Sales Assistant</div>
-        <div class="card-desc">Draft proposals, prioritize inboxes, and track deals — all automated. Your reps close, the AI handles the rest.</div>
-        <ul class="card-items">
-          <li>Inbox prioritize + draft</li>
-          <li>Sales follow-up automation</li>
-          <li>Proposal generator</li>
-          <li>Post-call summary + action items</li>
-          <li>Deal tracking insights</li>
-        </ul>
-      </div>
-      <div class="card" onclick="location.href='#contact'">
-        <div class="card-purple-line"></div>
-        <span class="card-arrow">›</span>
-        <span class="card-tag">Bundle</span>
-        <div class="card-title">Customer Experience Engine</div>
-        <div class="card-desc">End-to-end support automation across every channel. Site, WhatsApp, reviews, refunds — handled.</div>
+        <div class="card-title">Customer Experience</div>
+        <div class="card-desc">Your team is answering the same questions on repeat. We implement AI that handles inbound at scale — accurate, instant, 24/7 — so your people focus on what actually requires them.</div>
         <ul class="card-items">
           <li>Support chatbot (site + WhatsApp)</li>
+          <li>Ticket triage, routing & escalation</li>
           <li>Review response automation</li>
-          <li>Ticket triage + escalation</li>
-          <li>Sentiment analysis</li>
-          <li>Refund/FAQ automation</li>
+          <li>Sentiment analysis + refund/FAQ flows</li>
         </ul>
       </div>
       <div class="card" onclick="location.href='#contact'">
         <div class="card-purple-line"></div>
         <span class="card-arrow">›</span>
-        <span class="card-tag">Bundle</span>
-        <div class="card-title">Data & Documents</div>
-        <div class="card-desc">Turn PDFs, contracts, and invoices into structured, actionable data — automatically.</div>
+        <div class="card-title">Operations Intelligence</div>
+        <div class="card-desc">Tasks fall through the cracks because your tools don't talk to each other. We redesign workflows so information flows automatically, work triggers without manual input, and nothing slips.</div>
         <ul class="card-items">
-          <li>PDF → structured data</li>
-          <li>Contract summarizer + compliance flags</li>
-          <li>Invoice extractor → Sheets</li>
-          <li>Report generation</li>
+          <li>RAG system (Notion/Drive → Claude)</li>
+          <li>Internal Q&A + SOP retrieval</li>
+          <li>Document extraction + structured data</li>
+          <li>Cross-tool automation via n8n / Zapier</li>
+        </ul>
+      </div>
+      <div class="card" onclick="location.href='#contact'">
+        <div class="card-purple-line"></div>
+        <span class="card-arrow">›</span>
+        <div class="card-title">System Overhaul</div>
+        <div class="card-desc">When the problem runs deeper than a single workflow. We redesign your entire operational infrastructure — revenue, support, and internal ops — built as one cohesive system.</div>
+        <ul class="card-items">
+          <li>Full operational audit + system mapping</li>
+          <li>End-to-end workflow redesign</li>
+          <li>AI layered across all business functions</li>
+          <li>Ongoing performance tracking + optimization</li>
         </ul>
       </div>
     </div>
 
-    <div class="tier-label reveal" style="margin-top:44px">Standalone Heavylifters</div>
-    <div class="standalones-grid reveal">
-      <div class="card-sm" onclick="location.href='#contact'">
-        <div class="card-sm-line"></div>
-        <span class="card-sm-arrow">›</span>
-        <span class="card-tag single" style="font-size:8px;padding:2px 7px;margin-bottom:10px;display:inline-block">Single</span>
-        <div class="card-sm-title">AI RAG System</div>
-        <div class="card-sm-desc">Custom knowledge base for any business. Notion/Drive → Claude chat.</div>
-      </div>
-      <div class="card-sm" onclick="location.href='#contact'">
-        <div class="card-sm-line"></div>
-        <span class="card-sm-arrow">›</span>
-        <span class="card-tag single" style="font-size:8px;padding:2px 7px;margin-bottom:10px;display:inline-block">Single</span>
-        <div class="card-sm-title">AI Lead Qualifier</div>
-        <div class="card-sm-desc">Chat widget qualifies, scores, and routes leads. CRM/Slack integration.</div>
-      </div>
-      <div class="card-sm" onclick="location.href='#contact'">
-        <div class="card-sm-line"></div>
-        <span class="card-sm-arrow">›</span>
-        <span class="card-tag single" style="font-size:8px;padding:2px 7px;margin-bottom:10px;display:inline-block">Single</span>
-        <div class="card-sm-title">AI Email Responder</div>
-        <div class="card-sm-desc">Gmail/Outlook → tone capture → auto-draft. One-click send.</div>
-      </div>
-      <div class="card-sm" onclick="location.href='#contact'">
-        <div class="card-sm-line"></div>
-        <span class="card-sm-arrow">›</span>
-        <span class="card-tag single" style="font-size:8px;padding:2px 7px;margin-bottom:10px;display:inline-block">Single</span>
-        <div class="card-sm-title">AI Booking Assistant</div>
-        <div class="card-sm-desc">Chat → Calendly → reschedule/cancel flows. Zero admin.</div>
-      </div>
-      <div class="card-sm" onclick="location.href='#contact'">
-        <div class="card-sm-line"></div>
-        <span class="card-sm-arrow">›</span>
-        <span class="card-tag single" style="font-size:8px;padding:2px 7px;margin-bottom:10px;display:inline-block">Single</span>
-        <div class="card-sm-title">AI Sales Call Analyzer</div>
-        <div class="card-sm-desc">Transcription → objections flagged → CRM push automatically.</div>
-      </div>
-      <div class="card-sm" onclick="location.href='#contact'">
-        <div class="card-sm-line"></div>
-        <span class="card-sm-arrow">›</span>
-        <span class="card-tag single" style="font-size:8px;padding:2px 7px;margin-bottom:10px;display:inline-block">Single</span>
-        <div class="card-sm-title">AI Contract Summarizer</div>
-        <div class="card-sm-desc">PDF → risk flags → plain English. Review contracts in 60 seconds.</div>
-      </div>
+    <div class="services-continuity reveal">
+      <strong>If it's not measured, it breaks again.</strong> We track performance, document processes, and continuously optimize your systems — so results compound instead of decay.
     </div>
 
     <div class="services-footer-note reveal">
@@ -1050,23 +978,6 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
     </div>
   </div>
 </section>
-
-<!-- FREE TOOLS -->
-<div class="tools" id="think">
-  <div class="tools-inner">
-    <div class="tier-label reveal">Free Tools — Try Before You Buy</div>
-    <div class="tools-tags reveal">
-      <a href="#contact" class="tool-tag">AI Inbox Cleaner</a>
-      <a href="#contact" class="tool-tag">AI Meeting Notes Generator</a>
-      <a href="#contact" class="tool-tag">AI Review Responder</a>
-      <a href="#contact" class="tool-tag">AI FAQ Bot (Basic)</a>
-      <a href="#contact" class="tool-tag">AI Cold Email Writer</a>
-      <a href="#contact" class="tool-tag">AI Invoice Extractor (Lite)</a>
-      <a href="#contact" class="tool-tag">AI Social Post Generator</a>
-      <a href="#contact" class="tool-tag">AI Content Repurposer</a>
-    </div>
-  </div>
-</div>
 
 <!-- PROCESS / HOW IT WORKS -->
 <section class="process" id="process">
