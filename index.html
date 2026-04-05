@@ -777,25 +777,158 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 /* scroll reveal */
 .reveal{opacity:1;transform:translateY(0)}
 
-@media(max-width:900px){
-  nav{padding:0 20px;height:72px}
-  .nav-links{display:none}
-  .hero{padding-top:72px}
-  .mega{top:72px}
-  .hero-inner,.services-inner,.process-inner,.cases-inner,.contact-inner,.footer-inner,.pain-inner,.icp-inner,.faq-inner,.final-cta-inner{padding:0 24px}
-  .guarantee-inner{padding:48px 24px}
-  .tools{padding:40px 24px}
-  .cards-grid,.standalones-grid,.cases-grid,.pain-grid,.pain-diagnosis{grid-template-columns:1fr}
-  .pain-grid,.process-layout,.icp-grid,.faq-grid,.contact-layout,.wycd-layout{grid-template-columns:1fr;gap:40px}
-  .mega{padding:32px 24px 40px}
-  .mega-services-grid{grid-template-columns:1fr 1fr}
-  .mega-why-grid{grid-template-columns:1fr 1fr}
-  .final-cta{padding:80px 0}
-  .hero-cta-row{flex-direction:column;align-items:flex-start}
+/* ── HAMBURGER BUTTON ── */
+.nav-hamburger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  width:40px;height:40px;cursor:pointer;background:none;border:none;padding:4px;
 }
-@media(max-width:600px){
-  .mega-services-grid{grid-template-columns:1fr}
-  .mega-why-grid{grid-template-columns:1fr}
+.nav-hamburger span{
+  display:block;width:24px;height:2px;background:var(--white);
+  transition:transform .25s,opacity .25s;transform-origin:center;
+}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ── MOBILE DRAWER ── */
+.mobile-drawer{
+  display:none;position:fixed;top:0;right:0;bottom:0;
+  width:min(320px,85vw);background:#0d0d0d;
+  border-left:1px solid rgba(255,255,255,0.08);
+  z-index:400;transform:translateX(100%);
+  transition:transform .3s ease;overflow-y:auto;
+  padding:88px 0 40px;
+}
+.mobile-drawer.open{transform:translateX(0)}
+.drawer-overlay{
+  display:none;position:fixed;inset:0;z-index:399;
+  background:rgba(0,0,0,0.6);
+}
+.drawer-overlay.open{display:block}
+
+.drawer-section{padding:0 28px;margin-bottom:8px}
+.drawer-section-label{
+  font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(255,255,255,0.2);padding:20px 0 10px;
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+.drawer-section:first-child .drawer-section-label{border-top:none}
+.drawer-link{
+  display:block;font-size:16px;font-weight:600;color:rgba(255,255,255,0.8);
+  text-decoration:none;padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  transition:color .2s;
+}
+.drawer-link:hover{color:var(--white)}
+.drawer-link:last-child{border-bottom:none}
+.drawer-sub-link{
+  display:block;font-size:14px;font-weight:400;color:rgba(255,255,255,0.5);
+  text-decoration:none;padding:9px 0 9px 12px;
+  border-bottom:1px solid rgba(255,255,255,0.03);
+  transition:color .2s;position:relative;
+}
+.drawer-sub-link::before{
+  content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:4px;height:4px;background:var(--purple);
+}
+.drawer-sub-link:hover{color:var(--white)}
+.drawer-cta{
+  margin:28px 28px 0;display:block;
+  background:var(--purple);color:var(--white);
+  padding:15px 24px;text-align:center;
+  font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  text-decoration:none;transition:background .2s;
+}
+.drawer-cta:hover{background:var(--purple2)}
+.drawer-contact{
+  margin:12px 28px 0;display:block;text-align:center;
+  font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+  color:rgba(255,255,255,0.4);text-decoration:none;padding:12px;
+  transition:color .2s;cursor:pointer;background:none;border:none;width:calc(100% - 0px);
+}
+.drawer-contact:hover{color:var(--white)}
+
+@media(max-width:900px){
+  /* NAV */
+  nav{padding:0 20px;height:68px}
+  .nav-links{display:none}
+  .mega{display:none !important}
+  .nav-hamburger{display:flex}
+  .mobile-drawer{display:block}
+  .hero{padding-top:68px}
+
+  /* SECTION PADDING */
+  .hero-inner,.services-inner,.cases-inner,.contact-inner,
+  .footer-inner,.pain-inner,.icp-inner,.final-cta-inner,
+  .wycd-inner,.process-inner{padding:0 20px}
+  .guarantee-inner{padding:44px 20px}
+
+  /* HERO */
+  .hero-inner{padding:52px 20px 60px}
+  .hero-headline{font-size:clamp(34px,8vw,52px)}
+  .hero-sub{font-size:16px}
+  .hero-stats{gap:32px;margin-top:52px}
+  .hero-stat-num{font-size:30px}
+  .hero-cta-row{flex-direction:column;align-items:flex-start}
+
+  /* PAIN */
+  .pain{padding:64px 0}
+  .pain-headline-block{margin-bottom:40px}
+  .pain-grid{grid-template-columns:1fr;gap:2px}
+  .pain-diagnosis{grid-template-columns:1fr}
+  .pain-main-title{font-size:clamp(28px,7vw,44px)}
+
+  /* SERVICES */
+  .cards-grid{grid-template-columns:1fr}
+  .card{min-height:200px}
+
+  /* WHAT YOU CAN DO */
+  .wycd{padding:64px 0}
+  .wycd-layout{grid-template-columns:1fr;gap:36px}
+  .wycd-title{font-size:clamp(28px,7vw,42px)}
+
+  /* CASES */
+  .cases-grid{grid-template-columns:1fr}
+
+  /* ICP */
+  .icp-grid{grid-template-columns:1fr}
+  .icp-footer{flex-direction:column;gap:16px}
+
+  /* CONTACT */
+  .contact-layout{grid-template-columns:1fr;gap:36px}
+  .form-row{grid-template-columns:1fr}
+
+  /* FINAL CTA */
+  .final-cta{padding:72px 0}
+  .final-cta-title{font-size:clamp(28px,7vw,44px)}
+
+  /* GUARANTEE */
+  .guarantee-inner{flex-direction:column;gap:28px}
+
+  /* FOOTER */
+  .footer-top{flex-direction:column;gap:32px}
+  .footer-links{gap:32px}
+
+  /* CONTACT POPUP */
+  .contact-popup{padding:32px 24px 28px}
+
+  /* SECTION TITLES */
+  .section-title{font-size:clamp(26px,6vw,40px)}
+}
+
+@media(max-width:480px){
+  nav{padding:0 16px}
+  .hero-inner,.services-inner,.cases-inner,.contact-inner,
+  .footer-inner,.pain-inner,.icp-inner,.final-cta-inner,
+  .wycd-inner{padding:0 16px}
+  .guarantee-inner{padding:36px 16px}
+  .hero-headline{font-size:clamp(28px,9vw,40px)}
+  .pain-main-title{font-size:clamp(24px,8vw,36px)}
+  .section-title{font-size:clamp(22px,7vw,34px)}
+  .wycd-title{font-size:clamp(24px,8vw,36px)}
+  .hero-stats{flex-direction:column;gap:20px}
+  .sol-three{grid-template-columns:1fr}
+  .pain-diagnosis-left,.pain-diagnosis-right{padding:24px 20px}
 }
 </style>
 </head>
@@ -827,8 +960,41 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   </ul>
   <div class="nav-right">
     <a href="#contact" class="nav-btn">Free Audit ›</a>
+    <button class="nav-hamburger" id="nav-hamburger" onclick="toggleDrawer()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
+<div class="mobile-drawer" id="mobile-drawer">
+
+  <div class="drawer-section">
+    <div class="drawer-section-label">Solutions</div>
+    <a href="revenue-systems.html" class="drawer-sub-link" onclick="closeDrawer()">Revenue Systems</a>
+    <a href="customer-experience.html" class="drawer-sub-link" onclick="closeDrawer()">Customer Experience</a>
+    <a href="operations-intelligence.html" class="drawer-sub-link" onclick="closeDrawer()">Operations Intelligence</a>
+    <a href="system-overhaul.html" class="drawer-sub-link" onclick="closeDrawer()">System Overhaul</a>
+  </div>
+
+  <div class="drawer-section">
+    <div class="drawer-section-label">Company</div>
+    <a href="thinking.html" class="drawer-link" onclick="closeDrawer()">What we think</a>
+    <a href="index.html#cases" class="drawer-link" onclick="closeDrawer()">Case Studies</a>
+    <a href="index.html#icp" class="drawer-link" onclick="closeDrawer()">Who it's for</a>
+    <a href="index.html#process" class="drawer-link" onclick="closeDrawer()">How it works</a>
+  </div>
+
+  <div class="drawer-section">
+    <div class="drawer-section-label">Careers</div>
+    <a href="mailto:careers@vnklo.com" class="drawer-sub-link">careers&#64;vnklo.com</a>
+  </div>
+
+  <a href="index.html#contact" class="drawer-cta" onclick="closeDrawer()">Book My Free Audit →</a>
+  <button class="drawer-contact" onclick="closeDrawer();openContactPopup()">Contact</button>
+
+</div>
 
 <!-- WHAT WE DO MEGA -->
 <div class="mega" id="mega-what">
@@ -949,7 +1115,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
       <p><strong>Tell us how you can bring value — and if it interests us, we'll get back to you.</strong></p>
       <p>We're not looking for people who want a job. We're looking for people who see a broken system and already know how to fix it. If that's you — send us something worth reading.</p>
       <p style="margin-top:8px">
-        <a href="mailto:careers@vnklo.com" style="color:var(--purple);font-size:14px;font-weight:600;letter-spacing:0.04em;text-decoration:none;">careers&#64;vnklo.com →</a>
+        <a href="/cdn-cgi/l/email-protection#117270637474636251677f7a7d7e3f727e7c" style="color:var(--purple);font-size:14px;font-weight:600;letter-spacing:0.04em;text-decoration:none;">careers&#64;vnklo.com →</a>
       </p>
     </div>
   </div>
@@ -1358,35 +1524,35 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
     <div class="contact-popup-title">We're one email away.</div>
     <div class="contact-popup-sub">Pick the right inbox and we'll get back to you directly.</div>
     <div class="contact-email-list">
-      <a href="mailto:hello@vnklo.com" class="contact-email-item">
+      <a href="/cdn-cgi/l/email-protection#ea828f868685aa9c84818685c4898587" class="contact-email-item">
         <div class="contact-email-info">
           <div class="contact-email-type">General enquiries</div>
           <div class="contact-email-addr">hello&#64;vnklo.com</div>
         </div>
         <div class="contact-email-arrow">›</div>
       </a>
-      <a href="mailto:sales@vnklo.com" class="contact-email-item">
+      <a href="/cdn-cgi/l/email-protection#5625373a33251620383d3a397835393b" class="contact-email-item">
         <div class="contact-email-info">
           <div class="contact-email-type">Book an audit / pricing</div>
           <div class="contact-email-addr">sales&#64;vnklo.com</div>
         </div>
         <div class="contact-email-arrow">›</div>
       </a>
-      <a href="mailto:service@vnklo.com" class="contact-email-item">
+      <a href="/cdn-cgi/l/email-protection#295a4c5b5f404a4c695f47424546074a4644" class="contact-email-item">
         <div class="contact-email-info">
           <div class="contact-email-type">Existing clients / support</div>
           <div class="contact-email-addr">service&#64;vnklo.com</div>
         </div>
         <div class="contact-email-arrow">›</div>
       </a>
-      <a href="mailto:partnerships@vnklo.com" class="contact-email-item">
+      <a href="/cdn-cgi/l/email-protection#0979687b7d676c7b7a6160797a497f67626566276a6664" class="contact-email-item">
         <div class="contact-email-info">
           <div class="contact-email-type">Partnerships & collaborations</div>
           <div class="contact-email-addr">partnerships&#64;vnklo.com</div>
         </div>
         <div class="contact-email-arrow">›</div>
       </a>
-      <a href="mailto:careers@vnklo.com" class="contact-email-item">
+      <a href="/cdn-cgi/l/email-protection#9efdffecfbfbeceddee8f0f5f2f1b0fdf1f3" class="contact-email-item">
         <div class="contact-email-info">
           <div class="contact-email-type">Careers & opportunities</div>
           <div class="contact-email-addr">careers&#64;vnklo.com</div>
@@ -1434,7 +1600,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── NAV MEGA ──
 let activeDropdown = null;
 let activeNavItem = null;
@@ -1504,6 +1670,31 @@ function handleSubmit(btn) {
   btn.onclick = null;
 }
 
+// ── MOBILE DRAWER ──
+function toggleDrawer() {
+  const drawer = document.getElementById('mobile-drawer');
+  const overlay = document.getElementById('drawer-overlay');
+  const btn = document.getElementById('nav-hamburger');
+  const isOpen = drawer.classList.contains('open');
+  if (isOpen) {
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+    btn.classList.remove('open');
+    document.body.style.overflow = '';
+  } else {
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+    btn.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+function closeDrawer() {
+  document.getElementById('mobile-drawer').classList.remove('open');
+  document.getElementById('drawer-overlay').classList.remove('open');
+  document.getElementById('nav-hamburger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
 // ── CONTACT POPUP ──
 function openContactPopup() {
   document.getElementById('contact-popup').classList.add('open');
@@ -1514,16 +1705,4 @@ function closeContactPopup() {
   document.body.style.overflow = '';
 }
 document.getElementById('contact-popup').addEventListener('click', function(e) {
-  if (e.target === this) closeContactPopup();
-});
-
-// ── SCROLL REVEAL ──
-const obs = new IntersectionObserver(entries => {
-  entries.forEach((e,i) => {
-    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i*55);
-  });
-}, {threshold:0.07});
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-</script>
-</body>
-</html>
+  if (e.target === 
