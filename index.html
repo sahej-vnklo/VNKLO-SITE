@@ -806,34 +806,40 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 }
 .drawer-overlay.open{display:block}
 
-.drawer-section{padding:0 28px;margin-bottom:8px}
-.drawer-section-label{
-  font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;
-  color:rgba(255,255,255,0.2);padding:20px 0 10px;
-  border-top:1px solid rgba(255,255,255,0.05);
+.drawer-nav{display:flex;flex-direction:column;}
+.drawer-item{border-bottom:1px solid rgba(255,255,255,0.06);}
+.drawer-item:first-child{border-top:1px solid rgba(255,255,255,0.06)}
+.drawer-item-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 28px;cursor:pointer;
 }
-.drawer-section:first-child .drawer-section-label{border-top:none}
-.drawer-link{
-  display:block;font-size:16px;font-weight:600;color:rgba(255,255,255,0.8);
-  text-decoration:none;padding:12px 0;
+.drawer-item-title{
+  font-size:17px;font-weight:600;color:rgba(255,255,255,0.85);
+  letter-spacing:-0.01em;
+}
+.drawer-item-chevron{
+  font-size:18px;color:var(--purple);
+  transition:transform .25s;display:inline-block;
+}
+.drawer-item.open .drawer-item-chevron{transform:rotate(90deg)}
+.drawer-item.open .drawer-item-title{color:var(--white)}
+.drawer-item-body{
+  max-height:0;overflow:hidden;
+  transition:max-height .3s ease;
+  background:rgba(255,255,255,0.02);
+}
+.drawer-item.open .drawer-item-body{max-height:300px;}
+.drawer-item-body a{
+  display:block;font-size:14px;font-weight:400;
+  color:rgba(255,255,255,0.55);text-decoration:none;
+  padding:12px 28px 12px 36px;
   border-bottom:1px solid rgba(255,255,255,0.04);
   transition:color .2s;
 }
-.drawer-link:hover{color:var(--white)}
-.drawer-link:last-child{border-bottom:none}
-.drawer-sub-link{
-  display:block;font-size:14px;font-weight:400;color:rgba(255,255,255,0.5);
-  text-decoration:none;padding:9px 0 9px 12px;
-  border-bottom:1px solid rgba(255,255,255,0.03);
-  transition:color .2s;position:relative;
-}
-.drawer-sub-link::before{
-  content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);
-  width:4px;height:4px;background:var(--purple);
-}
-.drawer-sub-link:hover{color:var(--white)}
+.drawer-item-body a:last-child{border-bottom:none}
+.drawer-item-body a:hover{color:var(--white)}
 .drawer-cta{
-  margin:28px 28px 0;display:block;
+  margin:28px 24px 0;display:block;
   background:var(--purple);color:var(--white);
   padding:15px 24px;text-align:center;
   font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
@@ -841,10 +847,10 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 }
 .drawer-cta:hover{background:var(--purple2)}
 .drawer-contact{
-  margin:12px 28px 0;display:block;text-align:center;
+  margin:12px 24px 0;display:block;text-align:center;
   font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
-  color:rgba(255,255,255,0.4);text-decoration:none;padding:12px;
-  transition:color .2s;cursor:pointer;background:none;border:none;width:calc(100% - 0px);
+  color:rgba(255,255,255,0.35);padding:12px;
+  transition:color .2s;cursor:pointer;background:none;border:none;width:auto;
 }
 .drawer-contact:hover{color:var(--white)}
 
@@ -969,25 +975,63 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 <div class="drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
 <div class="mobile-drawer" id="mobile-drawer">
 
-  <div class="drawer-section">
-    <div class="drawer-section-label">Solutions</div>
-    <a href="revenue-systems.html" class="drawer-sub-link" onclick="closeDrawer()">Revenue Systems</a>
-    <a href="customer-experience.html" class="drawer-sub-link" onclick="closeDrawer()">Customer Experience</a>
-    <a href="operations-intelligence.html" class="drawer-sub-link" onclick="closeDrawer()">Operations Intelligence</a>
-    <a href="system-overhaul.html" class="drawer-sub-link" onclick="closeDrawer()">System Overhaul</a>
-  </div>
+  <div class="drawer-nav">
 
-  <div class="drawer-section">
-    <div class="drawer-section-label">Company</div>
-    <a href="thinking.html" class="drawer-link" onclick="closeDrawer()">What we think</a>
-    <a href="index.html#cases" class="drawer-link" onclick="closeDrawer()">Case Studies</a>
-    <a href="index.html#icp" class="drawer-link" onclick="closeDrawer()">Who it's for</a>
-    <a href="index.html#process" class="drawer-link" onclick="closeDrawer()">How it works</a>
-  </div>
+    <div class="drawer-item" onclick="toggleDrawerItem(this)">
+      <div class="drawer-item-head">
+        <span class="drawer-item-title">What we do</span>
+        <span class="drawer-item-chevron">›</span>
+      </div>
+      <div class="drawer-item-body">
+        <a href="revenue-systems.html" onclick="closeDrawer()">Revenue Systems</a>
+        <a href="customer-experience.html" onclick="closeDrawer()">Customer Experience</a>
+        <a href="operations-intelligence.html" onclick="closeDrawer()">Operations Intelligence</a>
+        <a href="system-overhaul.html" onclick="closeDrawer()">System Overhaul</a>
+      </div>
+    </div>
 
-  <div class="drawer-section">
-    <div class="drawer-section-label">Careers</div>
-    <a href="mailto:careers@vnklo.com" class="drawer-sub-link">careers&#64;vnklo.com</a>
+    <div class="drawer-item" onclick="toggleDrawerItem(this)">
+      <div class="drawer-item-head">
+        <span class="drawer-item-title">What we think</span>
+        <span class="drawer-item-chevron">›</span>
+      </div>
+      <div class="drawer-item-body">
+        <a href="thinking.html" onclick="closeDrawer()">How businesses actually run</a>
+      </div>
+    </div>
+
+    <div class="drawer-item" onclick="toggleDrawerItem(this)">
+      <div class="drawer-item-head">
+        <span class="drawer-item-title">Who we are</span>
+        <span class="drawer-item-chevron">›</span>
+      </div>
+      <div class="drawer-item-body">
+        <a href="index.html#cases" onclick="closeDrawer()">Case Studies</a>
+        <a href="index.html#icp" onclick="closeDrawer()">Who it's for</a>
+      </div>
+    </div>
+
+    <div class="drawer-item" onclick="toggleDrawerItem(this)">
+      <div class="drawer-item-head">
+        <span class="drawer-item-title">Why it matters</span>
+        <span class="drawer-item-chevron">›</span>
+      </div>
+      <div class="drawer-item-body">
+        <a href="thinking.html" onclick="closeDrawer()">The cost of doing nothing</a>
+        <a href="index.html#pain" onclick="closeDrawer()">Where businesses break</a>
+      </div>
+    </div>
+
+    <div class="drawer-item" onclick="toggleDrawerItem(this)">
+      <div class="drawer-item-head">
+        <span class="drawer-item-title">Careers</span>
+        <span class="drawer-item-chevron">›</span>
+      </div>
+      <div class="drawer-item-body">
+        <a href="mailto:careers&#64;vnklo.com">Send us something worth reading</a>
+      </div>
+    </div>
+
   </div>
 
   <a href="index.html#contact" class="drawer-cta" onclick="closeDrawer()">Book My Free Audit →</a>
@@ -1650,6 +1694,13 @@ function closeDrawer() {
   document.getElementById('drawer-overlay').classList.remove('open');
   document.getElementById('nav-hamburger').classList.remove('open');
   document.body.style.overflow = '';
+}
+
+// ── DRAWER ACCORDION ──
+function toggleDrawerItem(el) {
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.drawer-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) el.classList.add('open');
 }
 
 // ── WHAT YOU CAN DO ACCORDION ──
