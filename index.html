@@ -273,46 +273,106 @@ nav{
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ── PAIN / PROBLEM SECTION ── */
-.pain{background:var(--dark);padding:88px 0}
+.pain{background:var(--dark);padding:100px 0}
 .pain-inner{max-width:1280px;margin:0 auto;padding:0 80px}
-.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:52px}
-.pain-items{display:flex;flex-direction:column;gap:0}
+
+.pain-headline-block{margin-bottom:72px}
+.pain-headline-block .section-eyebrow{margin-bottom:20px}
+.pain-main-title{
+  font-size:clamp(36px,4.8vw,68px);font-weight:800;
+  letter-spacing:-0.025em;line-height:1.05;
+  max-width:780px;margin-bottom:0;
+}
+.pain-main-title em{
+  font-style:normal;
+  background:linear-gradient(135deg,#A100FF 0%,#C44DFF 50%,#E080FF 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+.pain-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+}
 .pain-item{
-  padding:24px 0;border-bottom:1px solid rgba(255,255,255,0.06);
-  display:flex;align-items:flex-start;gap:20px;
+  background:#141414;
+  padding:32px 32px 28px;
+  display:flex;flex-direction:column;gap:0;
+  position:relative;overflow:hidden;
+  transition:background .25s;
 }
-.pain-item:first-child{border-top:1px solid rgba(255,255,255,0.06)}
-.pain-icon{
-  width:8px;height:8px;background:var(--purple);
-  flex-shrink:0;margin-top:6px;
+.pain-item:hover{background:#1a1a1a}
+.pain-item-top-line{
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--purple);transform:scaleX(0);transform-origin:left;
+  transition:transform .35s ease;
 }
-.pain-item-title{font-size:16px;font-weight:600;margin-bottom:6px;line-height:1.3}
-.pain-item-desc{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.65}
-.pain-right{position:relative}
-.pain-callout{
-  background:rgba(161,0,255,0.06);border:1px solid rgba(161,0,255,0.2);
-  padding:36px;
+.pain-item:hover .pain-item-top-line{transform:scaleX(1)}
+.pain-item-num{
+  font-size:10px;font-weight:700;letter-spacing:0.14em;
+  color:var(--purple);margin-bottom:20px;
 }
-.pain-callout-label{
+.pain-item-title{
+  font-size:18px;font-weight:700;margin-bottom:12px;
+  line-height:1.25;letter-spacing:-0.01em;
+}
+.pain-item-desc{
+  font-size:13px;color:rgba(255,255,255,0.45);
+  line-height:1.7;
+}
+.pain-item-desc strong{color:rgba(255,255,255,0.75);font-weight:600}
+
+.pain-diagnosis{
+  margin-top:2px;
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+}
+.pain-diagnosis-left{
+  background:rgba(161,0,255,0.08);
+  border-top:2px solid var(--purple);
+  padding:36px 36px 32px;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.pain-diagnosis-label{
   font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
   color:var(--purple);margin-bottom:16px;
 }
-.pain-callout-text{
-  font-size:22px;font-weight:700;line-height:1.4;letter-spacing:-0.01em;
-  margin-bottom:20px;
+.pain-diagnosis-statement{
+  font-size:clamp(18px,2vw,26px);font-weight:800;
+  letter-spacing:-0.02em;line-height:1.25;
+  margin-bottom:24px;
 }
-.pain-callout-sub{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.65;margin-bottom:28px}
-.pain-callout-cta{
-  display:inline-flex;align-items:center;gap:12px;
-  font-size:13px;font-weight:700;letter-spacing:0.06em;
+.pain-diagnosis-cta{
+  display:inline-flex;align-items:center;gap:14px;
+  font-size:12px;font-weight:700;letter-spacing:0.1em;
   text-transform:uppercase;color:var(--white);text-decoration:none;
+  margin-top:auto;
 }
-.pain-callout-arrow{
-  width:28px;height:28px;background:var(--purple);
+.pain-diagnosis-arrow{
+  width:30px;height:30px;background:var(--purple);
   display:flex;align-items:center;justify-content:center;
-  font-size:14px;font-weight:900;transition:background .2s;
+  font-size:14px;font-weight:900;transition:background .2s;flex-shrink:0;
 }
-.pain-callout-cta:hover .pain-callout-arrow{background:var(--purple2)}
+.pain-diagnosis-cta:hover .pain-diagnosis-arrow{background:var(--purple2)}
+
+.pain-diagnosis-right{
+  background:#141414;
+  padding:36px 36px 32px;
+  display:flex;flex-direction:column;gap:16px;justify-content:center;
+}
+.pain-diagnosis-right-label{
+  font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:rgba(255,255,255,0.25);margin-bottom:4px;
+}
+.pain-stat-row{
+  display:flex;align-items:baseline;gap:10px;
+  padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.pain-stat-row:last-child{border-bottom:none;padding-bottom:0}
+.pain-stat-num{
+  font-size:32px;font-weight:800;letter-spacing:-0.02em;
+  color:var(--white);line-height:1;
+}
+.pain-stat-num span{color:var(--purple)}
+.pain-stat-label{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5}
+
 
 /* ── SERVICES ── */
 .services{background:var(--dark);padding:0 0 100px}
@@ -636,8 +696,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 .footer-copy{font-size:11px;color:rgba(255,255,255,0.2)}
 
 /* scroll reveal */
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal{opacity:1;transform:translateY(0)}
 
 @media(max-width:900px){
   nav{padding:0 20px;height:72px}
@@ -647,7 +706,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   .hero-inner,.services-inner,.process-inner,.cases-inner,.contact-inner,.footer-inner,.pain-inner,.icp-inner,.faq-inner,.final-cta-inner{padding:0 24px}
   .guarantee-inner{padding:48px 24px}
   .tools{padding:40px 24px}
-  .cards-grid,.standalones-grid,.cases-grid{grid-template-columns:1fr}
+  .cards-grid,.standalones-grid,.cases-grid,.pain-grid,.pain-diagnosis{grid-template-columns:1fr}
   .pain-grid,.process-layout,.icp-grid,.faq-grid,.contact-layout{grid-template-columns:1fr;gap:40px}
   .mega{padding:32px 24px 40px}
   .mega-services-grid{grid-template-columns:1fr 1fr}
@@ -811,7 +870,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
       <p><strong>Tell us how you can bring value — and if it interests us, we'll get back to you.</strong></p>
       <p>We're not looking for people who want a job. We're looking for people who see a broken system and already know how to fix it. If that's you — send us something worth reading.</p>
       <p style="margin-top:8px">
-        <a href="mailto:careers@vnklo.com" style="color:var(--purple);font-size:14px;font-weight:600;letter-spacing:0.04em;text-decoration:none;">careers@vnklo.com →</a>
+        <a href="/cdn-cgi/l/email-protection#d8bbb9aabdbdaaab98aeb6b3b4b7f6bbb7b5" style="color:var(--purple);font-size:14px;font-weight:600;letter-spacing:0.04em;text-decoration:none;"><span class="__cf_email__" data-cfemail="c0a3a1b2a5a5b2b380b6aeabacafeea3afad">[email&#160;protected]</span> →</a>
       </p>
     </div>
   </div>
@@ -873,51 +932,67 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 <!-- PAIN / PROBLEM -->
 <section class="pain" id="pain">
   <div class="pain-inner">
-    <p class="section-eyebrow reveal">Sound familiar?</p>
-    <h2 class="section-title reveal">Most growing businesses hit the<br/>same operational ceiling.</h2>
+
+    <div class="pain-headline-block reveal">
+      <p class="section-eyebrow">The real problem</p>
+      <h2 class="pain-main-title">These aren't operations problems.<br/><em>They're AI problems.</em></h2>
+    </div>
+
     <div class="pain-grid reveal">
-      <div class="pain-items">
-        <div class="pain-item">
-          <div class="pain-icon"></div>
-          <div>
-            <div class="pain-item-title">Leads come in — then go cold</div>
-            <div class="pain-item-desc">Follow-up takes hours. By the time someone responds, the lead is already talking to a competitor. Your pipeline leaks at the top.</div>
-          </div>
-        </div>
-        <div class="pain-item">
-          <div class="pain-icon"></div>
-          <div>
-            <div class="pain-item-title">Your support inbox is a black hole</div>
-            <div class="pain-item-desc">The same questions come in every day. Your team burns hours answering manually. Response times slip. Customers notice.</div>
-          </div>
-        </div>
-        <div class="pain-item">
-          <div class="pain-icon"></div>
-          <div>
-            <div class="pain-item-title">Proposals take too long to send</div>
-            <div class="pain-item-desc">After a great discovery call, it takes days to send a proposal. The urgency is gone. Half the deals that should close, don't.</div>
-          </div>
-        </div>
-        <div class="pain-item">
-          <div class="pain-icon"></div>
-          <div>
-            <div class="pain-item-title">Your team is the system</div>
-            <div class="pain-item-desc">Every process lives in someone's head. When they're out — or they leave — everything slows down. There's no knowledge layer, just people.</div>
-          </div>
-        </div>
+      <div class="pain-item">
+        <div class="pain-item-top-line"></div>
+        <div class="pain-item-num">01</div>
+        <div class="pain-item-title">Leads come in and go cold</div>
+        <div class="pain-item-desc">Follow-up takes hours. By then, the lead is already talking to a competitor. <strong>Every slow response is revenue you don't recover.</strong></div>
       </div>
-      <div class="pain-right">
-        <div class="pain-callout">
-          <div class="pain-callout-label">The real diagnosis</div>
-          <div class="pain-callout-text">These aren't operations problems. They're automation gaps.</div>
-          <div class="pain-callout-sub">Every one of these is a repeatable process that AI can handle faster, cheaper, and more consistently than any hire. The businesses winning right now aren't bigger — they're running systems that work without them.</div>
-          <a href="#contact" class="pain-callout-cta">
-            Find my automation gaps
-            <span class="pain-callout-arrow">›</span>
-          </a>
+      <div class="pain-item">
+        <div class="pain-item-top-line"></div>
+        <div class="pain-item-num">02</div>
+        <div class="pain-item-title">Your support inbox owns your team</div>
+        <div class="pain-item-desc">The same questions, every day, answered manually. <strong>Your best people are spending their time on work a system should handle.</strong></div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-item-top-line"></div>
+        <div class="pain-item-num">03</div>
+        <div class="pain-item-title">Proposals leave too slow, deals die</div>
+        <div class="pain-item-desc">After a great call, days pass before anything is sent. <strong>The urgency window closes. Half the deals that should close, don't.</strong></div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-item-top-line"></div>
+        <div class="pain-item-num">04</div>
+        <div class="pain-item-title">Your team is the only system you have</div>
+        <div class="pain-item-desc">Every process lives in someone's head. <strong>When they're out or they leave, the business slows down. There's no layer beneath the people.</strong></div>
+      </div>
+    </div>
+
+    <div class="pain-diagnosis reveal">
+      <div class="pain-diagnosis-left">
+        <div>
+          <div class="pain-diagnosis-label">The diagnosis</div>
+          <div class="pain-diagnosis-statement">Every one of these is a repeatable process AI can run faster, cheaper, and without headcount. The gap isn't effort — it's architecture.</div>
+        </div>
+        <a href="#contact" class="pain-diagnosis-cta">
+          Find my automation gaps
+          <span class="pain-diagnosis-arrow">›</span>
+        </a>
+      </div>
+      <div class="pain-diagnosis-right">
+        <div class="pain-diagnosis-right-label">What changes when you fix it</div>
+        <div class="pain-stat-row">
+          <div class="pain-stat-num">90<span>s</span></div>
+          <div class="pain-stat-label">Average lead response time after system goes live — down from hours</div>
+        </div>
+        <div class="pain-stat-row">
+          <div class="pain-stat-num">70<span>%</span></div>
+          <div class="pain-stat-label">Of support tickets handled automatically, without a human in the loop</div>
+        </div>
+        <div class="pain-stat-row">
+          <div class="pain-stat-num">20<span>+</span></div>
+          <div class="pain-stat-label">Hours saved per week, per team — redirected to work that actually moves the business</div>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -1338,7 +1413,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── NAV MEGA ──
 let activeDropdown = null;
 let activeNavItem = null;
@@ -1394,12 +1469,4 @@ function handleSubmit(btn) {
 }
 
 // ── SCROLL REVEAL ──
-const obs = new IntersectionObserver(entries => {
-  entries.forEach((e,i) => {
-    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i*55);
-  });
-}, {threshold:0.07});
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-</script>
-</body>
-</html>
+const obs = new IntersectionObserver(entries => 
