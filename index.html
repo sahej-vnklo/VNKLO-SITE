@@ -959,7 +959,6 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
     </li>
   </ul>
   <div class="nav-right">
-    <a href="#contact" class="nav-btn">Free Audit ›</a>
     <button class="nav-hamburger" id="nav-hamburger" onclick="toggleDrawer()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -1628,48 +1627,6 @@ document.addEventListener('click', function(e) {
   if (!e.target.closest('nav') && !e.target.closest('.mega')) closeAll();
 });
 
-// ── WHAT YOU CAN DO ACCORDION ──
-function toggleWycd(el) {
-  const isActive = el.classList.contains('active');
-  document.querySelectorAll('.wycd-item').forEach(i => {
-    i.classList.remove('active');
-    i.querySelector('.wycd-item-icon').textContent = '+';
-  });
-  if (!isActive) {
-    el.classList.add('active');
-    el.querySelector('.wycd-item-icon').textContent = '×';
-  }
-}
-// Set initial icon state
-document.querySelectorAll('.wycd-item.active .wycd-item-icon').forEach(i => i.textContent = '×');
-
-// ── FAQ ──
-function toggleFaq(el) {
-  const isOpen = el.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
-  if (!isOpen) el.classList.add('open');
-}
-
-// ── FORM SUBMIT ──
-function handleSubmit(btn) {
-  const form = btn.closest('.form-wrap');
-  const required = form.querySelectorAll('[required]');
-  let valid = true;
-  required.forEach(f => {
-    if (!f.value.trim()) {
-      f.style.borderColor = 'rgba(161,0,255,0.7)';
-      valid = false;
-    } else {
-      f.style.borderColor = '';
-    }
-  });
-  if (!valid) return;
-  btn.textContent = 'Request Sent ✓';
-  btn.style.background = '#333';
-  btn.style.cursor = 'default';
-  btn.onclick = null;
-}
-
 // ── MOBILE DRAWER ──
 function toggleDrawer() {
   const drawer = document.getElementById('mobile-drawer');
@@ -1695,6 +1652,40 @@ function closeDrawer() {
   document.body.style.overflow = '';
 }
 
+// ── WHAT YOU CAN DO ACCORDION ──
+function toggleWycd(el) {
+  const isActive = el.classList.contains('active');
+  document.querySelectorAll('.wycd-item').forEach(i => {
+    i.classList.remove('active');
+    i.querySelector('.wycd-item-icon').textContent = '+';
+  });
+  if (!isActive) {
+    el.classList.add('active');
+    el.querySelector('.wycd-item-icon').textContent = 'x';
+  }
+}
+document.querySelectorAll('.wycd-item.active .wycd-item-icon').forEach(i => i.textContent = 'x');
+
+// ── FORM SUBMIT ──
+function handleSubmit(btn) {
+  const form = btn.closest('.form-wrap');
+  const required = form.querySelectorAll('[required]');
+  let valid = true;
+  required.forEach(f => {
+    if (!f.value.trim()) {
+      f.style.borderColor = 'rgba(161,0,255,0.7)';
+      valid = false;
+    } else {
+      f.style.borderColor = '';
+    }
+  });
+  if (!valid) return;
+  btn.textContent = 'Sent!';
+  btn.style.background = '#333';
+  btn.style.cursor = 'default';
+  btn.onclick = null;
+}
+
 // ── CONTACT POPUP ──
 function openContactPopup() {
   document.getElementById('contact-popup').classList.add('open');
@@ -1705,4 +1696,16 @@ function closeContactPopup() {
   document.body.style.overflow = '';
 }
 document.getElementById('contact-popup').addEventListener('click', function(e) {
-  if (e.target === 
+  if (e.target === this) closeContactPopup();
+});
+
+// ── SCROLL REVEAL ──
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => {
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i*55);
+  });
+}, {threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
