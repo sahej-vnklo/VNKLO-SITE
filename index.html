@@ -120,20 +120,14 @@ nav{
   font-size:17px;font-weight:700;color:var(--white);
   margin-bottom:12px;letter-spacing:-0.01em;line-height:1.2;
 }
-/* Preview text — partial fade, expands on hover */
+/* Preview text */
 .mega-service-preview{
   font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;
   position:relative;
-  max-height:3.2em; /* ~2 lines */
   overflow:hidden;
-  transition:max-height .35s ease, opacity .3s;
-  -webkit-mask-image:linear-gradient(to bottom,black 40%,transparent 100%);
-  mask-image:linear-gradient(to bottom,black 40%,transparent 100%);
+  transition:color .3s;
 }
 .mega-service-card:hover .mega-service-preview{
-  max-height:8em;
-  -webkit-mask-image:none;
-  mask-image:none;
   color:rgba(255,255,255,0.7);
 }
 
@@ -146,13 +140,10 @@ nav{
 
 /* ── MEGA: WHAT WE DO — continuity block ── */
 .mega-continuity{
-  margin-top:2px;
-  background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);
-  border-left:3px solid var(--purple);
-  padding:20px 28px;
-  font-size:15px;color:rgba(255,255,255,0.5);line-height:1.7;
+  margin-top:36px;
+  font-size:15px;color:rgba(255,255,255,0.55);line-height:1.7;
 }
-.mega-continuity strong{color:rgba(255,255,255,0.8);font-weight:600}
+.mega-continuity strong{color:rgba(255,255,255,0.85);font-weight:600}
 
 /* ── MEGA: WHAT WE THINK ── */
 .mega-think-body{
@@ -282,46 +273,106 @@ nav{
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ── PAIN / PROBLEM SECTION ── */
-.pain{background:var(--dark);padding:88px 0}
+.pain{background:var(--dark);padding:100px 0}
 .pain-inner{max-width:1280px;margin:0 auto;padding:0 80px}
-.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:52px}
-.pain-items{display:flex;flex-direction:column;gap:0}
+
+.pain-headline-block{margin-bottom:72px}
+.pain-headline-block .section-eyebrow{margin-bottom:20px}
+.pain-main-title{
+  font-size:clamp(36px,4.8vw,68px);font-weight:800;
+  letter-spacing:-0.025em;line-height:1.05;
+  max-width:780px;margin-bottom:0;
+}
+.pain-main-title em{
+  font-style:normal;
+  background:linear-gradient(135deg,#A100FF 0%,#C44DFF 50%,#E080FF 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+.pain-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+}
 .pain-item{
-  padding:24px 0;border-bottom:1px solid rgba(255,255,255,0.06);
-  display:flex;align-items:flex-start;gap:20px;
+  background:#141414;
+  padding:32px 32px 28px;
+  display:flex;flex-direction:column;gap:0;
+  position:relative;overflow:hidden;
+  transition:background .25s;
 }
-.pain-item:first-child{border-top:1px solid rgba(255,255,255,0.06)}
-.pain-icon{
-  width:8px;height:8px;background:var(--purple);
-  flex-shrink:0;margin-top:6px;
+.pain-item:hover{background:#1a1a1a}
+.pain-item-top-line{
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--purple);transform:scaleX(0);transform-origin:left;
+  transition:transform .35s ease;
 }
-.pain-item-title{font-size:16px;font-weight:600;margin-bottom:6px;line-height:1.3}
-.pain-item-desc{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.65}
-.pain-right{position:relative}
-.pain-callout{
-  background:rgba(161,0,255,0.06);border:1px solid rgba(161,0,255,0.2);
-  padding:36px;
+.pain-item:hover .pain-item-top-line{transform:scaleX(1)}
+.pain-item-num{
+  font-size:10px;font-weight:700;letter-spacing:0.14em;
+  color:var(--purple);margin-bottom:20px;
 }
-.pain-callout-label{
+.pain-item-title{
+  font-size:18px;font-weight:700;margin-bottom:12px;
+  line-height:1.25;letter-spacing:-0.01em;
+}
+.pain-item-desc{
+  font-size:13px;color:rgba(255,255,255,0.45);
+  line-height:1.7;
+}
+.pain-item-desc strong{color:rgba(255,255,255,0.75);font-weight:600}
+
+.pain-diagnosis{
+  margin-top:2px;
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+}
+.pain-diagnosis-left{
+  background:rgba(161,0,255,0.08);
+  border-top:2px solid var(--purple);
+  padding:36px 36px 32px;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.pain-diagnosis-label{
   font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
   color:var(--purple);margin-bottom:16px;
 }
-.pain-callout-text{
-  font-size:22px;font-weight:700;line-height:1.4;letter-spacing:-0.01em;
-  margin-bottom:20px;
+.pain-diagnosis-statement{
+  font-size:clamp(18px,2vw,26px);font-weight:800;
+  letter-spacing:-0.02em;line-height:1.25;
+  margin-bottom:24px;
 }
-.pain-callout-sub{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.65;margin-bottom:28px}
-.pain-callout-cta{
-  display:inline-flex;align-items:center;gap:12px;
-  font-size:13px;font-weight:700;letter-spacing:0.06em;
+.pain-diagnosis-cta{
+  display:inline-flex;align-items:center;gap:14px;
+  font-size:12px;font-weight:700;letter-spacing:0.1em;
   text-transform:uppercase;color:var(--white);text-decoration:none;
+  margin-top:auto;
 }
-.pain-callout-arrow{
-  width:28px;height:28px;background:var(--purple);
+.pain-diagnosis-arrow{
+  width:30px;height:30px;background:var(--purple);
   display:flex;align-items:center;justify-content:center;
-  font-size:14px;font-weight:900;transition:background .2s;
+  font-size:14px;font-weight:900;transition:background .2s;flex-shrink:0;
 }
-.pain-callout-cta:hover .pain-callout-arrow{background:var(--purple2)}
+.pain-diagnosis-cta:hover .pain-diagnosis-arrow{background:var(--purple2)}
+
+.pain-diagnosis-right{
+  background:#141414;
+  padding:36px 36px 32px;
+  display:flex;flex-direction:column;gap:16px;justify-content:center;
+}
+.pain-diagnosis-right-label{
+  font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:rgba(255,255,255,0.25);margin-bottom:4px;
+}
+.pain-stat-row{
+  display:flex;align-items:baseline;gap:10px;
+  padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.pain-stat-row:last-child{border-bottom:none;padding-bottom:0}
+.pain-stat-num{
+  font-size:32px;font-weight:800;letter-spacing:-0.02em;
+  color:var(--white);line-height:1;
+}
+.pain-stat-num span{color:var(--purple)}
+.pain-stat-label{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5}
+
 
 /* ── SERVICES ── */
 .services{background:var(--dark);padding:0 0 100px}
@@ -355,13 +406,11 @@ nav{
   align-self:flex-start;margin-bottom:14px;
 }
 .card-tag.single{background:transparent;color:var(--purple);border:1px solid rgba(161,0,255,0.4)}
-.card-title{font-size:19px;font-weight:700;margin-bottom:10px;letter-spacing:-0.01em;line-height:1.2;position:relative;z-index:1}
+.card-title{font-size:24px;font-weight:700;margin-bottom:12px;letter-spacing:-0.01em;line-height:1.2;position:relative;z-index:1}
 .card-desc{
-  font-size:12px;font-weight:300;color:rgba(255,255,255,0.55);
-  line-height:1.6;max-height:0;overflow:hidden;
-  opacity:0;transition:max-height .35s ease,opacity .3s;position:relative;z-index:1;
+  font-size:13px;font-weight:300;color:rgba(255,255,255,0.55);
+  line-height:1.65;position:relative;z-index:1;
 }
-.card:hover .card-desc{max-height:100px;opacity:1}
 .card-items{list-style:none;margin-top:6px;position:relative;z-index:1}
 .card-items li{
   font-size:11px;color:rgba(255,255,255,0.35);padding:2px 0 2px 12px;
@@ -396,13 +445,22 @@ nav{
 .card-sm:hover .card-sm-desc{max-height:60px;opacity:1}
 .card-sm-arrow{position:absolute;top:14px;right:14px;color:var(--purple);font-size:14px;opacity:0;transition:opacity .2s}
 .card-sm:hover .card-sm-arrow{opacity:1}
-.services-footer-note{
-  margin-top:32px;padding:20px 24px;
-  border:1px solid rgba(255,255,255,0.06);
-  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+.services-continuity{
+  margin-top:2px;
+  background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);
+  border-left:3px solid var(--purple);
+  padding:22px 32px;
+  font-size:15px;color:rgba(255,255,255,0.5);line-height:1.7;
 }
-.services-footer-note-text{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5}
-.services-footer-note-text strong{color:rgba(255,255,255,0.75);font-weight:600}
+.services-continuity strong{color:rgba(255,255,255,0.8);font-weight:600}
+
+.services-footer-note{
+  margin-top:48px;padding:0;
+  border:none;
+  display:block;
+}
+.services-footer-note-text{font-size:22px;font-weight:700;color:rgba(255,255,255,0.75);line-height:1.5;letter-spacing:-0.01em}
+.services-footer-note-text strong{color:var(--white);font-weight:800}
 .services-footer-cta{
   font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
   color:var(--purple);text-decoration:none;white-space:nowrap;
@@ -421,6 +479,34 @@ nav{
   transition:border-color .2s,color .2s,background .2s;
 }
 .tool-tag:hover{border-color:var(--purple);color:var(--white);background:rgba(161,0,255,0.08)}
+
+/* ── WHAT YOU CAN DO (ACCORDION) ── */
+.wycd{background:var(--black);padding:100px 0}
+.wycd-inner{max-width:1280px;margin:0 auto;padding:0 80px}
+.wycd-layout{display:grid;grid-template-columns:1fr 1fr;gap:120px;align-items:start;margin-top:64px}
+.wycd-left{}
+.wycd-title{font-size:clamp(32px,4vw,56px);font-weight:800;letter-spacing:-0.025em;line-height:1.06;margin-bottom:16px}
+.wycd-sub{font-size:16px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.7}
+.wycd-accordion{display:flex;flex-direction:column;}
+.wycd-item{border-bottom:1px solid rgba(255,255,255,0.07);cursor:pointer;}
+.wycd-item:first-child{border-top:1px solid rgba(255,255,255,0.07)}
+.wycd-item-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px 0;gap:16px;
+}
+.wycd-item-title{
+  font-size:18px;font-weight:600;color:rgba(255,255,255,0.85);
+  letter-spacing:-0.01em;line-height:1.3;transition:color .2s;
+}
+.wycd-item.active .wycd-item-title{color:var(--white)}
+.wycd-item-icon{display:none}
+.wycd-item-body{
+  font-size:14px;color:rgba(255,255,255,0.45);line-height:1.75;
+  max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .35s ease,opacity .25s,padding .25s;
+  padding-bottom:0;
+}
+.wycd-item.active .wycd-item-body{max-height:120px;opacity:1;padding-bottom:20px}
 
 /* ── PROCESS / AUDIT SECTION ── */
 .process{background:var(--black);padding:88px 0}
@@ -622,6 +708,57 @@ textarea.form-input{min-height:90px;resize:vertical}
 .form-submit:hover{background:var(--purple2)}
 .form-disclaimer{font-size:11px;color:rgba(255,255,255,0.2);line-height:1.6;margin-top:4px}
 
+/* ── CONTACT POPUP ── */
+.contact-popup-overlay{
+  display:none;position:fixed;inset:0;z-index:500;
+  background:rgba(0,0,0,0.75);backdrop-filter:blur(4px);
+  align-items:center;justify-content:center;
+}
+.contact-popup-overlay.open{display:flex}
+.contact-popup{
+  background:#111;border:1px solid rgba(255,255,255,0.1);
+  border-top:2px solid var(--purple);
+  padding:44px 48px 40px;max-width:520px;width:90%;position:relative;
+}
+.contact-popup-close{
+  position:absolute;top:18px;right:20px;
+  font-size:22px;font-weight:300;color:rgba(255,255,255,0.3);
+  cursor:pointer;line-height:1;transition:color .2s;border:none;background:none;
+}
+.contact-popup-close:hover{color:var(--white)}
+.contact-popup-label{
+  font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--purple);margin-bottom:14px;
+}
+.contact-popup-title{
+  font-size:26px;font-weight:800;letter-spacing:-0.02em;margin-bottom:8px;
+}
+.contact-popup-sub{
+  font-size:14px;color:rgba(255,255,255,0.45);line-height:1.6;margin-bottom:36px;
+}
+.contact-email-list{display:flex;flex-direction:column;gap:2px;}
+.contact-email-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 20px;background:#1a1a1a;
+  border:1px solid rgba(255,255,255,0.05);
+  transition:background .2s,border-color .2s;
+  text-decoration:none;
+}
+.contact-email-item:hover{background:#222;border-color:rgba(161,0,255,0.3)}
+.contact-email-info{}
+.contact-email-type{
+  font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+  color:rgba(255,255,255,0.3);margin-bottom:5px;
+}
+.contact-email-addr{
+  font-size:15px;font-weight:600;color:var(--white);letter-spacing:0.01em;
+}
+.contact-email-arrow{
+  font-size:18px;color:var(--purple);opacity:0;transition:opacity .2s,transform .2s;
+  transform:translateX(-4px);
+}
+.contact-email-item:hover .contact-email-arrow{opacity:1;transform:translateX(0)}
+
 /* ── FOOTER ── */
 footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56px 0 28px}
 .footer-inner{max-width:1280px;margin:0 auto;padding:0 80px}
@@ -638,28 +775,164 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 .footer-copy{font-size:11px;color:rgba(255,255,255,0.2)}
 
 /* scroll reveal */
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal{opacity:1;transform:translateY(0)}
+
+/* ── HAMBURGER BUTTON ── */
+.nav-hamburger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  width:40px;height:40px;cursor:pointer;background:none;border:none;padding:4px;
+  z-index:600;position:relative;
+}
+.nav-hamburger span{
+  display:block;width:24px;height:2px;background:var(--white);
+  transition:transform .25s,opacity .25s;transform-origin:center;
+}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ── MOBILE DRAWER ── */
+.mobile-drawer{
+  position:fixed;top:0;right:-100%;bottom:0;
+  width:min(320px,85vw);background:#0d0d0d;
+  border-left:1px solid rgba(255,255,255,0.08);
+  z-index:500;overflow-y:auto;
+  padding:88px 0 40px;
+  transition:right .3s ease;
+}
+.mobile-drawer.open{right:0}
+.drawer-overlay{
+  position:fixed;inset:0;z-index:499;
+  background:rgba(0,0,0,0.6);
+  display:none;
+}
+.drawer-overlay.open{display:block}
+.drawer-nav{display:flex;flex-direction:column;}
+.drawer-item{border-bottom:1px solid rgba(255,255,255,0.06);}
+.drawer-item:first-child{border-top:1px solid rgba(255,255,255,0.06)}
+.drawer-item-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 28px;cursor:pointer;user-select:none;
+}
+.drawer-item-title{
+  font-size:17px;font-weight:600;color:rgba(255,255,255,0.85);
+  letter-spacing:-0.01em;pointer-events:none;
+}
+.drawer-item-chevron{
+  font-size:18px;color:var(--purple);
+  transition:transform .25s;display:inline-block;pointer-events:none;
+}
+.drawer-item.open .drawer-item-chevron{transform:rotate(90deg)}
+.drawer-item.open .drawer-item-title{color:var(--white)}
+.drawer-item-body{
+  max-height:0;overflow:hidden;
+  transition:max-height .3s ease;
+  background:rgba(255,255,255,0.02);
+}
+.drawer-item.open .drawer-item-body{max-height:300px;}
+.drawer-item-body a{
+  display:block;font-size:14px;font-weight:400;
+  color:rgba(255,255,255,0.55);text-decoration:none;
+  padding:12px 28px 12px 36px;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  transition:color .2s;
+}
+.drawer-item-body a:last-child{border-bottom:none}
+.drawer-item-body a:active{color:var(--white)}
+.drawer-cta{
+  margin:28px 24px 0;display:block;
+  background:var(--purple);color:var(--white);
+  padding:15px 24px;text-align:center;
+  font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  text-decoration:none;
+}
+.drawer-contact{
+  margin:12px 24px 0;display:block;text-align:center;
+  font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+  color:rgba(255,255,255,0.35);padding:12px;
+  cursor:pointer;background:none;border:none;width:auto;
+}
 
 @media(max-width:900px){
-  nav{padding:0 20px;height:72px}
+  /* NAV */
+  nav{padding:0 20px;height:68px}
   .nav-links{display:none}
-  .hero{padding-top:72px}
-  .mega{top:72px}
-  .hero-inner,.services-inner,.process-inner,.cases-inner,.contact-inner,.footer-inner,.pain-inner,.icp-inner,.faq-inner,.final-cta-inner{padding:0 24px}
-  .guarantee-inner{padding:48px 24px}
-  .tools{padding:40px 24px}
-  .cards-grid,.standalones-grid,.cases-grid{grid-template-columns:1fr}
-  .pain-grid,.process-layout,.icp-grid,.faq-grid,.contact-layout{grid-template-columns:1fr;gap:40px}
-  .mega{padding:32px 24px 40px}
-  .mega-services-grid{grid-template-columns:1fr 1fr}
-  .mega-why-grid{grid-template-columns:1fr 1fr}
-  .final-cta{padding:80px 0}
+  .mega{display:none !important}
+  .nav-hamburger{display:flex}
+  .hero{padding-top:68px}
+
+  /* SECTION PADDING */
+  .hero-inner,.services-inner,.cases-inner,.contact-inner,
+  .footer-inner,.pain-inner,.icp-inner,.final-cta-inner,
+  .wycd-inner,.process-inner{padding:0 20px}
+  .guarantee-inner{padding:44px 20px}
+
+  /* HERO */
+  .hero-inner{padding:52px 20px 60px}
+  .hero-headline{font-size:clamp(34px,8vw,52px)}
+  .hero-sub{font-size:16px}
+  .hero-stats{gap:32px;margin-top:52px}
+  .hero-stat-num{font-size:30px}
   .hero-cta-row{flex-direction:column;align-items:flex-start}
+
+  /* PAIN */
+  .pain{padding:64px 0}
+  .pain-headline-block{margin-bottom:40px}
+  .pain-grid{grid-template-columns:1fr;gap:2px}
+  .pain-diagnosis{grid-template-columns:1fr}
+  .pain-main-title{font-size:clamp(28px,7vw,44px)}
+
+  /* SERVICES */
+  .cards-grid{grid-template-columns:1fr}
+  .card{min-height:200px}
+
+  /* WHAT YOU CAN DO */
+  .wycd{padding:64px 0}
+  .wycd-layout{grid-template-columns:1fr;gap:36px}
+  .wycd-title{font-size:clamp(28px,7vw,42px)}
+
+  /* CASES */
+  .cases-grid{grid-template-columns:1fr}
+
+  /* ICP */
+  .icp-grid{grid-template-columns:1fr}
+  .icp-footer{flex-direction:column;gap:16px}
+
+  /* CONTACT */
+  .contact-layout{grid-template-columns:1fr;gap:36px}
+  .form-row{grid-template-columns:1fr}
+
+  /* FINAL CTA */
+  .final-cta{padding:72px 0}
+  .final-cta-title{font-size:clamp(28px,7vw,44px)}
+
+  /* GUARANTEE */
+  .guarantee-inner{flex-direction:column;gap:28px}
+
+  /* FOOTER */
+  .footer-top{flex-direction:column;gap:32px}
+  .footer-links{gap:32px}
+
+  /* CONTACT POPUP */
+  .contact-popup{padding:32px 24px 28px}
+
+  /* SECTION TITLES */
+  .section-title{font-size:clamp(26px,6vw,40px)}
 }
-@media(max-width:600px){
-  .mega-services-grid{grid-template-columns:1fr}
-  .mega-why-grid{grid-template-columns:1fr}
+
+@media(max-width:480px){
+  nav{padding:0 16px}
+  .hero-inner,.services-inner,.cases-inner,.contact-inner,
+  .footer-inner,.pain-inner,.icp-inner,.final-cta-inner,
+  .wycd-inner{padding:0 16px}
+  .guarantee-inner{padding:36px 16px}
+  .hero-headline{font-size:clamp(28px,9vw,40px)}
+  .pain-main-title{font-size:clamp(24px,8vw,36px)}
+  .section-title{font-size:clamp(22px,7vw,34px)}
+  .wycd-title{font-size:clamp(24px,8vw,36px)}
+  .hero-stats{flex-direction:column;gap:20px}
+  .sol-three{grid-template-columns:1fr}
+  .pain-diagnosis-left,.pain-diagnosis-right{padding:24px 20px}
 }
 </style>
 </head>
@@ -685,11 +958,84 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
     <li class="nav-item has-dropdown" id="ni-why">
       <a href="#" onclick="toggleMega(event,'mega-why','ni-why')">Why it matters</a>
     </li>
+    <li class="nav-item has-dropdown" id="ni-careers">
+      <a href="#" onclick="toggleMega(event,'mega-careers','ni-careers')">Careers</a>
+    </li>
   </ul>
   <div class="nav-right">
-    <a href="#contact" class="nav-btn">Free Audit ›</a>
+    <button class="nav-hamburger" id="nav-hamburger" onclick="toggleDrawer()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
+<div class="mobile-drawer" id="mobile-drawer">
+
+  <div class="drawer-nav">
+
+    <div class="drawer-item" onclick="toggleDrawerItem(this)">
+      <div class="drawer-item-head">
+        <span class="drawer-item-title">What we do</span>
+        <span class="drawer-item-chevron">›</span>
+      </div>
+      <div class="drawer-item-body">
+        <a href="revenue-systems.html" onclick="closeDrawer()">Revenue Systems</a>
+        <a href="customer-experience.html" onclick="closeDrawer()">Customer Experience</a>
+        <a href="operations-intelligence.html" onclick="closeDrawer()">Operations Intelligence</a>
+        <a href="system-overhaul.html" onclick="closeDrawer()">System Overhaul</a>
+      </div>
+    </div>
+
+    <div class="drawer-item" onclick="toggleDrawerItem(this)">
+      <div class="drawer-item-head">
+        <span class="drawer-item-title">What we think</span>
+        <span class="drawer-item-chevron">›</span>
+      </div>
+      <div class="drawer-item-body">
+        <a href="thinking.html" onclick="closeDrawer()">How businesses actually run</a>
+      </div>
+    </div>
+
+    <div class="drawer-item" onclick="toggleDrawerItem(this)">
+      <div class="drawer-item-head">
+        <span class="drawer-item-title">Who we are</span>
+        <span class="drawer-item-chevron">›</span>
+      </div>
+      <div class="drawer-item-body">
+        <a href="index.html#cases" onclick="closeDrawer()">Case Studies</a>
+        <a href="index.html#icp" onclick="closeDrawer()">Who it's for</a>
+      </div>
+    </div>
+
+    <div class="drawer-item" onclick="toggleDrawerItem(this)">
+      <div class="drawer-item-head">
+        <span class="drawer-item-title">Why it matters</span>
+        <span class="drawer-item-chevron">›</span>
+      </div>
+      <div class="drawer-item-body">
+        <a href="thinking.html" onclick="closeDrawer()">The cost of doing nothing</a>
+        <a href="index.html#pain" onclick="closeDrawer()">Where businesses break</a>
+      </div>
+    </div>
+
+    <div class="drawer-item" onclick="toggleDrawerItem(this)">
+      <div class="drawer-item-head">
+        <span class="drawer-item-title">Careers</span>
+        <span class="drawer-item-chevron">›</span>
+      </div>
+      <div class="drawer-item-body">
+        <a href="/cdn-cgi/l/email-protection#385b594a5d5d4a4b1e1b0e0c034e56535457165b5755">Think you belong here? Tell us why.</a>
+      </div>
+    </div>
+
+  </div>
+
+  <a href="index.html#contact" class="drawer-cta" onclick="closeDrawer()">Book My Free Audit →</a>
+  <button class="drawer-contact" onclick="closeDrawer();openContactPopup()">Contact</button>
+
+</div>
 
 <!-- WHAT WE DO MEGA -->
 <div class="mega" id="mega-what">
@@ -737,7 +1083,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
       <p>We study how businesses actually operate — not how they think they do.</p>
       <p>Most inefficiencies are invisible until you map the system. That's where we focus.</p>
     </div>
-    <a href="#think" class="mega-think-cta" onclick="closeAll()">
+    <a href="thinking.html" class="mega-think-cta" onclick="window.location.href='thinking.html';return false;">
       See our thinking
       <span class="mega-think-arrow">›</span>
     </a>
@@ -798,20 +1144,35 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   </div>
 </div>
 
+<!-- CAREERS MEGA -->
+<div class="mega" id="mega-careers">
+  <div class="mega-head">
+    <div class="mega-head-title">Careers</div>
+    <div class="mega-head-arrow">›</div>
+  </div>
+  <div class="mega-who-body">
+    <div class="mega-who-text">
+      <p>We don't hire for roles. We hire for impact.</p>
+      <p><strong>Tell us how you can bring value — and if it interests us, we'll get back to you.</strong></p>
+      <p>We're not looking for people who want a job. We're looking for people who see a broken system and already know how to fix it. If that's you — send us something worth reading.</p>
+      <p style="margin-top:8px">
+        <a href="/cdn-cgi/l/email-protection#117270637474636251677f7a7d7e3f727e7c" style="color:var(--purple);font-size:14px;font-weight:600;letter-spacing:0.04em;text-decoration:none;">careers&#64;vnklo.com →</a>
+      </p>
+    </div>
+  </div>
+</div>
+
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg"></div>
   <div class="hero-inner">
     <h1 class="hero-headline">
-      Your leads, support,<br/>and sales ops —<br/><span class="hl">running on autopilot.</span>
+      The businesses winning<br/>right now aren't bigger.<br/><span class="hl">They're built differently.</span>
     </h1>
-    <p class="hero-sub">We design and deploy custom AI automation systems for SMB founders. Qualified leads booked automatically. Support handled without headcount. Pipeline updates itself. Start with a free 45-minute audit.</p>
+    <p class="hero-sub">The bottlenecks slowing your growth aren't people problems. They're AI problems we haven't solved for you yet.</p>
     <div class="hero-cta-row">
       <a href="#contact" class="hero-cta-primary">Get My Free Audit →</a>
-      <a href="#cases" class="hero-readmore">
-        See real results
-        <span class="hero-readmore-arrow">›</span>
-      </a>
+
     </div>
     <div class="hero-stats">
       <div>
@@ -857,51 +1218,67 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 <!-- PAIN / PROBLEM -->
 <section class="pain" id="pain">
   <div class="pain-inner">
-    <p class="section-eyebrow reveal">Sound familiar?</p>
-    <h2 class="section-title reveal">Most growing businesses hit the<br/>same operational ceiling.</h2>
+
+    <div class="pain-headline-block reveal">
+      <p class="section-eyebrow">The real problem</p>
+      <h2 class="pain-main-title">These aren't operations problems.<br/><em>They're AI problems.</em></h2>
+    </div>
+
     <div class="pain-grid reveal">
-      <div class="pain-items">
-        <div class="pain-item">
-          <div class="pain-icon"></div>
-          <div>
-            <div class="pain-item-title">Leads come in — then go cold</div>
-            <div class="pain-item-desc">Follow-up takes hours. By the time someone responds, the lead is already talking to a competitor. Your pipeline leaks at the top.</div>
-          </div>
-        </div>
-        <div class="pain-item">
-          <div class="pain-icon"></div>
-          <div>
-            <div class="pain-item-title">Your support inbox is a black hole</div>
-            <div class="pain-item-desc">The same questions come in every day. Your team burns hours answering manually. Response times slip. Customers notice.</div>
-          </div>
-        </div>
-        <div class="pain-item">
-          <div class="pain-icon"></div>
-          <div>
-            <div class="pain-item-title">Proposals take too long to send</div>
-            <div class="pain-item-desc">After a great discovery call, it takes days to send a proposal. The urgency is gone. Half the deals that should close, don't.</div>
-          </div>
-        </div>
-        <div class="pain-item">
-          <div class="pain-icon"></div>
-          <div>
-            <div class="pain-item-title">Your team is the system</div>
-            <div class="pain-item-desc">Every process lives in someone's head. When they're out — or they leave — everything slows down. There's no knowledge layer, just people.</div>
-          </div>
-        </div>
+      <div class="pain-item">
+        <div class="pain-item-top-line"></div>
+        <div class="pain-item-num">01</div>
+        <div class="pain-item-title">Leads come in and go cold</div>
+        <div class="pain-item-desc">Follow-up takes hours. By then, the lead is already talking to a competitor. <strong>Every slow response is revenue you don't recover.</strong></div>
       </div>
-      <div class="pain-right">
-        <div class="pain-callout">
-          <div class="pain-callout-label">The real diagnosis</div>
-          <div class="pain-callout-text">These aren't operations problems. They're automation gaps.</div>
-          <div class="pain-callout-sub">Every one of these is a repeatable process that AI can handle faster, cheaper, and more consistently than any hire. The businesses winning right now aren't bigger — they're running systems that work without them.</div>
-          <a href="#contact" class="pain-callout-cta">
-            Find my automation gaps
-            <span class="pain-callout-arrow">›</span>
-          </a>
+      <div class="pain-item">
+        <div class="pain-item-top-line"></div>
+        <div class="pain-item-num">02</div>
+        <div class="pain-item-title">Your support inbox owns your team</div>
+        <div class="pain-item-desc">The same questions, every day, answered manually. <strong>Your best people are spending their time on work a system should handle.</strong></div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-item-top-line"></div>
+        <div class="pain-item-num">03</div>
+        <div class="pain-item-title">Proposals leave too slow, deals die</div>
+        <div class="pain-item-desc">After a great call, days pass before anything is sent. <strong>The urgency window closes. Half the deals that should close, don't.</strong></div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-item-top-line"></div>
+        <div class="pain-item-num">04</div>
+        <div class="pain-item-title">Your team is the only system you have</div>
+        <div class="pain-item-desc">Every process lives in someone's head. <strong>When they're out or they leave, the business slows down. There's no layer beneath the people.</strong></div>
+      </div>
+    </div>
+
+    <div class="pain-diagnosis reveal">
+      <div class="pain-diagnosis-left">
+        <div>
+          <div class="pain-diagnosis-label">The diagnosis</div>
+          <div class="pain-diagnosis-statement">Every one of these is a repeatable process AI can run faster, cheaper, and without headcount. The gap isn't effort — it's architecture.</div>
+        </div>
+        <a href="#contact" class="pain-diagnosis-cta">
+          Find my automation gaps
+          <span class="pain-diagnosis-arrow">›</span>
+        </a>
+      </div>
+      <div class="pain-diagnosis-right">
+        <div class="pain-diagnosis-right-label">What changes when you fix it</div>
+        <div class="pain-stat-row">
+          <div class="pain-stat-num">90<span>s</span></div>
+          <div class="pain-stat-label">Average lead response time after system goes live — down from hours</div>
+        </div>
+        <div class="pain-stat-row">
+          <div class="pain-stat-num">70<span>%</span></div>
+          <div class="pain-stat-label">Of support tickets handled automatically, without a human in the loop</div>
+        </div>
+        <div class="pain-stat-row">
+          <div class="pain-stat-num">20<span>+</span></div>
+          <div class="pain-stat-label">Hours saved per week, per team — redirected to work that actually moves the business</div>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -909,226 +1286,96 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 <section class="services" id="services">
   <div class="services-inner">
     <p class="section-eyebrow reveal">What we build</p>
-    <h2 class="section-title reveal">AI systems built<br/>for real operations.</h2>
+    <h2 class="section-title reveal">Solutions for where your business<br/>is losing time and revenue.</h2>
     <p class="section-sub reveal">We don't sell tools. We build systems around your specific operational gaps — starting with what's costing you the most right now.</p>
 
-    <div class="tier-label reveal">Bundles — Complete Outcome Systems</div>
-    <div class="cards-grid reveal">
-      <div class="card" onclick="location.href='#contact'">
+    <div class="cards-grid reveal" style="grid-template-columns:repeat(2,1fr)">
+      <div class="card" onclick="window.location.href='revenue-systems.html'">
         <div class="card-purple-line"></div>
         <span class="card-arrow">›</span>
-        <span class="card-tag">Bundle</span>
-        <div class="card-title">AI Employee</div>
-        <div class="card-desc">Your always-on inbox and support operator. Handles emails, routes tickets, and manages FAQs without headcount.</div>
-        <ul class="card-items">
-          <li>Email responder + inbox manager</li>
-          <li>Customer support bot</li>
-          <li>FAQ generator + RAG knowledge base</li>
-          <li>Ticket routing & tagging</li>
-          <li>n8n task automation</li>
-        </ul>
+        <div class="card-title">Revenue Systems</div>
+        <div class="card-desc">You're losing qualified leads to slow follow-up. We build AI systems that respond instantly, qualify automatically, and keep your pipeline moving — without adding headcount.</div>
       </div>
-      <div class="card" onclick="location.href='#contact'">
+      <div class="card" onclick="window.location.href='customer-experience.html'">
         <div class="card-purple-line"></div>
         <span class="card-arrow">›</span>
-        <span class="card-tag">Bundle</span>
-        <div class="card-title">Lead Machine</div>
-        <div class="card-desc">Qualify, book, and follow up with leads automatically. Your pipeline runs while you sleep.</div>
-        <ul class="card-items">
-          <li>AI lead qualifier (chat widget)</li>
-          <li>Appointment booking (Calendly)</li>
-          <li>Missed call text-back</li>
-          <li>Auto email/SMS follow-up</li>
-          <li>CRM sync + lead scoring</li>
-        </ul>
+        <div class="card-title">Customer Experience</div>
+        <div class="card-desc">Your team is answering the same questions on repeat. We implement AI that handles inbound at scale — accurate, instant, 24/7 — so your people focus on what actually requires them.</div>
       </div>
-      <div class="card" onclick="location.href='#contact'">
+      <div class="card" onclick="window.location.href='operations-intelligence.html'">
         <div class="card-purple-line"></div>
         <span class="card-arrow">›</span>
-        <span class="card-tag">Bundle</span>
-        <div class="card-title">Operations Brain</div>
-        <div class="card-desc">Turn your Notion or Drive into a searchable, answerable knowledge base. SOPs retrieved in seconds.</div>
-        <ul class="card-items">
-          <li>RAG (Notion/Drive → Claude)</li>
-          <li>Internal Q&A assistant</li>
-          <li>SOP retrieval</li>
-          <li>Onboarding assistant</li>
-          <li>Document search & summarization</li>
-        </ul>
+        <div class="card-title">Operations Intelligence</div>
+        <div class="card-desc">Tasks fall through the cracks because your tools don't talk to each other. We redesign workflows so information flows automatically, work triggers without manual input, and nothing slips.</div>
       </div>
-      <div class="card" onclick="location.href='#contact'">
+      <div class="card" onclick="window.location.href='system-overhaul.html'">
         <div class="card-purple-line"></div>
         <span class="card-arrow">›</span>
-        <span class="card-tag">Bundle</span>
-        <div class="card-title">AI Sales Assistant</div>
-        <div class="card-desc">Draft proposals, prioritize inboxes, and track deals — all automated. Your reps close, the AI handles the rest.</div>
-        <ul class="card-items">
-          <li>Inbox prioritize + draft</li>
-          <li>Sales follow-up automation</li>
-          <li>Proposal generator</li>
-          <li>Post-call summary + action items</li>
-          <li>Deal tracking insights</li>
-        </ul>
-      </div>
-      <div class="card" onclick="location.href='#contact'">
-        <div class="card-purple-line"></div>
-        <span class="card-arrow">›</span>
-        <span class="card-tag">Bundle</span>
-        <div class="card-title">Customer Experience Engine</div>
-        <div class="card-desc">End-to-end support automation across every channel. Site, WhatsApp, reviews, refunds — handled.</div>
-        <ul class="card-items">
-          <li>Support chatbot (site + WhatsApp)</li>
-          <li>Review response automation</li>
-          <li>Ticket triage + escalation</li>
-          <li>Sentiment analysis</li>
-          <li>Refund/FAQ automation</li>
-        </ul>
-      </div>
-      <div class="card" onclick="location.href='#contact'">
-        <div class="card-purple-line"></div>
-        <span class="card-arrow">›</span>
-        <span class="card-tag">Bundle</span>
-        <div class="card-title">Data & Documents</div>
-        <div class="card-desc">Turn PDFs, contracts, and invoices into structured, actionable data — automatically.</div>
-        <ul class="card-items">
-          <li>PDF → structured data</li>
-          <li>Contract summarizer + compliance flags</li>
-          <li>Invoice extractor → Sheets</li>
-          <li>Report generation</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="tier-label reveal" style="margin-top:44px">Standalone Heavylifters</div>
-    <div class="standalones-grid reveal">
-      <div class="card-sm" onclick="location.href='#contact'">
-        <div class="card-sm-line"></div>
-        <span class="card-sm-arrow">›</span>
-        <span class="card-tag single" style="font-size:8px;padding:2px 7px;margin-bottom:10px;display:inline-block">Single</span>
-        <div class="card-sm-title">AI RAG System</div>
-        <div class="card-sm-desc">Custom knowledge base for any business. Notion/Drive → Claude chat.</div>
-      </div>
-      <div class="card-sm" onclick="location.href='#contact'">
-        <div class="card-sm-line"></div>
-        <span class="card-sm-arrow">›</span>
-        <span class="card-tag single" style="font-size:8px;padding:2px 7px;margin-bottom:10px;display:inline-block">Single</span>
-        <div class="card-sm-title">AI Lead Qualifier</div>
-        <div class="card-sm-desc">Chat widget qualifies, scores, and routes leads. CRM/Slack integration.</div>
-      </div>
-      <div class="card-sm" onclick="location.href='#contact'">
-        <div class="card-sm-line"></div>
-        <span class="card-sm-arrow">›</span>
-        <span class="card-tag single" style="font-size:8px;padding:2px 7px;margin-bottom:10px;display:inline-block">Single</span>
-        <div class="card-sm-title">AI Email Responder</div>
-        <div class="card-sm-desc">Gmail/Outlook → tone capture → auto-draft. One-click send.</div>
-      </div>
-      <div class="card-sm" onclick="location.href='#contact'">
-        <div class="card-sm-line"></div>
-        <span class="card-sm-arrow">›</span>
-        <span class="card-tag single" style="font-size:8px;padding:2px 7px;margin-bottom:10px;display:inline-block">Single</span>
-        <div class="card-sm-title">AI Booking Assistant</div>
-        <div class="card-sm-desc">Chat → Calendly → reschedule/cancel flows. Zero admin.</div>
-      </div>
-      <div class="card-sm" onclick="location.href='#contact'">
-        <div class="card-sm-line"></div>
-        <span class="card-sm-arrow">›</span>
-        <span class="card-tag single" style="font-size:8px;padding:2px 7px;margin-bottom:10px;display:inline-block">Single</span>
-        <div class="card-sm-title">AI Sales Call Analyzer</div>
-        <div class="card-sm-desc">Transcription → objections flagged → CRM push automatically.</div>
-      </div>
-      <div class="card-sm" onclick="location.href='#contact'">
-        <div class="card-sm-line"></div>
-        <span class="card-sm-arrow">›</span>
-        <span class="card-tag single" style="font-size:8px;padding:2px 7px;margin-bottom:10px;display:inline-block">Single</span>
-        <div class="card-sm-title">AI Contract Summarizer</div>
-        <div class="card-sm-desc">PDF → risk flags → plain English. Review contracts in 60 seconds.</div>
+        <div class="card-title">System Overhaul</div>
+        <div class="card-desc">When the problem runs deeper than a single workflow. We redesign your entire operational infrastructure — revenue, support, and internal ops — built as one cohesive system.</div>
       </div>
     </div>
 
     <div class="services-footer-note reveal">
       <div class="services-footer-note-text">
-        <strong>Not sure which applies to you?</strong> The audit tells us both. In 45 minutes we map your operations, identify your top 3 gaps, and prescribe the right starting point — no guesswork.
+        <strong>Start Small. Scale Fast.</strong> Not every business needs a full system on day one. We identify the highest-impact automation and implement it first — then expand as you grow.
       </div>
-      <a href="#contact" class="services-footer-cta">Book the free audit →</a>
     </div>
   </div>
 </section>
 
-<!-- FREE TOOLS -->
-<div class="tools" id="think">
-  <div class="tools-inner">
-    <div class="tier-label reveal">Free Tools — Try Before You Buy</div>
-    <div class="tools-tags reveal">
-      <a href="#contact" class="tool-tag">AI Inbox Cleaner</a>
-      <a href="#contact" class="tool-tag">AI Meeting Notes Generator</a>
-      <a href="#contact" class="tool-tag">AI Review Responder</a>
-      <a href="#contact" class="tool-tag">AI FAQ Bot (Basic)</a>
-      <a href="#contact" class="tool-tag">AI Cold Email Writer</a>
-      <a href="#contact" class="tool-tag">AI Invoice Extractor (Lite)</a>
-      <a href="#contact" class="tool-tag">AI Social Post Generator</a>
-      <a href="#contact" class="tool-tag">AI Content Repurposer</a>
-    </div>
-  </div>
-</div>
-
-<!-- PROCESS / HOW IT WORKS -->
-<section class="process" id="process">
-  <div class="process-inner">
-    <p class="section-eyebrow reveal">How it works</p>
-    <h2 class="section-title reveal">From audit to automation<br/>in under two weeks.</h2>
-    <div class="process-layout reveal">
-      <div class="process-steps-col">
-        <div class="process-step-row">
-          <div class="process-num">01</div>
-          <div>
-            <div class="process-step-title">Book Your Free Audit</div>
-            <div class="process-step-desc">45 minutes. We map your current operations, score 6 key areas for automation potential, and identify your top 3 opportunities. No pitch. No obligation. You keep the report regardless.</div>
-          </div>
-        </div>
-        <div class="process-step-row">
-          <div class="process-num">02</div>
-          <div>
-            <div class="process-step-title">Receive Your Audit Report</div>
-            <div class="process-step-desc">Same day. A one-page summary: your top 3 automation opportunities, ranked by ROI, with a clear recommendation on where to start. Plain language, no tech jargon.</div>
-          </div>
-        </div>
-        <div class="process-step-row">
-          <div class="process-num">03</div>
-          <div>
-            <div class="process-step-title">Review Your Proposal</div>
-            <div class="process-step-desc">Within 24 hours. A scoped build with exact deliverables, timeline, and pricing. Three tiers so you can start at the right level for your business today.</div>
-          </div>
-        </div>
-        <div class="process-step-row">
-          <div class="process-num">04</div>
-          <div>
-            <div class="process-step-title">We Build Into Your Stack</div>
-            <div class="process-step-desc">No disruption, no new tools forced on your team. We integrate into your existing systems — Notion, Gmail, your CRM, your calendar. Full staff training and live demos included.</div>
-          </div>
-        </div>
-        <div class="process-step-row">
-          <div class="process-num">05</div>
-          <div>
-            <div class="process-step-title">It Runs — We Track Results</div>
-            <div class="process-step-desc">Live dashboards. Performance tracking. 14 days of post-launch support. And if it doesn't deliver measurable time savings in 30 days, we fix it at no extra cost.</div>
-          </div>
-        </div>
+<!-- WHAT YOU CAN DO -->
+<section class="wycd" id="process">
+  <div class="wycd-inner">
+    <div class="wycd-layout">
+      <div class="wycd-left">
+        <p class="section-eyebrow">What you can do</p>
+        <h2 class="wycd-title">Start here.<br/>Build from there.</h2>
+        <p class="wycd-sub">Every business starts at a different point. You don't need everything at once — you need the right first move.</p>
       </div>
-      <div class="audit-box">
-        <div class="audit-box-label">The Free AI Audit</div>
-        <div class="audit-box-title">45 minutes. No pitch. Yours to keep.</div>
-        <ul class="audit-box-items">
-          <li>Full operational review across 6 business areas</li>
-          <li>Top 3 AI automation opportunities, ranked by ROI</li>
-          <li>Rough cost and timeline for each recommendation</li>
-          <li>One-page audit report delivered same day</li>
-          <li>Clear next step — no pressure, no obligation</li>
-        </ul>
-        <div class="audit-box-meta">
-          <strong>Who runs it:</strong> Sahej, founder of VNKLO — not a junior SDR. You get direct access to the person who will build your system.<br/><br/>
-          <strong>Who it's for:</strong> SMB founders and operations leads with 5–50 team members who are losing time or leads to manual processes.
+      <div class="wycd-accordion">
+        <div class="wycd-item active" onclick="toggleWycd(this)">
+          <div class="wycd-item-head">
+            <div class="wycd-item-title">See where you're losing time</div>
+            <div class="wycd-item-icon">+</div>
+          </div>
+          <div class="wycd-item-body">A 45-minute audit maps exactly where time, revenue, and decisions are being lost in your business. You leave with a clear picture — even if you don't proceed with us.</div>
         </div>
-        <a href="#contact" class="audit-box-cta">Book My Free Audit →</a>
+        <div class="wycd-item" onclick="toggleWycd(this)">
+          <div class="wycd-item-head">
+            <div class="wycd-item-title">Fix the first problem</div>
+            <div class="wycd-item-icon">+</div>
+          </div>
+          <div class="wycd-item-body">We identify your highest-impact automation opportunity and build it first. One focused system — the one that moves the needle fastest for your specific situation.</div>
+        </div>
+        <div class="wycd-item" onclick="toggleWycd(this)">
+          <div class="wycd-item-head">
+            <div class="wycd-item-title">Get it running fast</div>
+            <div class="wycd-item-icon">+</div>
+          </div>
+          <div class="wycd-item-body">Built into your existing tools in under two weeks. No disruption, no new platforms forced on your team. Full training and live demos included from day one.</div>
+        </div>
+        <div class="wycd-item" onclick="toggleWycd(this)">
+          <div class="wycd-item-head">
+            <div class="wycd-item-title">See what actually changes</div>
+            <div class="wycd-item-icon">+</div>
+          </div>
+          <div class="wycd-item-body">Live dashboards and performance tracking show exactly what the system is doing. Numbers, not promises. If the benchmark isn't hit in 30 days, we keep building at no extra cost.</div>
+        </div>
+        <div class="wycd-item" onclick="toggleWycd(this)">
+          <div class="wycd-item-head">
+            <div class="wycd-item-title">Fix the next bottleneck</div>
+            <div class="wycd-item-icon">+</div>
+          </div>
+          <div class="wycd-item-body">Once the first system delivers, we move to the next highest-impact area. Most businesses automate 2–3 systems within the first six months.</div>
+        </div>
+        <div class="wycd-item" onclick="toggleWycd(this)">
+          <div class="wycd-item-head">
+            <div class="wycd-item-title">Step out of the day-to-day</div>
+            <div class="wycd-item-icon">+</div>
+          </div>
+          <div class="wycd-item-body">The end state: a business where the critical work happens automatically — without depending on any single person, and without proportional headcount growth.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1140,7 +1387,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
     <div>
       <div class="guarantee-eyebrow">Our Commitment</div>
       <div class="guarantee-title">Measurable outcomes.<br/>Or we keep building — free.</div>
-      <div class="guarantee-desc">Every engagement includes a specific, measurable guarantee. Not "we'll try our best" — actual numbers: 70% of support tickets handled without human intervention. Qualified leads booked within 48 hours of first inquiry. Follow-up sent within 1 hour. If the benchmark isn't hit within the agreed timeframe, we continue building at no extra cost until it is.</div>
+      <div class="guarantee-desc">Every engagement includes a specific, measurable guarantee. Not "we'll try our best" — actual numbers: 70% of support tickets handled without human intervention. Qualified leads booked within 48 hours of first inquiry. Follow-up sent within 1 hour. If the benchmark isn't hit within the agreed timeframe, we continue building at no extra cost until it is. We only take on projects where we know this is achievable.</div>
     </div>
     <a href="#contact" class="btn-white">Claim Your Free Audit</a>
   </div>
@@ -1244,81 +1491,15 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="faq" id="faq">
-  <div class="faq-inner">
-    <p class="section-eyebrow reveal">Before you ask</p>
-    <h2 class="section-title reveal">The questions we get<br/>on every audit call.</h2>
-    <div class="faq-grid reveal">
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">
-          What exactly do you do — and how is it different from just using ChatGPT?
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">We build end-to-end automation systems that connect your existing tools — your inbox, CRM, Calendly, Notion, PDFs — and orchestrate AI workflows across them. ChatGPT is a tool you use manually. What we build runs automatically, triggered by real business events, without anyone pressing a button.</div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">
-          How fast does this actually go live?
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">Standalone systems go live in 5–10 days. Full outcome bundles typically take 7–14 days. Timeline depends on your stack complexity and how quickly your team can provide access and feedback. We build around your existing setup — no big migrations.</div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">
-          How much does it cost?
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">Standalone systems start at $2,000. Full outcome bundles range from $10,000 to $20,000 depending on scope. The free audit clarifies which level is right for your situation before any commitment is made. There's no obligation to proceed after the audit.</div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">
-          Do I need to change my current tools or tech stack?
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">No. We build into what you already use. If you're on Gmail, HubSpot, Notion, and Calendly — we connect and automate those. We don't force migrations or require you to adopt new platforms. The system fits around your team, not the other way around.</div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">
-          Do you guarantee results?
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">Yes — with specific, measurable benchmarks, not vague promises. For example: 70% of support tickets handled automatically within 60 days, or qualified leads booked within 48 hours of first contact within 30 days. If the benchmark isn't hit, we continue building at no extra cost until it is.</div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">
-          What if I'm not sure what I need automated?
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">That's exactly what the audit is for. In 45 minutes, we work through your operations across 6 key areas, score each for automation potential, and rank your top 3 opportunities by ROI. You'll leave knowing exactly where your biggest lever is — even if you don't proceed with us.</div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">
-          Who actually builds the systems — is it outsourced?
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">No. The audit, design, and build are done directly. You're not handed off to a junior team or a subcontractor after signing. The person who runs your audit is the person who builds your system and supports you post-launch.</div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">
-          What happens after the system goes live?
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">Every engagement includes 14 days of post-launch support, live performance dashboards, and staff training with video tutorials. After that, ongoing maintenance is available. The system is built to run without you — but we're available when you need us.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FINAL CTA -->
 <section class="final-cta">
   <div class="final-cta-inner">
     <h2 class="final-cta-title reveal">
       45 minutes.<br/>No pitch. <span class="hl">Just answers.</span>
     </h2>
-    <p class="final-cta-sub reveal">We map your operations, identify your top 3 automation opportunities, and show you exactly what a build would look like for your business. Free. No obligation. You keep the report either way.</p>
+    <p class="final-cta-sub reveal">We map your operations, identify the biggest opportunity, and show you exactly what to fix first.</p>
     <a href="#contact" class="final-cta-btn reveal">Book My Free Audit →</a>
-    <div class="final-cta-note reveal">We respond within 24 hours to schedule your call. Limited spots per month.</div>
+    <div class="final-cta-note reveal">Limited spots each month.</div>
   </div>
 </section>
 
@@ -1328,21 +1509,9 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
     <div class="contact-layout">
       <div>
         <p class="section-eyebrow reveal">Get started</p>
-        <h2 class="section-title reveal">Let's map your<br/>automation<br/>opportunities.</h2>
-        <p class="section-sub reveal">Fill out the form and we'll schedule your free 45-minute audit call within 24 hours.</p>
+        <h2 class="section-title reveal">Let's see what's possible<br/>for your business.</h2>
+        <p class="section-sub reveal">Fill out the form and we'll schedule your free 45-minute call within 24 hours.</p>
         <div class="contact-left-meta reveal">
-          <div class="contact-meta-item">
-            <div class="contact-meta-label">Turnaround</div>
-            <div class="contact-meta-value">We respond within 24 hours to book your audit call</div>
-          </div>
-          <div class="contact-meta-item">
-            <div class="contact-meta-label">What to expect</div>
-            <div class="contact-meta-value">A 45-minute call. Operations review. Audit report same day. Proposal within 24 hours if there's a fit.</div>
-          </div>
-          <div class="contact-meta-item">
-            <div class="contact-meta-label">No obligation</div>
-            <div class="contact-meta-value">The audit is free and the report is yours to keep — regardless of whether you proceed.</div>
-          </div>
         </div>
       </div>
       <div class="form-wrap reveal">
@@ -1371,38 +1540,69 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
           </div>
         </div>
         <div class="form-group">
-          <label class="form-label">Annual Revenue Range <span class="req">*</span></label>
+          <label class="form-label">Where would you like to implement AI? <span class="req">*</span></label>
           <select class="form-input" required>
-            <option value="">Select a range</option>
-            <option>Under $500K</option>
-            <option>$500K – $1M</option>
-            <option>$1M – $3M</option>
-            <option>$3M – $5M</option>
-            <option>$5M+</option>
+            <option value="">Select an area</option>
+            <option>Lead conversion</option>
+            <option>Customer support</option>
+            <option>Internal workflows</option>
+            <option>Knowledge & onboarding</option>
+            <option>Not sure yet</option>
           </select>
         </div>
-        <div class="form-group">
-          <label class="form-label">What's your biggest operational headache? <span class="req">*</span></label>
-          <select class="form-input" required>
-            <option value="">Select a focus area</option>
-            <option>Lead follow-up is too slow — deals go cold</option>
-            <option>Customer support is overwhelming the team</option>
-            <option>Sales proposals and follow-ups take too long</option>
-            <option>Internal knowledge is scattered — no single source of truth</option>
-            <option>Manual data entry from documents is wasting hours</option>
-            <option>Something else</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Why now? What's made this urgent? <span class="req">*</span></label>
-          <textarea class="form-input" placeholder="What's triggered this conversation — a recent bottleneck, a missed deal, a hire you're trying to avoid?" required></textarea>
-        </div>
-        <button class="form-submit" id="form-submit-btn" onclick="handleSubmit(this)">Request My Free Audit ›</button>
+        <button class="form-submit" id="form-submit-btn" onclick="handleSubmit(this)">Book Your Audit →</button>
         <div class="form-disclaimer">By submitting, you agree to be contacted about your audit request. We don't spam — one response to schedule your call, that's it.</div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- CONTACT POPUP -->
+<div class="contact-popup-overlay" id="contact-popup">
+  <div class="contact-popup">
+    <button class="contact-popup-close" onclick="closeContactPopup()">×</button>
+    <div class="contact-popup-label">Get in touch</div>
+    <div class="contact-popup-title">We're one email away.</div>
+    <div class="contact-popup-sub">Pick the right inbox and we'll get back to you directly.</div>
+    <div class="contact-email-list">
+      <a href="/cdn-cgi/l/email-protection#ea828f868685aa9c84818685c4898587" class="contact-email-item">
+        <div class="contact-email-info">
+          <div class="contact-email-type">General enquiries</div>
+          <div class="contact-email-addr">hello&#64;vnklo.com</div>
+        </div>
+        <div class="contact-email-arrow">›</div>
+      </a>
+      <a href="/cdn-cgi/l/email-protection#5625373a33251620383d3a397835393b" class="contact-email-item">
+        <div class="contact-email-info">
+          <div class="contact-email-type">Book an audit / pricing</div>
+          <div class="contact-email-addr">sales&#64;vnklo.com</div>
+        </div>
+        <div class="contact-email-arrow">›</div>
+      </a>
+      <a href="/cdn-cgi/l/email-protection#295a4c5b5f404a4c695f47424546074a4644" class="contact-email-item">
+        <div class="contact-email-info">
+          <div class="contact-email-type">Existing clients / support</div>
+          <div class="contact-email-addr">service&#64;vnklo.com</div>
+        </div>
+        <div class="contact-email-arrow">›</div>
+      </a>
+      <a href="/cdn-cgi/l/email-protection#0979687b7d676c7b7a6160797a497f67626566276a6664" class="contact-email-item">
+        <div class="contact-email-info">
+          <div class="contact-email-type">Partnerships & collaborations</div>
+          <div class="contact-email-addr">partnerships&#64;vnklo.com</div>
+        </div>
+        <div class="contact-email-arrow">›</div>
+      </a>
+      <a href="/cdn-cgi/l/email-protection#9efdffecfbfbeceddee8f0f5f2f1b0fdf1f3" class="contact-email-item">
+        <div class="contact-email-info">
+          <div class="contact-email-type">Careers & opportunities</div>
+          <div class="contact-email-addr">careers&#64;vnklo.com</div>
+        </div>
+        <div class="contact-email-arrow">›</div>
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -1412,28 +1612,24 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
         <div style="display:flex;align-items:baseline">
           <span class="footer-logo-v">V</span><span class="footer-logo-nklo">NKLO</span>
         </div>
-        <div class="footer-fullform">Value Network &<br/>Key Leverage Operations</div>
       </div>
       <div class="footer-links">
         <div class="footer-col">
           <div class="footer-col-title">Services</div>
           <ul>
-            <li><a href="#services">AI Employee</a></li>
-            <li><a href="#services">Lead Machine</a></li>
-            <li><a href="#services">Operations Brain</a></li>
-            <li><a href="#services">AI Sales Assistant</a></li>
-            <li><a href="#services">CX Engine</a></li>
-            <li><a href="#services">Data & Documents</a></li>
+            <li><a href="revenue-systems.html">Revenue Systems</a></li>
+            <li><a href="customer-experience.html">Customer Experience</a></li>
+            <li><a href="operations-intelligence.html">Operations Intelligence</a></li>
+            <li><a href="system-overhaul.html">System Overhaul</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <div class="footer-col-title">Company</div>
           <ul>
             <li><a href="#cases">Case Studies</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#icp">Who It's For</a></li>
-            <li><a href="#contact">Free Audit</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="thinking.html">What we think</a></li>
+            <li><a href="index.html#contact">Free Audit</a></li>
+            <li><a href="#" onclick="openContactPopup();return false;">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -1445,15 +1641,15 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   </div>
 </footer>
 
-<script>
-// ── NAV MEGA ──
-let activeDropdown = null;
-let activeNavItem = null;
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── NAV MEGA (desktop only) ──
+var activeDropdown = null;
+var activeNavItem = null;
 
 function toggleMega(e, id, niId) {
   e.preventDefault();
-  const target = document.getElementById(id);
-  const navItem = document.getElementById(niId);
+  var target = document.getElementById(id);
+  var navItem = document.getElementById(niId);
   if (activeDropdown === target) { closeAll(); return; }
   closeAll();
   target.classList.add('open');
@@ -1463,8 +1659,8 @@ function toggleMega(e, id, niId) {
 }
 
 function closeAll() {
-  document.querySelectorAll('.mega').forEach(m => m.classList.remove('open'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('open'));
+  document.querySelectorAll('.mega').forEach(function(m){ m.classList.remove('open'); });
+  document.querySelectorAll('.nav-item').forEach(function(n){ n.classList.remove('open'); });
   activeDropdown = null;
   activeNavItem = null;
 }
@@ -1473,19 +1669,52 @@ document.addEventListener('click', function(e) {
   if (!e.target.closest('nav') && !e.target.closest('.mega')) closeAll();
 });
 
-// ── FAQ ──
-function toggleFaq(el) {
-  const isOpen = el.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+// ── MOBILE DRAWER ──
+function toggleDrawer() {
+  var drawer = document.getElementById('mobile-drawer');
+  var overlay = document.getElementById('drawer-overlay');
+  var btn = document.getElementById('nav-hamburger');
+  if (drawer.classList.contains('open')) {
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+    btn.classList.remove('open');
+    document.body.style.overflow = '';
+  } else {
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+    btn.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeDrawer() {
+  document.getElementById('mobile-drawer').classList.remove('open');
+  document.getElementById('drawer-overlay').classList.remove('open');
+  document.getElementById('nav-hamburger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function toggleDrawerItem(el) {
+  var isOpen = el.classList.contains('open');
+  document.querySelectorAll('.drawer-item').forEach(function(i){ i.classList.remove('open'); });
   if (!isOpen) el.classList.add('open');
+}
+
+// ── WHAT YOU CAN DO ACCORDION ──
+function toggleWycd(el) {
+  var isActive = el.classList.contains('active');
+  document.querySelectorAll('.wycd-item').forEach(function(i){
+    i.classList.remove('active');
+  });
+  if (!isActive) el.classList.add('active');
 }
 
 // ── FORM SUBMIT ──
 function handleSubmit(btn) {
-  const form = btn.closest('.form-wrap');
-  const required = form.querySelectorAll('[required]');
-  let valid = true;
-  required.forEach(f => {
+  var form = btn.closest('.form-wrap');
+  var required = form.querySelectorAll('[required]');
+  var valid = true;
+  required.forEach(function(f) {
     if (!f.value.trim()) {
       f.style.borderColor = 'rgba(161,0,255,0.7)';
       valid = false;
@@ -1494,19 +1723,24 @@ function handleSubmit(btn) {
     }
   });
   if (!valid) return;
-  btn.textContent = 'Request Sent ✓';
+  btn.textContent = 'Sent!';
   btn.style.background = '#333';
   btn.style.cursor = 'default';
   btn.onclick = null;
 }
 
-// ── SCROLL REVEAL ──
-const obs = new IntersectionObserver(entries => {
-  entries.forEach((e,i) => {
-    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i*55);
-  });
-}, {threshold:0.07});
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+// ── CONTACT POPUP ──
+function openContactPopup() {
+  document.getElementById('contact-popup').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeContactPopup() {
+  document.getElementById('contact-popup').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('contact-popup').addEventListener('click', function(e) {
+  if (e.target === this) closeContactPopup();
+});
 </script>
 </body>
 </html>
