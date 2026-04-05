@@ -792,19 +792,22 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 
 /* ── MOBILE DRAWER ── */
 .mobile-drawer{
-  display:none;position:fixed;top:0;right:0;bottom:0;
+  position:fixed;top:0;right:0;bottom:0;
   width:min(320px,85vw);background:#0d0d0d;
   border-left:1px solid rgba(255,255,255,0.08);
   z-index:400;transform:translateX(100%);
   transition:transform .3s ease;overflow-y:auto;
   padding:88px 0 40px;
+  visibility:hidden;
 }
-.mobile-drawer.open{transform:translateX(0)}
+.mobile-drawer.open{transform:translateX(0);visibility:visible;}
 .drawer-overlay{
-  display:none;position:fixed;inset:0;z-index:399;
+  position:fixed;inset:0;z-index:399;
   background:rgba(0,0,0,0.6);
+  opacity:0;pointer-events:none;
+  transition:opacity .3s;
 }
-.drawer-overlay.open{display:block}
+.drawer-overlay.open{opacity:1;pointer-events:all;}
 
 .drawer-nav{display:flex;flex-direction:column;}
 .drawer-item{border-bottom:1px solid rgba(255,255,255,0.06);}
@@ -860,7 +863,6 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   .nav-links{display:none}
   .mega{display:none !important}
   .nav-hamburger{display:flex}
-  .mobile-drawer{display:block}
   .hero{padding-top:68px}
 
   /* SECTION PADDING */
@@ -1028,7 +1030,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
         <span class="drawer-item-chevron">›</span>
       </div>
       <div class="drawer-item-body">
-        <a href="mailto:careers&#64;vnklo.com">Send us something worth reading</a>
+        <a href="/cdn-cgi/l/email-protection#385b594a5d5d4a4b1e1b0e0c034e56535457165b5755">Think you belong here? Tell us why.</a>
       </div>
     </div>
 
@@ -1643,7 +1645,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── NAV MEGA ──
 let activeDropdown = null;
 let activeNavItem = null;
@@ -1753,10 +1755,4 @@ document.getElementById('contact-popup').addEventListener('click', function(e) {
 // ── SCROLL REVEAL ──
 const obs = new IntersectionObserver(entries => {
   entries.forEach((e,i) => {
-    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i*55);
-  });
-}, {threshold:0.07});
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-</script>
-</body>
-</html>
+    if (e.isIntersecting) setTimeout(() => e.target.cla
