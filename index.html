@@ -781,6 +781,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 .nav-hamburger{
   display:none;flex-direction:column;justify-content:center;gap:5px;
   width:40px;height:40px;cursor:pointer;background:none;border:none;padding:4px;
+  z-index:600;position:relative;
 }
 .nav-hamburger span{
   display:block;width:24px;height:2px;background:var(--white);
@@ -792,37 +793,34 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 
 /* ── MOBILE DRAWER ── */
 .mobile-drawer{
-  position:fixed;top:0;right:0;bottom:0;
+  position:fixed;top:0;right:-100%;bottom:0;
   width:min(320px,85vw);background:#0d0d0d;
   border-left:1px solid rgba(255,255,255,0.08);
-  z-index:400;transform:translateX(100%);
-  transition:transform .3s ease;overflow-y:auto;
+  z-index:500;overflow-y:auto;
   padding:88px 0 40px;
-  visibility:hidden;
+  transition:right .3s ease;
 }
-.mobile-drawer.open{transform:translateX(0);visibility:visible;}
+.mobile-drawer.open{right:0}
 .drawer-overlay{
-  position:fixed;inset:0;z-index:399;
+  position:fixed;inset:0;z-index:499;
   background:rgba(0,0,0,0.6);
-  opacity:0;pointer-events:none;
-  transition:opacity .3s;
+  display:none;
 }
-.drawer-overlay.open{opacity:1;pointer-events:all;}
-
+.drawer-overlay.open{display:block}
 .drawer-nav{display:flex;flex-direction:column;}
 .drawer-item{border-bottom:1px solid rgba(255,255,255,0.06);}
 .drawer-item:first-child{border-top:1px solid rgba(255,255,255,0.06)}
 .drawer-item-head{
   display:flex;align-items:center;justify-content:space-between;
-  padding:18px 28px;cursor:pointer;
+  padding:18px 28px;cursor:pointer;user-select:none;
 }
 .drawer-item-title{
   font-size:17px;font-weight:600;color:rgba(255,255,255,0.85);
-  letter-spacing:-0.01em;
+  letter-spacing:-0.01em;pointer-events:none;
 }
 .drawer-item-chevron{
   font-size:18px;color:var(--purple);
-  transition:transform .25s;display:inline-block;
+  transition:transform .25s;display:inline-block;pointer-events:none;
 }
 .drawer-item.open .drawer-item-chevron{transform:rotate(90deg)}
 .drawer-item.open .drawer-item-title{color:var(--white)}
@@ -840,22 +838,20 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   transition:color .2s;
 }
 .drawer-item-body a:last-child{border-bottom:none}
-.drawer-item-body a:hover{color:var(--white)}
+.drawer-item-body a:active{color:var(--white)}
 .drawer-cta{
   margin:28px 24px 0;display:block;
   background:var(--purple);color:var(--white);
   padding:15px 24px;text-align:center;
   font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
-  text-decoration:none;transition:background .2s;
+  text-decoration:none;
 }
-.drawer-cta:hover{background:var(--purple2)}
 .drawer-contact{
   margin:12px 24px 0;display:block;text-align:center;
   font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
   color:rgba(255,255,255,0.35);padding:12px;
-  transition:color .2s;cursor:pointer;background:none;border:none;width:auto;
+  cursor:pointer;background:none;border:none;width:auto;
 }
-.drawer-contact:hover{color:var(--white)}
 
 @media(max-width:900px){
   /* NAV */
@@ -1646,14 +1642,14 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ── NAV MEGA ──
-let activeDropdown = null;
-let activeNavItem = null;
+// ── NAV MEGA (desktop only) ──
+var activeDropdown = null;
+var activeNavItem = null;
 
 function toggleMega(e, id, niId) {
   e.preventDefault();
-  const target = document.getElementById(id);
-  const navItem = document.getElementById(niId);
+  var target = document.getElementById(id);
+  var navItem = document.getElementById(niId);
   if (activeDropdown === target) { closeAll(); return; }
   closeAll();
   target.classList.add('open');
@@ -1663,8 +1659,8 @@ function toggleMega(e, id, niId) {
 }
 
 function closeAll() {
-  document.querySelectorAll('.mega').forEach(m => m.classList.remove('open'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('open'));
+  document.querySelectorAll('.mega').forEach(function(m){ m.classList.remove('open'); });
+  document.querySelectorAll('.nav-item').forEach(function(n){ n.classList.remove('open'); });
   activeDropdown = null;
   activeNavItem = null;
 }
@@ -1675,11 +1671,10 @@ document.addEventListener('click', function(e) {
 
 // ── MOBILE DRAWER ──
 function toggleDrawer() {
-  const drawer = document.getElementById('mobile-drawer');
-  const overlay = document.getElementById('drawer-overlay');
-  const btn = document.getElementById('nav-hamburger');
-  const isOpen = drawer.classList.contains('open');
-  if (isOpen) {
+  var drawer = document.getElementById('mobile-drawer');
+  var overlay = document.getElementById('drawer-overlay');
+  var btn = document.getElementById('nav-hamburger');
+  if (drawer.classList.contains('open')) {
     drawer.classList.remove('open');
     overlay.classList.remove('open');
     btn.classList.remove('open');
@@ -1691,6 +1686,7 @@ function toggleDrawer() {
     document.body.style.overflow = 'hidden';
   }
 }
+
 function closeDrawer() {
   document.getElementById('mobile-drawer').classList.remove('open');
   document.getElementById('drawer-overlay').classList.remove('open');
@@ -1698,33 +1694,27 @@ function closeDrawer() {
   document.body.style.overflow = '';
 }
 
-// ── DRAWER ACCORDION ──
 function toggleDrawerItem(el) {
-  const isOpen = el.classList.contains('open');
-  document.querySelectorAll('.drawer-item').forEach(i => i.classList.remove('open'));
+  var isOpen = el.classList.contains('open');
+  document.querySelectorAll('.drawer-item').forEach(function(i){ i.classList.remove('open'); });
   if (!isOpen) el.classList.add('open');
 }
 
 // ── WHAT YOU CAN DO ACCORDION ──
 function toggleWycd(el) {
-  const isActive = el.classList.contains('active');
-  document.querySelectorAll('.wycd-item').forEach(i => {
+  var isActive = el.classList.contains('active');
+  document.querySelectorAll('.wycd-item').forEach(function(i){
     i.classList.remove('active');
-    i.querySelector('.wycd-item-icon').textContent = '+';
   });
-  if (!isActive) {
-    el.classList.add('active');
-    el.querySelector('.wycd-item-icon').textContent = 'x';
-  }
+  if (!isActive) el.classList.add('active');
 }
-document.querySelectorAll('.wycd-item.active .wycd-item-icon').forEach(i => i.textContent = 'x');
 
 // ── FORM SUBMIT ──
 function handleSubmit(btn) {
-  const form = btn.closest('.form-wrap');
-  const required = form.querySelectorAll('[required]');
-  let valid = true;
-  required.forEach(f => {
+  var form = btn.closest('.form-wrap');
+  var required = form.querySelectorAll('[required]');
+  var valid = true;
+  required.forEach(function(f) {
     if (!f.value.trim()) {
       f.style.borderColor = 'rgba(161,0,255,0.7)';
       valid = false;
@@ -1751,8 +1741,6 @@ function closeContactPopup() {
 document.getElementById('contact-popup').addEventListener('click', function(e) {
   if (e.target === this) closeContactPopup();
 });
-
-// ── SCROLL REVEAL ──
-const obs = new IntersectionObserver(entries => {
-  entries.forEach((e,i) => {
-    if (e.isIntersecting) setTimeout(() => e.target.cla
+</script>
+</body>
+</html>
