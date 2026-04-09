@@ -474,6 +474,45 @@ nav{
 }
 .services-footer-cta:hover{color:var(--purple2)}
 
+/* ── FLIP CARDS ── */
+.flip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.flip-wrap{height:320px;perspective:1000px;cursor:pointer}
+.flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.55s cubic-bezier(0.4,0.2,0.2,1)}
+.flip-wrap:hover .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{
+  position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border-radius:16px;border:1px solid rgba(161,0,255,0.25);
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.flip-front{
+  background:rgba(255,255,255,0.04);
+  align-items:center;justify-content:center;
+  padding:28px 24px;text-align:center;
+}
+.flip-front::before{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(160deg,rgba(161,0,255,0.1) 0%,transparent 55%);pointer-events:none}
+.flip-back{
+  background:rgba(20,0,40,0.96);border-color:rgba(161,0,255,0.5);
+  transform:rotateY(180deg);padding:28px 24px;justify-content:space-between;
+}
+.flip-back::before{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(160deg,rgba(161,0,255,0.15) 0%,transparent 60%);pointer-events:none}
+.flip-card-icon{
+  width:56px;height:56px;background:rgba(161,0,255,0.12);border:1px solid rgba(161,0,255,0.28);
+  border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;flex-shrink:0;
+}
+.flip-card-icon svg{width:26px;height:26px;stroke:#C44DFF;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.flip-card-num{font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(161,0,255,0.55);margin-bottom:10px}
+.flip-card-title{font-size:20px;font-weight:800;color:var(--white);letter-spacing:-0.02em;line-height:1.15}
+.flip-back-num{font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(161,0,255,0.55);margin-bottom:12px}
+.flip-back-title{font-size:17px;font-weight:800;color:var(--white);letter-spacing:-0.01em;margin-bottom:14px;line-height:1.2}
+.flip-back-desc{font-size:12px;color:rgba(255,255,255,0.55);line-height:1.7}
+.flip-back-cta{
+  display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;
+  letter-spacing:0.08em;text-transform:uppercase;color:var(--white);text-decoration:none;
+  padding:10px 18px;background:rgba(161,0,255,0.85);border-radius:6px;
+  transition:background .2s;align-self:flex-start;position:relative;z-index:5;cursor:pointer;border:none;
+}
+.flip-back-cta:hover{background:var(--purple)}
+
 /* ── FREE TOOLS ── */
 .tools{background:#080808;padding:52px 80px}
 .tools-inner{max-width:1280px;margin:0 auto}
@@ -890,6 +929,8 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 
   /* SERVICES */
   .cards-grid{grid-template-columns:1fr}
+  .flip-grid{grid-template-columns:1fr 1fr}
+  .flip-wrap{height:280px}
   .card{min-height:200px}
 
   /* WHAT YOU CAN DO */
@@ -1293,31 +1334,88 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
     <h2 class="section-title reveal">Solutions for where your business<br/>is losing time and revenue.</h2>
     <p class="section-sub reveal">We don't sell tools. We build systems around your specific operational gaps — starting with what's costing you the most right now.</p>
 
-    <div class="cards-grid reveal" style="grid-template-columns:repeat(2,1fr)">
-      <div class="card" onclick="window.location.href='revenue-systems.html'">
-        <div class="card-purple-line"></div>
-        <span class="card-arrow">›</span>
-        <div class="card-title">Revenue Systems</div>
-        <div class="card-desc">You're losing qualified leads to slow follow-up. We build AI systems that respond instantly, qualify automatically, and keep your pipeline moving — without adding headcount.</div>
+    <div class="flip-grid reveal">
+
+      <div class="flip-wrap" onclick="window.location.href='revenue-systems.html'">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="flip-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 4-4"/></svg>
+            </div>
+            <div class="flip-card-num">01</div>
+            <div class="flip-card-title">Revenue Systems</div>
+          </div>
+          <div class="flip-back">
+            <div>
+              <div class="flip-back-num">01</div>
+              <div class="flip-back-title">Revenue Systems</div>
+              <div class="flip-back-desc">Slow follow-up is killing your pipeline. AI responds instantly, qualifies leads, and keeps deals moving without adding headcount.</div>
+            </div>
+            <button class="flip-back-cta" onclick="event.stopPropagation();window.location.href='revenue-systems.html'">Explore →</button>
+          </div>
+        </div>
       </div>
-      <div class="card" onclick="window.location.href='customer-experience.html'">
-        <div class="card-purple-line"></div>
-        <span class="card-arrow">›</span>
-        <div class="card-title">Customer Experience</div>
-        <div class="card-desc">Your team is answering the same questions on repeat. We implement AI that handles inbound at scale — accurate, instant, 24/7 — so your people focus on what actually requires them.</div>
+
+      <div class="flip-wrap" onclick="window.location.href='customer-experience.html'">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="flip-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="flip-card-num">02</div>
+            <div class="flip-card-title">Customer Experience</div>
+          </div>
+          <div class="flip-back">
+            <div>
+              <div class="flip-back-num">02</div>
+              <div class="flip-back-title">Customer Experience</div>
+              <div class="flip-back-desc">Your team answers the same questions daily. AI handles inbound at scale — accurate, instant, 24/7 — so your people focus on what actually requires them.</div>
+            </div>
+            <button class="flip-back-cta" onclick="event.stopPropagation();window.location.href='customer-experience.html'">Explore →</button>
+          </div>
+        </div>
       </div>
-      <div class="card" onclick="window.location.href='operations-intelligence.html'">
-        <div class="card-purple-line"></div>
-        <span class="card-arrow">›</span>
-        <div class="card-title">Operations Intelligence</div>
-        <div class="card-desc">Tasks fall through the cracks because your tools don't talk to each other. We redesign workflows so information flows automatically, work triggers without manual input, and nothing slips.</div>
+
+      <div class="flip-wrap" onclick="window.location.href='operations-intelligence.html'">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="flip-card-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M6 8h4M6 11h2M14 8l2 2-2 2"/></svg>
+            </div>
+            <div class="flip-card-num">03</div>
+            <div class="flip-card-title">Operations Intelligence</div>
+          </div>
+          <div class="flip-back">
+            <div>
+              <div class="flip-back-num">03</div>
+              <div class="flip-back-title">Operations Intelligence</div>
+              <div class="flip-back-desc">Knowledge trapped in docs and people's heads. RAG pipelines turn your Notion or Drive into a searchable AI brain — answers in seconds.</div>
+            </div>
+            <button class="flip-back-cta" onclick="event.stopPropagation();window.location.href='operations-intelligence.html'">Explore →</button>
+          </div>
+        </div>
       </div>
-      <div class="card" onclick="window.location.href='system-overhaul.html'">
-        <div class="card-purple-line"></div>
-        <span class="card-arrow">›</span>
-        <div class="card-title">System Overhaul</div>
-        <div class="card-desc">When the problem runs deeper than a single workflow. We redesign your entire operational infrastructure — revenue, support, and internal ops — built as one cohesive system.</div>
+
+      <div class="flip-wrap" onclick="window.location.href='system-overhaul.html'">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="flip-card-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"/></svg>
+            </div>
+            <div class="flip-card-num">04</div>
+            <div class="flip-card-title">System Overhaul</div>
+          </div>
+          <div class="flip-back">
+            <div>
+              <div class="flip-back-num">04</div>
+              <div class="flip-back-title">System Overhaul</div>
+              <div class="flip-back-desc">Disconnected tools, manual handoffs, no source of truth. We rebuild your ops stack around automation — from audit to full deployment.</div>
+            </div>
+            <button class="flip-back-cta" onclick="event.stopPropagation();window.location.href='system-overhaul.html'">Explore →</button>
+          </div>
+        </div>
       </div>
+
     </div>
 
     <div class="services-footer-note reveal">
