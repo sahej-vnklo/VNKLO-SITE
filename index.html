@@ -475,8 +475,8 @@ nav{
 .services-footer-cta:hover{color:var(--purple2)}
 
 /* ── FLIP CARDS ── */
-.flip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.flip-wrap{height:320px;perspective:1000px;cursor:pointer}
+.flip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.flip-wrap{height:400px;perspective:1000px;cursor:pointer}
 .flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.55s cubic-bezier(0.4,0.2,0.2,1)}
 .flip-wrap:hover .flip-inner{transform:rotateY(180deg)}
 .flip-front,.flip-back{
@@ -487,28 +487,28 @@ nav{
 .flip-front{
   background:rgba(255,255,255,0.04);
   align-items:center;justify-content:center;
-  padding:28px 24px;text-align:center;
+  padding:36px 28px;text-align:center;
 }
 .flip-front::before{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(160deg,rgba(161,0,255,0.1) 0%,transparent 55%);pointer-events:none}
 .flip-back{
   background:rgba(20,0,40,0.96);border-color:rgba(161,0,255,0.5);
-  transform:rotateY(180deg);padding:28px 24px;justify-content:space-between;
+  transform:rotateY(180deg);padding:36px 28px;justify-content:space-between;
 }
 .flip-back::before{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(160deg,rgba(161,0,255,0.15) 0%,transparent 60%);pointer-events:none}
 .flip-card-icon{
-  width:56px;height:56px;background:rgba(161,0,255,0.12);border:1px solid rgba(161,0,255,0.28);
-  border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;flex-shrink:0;
+  width:72px;height:72px;background:rgba(161,0,255,0.12);border:1px solid rgba(161,0,255,0.28);
+  border-radius:18px;display:flex;align-items:center;justify-content:center;margin-bottom:28px;flex-shrink:0;
 }
-.flip-card-icon svg{width:26px;height:26px;stroke:#C44DFF;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.flip-card-num{font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(161,0,255,0.55);margin-bottom:10px}
-.flip-card-title{font-size:20px;font-weight:800;color:var(--white);letter-spacing:-0.02em;line-height:1.15}
-.flip-back-num{font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(161,0,255,0.55);margin-bottom:12px}
-.flip-back-title{font-size:17px;font-weight:800;color:var(--white);letter-spacing:-0.01em;margin-bottom:14px;line-height:1.2}
-.flip-back-desc{font-size:12px;color:rgba(255,255,255,0.55);line-height:1.7}
+.flip-card-icon svg{width:34px;height:34px;stroke:#C44DFF;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.flip-card-num{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(161,0,255,0.55);margin-bottom:12px}
+.flip-card-title{font-size:26px;font-weight:800;color:var(--white);letter-spacing:-0.02em;line-height:1.15}
+.flip-back-num{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(161,0,255,0.55);margin-bottom:14px}
+.flip-back-title{font-size:22px;font-weight:800;color:var(--white);letter-spacing:-0.01em;margin-bottom:16px;line-height:1.2}
+.flip-back-desc{font-size:14px;color:rgba(255,255,255,0.55);line-height:1.75}
 .flip-back-cta{
-  display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;
+  display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;
   letter-spacing:0.08em;text-transform:uppercase;color:var(--white);text-decoration:none;
-  padding:10px 18px;background:rgba(161,0,255,0.85);border-radius:6px;
+  padding:13px 22px;background:rgba(161,0,255,0.85);border-radius:6px;
   transition:background .2s;align-self:flex-start;position:relative;z-index:5;cursor:pointer;border:none;
 }
 .flip-back-cta:hover{background:var(--purple)}
@@ -930,7 +930,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   /* SERVICES */
   .cards-grid{grid-template-columns:1fr}
   .flip-grid{grid-template-columns:1fr 1fr}
-  .flip-wrap{height:280px}
+  .flip-wrap{height:300px}
   .card{min-height:200px}
 
   /* WHAT YOU CAN DO */
