@@ -533,7 +533,7 @@ nav{
 .wycd-title{font-size:clamp(32px,4vw,56px);font-weight:800;letter-spacing:-0.025em;line-height:1.06;margin-bottom:16px}
 .wycd-sub{font-size:16px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.7}
 .wycd-accordion{display:flex;flex-direction:column;}
-.wycd-item{border-bottom:1px solid rgba(255,255,255,0.07);cursor:pointer;}
+.wycd-item{border-bottom:1px solid rgba(255,255,255,0.07);cursor:default;}
 .wycd-item:first-child{border-top:1px solid rgba(255,255,255,0.07)}
 .wycd-item-head{
   display:flex;align-items:center;justify-content:space-between;
@@ -1436,42 +1436,42 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
         <p class="wycd-sub">Every business starts at a different point. You don't need everything at once — you need the right first move.</p>
       </div>
       <div class="wycd-accordion">
-        <div class="wycd-item active" onclick="toggleWycd(this)">
+        <div class="wycd-item active" onmouseenter="hoverWycd(this)">
           <div class="wycd-item-head">
             <div class="wycd-item-title">See where you're losing time</div>
             <div class="wycd-item-icon">+</div>
           </div>
           <div class="wycd-item-body">A 45-minute audit maps exactly where time, revenue, and decisions are being lost in your business. You leave with a clear picture — even if you don't proceed with us.</div>
         </div>
-        <div class="wycd-item" onclick="toggleWycd(this)">
+        <div class="wycd-item" onmouseenter="hoverWycd(this)">
           <div class="wycd-item-head">
             <div class="wycd-item-title">Fix the first problem</div>
             <div class="wycd-item-icon">+</div>
           </div>
           <div class="wycd-item-body">We identify your highest-impact automation opportunity and build it first. One focused system — the one that moves the needle fastest for your specific situation.</div>
         </div>
-        <div class="wycd-item" onclick="toggleWycd(this)">
+        <div class="wycd-item" onmouseenter="hoverWycd(this)">
           <div class="wycd-item-head">
             <div class="wycd-item-title">Get it running fast</div>
             <div class="wycd-item-icon">+</div>
           </div>
           <div class="wycd-item-body">Built into your existing tools in under two weeks. No disruption, no new platforms forced on your team. Full training and live demos included from day one.</div>
         </div>
-        <div class="wycd-item" onclick="toggleWycd(this)">
+        <div class="wycd-item" onmouseenter="hoverWycd(this)">
           <div class="wycd-item-head">
             <div class="wycd-item-title">See what actually changes</div>
             <div class="wycd-item-icon">+</div>
           </div>
           <div class="wycd-item-body">Live dashboards and performance tracking show exactly what the system is doing. Numbers, not promises. If the benchmark isn't hit in 30 days, we keep building at no extra cost.</div>
         </div>
-        <div class="wycd-item" onclick="toggleWycd(this)">
+        <div class="wycd-item" onmouseenter="hoverWycd(this)">
           <div class="wycd-item-head">
             <div class="wycd-item-title">Fix the next bottleneck</div>
             <div class="wycd-item-icon">+</div>
           </div>
           <div class="wycd-item-body">Once the first system delivers, we move to the next highest-impact area. Most businesses automate 2–3 systems within the first six months.</div>
         </div>
-        <div class="wycd-item" onclick="toggleWycd(this)">
+        <div class="wycd-item" onmouseenter="hoverWycd(this)">
           <div class="wycd-item-head">
             <div class="wycd-item-title">Step out of the day-to-day</div>
             <div class="wycd-item-icon">+</div>
@@ -1803,12 +1803,9 @@ function toggleDrawerItem(el) {
 }
 
 // ── WHAT YOU CAN DO ACCORDION ──
-function toggleWycd(el) {
-  var isActive = el.classList.contains('active');
-  document.querySelectorAll('.wycd-item').forEach(function(i){
-    i.classList.remove('active');
-  });
-  if (!isActive) el.classList.add('active');
+function hoverWycd(el){
+  document.querySelectorAll('.wycd-item').forEach(i => i.classList.remove('active'));
+  el.classList.add('active');
 }
 
 // ── FORM SUBMIT ──
