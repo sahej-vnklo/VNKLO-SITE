@@ -1,7 +1,7 @@
 /* ── VEE WIDGET v3 — VNKLO ── */
 (function(){
-const API_KEY = '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';
-const MODEL = 'claude-sonnet-4-20250514';
+const API_KEY = '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';
+const MODEL = 'gpt-4o';
 
 const SYSTEM_PROMPT = `You are Vee — a sharp, witty AI agent built by VNKLO. You live on their website and your job is to have a real conversation with business owners and founders, understand their world, and subtly show them why AI automation isn't optional anymore — it's the next industrial shift.
 
@@ -407,19 +407,16 @@ async function callClaude(userMsg){
   errEl.style.display = 'none';
   addTyping();
   try{
-    const res = await fetch('https://api.anthropic.com/v1/messages',{
+    const res = await fetch('https://api.openai.com/v1/chat/completions',{
       method:'POST',
       headers:{
         'Content-Type':'application/json',
-        'x-api-key': API_KEY,
-        'anthropic-version':'2023-06-01',
-        'anthropic-dangerous-direct-browser-access':'true'
+        'Authorization': 'Bearer ' + API_KEY
       },
       body: JSON.stringify({
         model: MODEL,
         max_tokens: 280,
-        system: SYSTEM_PROMPT,
-        messages: messages
+        messages: [{role:'system', content: SYSTEM_PROMPT}, ...messages]
       })
     });
     if(!res.ok){
@@ -428,7 +425,7 @@ async function callClaude(userMsg){
     }
     const data = await res.json();
     removeTyping();
-    const reply = data.content?.[0]?.text || "Something broke on my end. Try again?";
+    const reply = data.choices?.[0]?.message?.content || "Something broke on my end. Try again?";
     messages.push({role:'assistant', content:reply});
     const hasAudit = /audit|book.*free|45.min|sahej/i.test(reply);
     let html = reply;
