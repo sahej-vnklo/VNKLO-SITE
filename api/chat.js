@@ -44,7 +44,7 @@ module.exports = async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        parent: { database_id: 'a29674f5d8ac499bbedf6824a15f8370' },
+        parent: { database_id: 'a29674f5-d8ac-499b-bedf-6824a15f8370' },
         properties: {
           'Visitor Message': {
             title: [{ text: { content: userMessage } }],
