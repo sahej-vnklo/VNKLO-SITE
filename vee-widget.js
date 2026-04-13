@@ -150,7 +150,17 @@ style.textContent = `
 
 #vee-err{display:none;font-family:'Inter',sans-serif;font-size:10px;color:rgba(255,100,100,0.6);padding:0 16px 8px;text-align:center;}
 
-@media(max-width:480px){#vee-chat{width:calc(100vw - 20px);border-radius:16px;}}
+@media(max-width:480px){
+  #vee-bot{bottom:20px;right:16px;left:auto;top:auto;}
+  #vee-chat{
+    width:100%;left:0;right:0;bottom:0;top:auto;
+    height:70vh;
+    border-radius:16px 16px 0 0;
+    transform-origin:bottom center;
+  }
+  #vee-chat.open{transform:scale(1) translateY(0);}
+  #vee-msgs{max-height:none;min-height:0;flex:1;}
+}
 `;
 document.head.appendChild(style);
 
@@ -218,6 +228,7 @@ document.body.appendChild(chatEl);
 
 // ── POSITION CHAT ──
 function positionChat(){
+  if(window.innerWidth <= 480) return; // CSS handles mobile layout
   const br = botEl.getBoundingClientRect();
   const cw = 340, ch = 440;
   const W = window.innerWidth, H = window.innerHeight;
