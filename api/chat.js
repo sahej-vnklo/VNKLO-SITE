@@ -34,7 +34,8 @@ module.exports = async function handler(req, res) {
     const text = data.content?.[0]?.text || "Something broke on my end. Try again?";
 
     // Fire-and-forget Notion logging — never affects the chat response
-    const visitorMsg = messages.filter(m => m.role === 'user').pop()?.content || '';
+    const userMessage = messages.filter(m => m.role === 'user').pop()?.content || '';
+    const veeReply = text;
     fetch('https://api.notion.com/v1/pages', {
       method: 'POST',
       headers: {
@@ -46,10 +47,10 @@ module.exports = async function handler(req, res) {
         parent: { database_id: 'a29674f5d8ac499bbedf6824a15f8370' },
         properties: {
           'Visitor Message': {
-            title: [{ text: { content: visitorMsg.slice(0, 2000) } }],
+            title: [{ text: { content: userMessage } }],
           },
           'Vee Reply': {
-            rich_text: [{ text: { content: text.slice(0, 2000) } }],
+            rich_text: [{ text: { content: veeReply } }],
           },
           'Page URL': {
             url: pageUrl || null,
@@ -59,7 +60,9 @@ module.exports = async function handler(req, res) {
           },
         },
       }),
-    }).catch(() => {});
+    })
+      .then(r => console.log('Notion log status:', r.status))
+      .catch(e => console.log('Notion log error:', e.message));
 
     return res.status(200).json({ reply: text });
   } catch (e) {
