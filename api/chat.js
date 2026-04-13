@@ -60,8 +60,10 @@ module.exports = async function handler(req, res) {
           },
         },
       }),
-    })
-      .then(r => console.log('Notion log status:', r.status))
+    .then(async notionRes => {
+        const body = await notionRes.text();
+        console.log('Notion response:', notionRes.status, body);
+      })
       .catch(e => console.log('Notion log error:', e.message));
 
     return res.status(200).json({ reply: text });
