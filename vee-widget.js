@@ -419,7 +419,7 @@ async function callClaude(userMsg){
     }
     const data = await res.json();
     removeTyping();
-    const reply = data.choices?.[0]?.message?.content || "Something broke on my end. Try again?";
+    const reply = data.reply || "Something broke on my end. Try again?";
     messages.push({role:'assistant', content:reply});
     const hasAudit = /audit|book.*free|45.min|sahej/i.test(reply);
     let html = reply;

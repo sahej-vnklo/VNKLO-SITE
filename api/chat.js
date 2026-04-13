@@ -9,21 +9,19 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: 'Invalid request body' });
   }
 
-  const openaiMessages = systemPrompt
-    ? [{ role: 'system', content: systemPrompt }, ...messages]
-    : messages;
-
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + process.env.OPENAI_API_KEY,
+        'anthropic-version': '2023-06-01',
+        'x-api-key': process.env.ANTHROPIC_API_KEY,
       },
       body: JSON.stringify({
-        model: 'gpt-4o',
-        max_tokens: 280,
-        messages: openaiMessages,
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 1024,
+        system: systemPrompt,
+        messages,
       }),
     });
 
@@ -33,7 +31,8 @@ module.exports = async function handler(req, res) {
     }
 
     const data = await response.json();
-    return res.status(200).json(data);
+    const text = data.content?.[0]?.text || "Something broke on my end. Try again?";
+    return res.status(200).json({ reply: text });
   } catch (e) {
     return res.status(500).json({ error: e.message || 'Internal server error' });
   }
