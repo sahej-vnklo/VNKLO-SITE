@@ -1,7 +1,5 @@
 /* ── VEE WIDGET v3 — VNKLO ── */
 (function(){
-const API_KEY = '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';
-const MODEL = 'gpt-4o';
 
 const SYSTEM_PROMPT = `You are Vee — a sharp, witty AI agent built by VNKLO. You live on their website and your job is to have a real conversation with business owners and founders, understand their world, and subtly show them why AI automation isn't optional anymore — it's the next industrial shift.
 
@@ -407,16 +405,12 @@ async function callClaude(userMsg){
   errEl.style.display = 'none';
   addTyping();
   try{
-    const res = await fetch('https://api.openai.com/v1/chat/completions',{
+    const res = await fetch('/api/chat',{
       method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'Authorization': 'Bearer ' + API_KEY
-      },
+      headers:{'Content-Type':'application/json'},
       body: JSON.stringify({
-        model: MODEL,
-        max_tokens: 280,
-        messages: [{role:'system', content: SYSTEM_PROMPT}, ...messages]
+        messages,
+        systemPrompt: SYSTEM_PROMPT
       })
     });
     if(!res.ok){
