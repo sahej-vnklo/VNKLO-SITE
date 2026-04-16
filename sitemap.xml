@@ -6,7 +6,22 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://www.vnklo.com/customer-experience</loc>
+    <lastmod>2026-04-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.vnklo.com/operations-intelligence</loc>
+    <lastmod>2026-04-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.vnklo.com/revenue-systems</loc>
+    <lastmod>2026-04-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.vnklo.com/system-overhaul</loc>
     <lastmod>2026-04-15</lastmod>
     <priority>0.8</priority>
   </url>
