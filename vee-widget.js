@@ -140,7 +140,7 @@ style.textContent = `
 .vm-audit:hover{background:rgba(161,0,255,0.08);border-color:#A100FF;color:#C44DFF;}
 
 #vee-inp-row{padding:10px 12px 14px;border-top:1px solid rgba(0,0,0,0.06);display:flex;gap:8px;align-items:center;flex-shrink:0;}
-#vee-inp{flex:1;background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.1);color:#111;padding:9px 14px;font-family:'Inter',sans-serif;font-size:13px;outline:none;border-radius:20px;transition:border-color .18s;}
+#vee-inp{flex:1;background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.1);color:#111;padding:9px 14px;font-family:'Inter',sans-serif;font-size:16px;outline:none;border-radius:20px;transition:border-color .18s;}
 #vee-inp:focus{border-color:rgba(0,0,0,0.25);}
 #vee-inp::placeholder{color:rgba(0,0,0,0.25);}
 #vee-snd{width:32px;height:32px;border-radius:50%;background:#A100FF;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .13s;flex-shrink:0;}
@@ -151,10 +151,10 @@ style.textContent = `
 #vee-err{display:none;font-family:'Inter',sans-serif;font-size:10px;color:rgba(255,100,100,0.6);padding:0 16px 8px;text-align:center;}
 
 @media(max-width:480px){
-  #vee-bot{bottom:20px;right:16px;left:auto;top:auto;}
+  #vee-bot{position:fixed;bottom:20px;right:16px;left:auto;top:auto;}
   #vee-chat{
     width:100%;left:0;right:0;bottom:0;top:auto;
-    height:70vh;
+    height:auto;max-height:70vh;
     border-radius:16px 16px 0 0;
     transform-origin:bottom center;
   }
@@ -334,7 +334,15 @@ function wander(){
   wanderRAF = requestAnimationFrame(wander);
 }
 
+function isMobile(){ return window.innerWidth <= 480; }
+
 function startWander(){
+  if(isMobile()){
+    // CSS pins the bot — no JS positioning on mobile
+    botEl.style.left = ''; botEl.style.top = '';
+    setWalking(false);
+    return;
+  }
   botEl.style.left = px + 'px';
   botEl.style.top = py + 'px';
   pickTarget();
@@ -364,7 +372,7 @@ function onDragMove(cx, cy){
 function onDragEnd(){
   if(!isDragging) return;
   isDragging = false;
-  if(!isOpen){
+  if(!isOpen && !isMobile()){
     pauseTimer = setTimeout(() => { pickTarget(); wanderRAF = requestAnimationFrame(wander); }, 1000);
   }
 }
@@ -493,7 +501,9 @@ function openChat(){
 function closeChat(){
   isOpen = false;
   chatEl.classList.remove('open');
-  pauseTimer = setTimeout(() => { pickTarget(); wanderRAF = requestAnimationFrame(wander); }, 500);
+  if(!isMobile()){
+    pauseTimer = setTimeout(() => { pickTarget(); wanderRAF = requestAnimationFrame(wander); }, 500);
+  }
 }
 
 botEl.addEventListener('click', e => { if(!didDrag) openChat(); });
@@ -501,6 +511,15 @@ document.getElementById('vee-hclose').addEventListener('click', closeChat);
 document.addEventListener('keydown', e => { if(e.key === 'Escape' && isOpen) closeChat(); });
 sndBtn.addEventListener('click', () => sendMsg());
 inpEl.addEventListener('keydown', e => { if(e.key === 'Enter') sendMsg(); });
+
+// ── MOBILE KEYBOARD HANDLING ──
+if(window.visualViewport){
+  window.visualViewport.addEventListener('resize', () => {
+    if(!isMobile() || !isOpen) return;
+    chatEl.style.bottom = '0';
+    chatEl.style.top = 'auto';
+  });
+}
 
 // ── INIT ──
 startWander();
