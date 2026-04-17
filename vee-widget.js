@@ -1,4 +1,4 @@
-/* ── VEE WIDGET v3 — VNKLO ── */
+/* ── VEE WIDGET v4 — VNKLO ── */
 (function(){
 
 const sessionId = Math.random().toString(36).slice(2, 10);
@@ -47,38 +47,55 @@ let isTyping = false;
 const style = document.createElement('style');
 style.textContent = `
 #vee-bot{
-  position:fixed;z-index:9999;cursor:grab;
+  position:fixed;bottom:24px;right:24px;z-index:9999;
+  cursor:pointer;
   width:68px;height:84px;
   user-select:none;-webkit-user-select:none;
-  transition:filter .2s;
+  transition:filter .2s,transform .18s;
+  animation:veePulse 2.8s ease-in-out infinite;
 }
-#vee-bot:active{cursor:grabbing;}
-#vee-bot:hover svg{filter:drop-shadow(0 4px 18px rgba(161,0,255,0.35));}
+#vee-bot:hover{transform:scale(1.06);}
+#vee-bot:hover svg{filter:drop-shadow(0 4px 18px rgba(161,0,255,0.45));}
 
-@keyframes veeWalk{0%,100%{transform:translateY(0) rotate(0.4deg)}50%{transform:translateY(-4px) rotate(-0.4deg)}}
-@keyframes veeLegL{0%,100%{transform-origin:50% 0;transform:rotate(-13deg)}50%{transform-origin:50% 0;transform:rotate(13deg)}}
-@keyframes veeLegR{0%,100%{transform-origin:50% 0;transform:rotate(13deg)}50%{transform-origin:50% 0;transform:rotate(-13deg)}}
-@keyframes veeArmL{0%,100%{transform-origin:100% 50%;transform:rotate(7deg)}50%{transform-origin:100% 50%;transform:rotate(-7deg)}}
-@keyframes veeArmR{0%,100%{transform-origin:0% 50%;transform:rotate(-7deg)}50%{transform-origin:0% 50%;transform:rotate(7deg)}}
+@keyframes veePulse{
+  0%,100%{filter:drop-shadow(0 0 4px rgba(161,0,255,0.12));}
+  50%{filter:drop-shadow(0 0 16px rgba(161,0,255,0.52));}
+}
 @keyframes veeIdle{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 @keyframes veeEye{0%,40%{transform:translateX(0)}50%,65%{transform:translateX(2px)}75%,100%{transform:translateX(0)}}
 @keyframes veeBlink{0%,88%,100%{transform:scaleY(1)}94%{transform:scaleY(0.07)}}
-@keyframes veePulseRing{0%,100%{opacity:0.15}50%{opacity:0.04}}
 
-.vee-is-walking #vee-bot-body{animation:veeWalk .7s ease-in-out infinite;}
-.vee-is-walking #vee-leg-l{animation:veeLegL .7s ease-in-out infinite;}
-.vee-is-walking #vee-leg-r{animation:veeLegR .7s ease-in-out infinite;}
-.vee-is-walking #vee-arm-l{animation:veeArmL .7s ease-in-out infinite;}
-.vee-is-walking #vee-arm-r{animation:veeArmR .7s ease-in-out infinite;}
-.vee-is-idle #vee-bot-body{animation:veeIdle 2.4s ease-in-out infinite;}
+#vee-bot-body{animation:veeIdle 2.4s ease-in-out infinite;}
 #vee-eye-l-g{animation:veeBlink 5s ease-in-out infinite;}
 #vee-eye-r-g{animation:veeBlink 5s ease-in-out infinite .2s;}
 #vee-pupil-l{animation:veeEye 4.8s ease-in-out infinite;}
 #vee-pupil-r{animation:veeEye 4.8s ease-in-out infinite .3s;}
-#vee-pulse-ring{animation:veePulseRing 2.6s ease-in-out infinite;}
 
+/* ── SPEECH BUBBLE ── */
+#vee-bubble{
+  position:fixed;bottom:120px;right:16px;
+  background:#fff;color:#111;
+  font-family:'Inter',sans-serif;font-size:12px;font-weight:600;
+  padding:8px 14px;
+  border-radius:12px 12px 4px 12px;
+  box-shadow:0 4px 18px rgba(0,0,0,0.16);
+  white-space:nowrap;
+  opacity:0;transform:translateY(6px);
+  transition:opacity .3s ease,transform .3s ease;
+  pointer-events:none;
+  z-index:9998;
+}
+#vee-bubble.show{opacity:1;transform:translateY(0);pointer-events:auto;cursor:pointer;}
+#vee-bubble::after{
+  content:'';position:absolute;bottom:-6px;right:22px;
+  border-width:6px 6px 0;border-style:solid;
+  border-color:#fff transparent transparent;
+}
+
+/* ── CHAT WINDOW ── */
 #vee-chat{
-  position:fixed;z-index:9998;
+  position:fixed;bottom:120px;right:16px;
+  z-index:9998;
   width:340px;
   background:#ffffff;
   border:1px solid rgba(0,0,0,0.08);
@@ -151,7 +168,8 @@ style.textContent = `
 #vee-err{display:none;font-family:'Inter',sans-serif;font-size:10px;color:rgba(255,100,100,0.6);padding:0 16px 8px;text-align:center;}
 
 @media(max-width:480px){
-  #vee-bot{position:fixed;bottom:20px;right:16px;left:auto;top:auto;}
+  #vee-bot{bottom:20px;right:16px;width:56px;height:70px;}
+  #vee-bubble{bottom:102px;right:12px;font-size:11px;padding:7px 12px;}
   #vee-chat{
     width:100%;left:0;right:0;bottom:0;top:auto;
     height:auto;max-height:70vh;
@@ -167,10 +185,8 @@ document.head.appendChild(style);
 // ── BOT ──
 const botEl = document.createElement('div');
 botEl.id = 'vee-bot';
-botEl.className = 'vee-is-idle';
 botEl.innerHTML = `<svg width="68" height="84" viewBox="0 0 90 100" xmlns="http://www.w3.org/2000/svg">
   <g id="vee-bot-body">
-    <circle id="vee-pulse-ring" cx="45" cy="32" r="38" fill="none" stroke="#A100FF" stroke-width="1.2"/>
     <g id="vee-arm-l"><rect x="1" y="19" width="11" height="7" rx="2" fill="#0f0f0f" stroke="#A100FF" stroke-width="1.3"/><rect x="1" y="26" width="6" height="3" rx="1" fill="#A100FF" opacity="0.7"/></g>
     <g id="vee-arm-r"><rect x="78" y="19" width="11" height="7" rx="2" fill="#0f0f0f" stroke="#A100FF" stroke-width="1.3"/><rect x="83" y="26" width="6" height="3" rx="1" fill="#A100FF" opacity="0.7"/></g>
     <rect x="13" y="6" width="64" height="54" rx="11" fill="#0f0f0f" stroke="#A100FF" stroke-width="1.8"/>
@@ -190,6 +206,12 @@ botEl.innerHTML = `<svg width="68" height="84" viewBox="0 0 90 100" xmlns="http:
   </g>
 </svg>`;
 document.body.appendChild(botEl);
+
+// ── SPEECH BUBBLE ──
+const bubbleEl = document.createElement('div');
+bubbleEl.id = 'vee-bubble';
+bubbleEl.textContent = 'Got questions? Ask me.';
+document.body.appendChild(bubbleEl);
 
 // ── CHAT ──
 const chatEl = document.createElement('div');
@@ -217,7 +239,7 @@ chatEl.innerHTML = `
   <button id="vee-hclose">✕</button>
 </div>
 <div id="vee-msgs"></div>
-<div id="vee-err" id="vee-err"></div>
+<div id="vee-err"></div>
 <div id="vee-inp-row">
   <input id="vee-inp" type="text" placeholder="Ask me anything..." autocomplete="off"/>
   <button id="vee-snd" aria-label="Send">
@@ -226,185 +248,48 @@ chatEl.innerHTML = `
 </div>`;
 document.body.appendChild(chatEl);
 
-// ── POSITION CHAT ──
-function positionChat(){
-  if(window.innerWidth <= 480) return; // CSS handles mobile layout
-  const br = botEl.getBoundingClientRect();
-  const cw = 340, ch = 440;
-  const W = window.innerWidth, H = window.innerHeight;
-  let left = br.left - cw - 14;
-  let top = br.top + br.height/2 - ch/2;
-  if(left < 12){ left = br.right + 14; }
-  if(left + cw > W - 12){ left = W - cw - 12; }
-  if(top < 12){ top = 12; }
-  if(top + ch > H - 12){ top = H - ch - 12; }
-  chatEl.style.left = Math.max(12, left) + 'px';
-  chatEl.style.top = Math.max(12, top) + 'px';
-}
+// ── IDLE SPEECH BUBBLE ──
+let bubbleTimer = null;
+let bubbleShown = false;
 
-// ── WANDER ──
-let px = window.innerWidth - 110, py = window.innerHeight - 160;
-let vx = 0, vy = 0;
-let targetX = px, targetY = py;
-let wanderRAF = null, pauseTimer = null;
-let isDragging = false, isWalking = false;
-const SPEED = 0.85; // slow drift speed
-const PAUSE_MIN = 2400, PAUSE_MAX = 5000;
-
-// Text-heavy zones to avoid (paragraphs, long text blocks)
-function isTextZone(x, y){
-  const el = document.elementFromPoint(x + 34, y + 42);
-  if(!el) return false;
-  const tag = el.tagName.toLowerCase();
-  const textTags = ['p','li','span','a','h1','h2','h3','h4'];
-  if(textTags.includes(tag)) return true;
-  const style = window.getComputedStyle(el);
-  if(parseInt(style.fontSize) > 12 && el.innerText && el.innerText.length > 40) return true;
-  return false;
-}
-
-function getInterestPoints(){
-  const pts = [];
-  ['#contact','#services','.guarantee','.sol-cta','.hero-stats','.audit-box','.pain-callout'].forEach(s => {
-    const el = document.querySelector(s);
-    if(el){
-      const r = el.getBoundingClientRect();
-      if(r.width > 0 && r.height > 0){
-        pts.push({ x: r.left + r.width * 0.15, y: r.top + r.height * 0.5 });
-      }
-    }
-  });
-  return pts;
-}
-
-function pickTarget(){
-  const W = window.innerWidth, H = window.innerHeight;
-  const mg = 90;
-  let attempts = 0;
-  let tx, ty;
-  do {
-    // 40% chance drift toward interest point
-    if(Math.random() < 0.4){
-      const pts = getInterestPoints();
-      if(pts.length){
-        const pt = pts[Math.floor(Math.random()*pts.length)];
-        tx = Math.max(mg, Math.min(W - mg - 68, pt.x - 34));
-        ty = Math.max(mg, Math.min(H - mg - 84, pt.y - 42));
-        break;
-      }
-    }
-    tx = mg + Math.random() * (W - mg*2 - 68);
-    ty = mg + Math.random() * (H - mg*2 - 84);
-    attempts++;
-    // if 50% chance skip text zone, try again up to 6 times
-    if(Math.random() < 0.5 && isTextZone(tx, ty) && attempts < 6) continue;
-    break;
-  } while(attempts < 6);
-  targetX = tx; targetY = ty;
-}
-
-function setWalking(v){
-  if(v === isWalking) return;
-  isWalking = v;
-  botEl.classList.toggle('vee-is-walking', v);
-  botEl.classList.toggle('vee-is-idle', !v);
-}
-
-function wander(){
-  if(isDragging || isOpen){ wanderRAF = null; return; }
-  const dx = targetX - px, dy = targetY - py;
-  const dist = Math.sqrt(dx*dx + dy*dy);
-  if(dist < 4){
-    setWalking(false);
-    wanderRAF = null;
-    clearTimeout(pauseTimer);
-    pauseTimer = setTimeout(() => {
-      pickTarget();
-      wanderRAF = requestAnimationFrame(wander);
-    }, PAUSE_MIN + Math.random() * (PAUSE_MAX - PAUSE_MIN));
-    return;
-  }
-  setWalking(true);
-  vx += (dx / dist * SPEED - vx) * 0.05;
-  vy += (dy / dist * SPEED - vy) * 0.05;
-  px = Math.max(0, Math.min(window.innerWidth - 68, px + vx));
-  py = Math.max(0, Math.min(window.innerHeight - 84, py + vy));
-  botEl.style.left = px + 'px';
-  botEl.style.top = py + 'px';
-  wanderRAF = requestAnimationFrame(wander);
-}
-
-function isMobile(){ return window.innerWidth <= 480; }
-
-function startWander(){
-  if(isMobile()){
-    // CSS pins the bot — no JS positioning on mobile
-    botEl.style.left = ''; botEl.style.top = '';
-    setWalking(false);
-    return;
-  }
-  botEl.style.left = px + 'px';
-  botEl.style.top = py + 'px';
-  pickTarget();
-  if(!wanderRAF) wanderRAF = requestAnimationFrame(wander);
-}
-
-// ── DRAG ──
-let dragOX = 0, dragOY = 0, didDrag = false;
-
-function onDragStart(cx, cy){
-  isDragging = true; didDrag = false;
-  dragOX = cx - px; dragOY = cy - py;
-  setWalking(false);
-  clearTimeout(pauseTimer);
-  if(wanderRAF){ cancelAnimationFrame(wanderRAF); wanderRAF = null; }
-}
-function onDragMove(cx, cy){
-  if(!isDragging) return;
-  const nx = Math.max(0, Math.min(window.innerWidth - 68, cx - dragOX));
-  const ny = Math.max(0, Math.min(window.innerHeight - 84, cy - dragOY));
-  if(Math.abs(nx - px) > 2 || Math.abs(ny - py) > 2) didDrag = true;
-  px = nx; py = ny;
-  botEl.style.left = px + 'px';
-  botEl.style.top = py + 'px';
-  if(isOpen) positionChat();
-}
-function onDragEnd(){
-  if(!isDragging) return;
-  isDragging = false;
-  if(!isOpen && !isMobile()){
-    pauseTimer = setTimeout(() => { pickTarget(); wanderRAF = requestAnimationFrame(wander); }, 1000);
+function showBubble() {
+  if (!bubbleShown && !isOpen) {
+    bubbleEl.classList.add('show');
+    bubbleShown = true;
   }
 }
+function hideBubble() {
+  bubbleEl.classList.remove('show');
+}
 
-botEl.addEventListener('mousedown', e => { if(e.button === 0){ onDragStart(e.clientX, e.clientY); e.preventDefault(); }});
-document.addEventListener('mousemove', e => onDragMove(e.clientX, e.clientY));
-document.addEventListener('mouseup', () => onDragEnd());
-botEl.addEventListener('touchstart', e => { const t=e.touches[0]; onDragStart(t.clientX, t.clientY); },{passive:true});
-document.addEventListener('touchmove', e => { const t=e.touches[0]; onDragMove(t.clientX, t.clientY); },{passive:true});
-document.addEventListener('touchend', () => onDragEnd());
+bubbleTimer = setTimeout(showBubble, 6000 + Math.random() * 2000);
+
+bubbleEl.addEventListener('click', function() {
+  hideBubble();
+  openChat();
+});
 
 // ── CHAT LOGIC ──
 const msgsEl = document.getElementById('vee-msgs');
-const inpEl = document.getElementById('vee-inp');
+const inpEl  = document.getElementById('vee-inp');
 const sndBtn = document.getElementById('vee-snd');
-const htxt = document.getElementById('vee-htxt');
-const errEl = document.getElementById('vee-err');
+const htxt   = document.getElementById('vee-htxt');
+const errEl  = document.getElementById('vee-err');
 
-function addMsg(role, text, opts){
+function addMsg(role, text, opts) {
   const wrap = document.createElement('div');
   wrap.className = 'vm ' + role;
   const bub = document.createElement('div');
   bub.className = 'vm-bub';
-  bub.innerHTML = text.replace(/\n/g,'<br>');
+  bub.innerHTML = text.replace(/\n/g, '<br>');
   wrap.appendChild(bub);
-  if(opts && opts.length){
+  if (opts && opts.length) {
     const od = document.createElement('div');
     od.className = 'vm-opts';
-    opts.forEach(o => {
+    opts.forEach(function(o) {
       const b = document.createElement('button');
       b.className = 'vm-opt'; b.textContent = o;
-      b.onclick = () => { od.remove(); sendMsg(o); };
+      b.onclick = function() { od.remove(); sendMsg(o); };
       od.appendChild(b);
     });
     wrap.appendChild(od);
@@ -413,47 +298,42 @@ function addMsg(role, text, opts){
   msgsEl.scrollTop = msgsEl.scrollHeight;
 }
 
-function addTyping(){
+function addTyping() {
   const w = document.createElement('div');
   w.className = 'vm bot'; w.id = 'vee-t';
   w.innerHTML = '<div class="vm-bub vm-typing"><div class="vm-dot"></div><div class="vm-dot"></div><div class="vm-dot"></div></div>';
   msgsEl.appendChild(w); msgsEl.scrollTop = msgsEl.scrollHeight;
 }
-function removeTyping(){ const t=document.getElementById('vee-t'); if(t) t.remove(); }
+function removeTyping() { const t = document.getElementById('vee-t'); if (t) t.remove(); }
 
-function setStatus(s){ htxt.textContent = s; }
+function setStatus(s) { htxt.textContent = s; }
 
-async function callClaude(userMsg){
-  messages.push({role:'user', content:userMsg});
+async function callClaude(userMsg) {
+  messages.push({ role: 'user', content: userMsg });
   isTyping = true; sndBtn.disabled = true;
   setStatus('typing...');
   errEl.style.display = 'none';
   addTyping();
-  try{
-    const res = await fetch('/api/chat',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        messages,
-        systemPrompt: SYSTEM_PROMPT,
-        pageUrl: window.location.href,
-        sessionId,
-      })
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages, systemPrompt: SYSTEM_PROMPT, pageUrl: window.location.href, sessionId })
     });
-    if(!res.ok){
-      const err = await res.json().catch(()=>({error:{message:'Unknown error'}}));
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ error: { message: 'Unknown error' } }));
       throw new Error(err.error?.message || `HTTP ${res.status}`);
     }
     const data = await res.json();
     removeTyping();
     const reply = data.reply || "Something broke on my end. Try again?";
-    messages.push({role:'assistant', content:reply});
+    messages.push({ role: 'assistant', content: reply });
     const hasAudit = /audit|book.*free|45.min|sahej/i.test(reply);
     let html = reply;
-    if(hasAudit) html += `<br><a class="vm-audit" href="index.html#contact">Book the free audit →</a>`;
+    if (hasAudit) html += `<br><a class="vm-audit" href="index.html#contact">Book the free audit →</a>`;
     addMsg('bot', html);
     setStatus('VNKLO agent');
-  } catch(e){
+  } catch(e) {
     removeTyping();
     console.error('Vee API error:', e);
     errEl.style.display = 'block';
@@ -465,9 +345,9 @@ async function callClaude(userMsg){
   inpEl.focus();
 }
 
-function sendMsg(text){
+function sendMsg(text) {
   const msg = (text || inpEl.value).trim();
-  if(!msg || isTyping) return;
+  if (!msg || isTyping) return;
   inpEl.value = '';
   errEl.style.display = 'none';
   addMsg('user', msg);
@@ -475,52 +355,44 @@ function sendMsg(text){
 }
 
 // ── OPEN / CLOSE ──
-function openChat(){
-  if(didDrag) return;
+function openChat() {
   isOpen = true;
-  setWalking(false);
-  clearTimeout(pauseTimer);
-  if(wanderRAF){ cancelAnimationFrame(wanderRAF); wanderRAF = null; }
-  positionChat();
+  hideBubble();
+  clearTimeout(bubbleTimer);
   chatEl.classList.add('open');
-  if(messages.length === 0){
-    setTimeout(() => {
+  if (messages.length === 0) {
+    setTimeout(function() {
       addTyping();
-      setTimeout(() => {
+      setTimeout(function() {
         removeTyping();
         addMsg('bot',
           "Hey. I'm Vee — an AI agent built by VNKLO.\n\nBefore you scroll through the site, can I show you something that'll change how you see your business?",
-          ["Yeah go ahead","What are you exactly?","Just browsing"]
+          ["Yeah go ahead", "What are you exactly?", "Just browsing"]
         );
       }, 750);
     }, 200);
   }
-  setTimeout(() => inpEl.focus(), 300);
+  setTimeout(function() { inpEl.focus(); }, 300);
 }
 
-function closeChat(){
+function closeChat() {
   isOpen = false;
   chatEl.classList.remove('open');
-  if(!isMobile()){
-    pauseTimer = setTimeout(() => { pickTarget(); wanderRAF = requestAnimationFrame(wander); }, 500);
-  }
 }
 
-botEl.addEventListener('click', e => { if(!didDrag) openChat(); });
+botEl.addEventListener('click', openChat);
 document.getElementById('vee-hclose').addEventListener('click', closeChat);
-document.addEventListener('keydown', e => { if(e.key === 'Escape' && isOpen) closeChat(); });
-sndBtn.addEventListener('click', () => sendMsg());
-inpEl.addEventListener('keydown', e => { if(e.key === 'Enter') sendMsg(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && isOpen) closeChat(); });
+sndBtn.addEventListener('click', function() { sendMsg(); });
+inpEl.addEventListener('keydown', function(e) { if (e.key === 'Enter') sendMsg(); });
 
 // ── MOBILE KEYBOARD HANDLING ──
-if(window.visualViewport){
-  window.visualViewport.addEventListener('resize', () => {
-    if(!isMobile() || !isOpen) return;
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', function() {
+    if (window.innerWidth > 480 || !isOpen) return;
     chatEl.style.bottom = '0';
     chatEl.style.top = 'auto';
   });
 }
 
-// ── INIT ──
-startWander();
 })();
