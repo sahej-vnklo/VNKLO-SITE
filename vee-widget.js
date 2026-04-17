@@ -395,4 +395,55 @@ if (window.visualViewport) {
   });
 }
 
+// ── SCROLL DIRECTION POSITIONING ──
+(function(){
+  var lastScroll = window.scrollY;
+  var scrollTimer = null;
+  var veeAtTop = false;
+
+  function moveVeeTop() {
+    if (veeAtTop) return;
+    veeAtTop = true;
+    botEl.style.transition = 'top .35s cubic-bezier(0.4,0,0.2,1), bottom .35s cubic-bezier(0.4,0,0.2,1)';
+    botEl.style.bottom = 'auto';
+    botEl.style.top = '24px';
+    // bubble follows
+    bubbleEl.style.transition = 'top .35s cubic-bezier(0.4,0,0.2,1), bottom .35s cubic-bezier(0.4,0,0.2,1)';
+    bubbleEl.style.bottom = 'auto';
+    bubbleEl.style.top = '110px';
+    // chat window follows
+    chatEl.style.transition = 'top .35s cubic-bezier(0.4,0,0.2,1), bottom .35s cubic-bezier(0.4,0,0.2,1), opacity .22s ease, transform .22s ease';
+    chatEl.style.bottom = 'auto';
+    chatEl.style.top = '110px';
+  }
+
+  function moveVeeBottom() {
+    if (!veeAtTop) return;
+    veeAtTop = false;
+    botEl.style.transition = 'top .35s cubic-bezier(0.4,0,0.2,1), bottom .35s cubic-bezier(0.4,0,0.2,1)';
+    botEl.style.top = 'auto';
+    botEl.style.bottom = '24px';
+    bubbleEl.style.transition = 'top .35s cubic-bezier(0.4,0,0.2,1), bottom .35s cubic-bezier(0.4,0,0.2,1)';
+    bubbleEl.style.top = 'auto';
+    bubbleEl.style.bottom = '120px';
+    chatEl.style.transition = 'top .35s cubic-bezier(0.4,0,0.2,1), bottom .35s cubic-bezier(0.4,0,0.2,1), opacity .22s ease, transform .22s ease';
+    chatEl.style.top = 'auto';
+    chatEl.style.bottom = '120px';
+  }
+
+  window.addEventListener('scroll', function() {
+    var currentScroll = window.scrollY;
+    // only trigger once past 100px from top so landing doesn't shift immediately
+    if (currentScroll < 100) { moveVeeBottom(); lastScroll = currentScroll; return; }
+    if (currentScroll > lastScroll + 4) {
+      // scrolling down
+      moveVeeTop();
+    } else if (currentScroll < lastScroll - 4) {
+      // scrolling up
+      moveVeeBottom();
+    }
+    lastScroll = currentScroll;
+  }, { passive: true });
+})();
+
 })();
