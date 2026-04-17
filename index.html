@@ -1513,18 +1513,6 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   </div>
 </section>
 
-<!-- GUARANTEE -->
-<div class="guarantee">
-  <div class="guarantee-inner">
-    <div>
-      <div class="guarantee-eyebrow">Our Commitment</div>
-      <div class="guarantee-title">One benchmark.<br/>Agreed before we start.</div>
-      <div class="guarantee-desc">Every engagement comes with one written benchmark — agreed before we start. Examples: 70% of support tickets handled without a human. Qualified leads booked within 48 hours. Follow-up sent within 1 hour. If we don't hit the benchmark in the agreed timeframe, we keep building free until we do. We only take projects where we're confident that's achievable.</div>
-    </div>
-    <a href="#contact" class="btn-white">Claim Your Free Audit</a>
-  </div>
-</div>
-
 <!-- AGENTIC CAROUSEL -->
 <section class="cases" id="cases" style="background:var(--dark);padding:88px 0">
   <div style="max-width:1280px;margin:0 auto;padding:0 80px">
@@ -1592,7 +1580,7 @@ var CR_SLIDES=[
     tag:'Revenue Systems',num:'01 / 04',
     title:'Lead qualifies itself.<br/>Pipeline fills overnight.',
     sub:'A lead hits your form. Seconds later — scored, logged, followed up. You wake up to a full calendar.',
-    stats:[['7s','Trigger to action'],['4','Parallel agents'],['0','Manual steps'],['3hr','Saved per lead']],
+    stats:[['7s','Trigger to action'],['4','Parallel agents'],['0','Manual steps'],['~2hr','Manual equivalent']],
     stack:'n8n · Claude API · HubSpot · Calendly · Slack · Gmail',
     nodes:[
       {id:'n0',label:'Form Webhook',sub:'Lead submits',badge:'TRIGGER',x:30,y:30,w:138,h:56,accent:'rgba(255,255,255,0.18)'},
@@ -1658,7 +1646,7 @@ var CR_SLIDES=[
     tag:'Operations Intelligence',num:'03 / 04',
     title:'Your ops brain never<br/>forgets anything.',
     sub:'Notion, Drive, SOPs — all connected. Ask a question. Get a cited answer in 4 seconds.',
-    stats:[['4s','Answer retrieval'],['100%','Knowledge captured'],['40%','Onboarding cut'],['0','Lost context']],
+    stats:[['4s','Answer retrieval'],['Single','Source of truth'],['40%','Onboarding cut'],['0 gaps','Context lost']],
     stack:'n8n · Claude API · Notion · Google Drive · Pinecone · Slack',
     nodes:[
       {id:'n0',label:'Question asked',sub:'Slack / chat / email',badge:'TRIGGER',x:28,y:110,w:138,h:56,accent:'rgba(255,255,255,0.18)'},
@@ -1775,7 +1763,10 @@ function crAnimLine(idx,pIdx,dur,delay){
     if(!el)return;
     el.setAttribute('opacity','1');
     var da=parseFloat(el.getAttribute('stroke-dasharray'));
+    var x1=parseFloat(el.getAttribute('x1')),y1=parseFloat(el.getAttribute('y1'));
+    var x2=parseFloat(el.getAttribute('x2')),y2=parseFloat(el.getAttribute('y2'));
     var start=performance.now();
+    // draw the line
     function fr(now){
       var p=Math.min((now-start)/dur,1);
       var e=p<0.5?2*p*p:-1+(4-2*p)*p;
@@ -1783,6 +1774,29 @@ function crAnimLine(idx,pIdx,dur,delay){
       if(p<1)requestAnimationFrame(fr);
     }
     requestAnimationFrame(fr);
+    // travelling dot after line draws
+    setTimeout(function(){
+      var svg=document.getElementById('cr-svg');
+      if(!svg)return;
+      var dot=document.createElementNS('http://www.w3.org/2000/svg','circle');
+      var isRes=el.getAttribute('stroke')==='#C44DFF';
+      dot.setAttribute('r','3.5');
+      dot.setAttribute('fill',isRes?'#C44DFF':'#A100FF');
+      dot.setAttribute('opacity','0.9');
+      svg.appendChild(dot);
+      var ds=performance.now();
+      var dotDur=320;
+      function dotFr(now){
+        var p=Math.min((now-ds)/dotDur,1);
+        var e=p<0.5?2*p*p:-1+(4-2*p)*p;
+        dot.setAttribute('cx',x1+(x2-x1)*e);
+        dot.setAttribute('cy',y1+(y2-y1)*e);
+        dot.setAttribute('opacity',p<0.15?p/0.15:p>0.85?(1-p)/0.15:0.9);
+        if(p<1)requestAnimationFrame(dotFr);
+        else svg.removeChild(dot);
+      }
+      requestAnimationFrame(dotFr);
+    },dur*0.6);
   },delay);
 }
 
@@ -1847,6 +1861,18 @@ window.crNav=function(dir){
 
 crRender(0);
 </script>
+
+<!-- GUARANTEE -->
+<div class="guarantee">
+  <div class="guarantee-inner">
+    <div>
+      <div class="guarantee-eyebrow">Our Commitment</div>
+      <div class="guarantee-title">One benchmark.<br/>Agreed before we start.</div>
+      <div class="guarantee-desc">Every engagement comes with one written benchmark — agreed before we start. Examples: 70% of support tickets handled without a human. Qualified leads booked within 48 hours. Follow-up sent within 1 hour. If we don't hit the benchmark in the agreed timeframe, we keep building free until we do. We only take projects where we're confident that's achievable.</div>
+    </div>
+    <a href="#contact" class="btn-white">Claim Your Free Audit</a>
+  </div>
+</div>
 
 <!-- WHO IT'S FOR -->
 <section class="icp" id="icp">
