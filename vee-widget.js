@@ -55,11 +55,11 @@ style.textContent = `
   animation:veePulse 2.8s ease-in-out infinite;
 }
 #vee-bot:hover{transform:scale(1.06);}
-#vee-bot:hover svg{filter:drop-shadow(0 4px 18px rgba(108,59,170,0.45));}
+#vee-bot:hover svg{filter:drop-shadow(0 4px 18px rgba(112,0,255,0.45));}
 
 @keyframes veePulse{
-  0%,100%{filter:drop-shadow(0 0 4px rgba(108,59,170,0.12));}
-  50%{filter:drop-shadow(0 0 16px rgba(108,59,170,0.52));}
+  0%,100%{filter:drop-shadow(0 0 4px rgba(112,0,255,0.12));}
+  50%{filter:drop-shadow(0 0 16px rgba(112,0,255,0.52));}
 }
 @keyframes veeIdle{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 @keyframes veeEye{0%,40%{transform:translateX(0)}50%,65%{transform:translateX(2px)}75%,100%{transform:translateX(0)}}
@@ -100,7 +100,7 @@ style.textContent = `
   background:#ffffff;
   border:1px solid rgba(0,0,0,0.08);
   border-radius:20px;
-  box-shadow:0 20px 60px rgba(0,0,0,0.18),0 0 0 1px rgba(108,59,170,0.08);
+  box-shadow:0 20px 60px rgba(0,0,0,0.18),0 0 0 1px rgba(112,0,255,0.08);
   display:flex;flex-direction:column;
   overflow:hidden;
   opacity:0;pointer-events:none;
@@ -120,7 +120,7 @@ style.textContent = `
 #vee-av{width:30px;height:34px;flex-shrink:0;}
 #vee-hname{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;color:#111;letter-spacing:-0.01em;}
 #vee-hstatus{display:flex;align-items:center;gap:5px;margin-top:1px;}
-#vee-hdot{width:5px;height:5px;border-radius:50%;background:#6c3baa;flex-shrink:0;}
+#vee-hdot{width:5px;height:5px;border-radius:50%;background:#7000FF;flex-shrink:0;}
 #vee-htxt{font-family:'Inter',sans-serif;font-size:10px;color:rgba(0,0,0,0.35);}
 #vee-hclose{background:none;border:none;cursor:pointer;color:rgba(0,0,0,0.25);font-size:15px;line-height:1;padding:4px 6px;transition:color .15s;font-family:'Inter',sans-serif;}
 #vee-hclose:hover{color:rgba(0,0,0,0.65);}
@@ -141,7 +141,7 @@ style.textContent = `
 
 .vm-bub{padding:9px 13px;font-family:'Inter',sans-serif;font-size:13px;line-height:1.55;}
 .vm.bot .vm-bub{background:#f0f0f0;color:#1a1a1a;border-radius:4px 14px 14px 14px;border:1px solid rgba(0,0,0,0.06);}
-.vm.user .vm-bub{background:rgba(108,59,170,0.07);color:#1a1a1a;border-radius:14px 4px 14px 14px;border:1px solid rgba(108,59,170,0.14);}
+.vm.user .vm-bub{background:rgba(112,0,255,0.07);color:#1a1a1a;border-radius:14px 4px 14px 14px;border:1px solid rgba(112,0,255,0.14);}
 
 .vm-opts{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;}
 .vm-opt{background:transparent;border:1px solid rgba(0,0,0,0.15);color:rgba(0,0,0,0.55);padding:5px 11px;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;cursor:pointer;border-radius:18px;transition:all .13s;white-space:nowrap;}
@@ -153,16 +153,16 @@ style.textContent = `
 .vm-dot:nth-child(3){animation-delay:.36s;}
 @keyframes vDot{0%,60%,100%{transform:translateY(0);opacity:.25}30%{transform:translateY(-4px);opacity:.9}}
 
-.vm-audit{display:inline-block;margin-top:9px;background:transparent;border:1px solid rgba(108,59,170,0.4);color:rgba(108,59,170,0.85);padding:7px 14px;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.03em;text-decoration:none;border-radius:18px;transition:all .13s;}
-.vm-audit:hover{background:rgba(108,59,170,0.08);border-color:#6c3baa;color:#8f52d4;}
+.vm-audit{display:inline-block;margin-top:9px;background:transparent;border:1px solid rgba(112,0,255,0.4);color:rgba(112,0,255,0.85);padding:7px 14px;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.03em;text-decoration:none;border-radius:18px;transition:all .13s;}
+.vm-audit:hover{background:rgba(112,0,255,0.08);border-color:#7000FF;color:#9333FF;}
 
 #vee-inp-row{padding:10px 12px 14px;border-top:1px solid rgba(0,0,0,0.06);display:flex;gap:8px;align-items:center;flex-shrink:0;}
 #vee-inp{flex:1;background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.1);color:#111;padding:9px 14px;font-family:'Inter',sans-serif;font-size:16px;outline:none;border-radius:20px;transition:border-color .18s;}
 #vee-inp:focus{border-color:rgba(0,0,0,0.25);}
 #vee-inp::placeholder{color:rgba(0,0,0,0.25);}
-#vee-snd{width:32px;height:32px;border-radius:50%;background:#6c3baa;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .13s;flex-shrink:0;}
-#vee-snd:hover{background:#8f52d4;}
-#vee-snd:disabled{background:rgba(108,59,170,0.2);cursor:default;}
+#vee-snd{width:32px;height:32px;border-radius:50%;background:#7000FF;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .13s;flex-shrink:0;}
+#vee-snd:hover{background:#9333FF;}
+#vee-snd:disabled{background:rgba(112,0,255,0.2);cursor:default;}
 #vee-snd svg{width:13px;height:13px;fill:#fff;}
 
 #vee-err{display:none;font-family:'Inter',sans-serif;font-size:10px;color:rgba(255,100,100,0.6);padding:0 16px 8px;text-align:center;}
@@ -187,22 +187,22 @@ const botEl = document.createElement('div');
 botEl.id = 'vee-bot';
 botEl.innerHTML = `<svg width="68" height="84" viewBox="0 0 90 100" xmlns="http://www.w3.org/2000/svg">
   <g id="vee-bot-body">
-    <g id="vee-arm-l"><rect x="1" y="19" width="11" height="7" rx="2" fill="#0f0f0f" stroke="#6c3baa" stroke-width="1.3"/><rect x="1" y="26" width="6" height="3" rx="1" fill="#6c3baa" opacity="0.7"/></g>
-    <g id="vee-arm-r"><rect x="78" y="19" width="11" height="7" rx="2" fill="#0f0f0f" stroke="#6c3baa" stroke-width="1.3"/><rect x="83" y="26" width="6" height="3" rx="1" fill="#6c3baa" opacity="0.7"/></g>
-    <rect x="13" y="6" width="64" height="54" rx="11" fill="#0f0f0f" stroke="#6c3baa" stroke-width="1.8"/>
+    <g id="vee-arm-l"><rect x="1" y="19" width="11" height="7" rx="2" fill="#0f0f0f" stroke="#7000FF" stroke-width="1.3"/><rect x="1" y="26" width="6" height="3" rx="1" fill="#7000FF" opacity="0.7"/></g>
+    <g id="vee-arm-r"><rect x="78" y="19" width="11" height="7" rx="2" fill="#0f0f0f" stroke="#7000FF" stroke-width="1.3"/><rect x="83" y="26" width="6" height="3" rx="1" fill="#7000FF" opacity="0.7"/></g>
+    <rect x="13" y="6" width="64" height="54" rx="11" fill="#0f0f0f" stroke="#7000FF" stroke-width="1.8"/>
     <rect x="18" y="11" width="54" height="44" rx="7" fill="#141414"/>
     <g id="vee-eye-l-g" style="transform-origin:31px 28px">
-      <rect x="21" y="19" width="20" height="17" rx="3" fill="#6c3baa"/>
+      <rect x="21" y="19" width="20" height="17" rx="3" fill="#7000FF"/>
       <g id="vee-pupil-l"><rect x="24" y="22" width="9" height="9" rx="1.5" fill="#fff" opacity="0.55"/></g>
     </g>
     <g id="vee-eye-r-g" style="transform-origin:59px 28px">
-      <rect x="49" y="19" width="20" height="17" rx="3" fill="#6c3baa"/>
+      <rect x="49" y="19" width="20" height="17" rx="3" fill="#7000FF"/>
       <g id="vee-pupil-r"><rect x="52" y="22" width="9" height="9" rx="1.5" fill="#fff" opacity="0.55"/></g>
     </g>
-    <rect x="31" y="42" width="28" height="3.5" rx="1.8" fill="rgba(108,59,170,0.4)"/>
-    <rect x="36" y="49" width="18" height="2" rx="1" fill="rgba(108,59,170,0.18)"/>
-    <g id="vee-leg-l"><rect x="24" y="62" width="15" height="16" rx="3" fill="#0f0f0f" stroke="rgba(108,59,170,0.4)" stroke-width="1.2"/><rect x="20" y="76" width="22" height="8" rx="2.5" fill="#6c3baa"/><rect x="20" y="76" width="22" height="3" rx="0" fill="#8f52d4" opacity="0.28"/></g>
-    <g id="vee-leg-r"><rect x="51" y="62" width="15" height="16" rx="3" fill="#0f0f0f" stroke="rgba(108,59,170,0.4)" stroke-width="1.2"/><rect x="48" y="76" width="22" height="8" rx="2.5" fill="#6c3baa"/><rect x="48" y="76" width="22" height="3" rx="0" fill="#8f52d4" opacity="0.28"/></g>
+    <rect x="31" y="42" width="28" height="3.5" rx="1.8" fill="rgba(112,0,255,0.4)"/>
+    <rect x="36" y="49" width="18" height="2" rx="1" fill="rgba(112,0,255,0.18)"/>
+    <g id="vee-leg-l"><rect x="24" y="62" width="15" height="16" rx="3" fill="#0f0f0f" stroke="rgba(112,0,255,0.4)" stroke-width="1.2"/><rect x="20" y="76" width="22" height="8" rx="2.5" fill="#7000FF"/><rect x="20" y="76" width="22" height="3" rx="0" fill="#9333FF" opacity="0.28"/></g>
+    <g id="vee-leg-r"><rect x="51" y="62" width="15" height="16" rx="3" fill="#0f0f0f" stroke="rgba(112,0,255,0.4)" stroke-width="1.2"/><rect x="48" y="76" width="22" height="8" rx="2.5" fill="#7000FF"/><rect x="48" y="76" width="22" height="3" rx="0" fill="#9333FF" opacity="0.28"/></g>
   </g>
 </svg>`;
 document.body.appendChild(botEl);
@@ -220,16 +220,16 @@ chatEl.innerHTML = `
 <div id="vee-chat-header">
   <div id="vee-chat-hl">
     <svg id="vee-av" width="30" height="34" viewBox="0 0 90 100">
-      <rect x="13" y="6" width="64" height="54" rx="11" fill="#0f0f0f" stroke="#6c3baa" stroke-width="1.8"/>
-      <rect x="21" y="19" width="20" height="17" rx="3" fill="#6c3baa"/>
+      <rect x="13" y="6" width="64" height="54" rx="11" fill="#0f0f0f" stroke="#7000FF" stroke-width="1.8"/>
+      <rect x="21" y="19" width="20" height="17" rx="3" fill="#7000FF"/>
       <rect x="24" y="22" width="9" height="9" rx="1.5" fill="#fff" opacity="0.55"/>
-      <rect x="49" y="19" width="20" height="17" rx="3" fill="#6c3baa"/>
+      <rect x="49" y="19" width="20" height="17" rx="3" fill="#7000FF"/>
       <rect x="52" y="22" width="9" height="9" rx="1.5" fill="#fff" opacity="0.55"/>
-      <rect x="31" y="42" width="28" height="3.5" rx="1.8" fill="rgba(108,59,170,0.4)"/>
-      <rect x="24" y="62" width="15" height="16" rx="3" fill="#0f0f0f" stroke="rgba(108,59,170,0.4)" stroke-width="1.2"/>
-      <rect x="20" y="76" width="22" height="8" rx="2.5" fill="#6c3baa"/>
-      <rect x="51" y="62" width="15" height="16" rx="3" fill="#0f0f0f" stroke="rgba(108,59,170,0.4)" stroke-width="1.2"/>
-      <rect x="48" y="76" width="22" height="8" rx="2.5" fill="#6c3baa"/>
+      <rect x="31" y="42" width="28" height="3.5" rx="1.8" fill="rgba(112,0,255,0.4)"/>
+      <rect x="24" y="62" width="15" height="16" rx="3" fill="#0f0f0f" stroke="rgba(112,0,255,0.4)" stroke-width="1.2"/>
+      <rect x="20" y="76" width="22" height="8" rx="2.5" fill="#7000FF"/>
+      <rect x="51" y="62" width="15" height="16" rx="3" fill="#0f0f0f" stroke="rgba(112,0,255,0.4)" stroke-width="1.2"/>
+      <rect x="48" y="76" width="22" height="8" rx="2.5" fill="#7000FF"/>
     </svg>
     <div>
       <div id="vee-hname">Vee</div>
