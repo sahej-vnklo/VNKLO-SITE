@@ -30,8 +30,8 @@
   --grey3:#888;
   --font:'Inter',sans-serif;
 }
-html{scroll-behavior:smooth}
-body{font-family:var(--font);background:var(--black);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--font);background:var(--black);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased;max-width:100vw}
 
 /* ── NAV ── */
 nav{
@@ -847,19 +847,21 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 .nav-hamburger.open span:nth-child(2){opacity:0}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-/* ── MOBILE DRAWER ── */
+/* ── MOBILE DRAWER (full-width dropdown) ── */
 .mobile-drawer{
-  position:fixed;top:0;right:-100%;bottom:0;
-  width:min(320px,85vw);background:#0d0d0d;
-  border-left:1px solid rgba(255,255,255,0.08);
+  position:fixed;top:68px;left:0;right:0;bottom:auto;
+  width:100%;background:#0d0d0d;
+  border-bottom:2px solid var(--purple);
   z-index:500;overflow-y:auto;
-  padding:88px 0 40px;
-  transition:right .3s ease;
+  padding:0 0 24px;
+  max-height:calc(100vh - 68px);
+  transform:translateY(-8px);opacity:0;pointer-events:none;
+  transition:transform .28s ease,opacity .22s;
 }
-.mobile-drawer.open{right:0}
+.mobile-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
 .drawer-overlay{
-  position:fixed;inset:0;z-index:499;
-  background:rgba(0,0,0,0.6);
+  position:fixed;top:68px;left:0;right:0;bottom:0;z-index:499;
+  background:rgba(0,0,0,0.35);
   display:none;
 }
 .drawer-overlay.open{display:block}
@@ -896,18 +898,21 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 .drawer-item-body a:last-child{border-bottom:none}
 .drawer-item-body a:active{color:var(--white)}
 .drawer-cta{
-  margin:28px 24px 0;display:block;
+  margin:24px 20px 0;display:block;
   background:var(--purple);color:var(--white);
   padding:15px 24px;text-align:center;
   font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
   text-decoration:none;
 }
 .drawer-contact{
-  margin:12px 24px 0;display:block;text-align:center;
+  margin:10px 20px 0;display:block;text-align:center;
   font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
-  color:rgba(255,255,255,0.35);padding:12px;
+  color:rgba(255,255,255,0.35);padding:10px;
   cursor:pointer;background:none;border:none;width:auto;
 }
+
+/* ── TOOLS (missing mobile padding) ── */
+.tools{padding-left:max(20px,4vw);padding-right:max(20px,4vw)}
 
 @media(max-width:900px){
   /* NAV */
@@ -920,13 +925,15 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   /* SECTION PADDING */
   .hero-inner,.services-inner,.cases-inner,.contact-inner,
   .footer-inner,.pain-inner,.icp-inner,.final-cta-inner,
-  .wycd-inner,.process-inner{padding:0 20px}
+  .wycd-inner,.process-inner,.faq-inner{padding:0 20px}
   .guarantee-inner{padding:44px 20px}
+  .tools{padding:40px 20px}
+  .tools-inner{max-width:100%}
 
   /* HERO */
   .hero-inner{padding:52px 20px 60px}
   .hero-headline{font-size:clamp(34px,8vw,52px)}
-  .hero-sub{font-size:16px}
+  .hero-sub{font-size:16px;max-width:100%}
   .hero-stats{gap:32px;margin-top:52px}
   .hero-stat-num{font-size:30px}
   .hero-cta-row{flex-direction:column;align-items:flex-start}
@@ -943,6 +950,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   .flip-grid{grid-template-columns:1fr 1fr}
   .flip-wrap{height:300px}
   .card{min-height:200px}
+  .standalones-grid{grid-template-columns:1fr 1fr}
 
   /* WHAT YOU CAN DO */
   .wycd{padding:64px 0}
@@ -955,6 +963,9 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   /* ICP */
   .icp-grid{grid-template-columns:1fr}
   .icp-footer{flex-direction:column;gap:16px}
+
+  /* FAQ */
+  .faq-grid{grid-template-columns:1fr}
 
   /* CONTACT */
   .contact-layout{grid-template-columns:1fr;gap:36px}
@@ -982,15 +993,23 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   nav{padding:0 16px}
   .hero-inner,.services-inner,.cases-inner,.contact-inner,
   .footer-inner,.pain-inner,.icp-inner,.final-cta-inner,
-  .wycd-inner{padding:0 16px}
+  .wycd-inner,.process-inner,.faq-inner{padding:0 16px}
   .guarantee-inner{padding:36px 16px}
+  .tools{padding:32px 16px}
   .hero-headline{font-size:clamp(28px,9vw,40px)}
   .pain-main-title{font-size:clamp(24px,8vw,36px)}
   .section-title{font-size:clamp(22px,7vw,34px)}
   .wycd-title{font-size:clamp(24px,8vw,36px)}
   .hero-stats{flex-direction:column;gap:20px}
+  .flip-grid{grid-template-columns:1fr}
+  .flip-wrap{height:auto;min-height:240px}
+  .standalones-grid{grid-template-columns:1fr}
   .sol-three{grid-template-columns:1fr}
   .pain-diagnosis-left,.pain-diagnosis-right{padding:24px 20px}
+  .mega-services-grid{grid-template-columns:1fr}
+  .mega-why-grid{grid-template-columns:1fr}
+  .contact-popup{width:calc(100% - 32px);padding:28px 20px 24px}
+  img,svg,canvas{max-width:100%}
 }
 </style>
 </head>
@@ -1499,8 +1518,8 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   <div class="guarantee-inner">
     <div>
       <div class="guarantee-eyebrow">Our Commitment</div>
-      <div class="guarantee-title">Measurable outcomes.<br/>Or we keep building — free.</div>
-      <div class="guarantee-desc">Every engagement includes a specific, measurable guarantee. Not "we'll try our best" — actual numbers: 70% of support tickets handled without human intervention. Qualified leads booked within 48 hours of first inquiry. Follow-up sent within 1 hour. If the benchmark isn't hit within the agreed timeframe, we continue building at no extra cost until it is. We only take on projects where we know this is achievable.</div>
+      <div class="guarantee-title">One benchmark.<br/>Agreed before we start.</div>
+      <div class="guarantee-desc">Every engagement comes with one written benchmark — agreed before we start. Examples: 70% of support tickets handled without a human. Qualified leads booked within 48 hours. Follow-up sent within 1 hour. If we don't hit the benchmark in the agreed timeframe, we keep building free until we do. We only take projects where we're confident that's achievable.</div>
     </div>
     <a href="#contact" class="btn-white">Claim Your Free Audit</a>
   </div>
@@ -1739,7 +1758,6 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
         <div class="footer-col">
           <div class="footer-col-title">Company</div>
           <ul>
-            <li><a href="#cases">Case Studies</a></li>
             <li><a href="thinking.html">What we think</a></li>
             <li><a href="index.html#contact">Free Audit</a></li>
             <li><a href="#" onclick="openContactPopup();return false;">Contact</a></li>
