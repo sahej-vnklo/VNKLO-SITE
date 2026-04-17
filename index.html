@@ -1515,17 +1515,17 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 
 <!-- AGENTIC CAROUSEL -->
 <section class="cases" id="cases" style="background:var(--dark);padding:88px 0">
-  <div style="max-width:1280px;margin:0 auto;padding:0 80px">
+  <div id="cr-section-wrap" style="max-width:1280px;margin:0 auto;padding:0 80px">
 
     <p class="section-eyebrow reveal">See it run</p>
     <h2 class="section-title reveal">This is what we build.<br/>Watch it work.</h2>
     <p class="section-sub reveal">Each service is a network of AI agents firing in parallel. Not a chatbot. Not a script. An autonomous system.</p>
 
     <!-- CAROUSEL WRAPPER -->
-    <div class="reveal" style="margin-top:40px">
+    <div id="cr-carousel-wrap" class="reveal" style="margin-top:40px">
 
       <!-- SLIDE HEADER -->
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:16px">
+      <div id="cr-header-row" style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:16px">
         <div>
           <div style="display:flex;gap:5px;margin-bottom:14px;align-items:center" id="cr-dots">
             <div class="cr-dot cr-dot-active" id="crd-0"></div>
@@ -1544,13 +1544,13 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
       </div>
 
       <!-- SVG CANVAS WITH SIDE NAV -->
-      <div style="display:flex;align-items:center;gap:0">
+      <div id="cr-canvas-row" style="display:flex;align-items:center;gap:0">
 
         <!-- PREV BUTTON -->
         <button id="cr-prev" onclick="window.crNav(-1)" disabled style="flex-shrink:0;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(108,59,170,0.08);border:1px solid rgba(108,59,170,0.45);color:#6c3baa;font-size:18px;cursor:pointer;font-family:var(--font);transition:all .2s;margin-right:12px">←</button>
 
         <!-- CANVAS -->
-        <div style="flex:1;background:#080808;border:1px solid rgba(255,255,255,0.05);position:relative;min-width:0">
+        <div id="cr-canvas-wrap" style="flex:1;background:#080808;border:1px solid rgba(255,255,255,0.05);position:relative;min-width:0">
           <svg id="cr-svg" viewBox="0 0 720 275" style="width:100%;display:block"></svg>
           <div style="border-top:1px solid rgba(255,255,255,0.04);padding:7px 14px;display:flex;align-items:center;justify-content:space-between">
             <span id="cr-status" style="font-size:9px;letter-spacing:0.07em;color:rgba(255,255,255,0.2);font-family:var(--font)">● Idle — waiting for trigger</span>
@@ -1563,6 +1563,15 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 
       </div>
 
+      <!-- MOBILE STEP LIST (hidden on desktop) -->
+      <div id="cr-mobile-list"></div>
+
+      <!-- MOBILE NAV BUTTONS (hidden on desktop) -->
+      <div id="cr-mobile-btns">
+        <button id="cr-prev-m" onclick="window.crNav(-1)" disabled>←</button>
+        <button id="cr-next-m" onclick="window.crNav(1)">→</button>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1572,6 +1581,74 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 .cr-dot-active{background:var(--purple);width:34px}
 #cr-prev:hover:not(:disabled),#cr-next:hover:not(:disabled){border-color:#6c3baa!important;color:#fff!important;background:rgba(108,59,170,0.22)!important}
 #cr-prev:disabled,#cr-next:disabled{opacity:.15;cursor:default;background:transparent!important;border-color:rgba(255,255,255,0.08)!important;color:rgba(255,255,255,0.2)!important}
+
+/* ── MOBILE STEP LIST ── */
+#cr-mobile-list{display:none;flex-direction:column;}
+#cr-mobile-btns{display:none;}
+
+.cr-mstep{
+  background:#0a0a0a;
+  border-left:3px solid rgba(108,59,170,0.5);
+  padding:12px 14px;
+}
+.cr-mstep-badge{
+  font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;
+  color:rgba(108,59,170,0.6);margin-bottom:5px;
+}
+.cr-mstep-label{font-size:14px;font-weight:700;color:#fff;line-height:1.25;}
+.cr-mstep-sub{font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;line-height:1.4;}
+.cr-mconn{width:3px;height:14px;background:rgba(108,59,170,0.25);margin-left:14px;}
+
+/* ── MOBILE OVERRIDES ── */
+@media(max-width:768px){
+  /* 1. Section padding */
+  #cr-section-wrap{padding:0 16px!important;}
+
+  /* 2. Carousel wrap: no extra horizontal margin */
+  #cr-carousel-wrap{margin-left:0!important;margin-right:0!important;}
+
+  /* 3. Slide header: stack stats below title */
+  #cr-header-row{flex-direction:column!important;gap:16px!important;}
+  #cr-stats{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:14px 20px!important;
+    width:100%!important;
+    padding-top:0!important;
+  }
+
+  /* 4. Hide desktop SVG canvas + flanking buttons */
+  #cr-canvas-wrap{display:none!important;}
+  #cr-prev{display:none!important;}
+  #cr-next{display:none!important;}
+
+  /* 5. Show mobile step list */
+  #cr-mobile-list{display:flex!important;}
+
+  /* 6. Mobile nav buttons: below step list, full width split */
+  #cr-mobile-btns{
+    display:flex!important;
+    margin-top:12px;
+  }
+  #cr-prev-m,#cr-next-m{
+    flex:1;height:48px;
+    background:rgba(108,59,170,0.08);
+    border:1px solid rgba(108,59,170,0.45);
+    color:#6c3baa;font-size:18px;
+    cursor:pointer;font-family:var(--font);
+    transition:all .2s;
+  }
+  #cr-prev-m{border-right:none;}
+  #cr-prev-m:hover:not(:disabled),#cr-next-m:hover:not(:disabled){
+    border-color:#6c3baa!important;color:#fff!important;background:rgba(108,59,170,0.22)!important;
+  }
+  #cr-prev-m:disabled,#cr-next-m:disabled{
+    opacity:.15;cursor:default;
+    background:transparent!important;
+    border-color:rgba(255,255,255,0.08)!important;
+    color:rgba(255,255,255,0.2)!important;
+  }
+}
 </style>
 
 <script>
@@ -1844,10 +1921,30 @@ function crRender(idx){
         '</div>';
     }).join('');
   }
+  // desktop buttons
   var bp=document.getElementById('cr-prev');
   var bn=document.getElementById('cr-next');
   if(bp){bp.disabled=(idx===0);}
   if(bn){bn.disabled=(idx===3);}
+  // mobile buttons
+  var mbp=document.getElementById('cr-prev-m');
+  var mbn=document.getElementById('cr-next-m');
+  if(mbp){mbp.disabled=(idx===0);}
+  if(mbn){mbn.disabled=(idx===3);}
+  // mobile step list
+  var ml=document.getElementById('cr-mobile-list');
+  if(ml){
+    ml.innerHTML=s.nodes.map(function(n,i){
+      var isLast=(i===s.nodes.length-1);
+      var borderCol=n.prom?'rgba(108,59,170,0.9)':n.top?'rgba(143,82,212,0.8)':'rgba(108,59,170,0.45)';
+      return '<div class="cr-mstep" style="border-left-color:'+borderCol+'">'+
+        '<div class="cr-mstep-badge">'+n.badge+'</div>'+
+        '<div class="cr-mstep-label">'+n.label+'</div>'+
+        '<div class="cr-mstep-sub">'+n.sub+'</div>'+
+        '</div>'+
+        (isLast?'':'<div class="cr-mconn"></div>');
+    }).join('');
+  }
   crSetStatus('● Idle — waiting for trigger','rgba(255,255,255,0.2)');
   crBuildSVG(idx);
   if(crTimer)clearTimeout(crTimer);
