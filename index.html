@@ -1081,7 +1081,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
         <span class="drawer-item-chevron">›</span>
       </div>
       <div class="drawer-item-body">
-        <a href="index.html#cases" onclick="closeDrawer()">Case Studies</a>
+        <a href="index.html#cases" onclick="closeDrawer()">See It Run</a>
         <a href="index.html#icp" onclick="closeDrawer()">Who it's for</a>
       </div>
     </div>
@@ -1525,36 +1525,336 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   </div>
 </div>
 
-<!-- CASE STUDIES -->
-<section class="cases" id="cases">
-  <div class="cases-inner">
-    <p class="section-eyebrow reveal">Client Outcomes</p>
-    <h2 class="section-title reveal">Real results.<br/>Real operations.</h2>
-    <div class="cases-grid reveal">
-      <div class="case-card">
-        <div class="case-line"></div>
-        <div class="case-label">E-Commerce · AI Employee Bundle</div>
-        <div class="case-title">Support volume cut by 60% in 3 weeks</div>
-        <div class="case-result">FAQ bot + ticket routing deployed. A team of 2 now handles what previously required 5. Response time dropped from 6 hours to under 10 minutes.</div>
-        <div class="case-arrow">›</div>
+<!-- AGENTIC CAROUSEL -->
+<section class="cases" id="cases" style="background:var(--dark);padding:88px 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 80px">
+
+    <p class="section-eyebrow reveal">See it run</p>
+    <h2 class="section-title reveal">This is what we build.<br/>Watch it work.</h2>
+    <p class="section-sub reveal">Each service is a network of AI agents firing in parallel. Not a chatbot. Not a script. An autonomous system.</p>
+
+    <!-- CAROUSEL WRAPPER -->
+    <div class="reveal" style="margin-top:40px">
+
+      <!-- SLIDE HEADER -->
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:16px">
+        <div>
+          <div style="display:flex;gap:5px;margin-bottom:14px;align-items:center" id="cr-dots">
+            <div class="cr-dot cr-dot-active" id="crd-0"></div>
+            <div class="cr-dot" id="crd-1"></div>
+            <div class="cr-dot" id="crd-2"></div>
+            <div class="cr-dot" id="crd-3"></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+            <span id="cr-tag" style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--purple)">Revenue Systems</span>
+            <span id="cr-num" style="font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.1em">01 / 04</span>
+          </div>
+          <h3 id="cr-title" style="font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.02em;line-height:1.15;margin-bottom:6px">Lead qualifies itself.<br/>Pipeline fills overnight.</h3>
+          <p id="cr-sub" style="font-size:12px;color:rgba(255,255,255,0.35);line-height:1.65;max-width:480px">A lead hits your form. Seconds later — scored, logged, followed up. You wake up to a full calendar.</p>
+        </div>
+        <div id="cr-stats" style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start;padding-top:4px"></div>
       </div>
-      <div class="case-card">
-        <div class="case-line"></div>
-        <div class="case-label">Real Estate · Lead Machine Bundle</div>
-        <div class="case-title">Lead response time: 4 hours → 90 seconds</div>
-        <div class="case-result">AI qualifier + auto-booking eliminated manual follow-up entirely. Booking rate improved 34% in the first month.</div>
-        <div class="case-arrow">›</div>
+
+      <!-- SVG CANVAS -->
+      <div style="background:#080808;border:1px solid rgba(255,255,255,0.05);position:relative">
+        <svg id="cr-svg" viewBox="0 0 720 320" style="width:100%;display:block"></svg>
+        <!-- status bar -->
+        <div style="border-top:1px solid rgba(255,255,255,0.04);padding:8px 16px;background:rgba(0,0,0,0.3)">
+          <span id="cr-status" style="font-size:9px;letter-spacing:0.07em;color:rgba(255,255,255,0.2);font-family:var(--font)">● Idle — waiting for trigger</span>
+        </div>
       </div>
-      <div class="case-card">
-        <div class="case-line"></div>
-        <div class="case-label">SaaS · Operations Brain</div>
-        <div class="case-title">Onboarding time reduced by 40%</div>
-        <div class="case-result">RAG system built on Notion. New hires self-serve answers from day one. Onboarding calls reduced from 3 sessions to 1.</div>
-        <div class="case-arrow">›</div>
+
+      <!-- NAV BUTTONS -->
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:20px">
+        <button id="cr-prev" onclick="crNav(-1)" style="display:flex;align-items:center;gap:8px;background:transparent;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:10px 22px;cursor:pointer;font-family:var(--font);transition:all .2s" disabled>← Previous</button>
+        <div style="font-size:10px;color:rgba(255,255,255,0.15);letter-spacing:0.06em" id="cr-stack-note">n8n · Claude API · HubSpot · Calendly · Slack · Gmail</div>
+        <button id="cr-next" onclick="crNav(1)" style="display:flex;align-items:center;gap:8px;background:transparent;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:10px 22px;cursor:pointer;font-family:var(--font);transition:all .2s">Next →</button>
       </div>
+
     </div>
   </div>
 </section>
+
+<style>
+.cr-dot{width:22px;height:3px;background:rgba(255,255,255,0.1);transition:background .3s,width .3s}
+.cr-dot-active{background:var(--purple);width:34px}
+#cr-prev:hover:not(:disabled),#cr-next:hover:not(:disabled){border-color:var(--purple)!important;color:var(--purple)!important;background:rgba(161,0,255,0.06)!important}
+#cr-prev:disabled{opacity:.2;cursor:default}
+</style>
+
+<script>
+(function(){
+var CR_SLIDES=[
+  {
+    tag:'Revenue Systems',num:'01 / 04',
+    title:'Lead qualifies itself.<br/>Pipeline fills overnight.',
+    sub:'A lead hits your form. Seconds later — scored, logged, followed up. You wake up to a full calendar.',
+    stats:[['7s','Trigger to action'],['4','Parallel agents'],['0','Manual steps'],['3hr','Saved per lead']],
+    stack:'n8n · Claude API · HubSpot · Calendly · Slack · Gmail',
+    nodes:[
+      {id:'n0',label:'Form Webhook',sub:'Lead submits',badge:'TRIGGER',x:30,y:52,w:138,h:58,lx:3,accent:'rgba(255,255,255,0.18)'},
+      {id:'n1',label:'Lead Orchestrator',sub:'Routes by intent + score',badge:'ORCHESTRATOR',x:210,y:118,w:162,h:66,lx:3,accent:'#A100FF',prom:true},
+      {id:'n2',label:'Qualifier Agent',sub:'Scores fit via Claude',badge:'AGENT 1',x:22,y:228,w:138,h:62,lx:3,accent:'rgba(161,0,255,0.55)'},
+      {id:'n3',label:'CRM Writer',sub:'HubSpot deal + contact',badge:'AGENT 2',x:182,y:228,w:138,h:62,lx:3,accent:'rgba(161,0,255,0.55)'},
+      {id:'n4',label:'Follow-up Agent',sub:'Personalised email sent',badge:'AGENT 3',x:342,y:228,w:138,h:62,lx:3,accent:'rgba(161,0,255,0.55)'},
+      {id:'n5',label:'Booking Agent',sub:'Calendly slot offered',badge:'AGENT 4',x:502,y:228,w:138,h:62,lx:3,accent:'rgba(161,0,255,0.55)'},
+      {id:'n6',label:'You notified',sub:'Slack: score + summary',badge:'RESULT',x:536,y:118,w:154,h:52,lx:0,top:true,accent:'#C44DFF'},
+    ],
+    pipes:[
+      {x1:168,y1:81,x2:210,y2:151},
+      {x1:291,y1:184,x2:91,y2:228},
+      {x1:291,y1:184,x2:251,y2:228},
+      {x1:291,y1:184,x2:411,y2:228},
+      {x1:291,y1:184,x2:571,y2:228},
+      {x1:291,y1:151,x2:536,y2:144,res:true},
+    ],
+    seq:[
+      {n:'n0',p:null,msg:'● Webhook fired — lead data received',c:'rgba(255,255,255,0.45)',t:300},
+      {n:'n1',p:0,msg:'● Orchestrator reading lead — spawning agents...',c:'#A100FF',t:1000},
+      {n:'n2',p:1,msg:'● 4 agents firing in parallel simultaneously',c:'#A100FF',t:1900},
+      {n:'n3',p:2,msg:'● 4 agents firing in parallel simultaneously',c:'#A100FF',t:1920},
+      {n:'n4',p:3,msg:'● 4 agents firing in parallel simultaneously',c:'#A100FF',t:1940},
+      {n:'n5',p:4,msg:'● 4 agents firing in parallel simultaneously',c:'#A100FF',t:1960},
+      {n:'n6',p:5,msg:'● Done. Slack pinged. Zero humans involved.',c:'#C44DFF',t:3600},
+    ]
+  },
+  {
+    tag:'Customer Experience',num:'02 / 04',
+    title:'Support runs 24/7.<br/>No new headcount.',
+    sub:'Every ticket, review, refund, FAQ — handled automatically. Your team only sees what truly needs a human.',
+    stats:[['70%','Auto-resolved'],['24/7','Always online'],['0','Extra hires'],['6hr→8min','Response time']],
+    stack:'n8n · Claude API · Zendesk · WhatsApp · Gmail · Notion',
+    nodes:[
+      {id:'n0',label:'Inbound Message',sub:'Email / chat / WhatsApp',badge:'TRIGGER',x:272,y:14,w:162,h:58,lx:3,accent:'rgba(255,255,255,0.18)'},
+      {id:'n1',label:'Triage Agent',sub:'Classifies intent + urgency',badge:'ROUTER',x:272,y:112,w:162,h:64,lx:3,accent:'#A100FF',prom:true},
+      {id:'n2',label:'FAQ Agent',sub:'RAG knowledge base reply',badge:'AGENT 1',x:28,y:224,w:138,h:62,lx:3,accent:'rgba(161,0,255,0.55)'},
+      {id:'n3',label:'Ticket Agent',sub:'Tags, routes, logs',badge:'AGENT 2',x:188,y:224,w:138,h:62,lx:3,accent:'rgba(161,0,255,0.55)'},
+      {id:'n4',label:'Review Agent',sub:'Auto-responds publicly',badge:'AGENT 3',x:348,y:224,w:138,h:62,lx:3,accent:'rgba(161,0,255,0.55)'},
+      {id:'n5',label:'Escalation Agent',sub:'Flags edge cases to human',badge:'AGENT 4',x:508,y:224,w:138,h:62,lx:3,accent:'rgba(255,120,120,0.45)'},
+      {id:'n6',label:'Response sent',sub:'< 8 min, any channel',badge:'RESULT',x:28,y:124,w:138,h:50,lx:0,top:true,accent:'#C44DFF'},
+    ],
+    pipes:[
+      {x1:353,y1:72,x2:353,y2:112},
+      {x1:353,y1:176,x2:97,y2:224},
+      {x1:353,y1:176,x2:257,y2:224},
+      {x1:353,y1:176,x2:417,y2:224},
+      {x1:353,y1:176,x2:577,y2:224},
+      {x1:272,y1:144,x2:166,y2:149,res:true},
+    ],
+    seq:[
+      {n:'n0',p:null,msg:'● Message received across channel',c:'rgba(255,255,255,0.45)',t:300},
+      {n:'n1',p:0,msg:'● Triage agent classifying intent...',c:'#A100FF',t:900},
+      {n:'n2',p:1,msg:'● All 4 agents handling in parallel',c:'#A100FF',t:1800},
+      {n:'n3',p:2,msg:'● All 4 agents handling in parallel',c:'#A100FF',t:1820},
+      {n:'n4',p:3,msg:'● All 4 agents handling in parallel',c:'#A100FF',t:1840},
+      {n:'n5',p:4,msg:'● All 4 agents handling in parallel',c:'#A100FF',t:1860},
+      {n:'n6',p:5,msg:'● Response sent. < 8 minutes. Zero humans.',c:'#C44DFF',t:3500},
+    ]
+  },
+  {
+    tag:'Operations Intelligence',num:'03 / 04',
+    title:'Your ops brain never<br/>forgets anything.',
+    sub:'Notion, Drive, SOPs — all connected. Ask a question. Get a cited answer in 4 seconds.',
+    stats:[['4s','Answer retrieval'],['100%','Knowledge captured'],['40%','Onboarding cut'],['0','Lost context']],
+    stack:'n8n · Claude API · Notion · Google Drive · Pinecone · Slack',
+    nodes:[
+      {id:'n0',label:'Question asked',sub:'Slack / chat / email',badge:'TRIGGER',x:28,y:128,w:138,h:58,lx:3,accent:'rgba(255,255,255,0.18)'},
+      {id:'n1',label:'Intent Router',sub:'Classifies + selects source',badge:'ROUTER',x:228,y:62,w:155,h:64,lx:3,accent:'#A100FF',prom:true},
+      {id:'n2',label:'RAG Agent',sub:'Notion + Drive search',badge:'AGENT 1',x:228,y:210,w:138,h:62,lx:3,accent:'rgba(161,0,255,0.55)'},
+      {id:'n3',label:'SOP Agent',sub:'Retrieves exact procedure',badge:'AGENT 2',x:418,y:128,w:145,h:62,lx:3,accent:'rgba(161,0,255,0.55)'},
+      {id:'n4',label:'Onboard Agent',sub:'New hire guided flow',badge:'AGENT 3',x:418,y:228,w:145,h:62,lx:3,accent:'rgba(161,0,255,0.55)'},
+      {id:'n5',label:'Memory Writer',sub:'Logs Q&A for future use',badge:'AGENT 4',x:108,y:228,w:112,h:62,lx:3,accent:'rgba(161,0,255,0.35)'},
+      {id:'n6',label:'Answer delivered',sub:'Plain English, cited sources',badge:'RESULT',x:548,y:46,w:148,h:52,lx:0,top:true,accent:'#C44DFF'},
+    ],
+    pipes:[
+      {x1:166,y1:157,x2:228,y2:94},
+      {x1:305,y1:126,x2:305,y2:210},
+      {x1:305,y1:94,x2:418,y2:159},
+      {x1:305,y1:126,x2:418,y2:259},
+      {x1:228,y1:157,x2:220,y2:228},
+      {x1:563,y1:126,x2:622,y2:98,res:true},
+    ],
+    seq:[
+      {n:'n0',p:null,msg:'● Question received — parsing intent',c:'rgba(255,255,255,0.45)',t:300},
+      {n:'n1',p:0,msg:'● Router selecting knowledge sources...',c:'#A100FF',t:1000},
+      {n:'n2',p:1,msg:'● Agents retrieving in parallel',c:'#A100FF',t:1900},
+      {n:'n3',p:2,msg:'● Agents retrieving in parallel',c:'#A100FF',t:1920},
+      {n:'n4',p:3,msg:'● Agents retrieving in parallel',c:'#A100FF',t:1940},
+      {n:'n5',p:4,msg:'● Logging to memory for future queries',c:'rgba(161,0,255,0.7)',t:2800},
+      {n:'n6',p:5,msg:'● Answer delivered. 4 seconds. Cited sources.',c:'#C44DFF',t:3600},
+    ]
+  },
+  {
+    tag:'System Overhaul',num:'04 / 04',
+    title:'Every department.<br/>One connected brain.',
+    sub:'Full-stack AI deployment. Revenue, support, ops, and sales — all automated, all talking to each other.',
+    stats:[['Full','Stack coverage'],['1','Source of truth'],['Wk 2','Live in prod'],['30d','Guarantee']],
+    stack:'n8n · Claude API · HubSpot · Notion · Slack · Gmail · Pinecone · Zapier',
+    nodes:[
+      {id:'n0',label:'Central AI Hub',sub:'Master orchestrator',badge:'BRAIN',x:266,y:124,w:172,h:70,lx:3,accent:'#A100FF',prom:true},
+      {id:'n1',label:'Revenue Engine',sub:'Leads + pipeline auto',badge:'MODULE 1',x:28,y:30,w:145,h:58,lx:3,accent:'rgba(161,0,255,0.6)'},
+      {id:'n2',label:'CX Engine',sub:'Support + reviews',badge:'MODULE 2',x:548,y:30,w:145,h:58,lx:3,accent:'rgba(161,0,255,0.6)'},
+      {id:'n3',label:'Ops Brain',sub:'SOPs + knowledge',badge:'MODULE 3',x:28,y:238,w:145,h:58,lx:3,accent:'rgba(161,0,255,0.6)'},
+      {id:'n4',label:'Sales Assistant',sub:'Proposals + follow-up',badge:'MODULE 4',x:548,y:238,w:145,h:58,lx:3,accent:'rgba(161,0,255,0.6)'},
+      {id:'n5',label:'Unified Data Layer',sub:'Single source of truth',badge:'INFRA',x:258,y:258,w:188,h:52,lx:0,top:true,accent:'rgba(255,255,255,0.12)'},
+      {id:'n6',label:'Live Dashboard',sub:'Everything in one view',badge:'OUTPUT',x:272,y:18,w:160,h:50,lx:0,top:true,accent:'#C44DFF'},
+    ],
+    pipes:[
+      {x1:173,y1:59,x2:266,y2:159},
+      {x1:548,y1:59,x2:438,y2:159},
+      {x1:173,y1:267,x2:266,y2:194},
+      {x1:548,y1:267,x2:438,y2:194},
+      {x1:352,y1:194,x2:352,y2:258},
+      {x1:352,y1:124,x2:352,y2:68,res:true},
+    ],
+    seq:[
+      {n:'n1',p:null,msg:'● Revenue engine connected',c:'rgba(161,0,255,0.6)',t:300},
+      {n:'n2',p:null,msg:'● CX engine connected',c:'rgba(161,0,255,0.6)',t:700},
+      {n:'n3',p:null,msg:'● Ops brain connected',c:'rgba(161,0,255,0.6)',t:1100},
+      {n:'n4',p:null,msg:'● Sales assistant connected',c:'rgba(161,0,255,0.6)',t:1500},
+      {n:'n0',p:0,msg:'● Central AI Hub orchestrating all modules...',c:'#A100FF',t:2100},
+      {n:'n5',p:4,msg:'● Unified data layer syncing everything',c:'rgba(255,255,255,0.5)',t:3000},
+      {n:'n6',p:5,msg:'● System live. Every department automated.',c:'#C44DFF',t:3900},
+    ]
+  }
+];
+
+var crIdx=0;
+var crTimer=null;
+
+function crBuildSVG(idx){
+  var s=CR_SLIDES[idx];
+  var svg=document.getElementById('cr-svg');
+
+  var defs='<defs>'+
+    '<marker id="crAP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#A100FF" stroke-width="1.5" stroke-linecap="round"/></marker>'+
+    '<marker id="crAR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#C44DFF" stroke-width="1.5" stroke-linecap="round"/></marker>'+
+    '<marker id="crAD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5" stroke-linecap="round"/></marker>'+
+    '</defs>';
+
+  var grid='<g opacity="0.03">'+
+    '<line x1="0" y1="100" x2="720" y2="100" stroke="#fff" stroke-width="0.5"/>'+
+    '<line x1="0" y1="200" x2="720" y2="200" stroke="#fff" stroke-width="0.5"/>'+
+    '<line x1="0" y1="300" x2="720" y2="300" stroke="#fff" stroke-width="0.5"/>'+
+    '<line x1="180" y1="0" x2="180" y2="320" stroke="#fff" stroke-width="0.5"/>'+
+    '<line x1="360" y1="0" x2="360" y2="320" stroke="#fff" stroke-width="0.5"/>'+
+    '<line x1="540" y1="0" x2="540" y2="320" stroke="#fff" stroke-width="0.5"/>'+
+    '</g>';
+
+  var dimP=s.pipes.map(function(p,i){
+    return '<line x1="'+p.x1+'" y1="'+p.y1+'" x2="'+p.x2+'" y2="'+p.y2+'" stroke="rgba(255,255,255,0.07)" stroke-width="1.5" marker-end="url(#crAD)"/>';
+  }).join('');
+
+  var actP=s.pipes.map(function(p,i){
+    var col=p.res?'#C44DFF':'#A100FF';
+    var mk=p.res?'crAR':'crAP';
+    var dx=p.x2-p.x1,dy=p.y2-p.y1;
+    var len=Math.round(Math.sqrt(dx*dx+dy*dy))+10;
+    return '<line id="crp-'+idx+'-'+i+'" x1="'+p.x1+'" y1="'+p.y1+'" x2="'+p.x2+'" y2="'+p.y2+'" stroke="'+col+'" stroke-width="1.5" stroke-dasharray="'+len+'" stroke-dashoffset="'+len+'" marker-end="url(#'+mk+')" opacity="0"/>';
+  }).join('');
+
+  var nodes=s.nodes.map(function(n){
+    var fill=n.prom?'#0f0f0f':'#0a0a0a';
+    var stroke=n.prom?'rgba(161,0,255,0.3)':'rgba(255,255,255,0.08)';
+    var accentBar=n.top
+      ?'<rect x="'+n.x+'" y="'+n.y+'" width="'+n.w+'" height="2" fill="'+n.accent+'" rx="0"/>'
+      :'<rect x="'+n.x+'" y="'+n.y+'" width="3" height="'+n.h+'" fill="'+n.accent+'" rx="0"/>';
+    var midY=Math.round(n.y+n.h*0.52);
+    return '<g>'+
+      '<rect id="'+n.id+'" x="'+n.x+'" y="'+n.y+'" width="'+n.w+'" height="'+n.h+'" rx="2" fill="'+fill+'" stroke="'+stroke+'" stroke-width="1"/>'+
+      accentBar+
+      '<text x="'+(n.x+14)+'" y="'+(n.y+17)+'" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="'+(n.prom?'#A100FF':'rgba(161,0,255,0.5)')+'" letter-spacing="0.12em">'+n.badge+'</text>'+
+      '<text x="'+(n.x+14)+'" y="'+midY+'" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#fff">'+n.label+'</text>'+
+      '<text x="'+(n.x+14)+'" y="'+(midY+14)+'" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.3)">'+n.sub+'</text>'+
+      '</g>';
+  }).join('');
+
+  svg.innerHTML=defs+grid+dimP+actP+nodes;
+}
+
+function crAnimLine(idx,pIdx,dur,delay){
+  setTimeout(function(){
+    var el=document.getElementById('crp-'+idx+'-'+pIdx);
+    if(!el)return;
+    el.setAttribute('opacity','1');
+    var da=parseFloat(el.getAttribute('stroke-dasharray'));
+    var start=performance.now();
+    function fr(now){
+      var p=Math.min((now-start)/dur,1);
+      var e=p<0.5?2*p*p:-1+(4-2*p)*p;
+      el.setAttribute('stroke-dashoffset',da*(1-e));
+      if(p<1)requestAnimationFrame(fr);
+    }
+    requestAnimationFrame(fr);
+  },delay);
+}
+
+function crPulseNode(nid,delay,col){
+  setTimeout(function(){
+    var el=document.getElementById(nid);
+    if(!el)return;
+    el.setAttribute('stroke',col||'#A100FF');
+    el.setAttribute('stroke-width','1.5');
+  },delay);
+}
+
+function crSetStatus(txt,col){
+  var el=document.getElementById('cr-status');
+  if(el){el.textContent=txt;el.style.color=col||'rgba(161,0,255,0.7)';}
+}
+
+function crRunAnim(idx){
+  var s=CR_SLIDES[idx];
+  s.seq.forEach(function(step){
+    setTimeout(function(){
+      var nc=step.c==='rgba(255,255,255,0.45)'?'rgba(255,255,255,0.35)':step.c==='#C44DFF'?'#C44DFF':'#A100FF';
+      crPulseNode(step.n,0,nc);
+      if(step.p!==null&&step.p!==undefined)crAnimLine(idx,step.p,500,0);
+      crSetStatus(step.msg,step.c);
+    },step.t);
+  });
+}
+
+function crRender(idx){
+  var s=CR_SLIDES[idx];
+  document.getElementById('cr-tag').textContent=s.tag;
+  document.getElementById('cr-num').textContent=s.num;
+  document.getElementById('cr-title').innerHTML=s.title;
+  document.getElementById('cr-sub').textContent=s.sub;
+  document.getElementById('cr-stack-note').textContent=s.stack;
+
+  for(var i=0;i<4;i++){
+    var d=document.getElementById('crd-'+i);
+    if(i===idx){d.classList.add('cr-dot-active');}else{d.classList.remove('cr-dot-active');}
+  }
+
+  var sr=document.getElementById('cr-stats');
+  sr.innerHTML=s.stats.map(function(st){
+    return '<div style="display:flex;flex-direction:column;gap:2px">'+
+      '<div style="font-size:18px;font-weight:800;color:var(--purple);letter-spacing:-0.02em">'+st[0]+'</div>'+
+      '<div style="font-size:9px;color:rgba(255,255,255,0.25);letter-spacing:0.08em;text-transform:uppercase">'+st[1]+'</div>'+
+      '</div>';
+  }).join('');
+
+  document.getElementById('cr-prev').disabled=(idx===0);
+  document.getElementById('cr-next').disabled=(idx===3);
+  document.getElementById('cr-prev').style.opacity=idx===0?'0.2':'1';
+  document.getElementById('cr-next').style.opacity=idx===3?'0.2':'1';
+
+  crSetStatus('● Idle — waiting for trigger','rgba(255,255,255,0.2)');
+  crBuildSVG(idx);
+  if(crTimer)clearTimeout(crTimer);
+  crTimer=setTimeout(function(){crRunAnim(idx);},600);
+}
+
+function crNav(dir){
+  crIdx=Math.max(0,Math.min(3,crIdx+dir));
+  crRender(crIdx);
+}
+
+crRender(0);
+})();
+</script>
 
 <!-- WHO IT'S FOR -->
 <section class="icp" id="icp">
