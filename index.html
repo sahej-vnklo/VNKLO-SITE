@@ -24,7 +24,7 @@
 :root{
   --purple:#A100FF;
   --purple2:#C44DFF;
-  --black:#252525;
+  --black:#000;
   --dark:#0a0a0a;
   --white:#fff;
   --grey3:#888;
@@ -36,8 +36,8 @@ body{font-family:var(--font);background:var(--black);color:var(--white);overflow
 /* ── NAV ── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:200;
-  background:#0f0f0f;
-  border-bottom:1px solid rgba(255,255,255,0.12);
+  background:var(--black);
+  border-bottom:1px solid rgba(255,255,255,0.08);
   height:88px;display:flex;align-items:center;padding:0 56px;
   justify-content:space-between;
 }
@@ -212,7 +212,7 @@ nav{
 .mega-why-closing{
   margin-top:24px;padding:18px 22px;
   background:rgba(161,0,255,0.07);border:1px solid rgba(161,0,255,0.2);
-  font-size:15px;color:rgba(255,255,255,0.75);line-height:1.6;
+  font-size:15px;color:rgba(255,255,255,0.6);line-height:1.6;
   max-width:600px;
 }
 .mega-why-closing strong{color:rgba(255,255,255,0.85)}
@@ -329,7 +329,7 @@ nav{
   font-size:13px;color:rgba(255,255,255,0.45);
   line-height:1.7;
 }
-.pain-item-desc strong{color:rgba(255,255,255,0.75);font-weight:600}
+.pain-item-desc strong{color:rgba(255,255,255,0.6);font-weight:600}
 
 .pain-diagnosis{
   margin-top:2px;
@@ -396,7 +396,7 @@ nav{
   color:rgba(255,255,255,0.3);margin-bottom:16px;
   display:flex;align-items:center;gap:12px;
 }
-.tier-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.12)}
+.tier-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.08)}
 .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:2px}
 .card{
   background:#141414;position:relative;overflow:hidden;
@@ -434,7 +434,7 @@ nav{
   position:relative;transition:color .2s;
 }
 .card-items li::before{content:'—';position:absolute;left:0;color:rgba(161,0,255,0.4);font-size:9px}
-.card:hover .card-items li{color:rgba(255,255,255,0.75)}
+.card:hover .card-items li{color:rgba(255,255,255,0.6)}
 .card-arrow{
   position:absolute;top:18px;right:18px;font-size:18px;
   color:var(--purple);opacity:0;transform:translateX(-4px);
@@ -476,7 +476,7 @@ nav{
   border:none;
   display:block;
 }
-.services-footer-note-text{font-size:22px;font-weight:700;color:rgba(255,255,255,0.75);line-height:1.5;letter-spacing:-0.01em}
+.services-footer-note-text{font-size:22px;font-weight:700;color:rgba(255,255,255,0.6);line-height:1.5;letter-spacing:-0.01em}
 .services-footer-note-text strong{color:var(--white);font-weight:800}
 .services-footer-cta{
   font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
@@ -530,7 +530,7 @@ nav{
 .tools-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 .tool-tag{
   font-size:11px;font-weight:500;padding:7px 14px;
-  border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.75);
+  border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);
   cursor:pointer;text-decoration:none;display:inline-block;
   transition:border-color .2s,color .2s,background .2s;
 }
@@ -664,7 +664,7 @@ nav{
 .icp-items{list-style:none;display:flex;flex-direction:column;gap:14px}
 .icp-item{
   font-size:14px;font-weight:400;line-height:1.5;
-  display:flex;align-items:flex-start;gap:12px;color:rgba(255,255,255,0.75);
+  display:flex;align-items:flex-start;gap:12px;color:rgba(255,255,255,0.6);
 }
 .icp-check{
   font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;
@@ -742,7 +742,7 @@ nav{
 .contact-left-meta{margin-top:40px;display:flex;flex-direction:column;gap:20px}
 .contact-meta-item{display:flex;flex-direction:column;gap:4px}
 .contact-meta-label{font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.25)}
-.contact-meta-value{font-size:14px;color:rgba(255,255,255,0.75);line-height:1.5}
+.contact-meta-value{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.5}
 .form-wrap{display:flex;flex-direction:column;gap:14px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .form-group{display:flex;flex-direction:column;gap:6px}
@@ -1556,7 +1556,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
           <svg id="cr-svg" viewBox="0 0 720 275" style="width:100%;display:block"></svg>
           <div style="border-top:1px solid rgba(255,255,255,0.04);padding:7px 14px;display:flex;align-items:center;justify-content:space-between">
             <span id="cr-status" style="font-size:9px;letter-spacing:0.07em;color:rgba(255,255,255,0.2);font-family:var(--font)">● Idle — waiting for trigger</span>
-            <span id="cr-stack-note" style="font-size:9px;color:rgba(255,255,255,0.12);letter-spacing:0.05em">n8n · Claude API · HubSpot · Calendly · Slack · Gmail</span>
+            <span id="cr-stack-note" style="font-size:9px;color:rgba(255,255,255,0.08);letter-spacing:0.05em">n8n · Claude API · HubSpot · Calendly · Slack · Gmail</span>
           </div>
         </div>
 
@@ -1582,7 +1582,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
 .cr-dot{width:22px;height:3px;background:rgba(255,255,255,0.1);transition:background .3s,width .3s}
 .cr-dot-active{background:var(--purple);width:34px}
 #cr-prev:hover:not(:disabled),#cr-next:hover:not(:disabled){border-color:#A100FF!important;color:#fff!important;background:rgba(161,0,255,0.22)!important}
-#cr-prev:disabled,#cr-next:disabled{opacity:.15;cursor:default;background:transparent!important;border-color:rgba(255,255,255,0.12)!important;color:rgba(255,255,255,0.2)!important}
+#cr-prev:disabled,#cr-next:disabled{opacity:.15;cursor:default;background:transparent!important;border-color:rgba(255,255,255,0.08)!important;color:rgba(255,255,255,0.2)!important}
 
 /* ── MOBILE STEP LIST ── */
 #cr-mobile-list{display:none;flex-direction:column;}
@@ -1647,7 +1647,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   #cr-prev-m:disabled,#cr-next-m:disabled{
     opacity:.15;cursor:default;
     background:transparent!important;
-    border-color:rgba(255,255,255,0.12)!important;
+    border-color:rgba(255,255,255,0.08)!important;
     color:rgba(255,255,255,0.2)!important;
   }
 }
@@ -1766,7 +1766,7 @@ var CR_SLIDES=[
       {id:'n2',label:'CX Engine',sub:'Support + reviews',badge:'MODULE 2',x:548,y:20,w:145,h:56,accent:'rgba(161,0,255,0.6)'},
       {id:'n3',label:'Ops Brain',sub:'SOPs + knowledge',badge:'MODULE 3',x:28,y:210,w:145,h:56,accent:'rgba(161,0,255,0.6)'},
       {id:'n4',label:'Sales Assistant',sub:'Proposals + follow-up',badge:'MODULE 4',x:548,y:210,w:145,h:56,accent:'rgba(161,0,255,0.6)'},
-      {id:'n5',label:'Unified Data Layer',sub:'Single source of truth',badge:'INFRA',x:256,y:220,w:188,h:50,top:true,accent:'rgba(255,255,255,0.12)'},
+      {id:'n5',label:'Unified Data Layer',sub:'Single source of truth',badge:'INFRA',x:256,y:220,w:188,h:50,top:true,accent:'rgba(255,255,255,0.08)'},
       {id:'n6',label:'Live Dashboard',sub:'Everything in one view',badge:'OUTPUT',x:270,y:8,w:160,h:48,top:true,accent:'#C44DFF'},
     ],
     pipes:[
@@ -1820,7 +1820,7 @@ function crBuildSVG(idx){
   }).join('');
   var nodes=s.nodes.map(function(n){
     var fill=n.prom?'#0f0f0f':'#0a0a0a';
-    var stroke=n.prom?'rgba(161,0,255,0.3)':'rgba(255,255,255,0.12)';
+    var stroke=n.prom?'rgba(161,0,255,0.3)':'rgba(255,255,255,0.08)';
     var bar=n.top
       ?'<rect x="'+n.x+'" y="'+n.y+'" width="'+n.w+'" height="2" fill="'+n.accent+'"/>'
       :'<rect x="'+n.x+'" y="'+n.y+'" width="3" height="'+n.h+'" fill="'+n.accent+'"/>';
