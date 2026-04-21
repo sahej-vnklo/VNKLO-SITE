@@ -1515,451 +1515,145 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,0.06);padding:56
   </div>
 </section>
 
-<!-- AGENTIC CAROUSEL -->
-<section class="cases" id="cases" style="background:var(--dark);padding:88px 0">
-  <div id="cr-section-wrap" style="max-width:1280px;margin:0 auto;padding:0 80px">
+<!-- WHY CLIENTS TRUST US -->
+<section id="trust" style="background:var(--dark);padding:88px 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 80px">
 
-    <p class="section-eyebrow reveal">See it run</p>
-    <h2 class="section-title reveal">This is what we build.<br/>Watch it work.</h2>
-    <p class="section-sub reveal">Each service is a network of AI agents firing in parallel. Not a chatbot. Not a script. An autonomous system.</p>
+    <p class="section-eyebrow reveal">Why clients trust us</p>
+    <h2 class="section-title reveal">Built for the businesses<br/>that can't afford to get it wrong.</h2>
+    <p class="section-sub reveal">Enterprise-level standards. Without the enterprise overhead. Every engagement is designed to protect your business, your data, and your time.</p>
 
-    <!-- CAROUSEL WRAPPER -->
-    <div id="cr-carousel-wrap" class="reveal" style="margin-top:40px">
+    <!-- TRUST GRID -->
+    <div class="reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:52px">
 
-      <!-- SLIDE HEADER -->
-      <div id="cr-header-row" style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:16px">
-        <div>
-          <div style="display:flex;gap:5px;margin-bottom:14px;align-items:center" id="cr-dots">
-            <div class="cr-dot cr-dot-active" id="crd-0"></div>
-            <div class="cr-dot" id="crd-1"></div>
-            <div class="cr-dot" id="crd-2"></div>
-            <div class="cr-dot" id="crd-3"></div>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
-            <span id="cr-tag" style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--purple)">Revenue Systems</span>
-            <span id="cr-num" style="font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.1em">01 / 04</span>
-          </div>
-          <h3 id="cr-title" style="font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.02em;line-height:1.15;margin-bottom:6px">Lead qualifies itself.<br/>Pipeline fills overnight.</h3>
-          <p id="cr-sub" style="font-size:12px;color:rgba(255,255,255,0.35);line-height:1.65;max-width:480px">A lead hits your form. Seconds later — scored, logged, followed up. You wake up to a full calendar.</p>
+      <!-- CONTRACTS -->
+      <div class="trust-card">
+        <div class="trust-card-top-line"></div>
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C44DFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+          </svg>
         </div>
-        <div id="cr-stats" style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start;padding-top:4px"></div>
+        <div class="trust-label">LEGAL PROTECTION</div>
+        <div class="trust-title">Contracts</div>
+        <ul class="trust-list">
+          <li>Signed NDA before day one</li>
+          <li>Custom contract per engagement</li>
+          <li>Your policies, our compliance</li>
+        </ul>
       </div>
 
-      <!-- SVG CANVAS WITH SIDE NAV -->
-      <div id="cr-canvas-row" style="display:flex;align-items:center;gap:0">
-
-        <!-- PREV BUTTON -->
-        <button id="cr-prev" onclick="window.crNav(-1)" disabled style="flex-shrink:0;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(161,0,255,0.08);border:1px solid rgba(161,0,255,0.45);color:#A100FF;font-size:18px;cursor:pointer;font-family:var(--font);transition:all .2s;margin-right:12px">←</button>
-
-        <!-- CANVAS -->
-        <div id="cr-canvas-wrap" style="flex:1;background:#080808;border:1px solid rgba(255,255,255,0.05);position:relative;min-width:0">
-          <svg id="cr-svg" viewBox="0 0 720 275" style="width:100%;display:block"></svg>
-          <div style="border-top:1px solid rgba(255,255,255,0.04);padding:7px 14px;display:flex;align-items:center;justify-content:space-between">
-            <span id="cr-status" style="font-size:9px;letter-spacing:0.07em;color:rgba(255,255,255,0.2);font-family:var(--font)">● Idle — waiting for trigger</span>
-            <span id="cr-stack-note" style="font-size:9px;color:rgba(255,255,255,0.08);letter-spacing:0.05em">n8n · Claude API · HubSpot · Calendly · Slack · Gmail</span>
-          </div>
+      <!-- DATA CONTROL -->
+      <div class="trust-card">
+        <div class="trust-card-top-line"></div>
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C44DFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
         </div>
-
-        <!-- NEXT BUTTON -->
-        <button id="cr-next" onclick="window.crNav(1)" style="flex-shrink:0;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(161,0,255,0.08);border:1px solid rgba(161,0,255,0.45);color:#A100FF;font-size:18px;cursor:pointer;font-family:var(--font);transition:all .2s;margin-left:12px">→</button>
-
+        <div class="trust-label">DATA OWNERSHIP</div>
+        <div class="trust-title">Your Data</div>
+        <ul class="trust-list">
+          <li>Your data stays yours — always</li>
+          <li>No third-party sharing</li>
+          <li>Full access, full ownership</li>
+        </ul>
       </div>
 
-      <!-- MOBILE STEP LIST (hidden on desktop) -->
-      <div id="cr-mobile-list"></div>
+      <!-- TRANSPARENCY -->
+      <div class="trust-card">
+        <div class="trust-card-top-line"></div>
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C44DFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </div>
+        <div class="trust-label">FULL VISIBILITY</div>
+        <div class="trust-title">No Black Box</div>
+        <ul class="trust-list">
+          <li>Every workflow documented</li>
+          <li>Human approval on client-facing actions</li>
+          <li>Source code access available</li>
+        </ul>
+      </div>
 
-      <!-- MOBILE NAV BUTTONS (hidden on desktop) -->
-      <div id="cr-mobile-btns">
-        <button id="cr-prev-m" onclick="window.crNav(-1)" disabled>←</button>
-        <button id="cr-next-m" onclick="window.crNav(1)">→</button>
+      <!-- ACCOUNTABILITY -->
+      <div class="trust-card">
+        <div class="trust-card-top-line"></div>
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C44DFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+        <div class="trust-label">CLEAR OUTCOMES</div>
+        <div class="trust-title">Accountability</div>
+        <ul class="trust-list">
+          <li>Defined KPIs agreed upfront</li>
+          <li>Full audit logs on every system</li>
+          <li>You own everything we build</li>
+        </ul>
       </div>
 
     </div>
+
+    <!-- TRUST FOOTER NOTE -->
+    <div class="reveal" style="margin-top:2px;background:rgba(161,0,255,0.05);border:1px solid rgba(161,0,255,0.15);border-left:3px solid var(--purple);padding:20px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+      <p style="font-size:14px;color:rgba(255,255,255,0.5);line-height:1.6;max-width:680px"><strong style="color:rgba(255,255,255,0.85)">Every engagement starts with a signed NDA and a custom contract.</strong> We don't start building until the legal and commercial terms are agreed — in writing, on your terms.</p>
+      <a href="#contact" style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--purple);text-decoration:none;white-space:nowrap">Book the audit →</a>
+    </div>
+
   </div>
 </section>
 
 <style>
-.cr-dot{width:22px;height:3px;background:rgba(255,255,255,0.1);transition:background .3s,width .3s}
-.cr-dot-active{background:var(--purple);width:34px}
-#cr-prev:hover:not(:disabled),#cr-next:hover:not(:disabled){border-color:#A100FF!important;color:#fff!important;background:rgba(161,0,255,0.22)!important}
-#cr-prev:disabled,#cr-next:disabled{opacity:.15;cursor:default;background:transparent!important;border-color:rgba(255,255,255,0.08)!important;color:rgba(255,255,255,0.2)!important}
-
-/* ── MOBILE STEP LIST ── */
-#cr-mobile-list{display:none;flex-direction:column;}
-#cr-mobile-btns{display:none;}
-
-.cr-mstep{
-  background:#0a0a0a;
-  border-left:3px solid rgba(161,0,255,0.5);
-  padding:12px 14px;
+.trust-card{
+  background:#141414;padding:32px 28px 28px;position:relative;overflow:hidden;
+  transition:background .25s;
 }
-.cr-mstep-badge{
-  font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;
-  color:rgba(161,0,255,0.6);margin-bottom:5px;
+.trust-card:hover{background:#1a1a1a}
+.trust-card-top-line{
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--purple);transform:scaleX(0);transform-origin:left;
+  transition:transform .35s ease;
 }
-.cr-mstep-label{font-size:14px;font-weight:700;color:#fff;line-height:1.25;}
-.cr-mstep-sub{font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;line-height:1.4;}
-.cr-mconn{width:3px;height:14px;background:rgba(161,0,255,0.25);margin-left:14px;}
-
-/* ── MOBILE OVERRIDES ── */
-@media(max-width:768px){
-  /* 1. Section padding */
-  #cr-section-wrap{padding:0 16px!important;}
-
-  /* 2. Carousel wrap: no extra horizontal margin */
-  #cr-carousel-wrap{margin-left:0!important;margin-right:0!important;}
-
-  /* 3. Slide header: stack stats below title */
-  #cr-header-row{flex-direction:column!important;gap:16px!important;}
-  #cr-stats{
-    display:grid!important;
-    grid-template-columns:1fr 1fr!important;
-    gap:14px 20px!important;
-    width:100%!important;
-    padding-top:0!important;
-  }
-
-  /* 4. Hide desktop SVG canvas + flanking buttons */
-  #cr-canvas-wrap{display:none!important;}
-  #cr-prev{display:none!important;}
-  #cr-next{display:none!important;}
-
-  /* 5. Show mobile step list */
-  #cr-mobile-list{display:flex!important;}
-
-  /* 6. Mobile nav buttons: below step list, full width split */
-  #cr-mobile-btns{
-    display:flex!important;
-    margin-top:12px;
-  }
-  #cr-prev-m,#cr-next-m{
-    flex:1;height:48px;
-    background:rgba(161,0,255,0.08);
-    border:1px solid rgba(161,0,255,0.45);
-    color:#A100FF;font-size:18px;
-    cursor:pointer;font-family:var(--font);
-    transition:all .2s;
-  }
-  #cr-prev-m{border-right:none;}
-  #cr-prev-m:hover:not(:disabled),#cr-next-m:hover:not(:disabled){
-    border-color:#A100FF!important;color:#fff!important;background:rgba(161,0,255,0.22)!important;
-  }
-  #cr-prev-m:disabled,#cr-next-m:disabled{
-    opacity:.15;cursor:default;
-    background:transparent!important;
-    border-color:rgba(255,255,255,0.08)!important;
-    color:rgba(255,255,255,0.2)!important;
-  }
+.trust-card:hover .trust-card-top-line{transform:scaleX(1)}
+.trust-icon{
+  width:52px;height:52px;background:rgba(161,0,255,0.1);border:1px solid rgba(161,0,255,0.2);
+  display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+  transition:background .25s,border-color .25s;
+}
+.trust-card:hover .trust-icon{background:rgba(161,0,255,0.18);border-color:rgba(161,0,255,0.4)}
+.trust-label{
+  font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--purple);margin-bottom:8px;
+}
+.trust-title{
+  font-size:20px;font-weight:800;letter-spacing:-0.02em;margin-bottom:16px;line-height:1.1;
+}
+.trust-list{
+  list-style:none;display:flex;flex-direction:column;gap:8px;
+}
+.trust-list li{
+  font-size:13px;color:rgba(255,255,255,0.45);line-height:1.55;
+  display:flex;align-items:flex-start;gap:8px;
+  transition:color .2s;
+}
+.trust-card:hover .trust-list li{color:rgba(255,255,255,0.65)}
+.trust-list li::before{
+  content:'—';color:rgba(161,0,255,0.5);font-size:10px;flex-shrink:0;margin-top:2px;
+}
+@media(max-width:900px){
+  #trust .section-title,#trust .section-sub,#trust .section-eyebrow{padding:0}
+  #trust>div{padding:0 20px!important}
+  #trust [style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr 1fr!important}
+}
+@media(max-width:480px){
+  #trust [style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr!important}
 }
 </style>
 
-<script>
-var CR_SLIDES=[
-  {
-    tag:'Revenue Systems',num:'01 / 04',
-    title:'Lead qualifies itself.<br/>Pipeline fills overnight.',
-    sub:'A lead hits your form. Seconds later — scored, logged, followed up. You wake up to a full calendar.',
-    stats:[['7s','Trigger to action'],['4','Parallel agents'],['0','Manual steps'],['3x','More leads booked']],
-    stack:'n8n · Claude API · HubSpot · Calendly · Slack · Gmail',
-    nodes:[
-      {id:'n0',label:'Form Webhook',sub:'Lead submits',badge:'TRIGGER',x:30,y:30,w:138,h:56,accent:'rgba(255,255,255,0.18)'},
-      {id:'n1',label:'Lead Orchestrator',sub:'Routes by intent + score',badge:'ORCHESTRATOR',x:210,y:96,w:162,h:64,accent:'#A100FF',prom:true},
-      {id:'n2',label:'Qualifier Agent',sub:'Scores fit via Claude',badge:'AGENT 1',x:22,y:206,w:138,h:58,accent:'rgba(161,0,255,0.55)'},
-      {id:'n3',label:'CRM Writer',sub:'HubSpot deal + contact',badge:'AGENT 2',x:182,y:206,w:138,h:58,accent:'rgba(161,0,255,0.55)'},
-      {id:'n4',label:'Follow-up Agent',sub:'Personalised email sent',badge:'AGENT 3',x:342,y:206,w:138,h:58,accent:'rgba(161,0,255,0.55)'},
-      {id:'n5',label:'Booking Agent',sub:'Calendly slot offered',badge:'AGENT 4',x:502,y:206,w:138,h:58,accent:'rgba(161,0,255,0.55)'},
-      {id:'n6',label:'You notified',sub:'Slack: score + summary',badge:'RESULT',x:534,y:96,w:154,h:52,top:true,accent:'#C44DFF'},
-    ],
-    pipes:[
-      {x1:168,y1:58,x2:210,y2:128},
-      {x1:291,y1:160,x2:91,y2:206},
-      {x1:291,y1:160,x2:251,y2:206},
-      {x1:291,y1:160,x2:411,y2:206},
-      {x1:291,y1:160,x2:571,y2:206},
-      {x1:291,y1:128,x2:534,y2:122,res:true},
-    ],
-    seq:[
-      {n:'n0',p:null,msg:'● Webhook fired — lead data received',c:'rgba(255,255,255,0.45)',t:300},
-      {n:'n1',p:0,msg:'● Orchestrator reading lead — spawning agents...',c:'#A100FF',t:1000},
-      {n:'n2',p:1,msg:'● 4 agents firing in parallel simultaneously',c:'#A100FF',t:1900},
-      {n:'n3',p:2,msg:'● 4 agents firing in parallel simultaneously',c:'#A100FF',t:1920},
-      {n:'n4',p:3,msg:'● 4 agents firing in parallel simultaneously',c:'#A100FF',t:1940},
-      {n:'n5',p:4,msg:'● 4 agents firing in parallel simultaneously',c:'#A100FF',t:1960},
-      {n:'n6',p:5,msg:'● Done. Slack pinged. Zero humans involved.',c:'#C44DFF',t:3400},
-    ]
-  },
-  {
-    tag:'Customer Experience',num:'02 / 04',
-    title:'Support runs 24/7.<br/>No new headcount.',
-    sub:'Every ticket, review, refund, FAQ — handled automatically. Your team only sees what truly needs a human.',
-    stats:[['70%','Auto-resolved'],['24/7','Always online'],['0','Extra hires'],['6hr→8min','Response time']],
-    stack:'n8n · Claude API · Zendesk · WhatsApp · Gmail · Notion',
-    nodes:[
-      {id:'n0',label:'Inbound Message',sub:'Email / chat / WhatsApp',badge:'TRIGGER',x:272,y:10,w:162,h:56,accent:'rgba(255,255,255,0.18)'},
-      {id:'n1',label:'Triage Agent',sub:'Classifies intent + urgency',badge:'ROUTER',x:272,y:100,w:162,h:62,accent:'#A100FF',prom:true},
-      {id:'n2',label:'FAQ Agent',sub:'RAG knowledge base reply',badge:'AGENT 1',x:28,y:206,w:138,h:58,accent:'rgba(161,0,255,0.55)'},
-      {id:'n3',label:'Ticket Agent',sub:'Tags, routes, logs',badge:'AGENT 2',x:188,y:206,w:138,h:58,accent:'rgba(161,0,255,0.55)'},
-      {id:'n4',label:'Review Agent',sub:'Auto-responds publicly',badge:'AGENT 3',x:348,y:206,w:138,h:58,accent:'rgba(161,0,255,0.55)'},
-      {id:'n5',label:'Escalation Agent',sub:'Flags edge cases to human',badge:'AGENT 4',x:508,y:206,w:138,h:58,accent:'rgba(255,120,120,0.45)'},
-      {id:'n6',label:'Response sent',sub:'< 8 min, any channel',badge:'RESULT',x:28,y:110,w:138,h:50,top:true,accent:'#C44DFF'},
-    ],
-    pipes:[
-      {x1:353,y1:66,x2:353,y2:100},
-      {x1:353,y1:162,x2:97,y2:206},
-      {x1:353,y1:162,x2:257,y2:206},
-      {x1:353,y1:162,x2:417,y2:206},
-      {x1:353,y1:162,x2:577,y2:206},
-      {x1:272,y1:135,x2:166,y2:135,res:true},
-    ],
-    seq:[
-      {n:'n0',p:null,msg:'● Message received across channel',c:'rgba(255,255,255,0.45)',t:300},
-      {n:'n1',p:0,msg:'● Triage agent classifying intent...',c:'#A100FF',t:900},
-      {n:'n2',p:1,msg:'● All 4 agents handling in parallel',c:'#A100FF',t:1800},
-      {n:'n3',p:2,msg:'● All 4 agents handling in parallel',c:'#A100FF',t:1820},
-      {n:'n4',p:3,msg:'● All 4 agents handling in parallel',c:'#A100FF',t:1840},
-      {n:'n5',p:4,msg:'● All 4 agents handling in parallel',c:'#A100FF',t:1860},
-      {n:'n6',p:5,msg:'● Response sent. < 8 minutes. Zero humans.',c:'#C44DFF',t:3300},
-    ]
-  },
-  {
-    tag:'Operations Intelligence',num:'03 / 04',
-    title:'Your ops brain never<br/>forgets anything.',
-    sub:'Notion, Drive, SOPs — all connected. Ask a question. Get a cited answer in 4 seconds.',
-    stats:[['4s','Answer retrieval'],['Single','Source of truth'],['40%','Onboarding cut'],['0 gaps','Context lost']],
-    stack:'n8n · Claude API · Notion · Google Drive · Pinecone · Slack',
-    nodes:[
-      {id:'n0',label:'Question asked',sub:'Slack / chat / email',badge:'TRIGGER',x:28,y:110,w:138,h:56,accent:'rgba(255,255,255,0.18)'},
-      {id:'n1',label:'Intent Router',sub:'Classifies + selects source',badge:'ROUTER',x:224,y:46,w:155,h:62,accent:'#A100FF',prom:true},
-      {id:'n2',label:'RAG Agent',sub:'Notion + Drive search',badge:'AGENT 1',x:224,y:196,w:138,h:58,accent:'rgba(161,0,255,0.55)'},
-      {id:'n3',label:'SOP Agent',sub:'Retrieves exact procedure',badge:'AGENT 2',x:414,y:110,w:145,h:58,accent:'rgba(161,0,255,0.55)'},
-      {id:'n4',label:'Onboard Agent',sub:'New hire guided flow',badge:'AGENT 3',x:414,y:206,w:145,h:58,accent:'rgba(161,0,255,0.55)'},
-      {id:'n5',label:'Memory Writer',sub:'Logs Q&A for future use',badge:'AGENT 4',x:108,y:206,w:112,h:58,accent:'rgba(161,0,255,0.35)'},
-      {id:'n6',label:'Answer delivered',sub:'Plain English, cited',badge:'RESULT',x:560,y:30,w:148,h:50,top:true,accent:'#C44DFF'},
-    ],
-    pipes:[
-      {x1:166,y1:138,x2:224,y2:77},
-      {x1:301,y1:108,x2:301,y2:196},
-      {x1:301,y1:77,x2:414,y2:139},
-      {x1:301,y1:108,x2:414,y2:235},
-      {x1:224,y1:138,x2:220,y2:206},
-      {x1:559,y1:139,x2:634,y2:80,res:true},
-    ],
-    seq:[
-      {n:'n0',p:null,msg:'● Question received — parsing intent',c:'rgba(255,255,255,0.45)',t:300},
-      {n:'n1',p:0,msg:'● Router selecting knowledge sources...',c:'#A100FF',t:1000},
-      {n:'n2',p:1,msg:'● Agents retrieving in parallel',c:'#A100FF',t:1900},
-      {n:'n3',p:2,msg:'● Agents retrieving in parallel',c:'#A100FF',t:1920},
-      {n:'n4',p:3,msg:'● Agents retrieving in parallel',c:'#A100FF',t:1940},
-      {n:'n5',p:4,msg:'● Logging to memory for future queries',c:'rgba(161,0,255,0.7)',t:2700},
-      {n:'n6',p:5,msg:'● Answer delivered. 4 seconds. Cited sources.',c:'#C44DFF',t:3400},
-    ]
-  },
-  {
-    tag:'System Overhaul',num:'04 / 04',
-    title:'Every department.<br/>One connected brain.',
-    sub:'Full-stack AI deployment. Revenue, support, ops, and sales — all automated, all talking to each other.',
-    stats:[['Full','Stack coverage'],['1','Source of truth'],['Wk 2','Live in prod'],['30d','Guarantee']],
-    stack:'n8n · Claude API · HubSpot · Notion · Slack · Gmail · Pinecone · Zapier',
-    nodes:[
-      {id:'n0',label:'Central AI Hub',sub:'Master orchestrator',badge:'BRAIN',x:264,y:106,w:172,h:66,accent:'#A100FF',prom:true},
-      {id:'n1',label:'Revenue Engine',sub:'Leads + pipeline',badge:'MODULE 1',x:28,y:20,w:145,h:56,accent:'rgba(161,0,255,0.6)'},
-      {id:'n2',label:'CX Engine',sub:'Support + reviews',badge:'MODULE 2',x:548,y:20,w:145,h:56,accent:'rgba(161,0,255,0.6)'},
-      {id:'n3',label:'Ops Brain',sub:'SOPs + knowledge',badge:'MODULE 3',x:28,y:210,w:145,h:56,accent:'rgba(161,0,255,0.6)'},
-      {id:'n4',label:'Sales Assistant',sub:'Proposals + follow-up',badge:'MODULE 4',x:548,y:210,w:145,h:56,accent:'rgba(161,0,255,0.6)'},
-      {id:'n5',label:'Unified Data Layer',sub:'Single source of truth',badge:'INFRA',x:256,y:220,w:188,h:50,top:true,accent:'rgba(255,255,255,0.08)'},
-      {id:'n6',label:'Live Dashboard',sub:'Everything in one view',badge:'OUTPUT',x:270,y:8,w:160,h:48,top:true,accent:'#C44DFF'},
-    ],
-    pipes:[
-      {x1:173,y1:48,x2:264,y2:139},
-      {x1:548,y1:48,x2:436,y2:139},
-      {x1:173,y1:238,x2:264,y2:172},
-      {x1:548,y1:238,x2:436,y2:172},
-      {x1:350,y1:172,x2:350,y2:220},
-      {x1:350,y1:106,x2:350,y2:56,res:true},
-    ],
-    seq:[
-      {n:'n1',p:null,msg:'● Revenue engine connected',c:'rgba(161,0,255,0.6)',t:300},
-      {n:'n2',p:null,msg:'● CX engine connected',c:'rgba(161,0,255,0.6)',t:700},
-      {n:'n3',p:null,msg:'● Ops brain connected',c:'rgba(161,0,255,0.6)',t:1100},
-      {n:'n4',p:null,msg:'● Sales assistant connected',c:'rgba(161,0,255,0.6)',t:1500},
-      {n:'n0',p:0,msg:'● Central AI Hub orchestrating all modules...',c:'#A100FF',t:2000},
-      {n:'n5',p:4,msg:'● Unified data layer syncing everything',c:'rgba(255,255,255,0.5)',t:2800},
-      {n:'n6',p:5,msg:'● System live. Every department automated.',c:'#C44DFF',t:3600},
-    ]
-  }
-];
 
-var crIdx=0;
-var crTimer=null;
 
-function crBuildSVG(idx){
-  var s=CR_SLIDES[idx];
-  var svg=document.getElementById('cr-svg');
-  var defs='<defs>'+
-    '<marker id="crAP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#A100FF" stroke-width="1.5" stroke-linecap="round"/></marker>'+
-    '<marker id="crAR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="#C44DFF" stroke-width="1.5" stroke-linecap="round"/></marker>'+
-    '<marker id="crAD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 2L8 5L2 8" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5" stroke-linecap="round"/></marker>'+
-    '</defs>';
-  var grid='<g opacity="0.03">'+
-    '<line x1="0" y1="90" x2="720" y2="90" stroke="#fff" stroke-width="0.5"/>'+
-    '<line x1="0" y1="180" x2="720" y2="180" stroke="#fff" stroke-width="0.5"/>'+
-    '<line x1="0" y1="260" x2="720" y2="260" stroke="#fff" stroke-width="0.5"/>'+
-    '<line x1="180" y1="0" x2="180" y2="280" stroke="#fff" stroke-width="0.5"/>'+
-    '<line x1="360" y1="0" x2="360" y2="280" stroke="#fff" stroke-width="0.5"/>'+
-    '<line x1="540" y1="0" x2="540" y2="280" stroke="#fff" stroke-width="0.5"/>'+
-    '</g>';
-  var dimP=s.pipes.map(function(p){
-    return '<line x1="'+p.x1+'" y1="'+p.y1+'" x2="'+p.x2+'" y2="'+p.y2+'" stroke="rgba(255,255,255,0.07)" stroke-width="1.5" marker-end="url(#crAD)"/>';
-  }).join('');
-  var actP=s.pipes.map(function(p,i){
-    var col=p.res?'#C44DFF':'#A100FF';
-    var mk=p.res?'crAR':'crAP';
-    var dx=p.x2-p.x1,dy=p.y2-p.y1;
-    var len=Math.round(Math.sqrt(dx*dx+dy*dy))+10;
-    return '<line id="crp-'+idx+'-'+i+'" x1="'+p.x1+'" y1="'+p.y1+'" x2="'+p.x2+'" y2="'+p.y2+'" stroke="'+col+'" stroke-width="1.5" stroke-dasharray="'+len+'" stroke-dashoffset="'+len+'" marker-end="url(#'+mk+')" opacity="0"/>';
-  }).join('');
-  var nodes=s.nodes.map(function(n){
-    var fill=n.prom?'#0f0f0f':'#0a0a0a';
-    var stroke=n.prom?'rgba(161,0,255,0.3)':'rgba(255,255,255,0.08)';
-    var bar=n.top
-      ?'<rect x="'+n.x+'" y="'+n.y+'" width="'+n.w+'" height="2" fill="'+n.accent+'"/>'
-      :'<rect x="'+n.x+'" y="'+n.y+'" width="3" height="'+n.h+'" fill="'+n.accent+'"/>';
-    var my=Math.round(n.y+n.h*0.52);
-    return '<g>'+
-      '<rect id="'+n.id+'" x="'+n.x+'" y="'+n.y+'" width="'+n.w+'" height="'+n.h+'" rx="2" fill="'+fill+'" stroke="'+stroke+'" stroke-width="1"/>'+
-      bar+
-      '<text x="'+(n.x+12)+'" y="'+(n.y+16)+'" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="'+(n.prom?'#A100FF':'rgba(161,0,255,0.5)')+'" letter-spacing="0.12em">'+n.badge+'</text>'+
-      '<text x="'+(n.x+12)+'" y="'+my+'" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#fff">'+n.label+'</text>'+
-      '<text x="'+(n.x+12)+'" y="'+(my+13)+'" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.3)">'+n.sub+'</text>'+
-      '</g>';
-  }).join('');
-  svg.innerHTML=defs+grid+dimP+actP+nodes;
-}
-
-function crAnimLine(idx,pIdx,dur,delay){
-  setTimeout(function(){
-    var el=document.getElementById('crp-'+idx+'-'+pIdx);
-    if(!el)return;
-    el.setAttribute('opacity','1');
-    var da=parseFloat(el.getAttribute('stroke-dasharray'));
-    var x1=parseFloat(el.getAttribute('x1')),y1=parseFloat(el.getAttribute('y1'));
-    var x2=parseFloat(el.getAttribute('x2')),y2=parseFloat(el.getAttribute('y2'));
-    var start=performance.now();
-    // draw the line
-    function fr(now){
-      var p=Math.min((now-start)/dur,1);
-      var e=p<0.5?2*p*p:-1+(4-2*p)*p;
-      el.setAttribute('stroke-dashoffset',da*(1-e));
-      if(p<1)requestAnimationFrame(fr);
-    }
-    requestAnimationFrame(fr);
-    // travelling dot after line draws
-    setTimeout(function(){
-      var svg=document.getElementById('cr-svg');
-      if(!svg)return;
-      var dot=document.createElementNS('http://www.w3.org/2000/svg','circle');
-      var isRes=el.getAttribute('stroke')==='#C44DFF';
-      dot.setAttribute('r','3.5');
-      dot.setAttribute('fill',isRes?'#C44DFF':'#A100FF');
-      dot.setAttribute('opacity','0.9');
-      svg.appendChild(dot);
-      var ds=performance.now();
-      var dotDur=320;
-      function dotFr(now){
-        var p=Math.min((now-ds)/dotDur,1);
-        var e=p<0.5?2*p*p:-1+(4-2*p)*p;
-        dot.setAttribute('cx',x1+(x2-x1)*e);
-        dot.setAttribute('cy',y1+(y2-y1)*e);
-        dot.setAttribute('opacity',p<0.15?p/0.15:p>0.85?(1-p)/0.15:0.9);
-        if(p<1)requestAnimationFrame(dotFr);
-        else svg.removeChild(dot);
-      }
-      requestAnimationFrame(dotFr);
-    },dur*0.6);
-  },delay);
-}
-
-function crPulseNode(nid,col){
-  var el=document.getElementById(nid);
-  if(!el)return;
-  el.setAttribute('stroke',col||'#A100FF');
-  el.setAttribute('stroke-width','1.5');
-}
-
-function crSetStatus(txt,col){
-  var el=document.getElementById('cr-status');
-  if(el){el.textContent=txt;el.style.color=col||'rgba(161,0,255,0.7)';}
-}
-
-function crRunAnim(idx){
-  var s=CR_SLIDES[idx];
-  s.seq.forEach(function(step){
-    setTimeout(function(){
-      var nc=step.c==='rgba(255,255,255,0.45)'?'rgba(255,255,255,0.35)':step.c==='#C44DFF'?'#C44DFF':'#A100FF';
-      crPulseNode(step.n,nc);
-      if(step.p!==null&&step.p!==undefined)crAnimLine(idx,step.p,500,0);
-      crSetStatus(step.msg,step.c);
-    },step.t);
-  });
-}
-
-function crRender(idx){
-  var s=CR_SLIDES[idx];
-  document.getElementById('cr-tag').textContent=s.tag;
-  document.getElementById('cr-num').textContent=s.num;
-  document.getElementById('cr-title').innerHTML=s.title;
-  document.getElementById('cr-sub').textContent=s.sub;
-  document.getElementById('cr-stack-note').textContent=s.stack;
-  for(var i=0;i<4;i++){
-    var d=document.getElementById('crd-'+i);
-    if(d){if(i===idx){d.classList.add('cr-dot-active');}else{d.classList.remove('cr-dot-active');}}
-  }
-  var sr=document.getElementById('cr-stats');
-  if(sr){
-    sr.innerHTML=s.stats.map(function(st){
-      return '<div style="display:flex;flex-direction:column;gap:2px">'+
-        '<div style="font-size:18px;font-weight:800;color:var(--purple);letter-spacing:-0.02em">'+st[0]+'</div>'+
-        '<div style="font-size:9px;color:rgba(255,255,255,0.25);letter-spacing:0.08em;text-transform:uppercase">'+st[1]+'</div>'+
-        '</div>';
-    }).join('');
-  }
-  // desktop buttons
-  var bp=document.getElementById('cr-prev');
-  var bn=document.getElementById('cr-next');
-  if(bp){bp.disabled=(idx===0);}
-  if(bn){bn.disabled=(idx===3);}
-  // mobile buttons
-  var mbp=document.getElementById('cr-prev-m');
-  var mbn=document.getElementById('cr-next-m');
-  if(mbp){mbp.disabled=(idx===0);}
-  if(mbn){mbn.disabled=(idx===3);}
-  // mobile step list
-  var ml=document.getElementById('cr-mobile-list');
-  if(ml){
-    ml.innerHTML=s.nodes.map(function(n,i){
-      var isLast=(i===s.nodes.length-1);
-      var borderCol=n.prom?'rgba(161,0,255,0.9)':n.top?'rgba(196,77,255,0.8)':'rgba(161,0,255,0.45)';
-      return '<div class="cr-mstep" style="border-left-color:'+borderCol+'">'+
-        '<div class="cr-mstep-badge">'+n.badge+'</div>'+
-        '<div class="cr-mstep-label">'+n.label+'</div>'+
-        '<div class="cr-mstep-sub">'+n.sub+'</div>'+
-        '</div>'+
-        (isLast?'':'<div class="cr-mconn"></div>');
-    }).join('');
-  }
-  crSetStatus('● Idle — waiting for trigger','rgba(255,255,255,0.2)');
-  crBuildSVG(idx);
-  if(crTimer)clearTimeout(crTimer);
-  crTimer=setTimeout(function(){crRunAnim(idx);},600);
-}
-
-window.crNav=function(dir){
-  crIdx=Math.max(0,Math.min(3,crIdx+dir));
-  crRender(crIdx);
-};
-
-crRender(0);
-</script>
 
 <!-- GUARANTEE -->
 <div class="guarantee">
